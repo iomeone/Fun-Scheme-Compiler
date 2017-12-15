@@ -1,5 +1,6 @@
-<p align="center">
 # Fun Scheme Compiler (FSC)
+
+<p align="center">
 This repository contains the source code and documentation for the Fun Scheme Compiler (FSC).
 </p>
 
