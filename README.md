@@ -28,7 +28,20 @@ $ racket tests.rkt all
 ```sh
 $ racket tests.rkt <test-name>
 ```
-#### Provided primitive operations:
+# Supported primitive operations:
+| Primitive | Description | Return Type | Number of Arguments | Arguments Type |
+| --------- | ----------- | ----------- | ------------------- | -------------- |
+| = | Numerically equality | Boolean (#t / #f) | 2 | Real numbers |
+| < | Numerically less | Boolean (#t / #f) | 2 | Real numbers |
+| > | Numerically greater | Boolean (#t / #f) | 2 | Real numbers |
+| <= | Numerically less than or equal | Boolean (#t / #f) | 2 | Real numbers |
+
+
+# Identified runtime errors and fixes
+The following 5 runtime errors have been identified and mitigated with properly raised exceptions:
+
+1. Division by zero. 
+
 
 
 ##### I, Michael Reininger, pledge on my honor that I have not given or received any unauthorized assistance on this project.

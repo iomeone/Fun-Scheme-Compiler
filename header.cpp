@@ -553,6 +553,7 @@ u64 applyprim__43(u64 p)
     
 u64 prim__45(u64 a, u64 b) // -
 {
+
     ASSERT_TAG(a, INT_TAG, "(prim + a b); a is not an integer")
     ASSERT_TAG(b, INT_TAG, "(prim - a b); b is not an integer")
     
@@ -596,6 +597,10 @@ u64 applyprim__42(u64 p)
     
 u64 prim__47(u64 a, u64 b) // /
 {
+    // Check for division by 0
+    int b_int = DECODE_INT(b);
+    if (b_int == 0) fatal_err("(prim / a b); b cannot be 0");
+
     ASSERT_TAG(a, INT_TAG, "(prim / a b); a is not an integer")
     ASSERT_TAG(b, INT_TAG, "(prim / a b); b is not an integer")
     
