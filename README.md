@@ -95,7 +95,8 @@ The following 5 runtime errors have been identified and fixed with properly rais
     {   
         ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
         return ENCODE_CLO(cloptr);
-    }```
+    }
+    ```
 
     2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`.
 
