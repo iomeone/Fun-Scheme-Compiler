@@ -68,6 +68,7 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
 
 1. Division by zero.
+    Originally, any division by 0 caused execution to hang and timeout.
     This was fixed by assuring that the parameter b of
     ```c++
     u64 prim__47(u64 a, u64 b)
@@ -84,12 +85,23 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: div-0.scm, div-1.scm, and div-2.scm
 
 2. Non-function application.
-    This was fixed by modifying the header to expect a closure pointer before a closure is applied. Modifications to closure-convert were added to verify that non-function values are never applied.
+    Originally, any non-function application caused a segmentation fault due to a call on an invalid closure pointer (ie. a value, etc).
+    This was fixed by modifying `header.cpp` as follows:
+    1. Introduce a new procedure to verify that a pointer is indeed a closure via: ```c++
+    u64 expect_closure(u64* cloptr)
+    {   
+    ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
+    return ENCODE_CLO(cloptr);
+    }
+    ```
+    2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`.
 
     Tests for this fix are: non-func-0.scm, non-func-1.scm, and non-func-2.scm
 
 3. A memory-usage cap.
-    This was fixed by adding a counter to the number of bytes allocated in the alloc function and then checking that against the MEM_CAP constant at the top of header.cpp.
+    This was fixed by defining a memory cap to 256 mb (`#define MEM_CAP 268435456`) at the top of `header.cpp` and by adding a counter (`u64 current_mem_used`) to track the number of bytes allocated in the `alloc` procedure in `header.cpp`.
+
+    Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` exception and message.
 
     Tests for this fix are: mem-cap-0.scm, mem-cap-1.scm, and mem-cap-2.scm.
 

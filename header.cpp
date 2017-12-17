@@ -90,7 +90,7 @@
         u64 v1 = expect_cons(rest, &rest); \
         u64 v2 = expect_cons(rest, &rest); \
         if (rest != V_NULL) \
-            fatal_err("prim applied on more than 2 arguments."); \
+            fatal_err("prim applied on more than 3 arguments."); \
         return g(v0,v1,v2);                                        \
     } 
 
@@ -147,7 +147,6 @@ void print_u64(u64 i)
 
 u64 expect_closure(u64* cloptr)
 {
-    // printf("Called expect_closure with arg: %llu\n", ENCODE_CLO(cloptr));
     ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
     return ENCODE_CLO(cloptr);
 }
