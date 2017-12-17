@@ -50,7 +50,7 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 (Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error)
 ...
 
-# Supported primitive operations:
+# (Simple) Supported Primitive Operations:
 | Primitive | Description | Return Type | Number of Arguments | Arguments Type |
 | --------- | ----------- | ----------- | ------------------- | -------------- |
 | = | Numerically equal | Boolean (#t / #f) | 2 | Int x Int |
@@ -63,21 +63,18 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 | * | Numerically multiply | Int | 2 | Int x Int |
 | / | Numerically divide | Int | 2 | Int x Int |
 | print | Print to console | void | 1 | datum |
-| apply | Applies arg1 as a proc to a list of arguments | datum | 2 | Lambda x List |
-| halt | Halts the current continuation and displays the final value | Null value | 1 | Value |
 
 ____
-### =
+### apply <proc> <arg list ...>
+Description: Applies a procedure in proc to an argument list.
 Usage:
 ```scheme
-(= 1 1) ; #t
-(= 1 2) ; #f
+(apply + '(1 2 3)) ; 5
 ```
 
-Description: Checks for numerical equality
-Return type: Boolean (#t / #f)
+Return type: Datum (Int, Symbol, etc.)
 Number of arguments: At least 2
-Argument types: Int x Int
+Argument types: Atomic Expression x List ...
 ____
 
 # Identified runtime errors and fixes
