@@ -88,7 +88,9 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Originally, any non-function application caused a segmentation fault due to a call on an invalid closure pointer (ie. a value, etc).
     This was fixed by modifying `header.cpp` as follows:
 
-    1. Introduce a new procedure to verify that a pointer is indeed a closure via: ```c++
+    1. Introduce a new procedure to verify that a pointer is indeed a closure via:
+
+    ```c++
     u64 expect_closure(u64* cloptr)
     {   
         ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
@@ -101,12 +103,16 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
 3. A memory-usage cap.
     This was fixed by defining a memory cap to 256 mb
+
     ```c++
-    #define MEM_CAP 268435456```
+    #define MEM_CAP 268435456
+    ```
 
     at the top of `header.cpp` and by adding a counter
+
     ```c++
-    u64 current_mem_used```
+    u64 current_mem_used
+    ```
 
     to track the number of bytes allocated in the `alloc` procedure in `header.cpp`.
 
