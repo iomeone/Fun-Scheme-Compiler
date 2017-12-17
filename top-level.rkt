@@ -139,5 +139,7 @@
       [`',d `',d]
       [(? symbol? x) x]
       [`(,es ...) (map T es)]
-      [(? datum? d) `',d]))
+      [(? datum? d) `',d]
+      [(? char? d) `',d]
+      ))
   (T e))

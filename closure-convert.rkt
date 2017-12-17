@@ -279,10 +279,13 @@
           (define gx+e
             (foldr (lambda (x gx+e)
                      (define gx (gensym 'rvp))
+                     (define check (gensym 'check))
                      (cons gx
-                           `(let ([,x (prim car ,gx)])
-                              (let ([,(car gx+e) (prim cdr ,gx)])
-                                ,(cdr gx+e)))))
+                           `(let ([,check (prim cons? ,gx)]) ; added this check although idk what to do at this point
+                              (let ([,x (prim car ,gx)])
+                                (let ([,(car gx+e) (prim cdr ,gx)])
+                                  ,(cdr gx+e)
+                                 )))))
                    (cons (gensym 'na) (remove-varargs body vst))
                    xs))
           
@@ -445,6 +448,18 @@
              (comment-line
               "  %" (s-> x) " = call i64 @const_init_symbol(i8* getelementptr inbounds (" lenstr ", " lenstr "* @" (s-> dx) ", i32 0, i32 0))"
               "quoted string")
+             (e->llvm e0))]
+          [`(let ([,x ',(? char? dat)]) ,e0)
+            (define dx (gensym 'sym))
+            (define lenstr (string-append "[" (number->string (+ 1 1)) " x i8]")) ; should only be 2
+            (set! globals
+                  (string-append globals
+                      "@" (s-> dx) " = private unnamed_addr constant "
+                      lenstr " c\"" (string dat) "\\00\", align 8\n"))
+            (string-append
+             (comment-line
+              "  %" (s-> x) " = call i64 @const_init_char(i8* getelementptr inbounds (" lenstr ", " lenstr "* @" (s-> dx) ", i32 0, i32 0))"
+              "quoted character")
              (e->llvm e0))]
            [`(let ([,x (make-closure ,lamx ,xs ...)]) ,e0)
             (define cptr (gensym 'cloptr))

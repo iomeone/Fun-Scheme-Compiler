@@ -1,16 +1,18 @@
-//#include "gc.h"    // Add back in and change tags if we want to use GC
+#include "gc.h"    // Add back in and change tags if we want to use GC
 #include "stdio.h"
 #include "stdlib.h"
 #include "stdint.h"
+//HAMT
+#include "hamt.h"
 
 #define CLO_TAG 0
 #define CONS_TAG 1
 #define INT_TAG 2
 #define STR_TAG 3
 #define SYM_TAG 4
+#define CHAR_TAG 5
 #define OTHER_TAG 6
 #define ENUM_TAG 7
-
 
 #define MEM_CAP 268435456
 
@@ -56,6 +58,9 @@
 
 #define DECODE_SYM(v) ((char*)((v)&(7ULL^MASK64)))
 #define ENCODE_SYM(v) (((u64)(v)) | SYM_TAG)
+
+#define DECODE_CHAR(v) ((char*)((v)&(7ULL^MASK64)))
+#define ENCODE_CHAR(v) (((u64)(v)) | CHAR_TAG)
 
 #define DECODE_OTHER(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_OTHER(v) (((u64)(v)) | OTHER_TAG)
@@ -127,7 +132,8 @@ u64* alloc(const u64 m)
     if (current_mem_used < MEM_CAP) 
     {
         // printf("Current memory used: %lld", current_mem_used);
-        return (u64*)(malloc(m));
+        // return (u64*)(malloc(m));
+        return (u64*)GC_MALLOC(m);
         
     } 
     else {
@@ -141,7 +147,7 @@ u64* alloc(const u64 m)
 
 void print_u64(u64 i)
 {
-    printf("%llu\n", i);
+    printf("%lu\n", i);
 }
 
 u64 expect_closure(u64* cloptr)
@@ -192,9 +198,12 @@ u64 remaining_args(u64 lst)
     u64* pp = DECODE_CONS(lst);
     ASSERT_NOT_TAG(lst, CONS_TAG, "Too many arguments. (remaining_args)")
 
-    printf("too_few_args: %d\n", DECODE_INT(pp[0]));
+    printf("too many args: %d\n", DECODE_INT(pp[0]));
     return lst;
 }
+
+// expect char
+
 
 /////// CONSTANTS
     
@@ -238,7 +247,10 @@ u64 const_init_symbol(const char* s)
     return ENCODE_SYM(s);
 }
 
-
+u64 const_init_char(const char* s)
+{
+    return ENCODE_CHAR(s);
+}
 
 
 
@@ -247,8 +259,12 @@ u64 const_init_symbol(const char* s)
 /////////// PRIMS
 
     
-///// effectful prims:
-
+///// effectful prims
+u64 prim_string(u64 v) 
+{
+    printf("%s\n", DECODE_STR(v));
+    return ENCODE_STR(v);
+}
     
 u64 prim_print_aux(u64 v) 
 {
@@ -291,6 +307,9 @@ u64 prim_print_aux(u64 v)
         }
         printf(")");
     }
+    else if ((v&7) == CHAR_TAG) {
+        printf("%s", DECODE_CHAR(v));
+    } 
     else if (v == V_VOID)
     {
         printf("");
@@ -304,7 +323,7 @@ u64 prim_print_aux(u64 v)
     }
     else
     {    
-        printf("(print.. v); unrecognized value %llu int %llu", v, ENCODE_INT(v));
+        printf("(print.. v); unrecognized value %lu int %lu", v, ENCODE_INT(v));
     }
     //...
     return V_VOID; 
@@ -350,7 +369,10 @@ u64 prim_print(u64 v)
             prim_print(vec[i]);
         }
         printf(")");
-    }
+    } 
+    else if ((v&7) == CHAR_TAG) {
+        printf("%s", DECODE_CHAR(v));
+    } 
     else if (v == V_VOID)
     {
         printf("");
@@ -363,7 +385,7 @@ u64 prim_print(u64 v)
         printf("#t");
     }
     else
-        printf("(print v); unrecognized value %llu", v);
+        printf("(print v); unrecognized value %lu %lu", v, (v&7));
     //...
     return V_VOID; 
 }
@@ -705,9 +727,7 @@ u64 prim_not(u64 a)
 GEN_EXPECT1ARGLIST(applyprim_not, prim_not)
 
 
-
 }
-
 
 
 

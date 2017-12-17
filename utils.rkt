@@ -51,7 +51,7 @@
                      hash hash-ref hash-set hash-count hash-keys hash-has-key? hash?
                      list? void? promise? procedure? number? integer?
                      error void print display write exit halt
-                     eq? eqv? equal? not))
+                     eq? eqv? equal? not string string->list string-ref substring string-append))
 (define ok-set (list->set (string->list "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$")))
 (define (c-name s)
   (foldr string-append
@@ -88,6 +88,7 @@
          [(? integer?) #t]
          [(? symbol?) #t]
          [(? boolean?) #t]
+         [(? char?) #t]
          [else (pretty-print `(bad-datum ,d)) #f]))
 
 
@@ -606,12 +607,15 @@
   (when (not recent-header)
         (set! recent-header #t)
         ;(system (string-append clang++-path " header.cpp " " -I " gc-include-path " -S -emit-llvm -o header.ll"))
-        (system (string-append clang++-path " header.cpp " " -S -emit-llvm -o header.ll")))
+        ;(system (string-append clang++-path " header.cpp " " -S -emit-llvm -o header.ll"))
+         (system (string-append clang++-path " -std=c++11 header.cpp " " -I/home/bdwgc/include -pthread -S -emit-llvm -o header.ll /usr/local/lib/libgc.a"))
+    )
   (define header-str (read-string 299999 (open-input-file "header.ll" #:mode 'text)))
   (define llvm (string-append header-str "\n\n;;;;;;\n\n" llvm-str))
   (display llvm (open-output-file "combined.ll" #:exists 'replace))
   ;(system (string-append clang++-path " combined.ll " libgc-path " -I " gc-include-path " -lpthread -o bin"))
-  (system (string-append clang++-path " combined.ll " " -o bin"))
+  (system (string-append clang++-path " -std=c++11 combined.ll -I/home/bdwgc/include -pthread -o bin /usr/local/lib/libgc.a"))
+  ;(system (string-append clang++-path " combined.ll " " -o bin"))
   (match-define `(,out-port ,in-port ,id ,err-port ,callback) (process "./bin"))
   (define starttime (current-milliseconds))
   (let loop ()

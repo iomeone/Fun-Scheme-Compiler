@@ -8,7 +8,7 @@ This repository contains the source code and documentation for the Fun Scheme Co
 
 #### FSC compiles [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)) code in [this](https://www.cs.umd.edu/class/fall2017/cmsc430/assignment5.html) input language to LLVM IR. Each assignment of CMSC430 compartmentalized components of the final compiler into separate phases, namely assignments 2 through 5 on the course webpage.
 
-#### At a high-level, the phases of the class compiler are as follows:
+#### At a high-level, the phases of FSC are as follows:
 
 1. Top-level: Adds implicit begin forms explicitly, quotes all datums, desugars defines nested in such begin forms to a letrec*, desugar quasiquote and unquote, and implements a simple pattern matcher.
 2. Desugar: Simplifies complex language forms such as exceptions, dynamic-wind, call/cc, first-class primitives, etc. to terms in a small core language including only a let, lambda-calculus, conditionals, set!, call/cc, and explicit primitive-operation forms.
@@ -47,7 +47,7 @@ $ racket tests.rkt div-0
 '(eval-llvm "bad status code")
 Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 ```
-(Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error)
+(Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error at the top level.)
 ...
 
 # (Simple) Supported Primitive Operations:
@@ -76,6 +76,8 @@ Return type: Datum (Int, Symbol, etc.)
 Number of arguments: At least 2
 Argument types: Atomic Expression x List ...
 ____
+### 
+
 
 # Identified runtime errors and fixes
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
@@ -134,6 +136,19 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
+## Boehm Garbage Collector
+### Some short description here and a link to their project repo.
+
+#### I had to make some changes to how `utils.rkt` calls clang++ at compile time to work with my workstation, but feel free to modify the lines to fit your needs.
+Specifically, I modified lines 611 and 617. 
+
+    [611] `(system (string-append clang++-path " -std=c++11 header.cpp " " -I/home/bdwgc/include -pthread -S -emit-llvm -o header.ll /usr/local/lib/libgc.a"))`
+    [617] `(system (string-append clang++-path " -std=c++11 combined.ll -I/home/bdwgc/include -pthread -o bin /usr/local/lib/libgc.a"))`
+
+I was able to integrate bgwdc with header.cpp and make some changes to the default tagging scheme.
+
+## Disclaimer:
+#### This compiler should not be used in any serious applications - it is meant to be learning project. With more time and help, I could have completed the project to its entirety. But despite the slight extension, however, I was preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
 
 
 ##### I, Michael Reininger, pledge on my honor that I have not given or received any unauthorized assistance on this project.
