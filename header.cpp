@@ -1,5 +1,3 @@
-
-
 //#include "gc.h"    // Add back in and change tags if we want to use GC
 #include "stdio.h"
 #include "stdlib.h"
@@ -130,6 +128,7 @@ u64* alloc(const u64 m)
     {
         // printf("Current memory used: %lld", current_mem_used);
         return (u64*)(malloc(m));
+        
     } 
     else {
         fatal_err("Memory usage exceeded MEM_CAP");

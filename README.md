@@ -6,7 +6,9 @@ This repository contains the source code and documentation for the Fun Scheme Co
 
 #### This project was developed in my [CMSC430: Introduction to Compilers Course at the University of Maryland College Park](https://www.cs.umd.edu/class/fall2017/cmsc430/)  under the advising and teaching of [Prof. Thomas Gilray](https://thomas.gilray.org/).
 
-#### FSC compiles scheme code in [this](https://www.cs.umd.edu/class/fall2017/cmsc430/assignment5.html) input language down to LLVM IR. Each assignment of the course compartmentalized components of the final compiler into separate phases. The phases are as follows:
+#### FSC compiles [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)) code in [this](https://www.cs.umd.edu/class/fall2017/cmsc430/assignment5.html) input language to LLVM IR. Each assignment of CMSC430 compartmentalized components of the final compiler into separate phases, namely assignments 2 through 5 on the course webpage.
+
+#### At a high-level, the phases of the class compiler are as follows:
 
 1. Top-level: Adds implicit begin forms explicitly, quotes all datums, desugars defines nested in such begin forms to a letrec*, desugar quasiquote and unquote, and implements a simple pattern matcher.
 2. Desugar: Simplifies complex language forms such as exceptions, dynamic-wind, call/cc, first-class primitives, etc. to terms in a small core language including only a let, lambda-calculus, conditionals, set!, call/cc, and explicit primitive-operation forms.
@@ -62,7 +64,21 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 | / | Numerically divide | Int | 2 | Int x Int |
 | print | Print to console | void | 1 | datum |
 | apply | Applies arg1 as a proc to a list of arguments | datum | 2 | Lambda x List |
+| halt | Halts the current continuation and displays the final value | Null value | 1 | Value |
 
+____
+### =
+Usage:
+```scheme
+(= 1 1) ; #t
+(= 1 2) ; #f
+```
+
+Description: Checks for numerical equality
+Return type: Boolean (#t / #f)
+Number of arguments: At least 2
+Argument types: Int x Int
+____
 
 # Identified runtime errors and fixes
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
@@ -82,7 +98,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
     ...
     ```
 
-    Tests for this fix are: div-0.scm, div-1.scm, and div-2.scm
+    Tests for this fix are: `div-0.scm`, `div-1.scm`, and `div-2.scm`.
 
 2. Non-function application.
     Originally, any non-function application caused a segmentation fault due to a call on an invalid closure pointer (ie. a value, etc).
@@ -100,7 +116,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`.
 
-    Tests for this fix are: non-func-0.scm, non-func-1.scm, and non-func-2.scm
+    Tests for this fix are: `non-func-0.scm`, `non-func-1.scm`, and `non-func-2.scm`.
 
 3. A memory-usage cap.
     This was fixed by defining a memory cap to 256 mb
@@ -119,7 +135,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` exception and message.
 
-    Tests for this fix are: mem-cap-0.scm, mem-cap-1.scm, and mem-cap-2.scm.
+    Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
 
 
