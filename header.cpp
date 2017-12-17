@@ -14,6 +14,9 @@
 #define ENUM_TAG 7
 
 
+#define MEM_CAP 268435456
+
+
 #define VECTOR_OTHERTAG 1
 // Hashes, Sets, gen records, can all be added here
 
@@ -34,6 +37,10 @@
 
 #define ASSERT_VALUE(v,val,msg) \
     if(((u64)(v)) != (val))     \
+        fatal_err(msg);
+
+#define ASSERT_NOT_TAG(v,tag,msg) \
+    if(((v)&7ULL) == (tag)) \
         fatal_err(msg);
 
 
@@ -107,13 +114,6 @@ typedef int32_t s32;
 // UTILS
 
 
-u64* alloc(const u64 m)
-{
-    return (u64*)(malloc(m));
-    //return new u64[m];
-    //return (u64*)GC_MALLOC(m);
-}
-
 void fatal_err(const char* msg)
 {
     printf("library run-time error: ");
@@ -122,9 +122,34 @@ void fatal_err(const char* msg)
     exit(1);
 }
 
+u64 current_mem_used = 0;
+u64* alloc(const u64 m)
+{
+    current_mem_used += m;
+    if (current_mem_used < MEM_CAP) 
+    {
+        // printf("Current memory used: %lld", current_mem_used);
+        return (u64*)(malloc(m));
+    } 
+    else {
+        fatal_err("Memory usage exceeded MEM_CAP");
+        return 0;
+    }
+    
+    //return new u64[m];
+    //return (u64*)GC_MALLOC(m);
+}
+
 void print_u64(u64 i)
 {
     printf("%llu\n", i);
+}
+
+u64 expect_closure(u64* cloptr)
+{
+    // printf("Called expect_closure with arg: %llu\n", ENCODE_CLO(cloptr));
+    ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
+    return ENCODE_CLO(cloptr);
 }
 
 u64 expect_args0(u64 args)
@@ -164,6 +189,14 @@ u64 expect_other(u64 v, u64* rest)
     return p[0];
 }
 
+u64 remaining_args(u64 lst)
+{
+    u64* pp = DECODE_CONS(lst);
+    ASSERT_NOT_TAG(lst, CONS_TAG, "Too many arguments. (remaining_args)")
+
+    printf("too_few_args: %d\n", DECODE_INT(pp[0]));
+    return lst;
+}
 
 /////// CONSTANTS
     
@@ -260,8 +293,21 @@ u64 prim_print_aux(u64 v)
         }
         printf(")");
     }
+    else if (v == V_VOID)
+    {
+        printf("");
+    }
+    else if (v == V_FALSE)
+    {
+        printf("#f");
+    }
+    else if (v == V_TRUE) {
+        printf("#t");
+    }
     else
-        printf("(print.. v); unrecognized value %llu", v);
+    {    
+        printf("(print.. v); unrecognized value %llu int %llu", v, ENCODE_INT(v));
+    }
     //...
     return V_VOID; 
 }
@@ -306,6 +352,17 @@ u64 prim_print(u64 v)
             prim_print(vec[i]);
         }
         printf(")");
+    }
+    else if (v == V_VOID)
+    {
+        printf("");
+    }
+    else if (v == V_FALSE)
+    {
+        printf("#f");
+    }
+    else if (v == V_TRUE) {
+        printf("#t");
     }
     else
         printf("(print v); unrecognized value %llu", v);

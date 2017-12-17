@@ -285,6 +285,7 @@
                                 ,(cdr gx+e)))))
                    (cons (gensym 'na) (remove-varargs body vst))
                    xs))
+          
           `(let ([,x (lambda (,(car gx+e)) ,(cdr gx+e))])
              ,(remove-varargs e0 vst))]
          [`(let ([,x (lambda (,xs ...) ,body)]) ,e0)
@@ -373,7 +374,7 @@
       (let () 
         (define call-lam-map (callsites-lambdas cfg store))
         (define vararg-set (compute-vararg-set call-lam-map))
-        ;(pretty-print `(vararg-set-size ,(set-count vararg-set)))
+        ; (pretty-print `(vararg-set-size ,(set-count vararg-set)))
         (define no-varargs-cps (remove-varargs scps vararg-set))
         (match-define `(,freevars ,main-body ,procs) (T-bottom-up no-varargs-cps '()))
         `((proc (main) ,main-body) . ,procs))
@@ -538,6 +539,8 @@
              `(,(comment-line
                  "  %" (s-> cloptr) " = inttoptr i64 %" (s-> fx) " to i64*"
                  "closure/env cast; i64 -> i64*")
+               ,(comment-line
+                 "  call i64 @expect_closure(i64* %" (s-> cloptr) ")" "assert function application")
                ,(comment-line
                  "  %" (s-> i0ptr) " = getelementptr inbounds i64, i64* %" (s-> cloptr) ", i64 0"
                  (string-append "&" (s-> cloptr) "[0]"))

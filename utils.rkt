@@ -191,7 +191,6 @@
   (racket-compile-eval e))
 
 
-
 (define (test-top-level top-level top-level-e)  
   (define val1 (eval-top-level top-level-e))   
   (define scm-e (top-level top-level-e))       
@@ -212,7 +211,6 @@
       (error 'malformed-scheme)))
 
 
-
 (define (test-desugar desugar scheme-prog)  
   (define val1 (eval-scheme scheme-prog))   
   (define ir-e (simplify-ir (desugar scheme-prog)))       
@@ -223,7 +221,6 @@
         (display (format "Test-desugar: two different values (~a and ~a) before and after desugaring\n"
                          val1 val2))
         #f)))
-
 
 
 (define (ir-exp? e [env (set)]) 
@@ -630,7 +627,8 @@
               v)
             (if (eq? status 'done-error)
                 (begin (pretty-print '(eval-llvm "bad status code")) (void))           
-                (loop))))))
+                (loop))
+            ))))
 
 
 (define (test-closure-convert closure-convert prog) 
@@ -681,7 +679,7 @@
               (rewrite-match `(match ,e0 ,@clauses (,pat0 ,@es) (else (raise "no match"))))]
              [`(,e0 . ,es) (cons (rewrite-match e0) (rewrite-match es))]
              [else e]))
-  (with-handlers ([exn:fail? (lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e) (error 'eval-fail))])
+  (with-handlers ([exn:fail? (lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e) )])
                  (parameterize ([current-namespace (make-base-namespace)])
                                (namespace-require 'rnrs)
                                (namespace-require 'racket)
