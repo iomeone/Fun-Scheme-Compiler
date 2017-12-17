@@ -87,19 +87,28 @@ The following 5 runtime errors have been identified and fixed with properly rais
 2. Non-function application.
     Originally, any non-function application caused a segmentation fault due to a call on an invalid closure pointer (ie. a value, etc).
     This was fixed by modifying `header.cpp` as follows:
+
     1. Introduce a new procedure to verify that a pointer is indeed a closure via: ```c++
     u64 expect_closure(u64* cloptr)
     {   
-    ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
-    return ENCODE_CLO(cloptr);
-    }
-    ```
+        ASSERT_TAG(ENCODE_CLO(cloptr), CLO_TAG, "Expected closure (in expect_closure). Non-function value applied.");
+        return ENCODE_CLO(cloptr);
+    }```
+
     2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`.
 
     Tests for this fix are: non-func-0.scm, non-func-1.scm, and non-func-2.scm
 
 3. A memory-usage cap.
-    This was fixed by defining a memory cap to 256 mb (`#define MEM_CAP 268435456`) at the top of `header.cpp` and by adding a counter (`u64 current_mem_used`) to track the number of bytes allocated in the `alloc` procedure in `header.cpp`.
+    This was fixed by defining a memory cap to 256 mb
+    ```c++
+    #define MEM_CAP 268435456```
+
+    at the top of `header.cpp` and by adding a counter
+    ```c++
+    u64 current_mem_used```
+
+    to track the number of bytes allocated in the `alloc` procedure in `header.cpp`.
 
     Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` exception and message.
 
