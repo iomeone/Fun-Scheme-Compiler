@@ -1,7 +1,7 @@
 # Fun Scheme Compiler (FSC)
 
 <p align="center">
-<h2>This repository contains the source code and documentation for the Fun Scheme Compiler (FSC).<h2>
+This repository contains the source code and documentation for the Fun Scheme Compiler (FSC).
 </p>
 
 #### This project was developed in my [CMSC430: Introduction to Compilers Course at the University of Maryland College Park](https://www.cs.umd.edu/class/fall2017/cmsc430/)  under the advising and teaching of [Prof. Thomas Gilray](https://thomas.gilray.org/).
@@ -43,7 +43,7 @@ $ racket tests.rkt div-0
  #<continuation-mark-set>)
 '(letrec* () (let ((x '1)) (letrec* () (/ x '0))))
 '(eval-llvm "bad status code")
-Test passed!
+Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 ```
 (Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error)
 ...
@@ -51,19 +51,35 @@ Test passed!
 # Supported primitive operations:
 | Primitive | Description | Return Type | Number of Arguments | Arguments Type |
 | --------- | ----------- | ----------- | ------------------- | -------------- |
-| = | Numerically equal | Boolean (#t / #f) | At least 2 | Int x Int |
+| = | Numerically equal | Boolean (#t / #f) | 2 | Int x Int |
 | < | Numerically less | Boolean (#t / #f) | 2 | Int x Int |
 | > | Numerically greater | Boolean (#t / #f) | 2 | Int x Int |
 | <= | Numerically less than or equal | Boolean (#t / #f) | 2 | Int x Int |
 | >= | Numerically greater than or equal | Boolean (#t / #f) | 2 | Int x Int |
+| + | Numerically sum | Int | 2 | Int x Int |
+| - | Numerically subtract | Int | 2 | Int x Int |
+| * | Numerically multiply | Int | 2 | Int x Int |
+| / | Numerically divide | Int | 2 | Int x Int |
+| print | Print to console | void | 1 | datum |
+| apply | Applies arg1 as a proc to a list of arguments | datum | 2 | Lambda x List |
 
 
 # Identified runtime errors and fixes
-The following 5 runtime errors have been identified and mitigated with properly raised exceptions:
+The following 5 runtime errors have been identified and fixed with properly raised exceptions:
 
 1. Division by zero.
-    This was fixed by assuring that the parameter b is a non-zero value in the following files:
+    This was fixed by assuring that the parameter b of
+    ```c++
+    u64 prim__47(u64 a, u64 b)
+    ```
+    in `header.cpp` is a non-zero value:
+
+    ```c++
+    int b_int = DECODE_INT(b);
+    if (b_int == 0) fatal_err("(prim / a b); b cannot be 0");
+
     ...
+    ```
 
     Tests for this fix are: div-0.scm, div-1.scm, and div-2.scm
 
