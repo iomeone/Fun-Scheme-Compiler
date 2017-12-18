@@ -70,11 +70,13 @@ Test passed!
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
 
 1. Division by zero.
-    Originally, any division by 0 caused execution to hang and timeout.
-    This was fixed by assuring that the parameter b of
+    Originally, any primitive division by 0 caused execution of the binary to hang and eventually timeout.
+    This issue was fixed by throwing a run-time error throughs assuring that the parameter `b` of
+    
     ```c++
     u64 prim__47(u64 a, u64 b)
     ```
+
     in `header.cpp` is a non-zero value:
 
     ```c++
@@ -87,7 +89,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `div-0.scm`, `div-1.scm`, and `div-2.scm`.
 
 2. Non-function application.
-    Originally, any non-function application caused a segmentation fault due to a call on an invalid closure pointer (ie. a value, etc).
+    Originally, any non-function application caused a segmentation fault at run-time due to a call upon an invalid closure pointer (ie. a value, etc).
     This was fixed by modifying `header.cpp` as follows:
 
     1. Introduce a new procedure to verify that a pointer is indeed a closure via:
@@ -100,12 +102,12 @@ The following 5 runtime errors have been identified and fixed with properly rais
     }
     ```
 
-    2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`.
+    2. Add to `closure-convert.rkt` so that at any closure-application - `(clo-app fx xs ...)`, the pointer to the closure (`clo-ptr`) is passed to `expect_closure`, which is a procedure that checks at run-time if a pointer is tagged as a `CLO_TAG`.
 
     Tests for this fix are: `non-func-0.scm`, `non-func-1.scm`, and `non-func-2.scm`.
 
 3. A memory-usage cap.
-    This was fixed by defining a memory cap to 256 mb
+    The original implementation of the provided compiler did not include an adjustable memory usage cap. This was added by defining a memory cap to 256 mb
 
     ```c++
     #define MEM_CAP 268435456
@@ -119,14 +121,14 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     to track the number of bytes allocated in the `alloc` procedure in `header.cpp`.
 
-    Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` exception and message.
+    Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` run-time exception and presents an error message. Feel free to adjust `MEM_CAP` to your needs/liking.
 
     Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
 4. Function is provided too many arguments.
-    This was fixed for all primitive operations. Originally, a primitive operation could accept a number of arguments (more than as specified in the racket-lang documentation). I have fixed this issue by adding a pass to `proc->llvm` in `closure-convert.rkt` named: `valid_op?`. 
+    This was fixed for all primitive operations. Originally, a primitive operation could accept a number of arguments (more than as specified in the racket-lang documentation). This issue has been fixed by adding a pass to `proc->llvm` in `closure-convert.rkt` named `valid_op?`. 
 
-    This passed is called at any primitive operation emission prior to llvm conversion. Here, I match on the operation and check that the number of arguments passed to that operation meets the criteria provided by the racket-lang documentation.
+    This passed is called at any primitive operation emission prior to llvm conversion. Here, `valid_op?` matches on the passed primitive operation (`op`) and checks that the number of arguments passed to that operation (`ys`) meet the criteria provided by the racket-lang documentation.
 
     ```scm
     (define (valid_op? op ys)
@@ -139,25 +141,25 @@ The following 5 runtime errors have been identified and fixed with properly rais
     )
     ```
 
-    If a function is provided too many arguments, then `#t` is returned. Then, at LLVM IR emission, a call to `u64 too_many_args()` is issued and a `fatal_err()` is presented - thus, causing a run-time error.
+    If a function is provided too many arguments, then `#f` is returned. Then, at LLVM IR emission, a call to `u64 too_many_args()` is issued and a `fatal_err()` is presented - thus, causing a run-time error. Otherwise, `#t` is returned and the proper LLVM IR is emitted.
 
     Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
 
 5. Function is provided too few arguments.
-    This was fixed for all primitive operations. Orginially, a primitive operation could function with less than number of arguments specified by the racket-lang documentation. This was fixed by modifying `utils.rkt` in the `simplify-ir` pass, whereby any default primitive operation is overwritten to throw a run-time error as it would in the Racket REPL, for example.
+    This was fixed for all primitive operations. Orginially, a primitive operation could properly accept less than number of arguments specified by the racket-lang documentation. This was fixed by modifying `utils.rkt` in the `simplify-ir` pass, whereby any default primitive operation is overwritten to throw a run-time error as it would, for example, in the Racket REPL.
 
 
-    For example, this change was made to any call to `prim /` with no arguments as `(/):
+    For instance, this change was made to any call with `prim /` and no arguments as `(/)`:
 
     ```scheme
      (if (prim null? args) (prim halt '"library run-time error: Not enough arguments passed into /")
      ...
     ```
 
-    If no arguments are passed to `prim /` then execution is halted with a run-time error message.
+    If no arguments are passed to `prim /` (as shown above), then execution is halted with a run-time error message. Otherwise, the exectuion proceeds.
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
-     
+
 
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.
@@ -171,7 +173,7 @@ Specifically, I modified lines 611 and 617.
 I was able to integrate bgwdc with header.cpp and make some changes to the default tagging scheme.
 
 ## Disclaimer:
-#### This compiler should not be used in any serious applications - it is meant to be learning project. With more time and help, I could have completed the project to its entirety. But despite the slight extension, however, I was preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
+#### This compiler should not be used in any serious applications - it is meant to be learning project. With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
 
 
 ##### I, Michael Reininger, pledge on my honor that I have not given or received any unauthorized assistance on this project.
