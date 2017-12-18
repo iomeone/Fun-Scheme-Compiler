@@ -1,3 +1,5 @@
+# Advanced Supported Primitives
+_____
 ### `cons? <argument>`
 Description: Checks if the provided argument is a cons cell (list).
 
@@ -12,7 +14,7 @@ Return type: Boolean (#t / #f)
 Number of arguments: 1
 
 Argument types: List 
-
+_____
 ### `apply < proc > < arg list ... >`
 Description: Applies a procedure in proc to an argument list.
 
