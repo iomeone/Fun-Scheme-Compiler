@@ -435,7 +435,7 @@
                               lst
                               (let ([_0 (set! lst (prim cdr lst))])
                                 (cc cc))))))]
-                 [%/ (lambda args (if (prim null? args) (prim halt '"library run-time error: Not enough arguments passed into /")
+                 [%/ (lambda args (if (prim null? args) '1
                                       (if (prim null? (prim cdr args))
                                           (prim car args)
                                           (%foldl1 (lambda (n v) (prim / v n)) (prim car args) (prim cdr args)))))]
@@ -685,7 +685,8 @@
               (rewrite-match `(match ,e0 ,@clauses (,pat0 ,@es) (else (raise "no match"))))]
              [`(,e0 . ,es) (cons (rewrite-match e0) (rewrite-match es))]
              [else e]))
-  (with-handlers ([exn:fail? (lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e) )])
+  (with-handlers ([exn:fail? (lambda (x) (void));(lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e))
+                   ])
                  (parameterize ([current-namespace (make-base-namespace)])
                                (namespace-require 'rnrs)
                                (namespace-require 'racket)
