@@ -59,6 +59,12 @@ Test `div-0` is a sample test of what happens when a program divides by 0. This 
 | * | Numerically multiply | Int | 2 | Int x Int |
 | / | Numerically divide | Int | 2 | Int x Int |
 
+For example, here is usage of the primitive `+`:
+
+```scheme
+(+ 1 2) ; 3
+```
+
 <a href="SUPPORTED.md">Learn more</a> about all of FSC's supported primitve operations.
 
 # Identified runtime errors and fixes
