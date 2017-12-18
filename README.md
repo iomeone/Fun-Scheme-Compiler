@@ -147,7 +147,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
 
 5. Function is provided too few arguments.
-    This was fixed by throwing a run-time exception when there are arguments missing to a function application. Since all arguments are passed to an application site as a list (`cons`) of arguments, if there are not enough arguments passed, then the call to `prim car` and `prim cdr` will raise a run-time error since all arguments have been consumed.
+    This was fixed for all primitive operations. Using the same technique as fix 4, all primitive operations must have an explicitly counted number of arguments. If the length of the list of arguments is too small, then a run-time exception is thrown. Otherwise, the primitive operation suceeds.
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
 
