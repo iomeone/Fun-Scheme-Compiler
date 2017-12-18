@@ -7,7 +7,7 @@
 (require "utils.rkt")
 (require "top-level.rkt")
 (require "closure-convert.rkt")
-(require "compile.rkt")
+
 
 
 ; Call top-level on passed exp, then call proc->llvm on the output of projects 2 through 5.

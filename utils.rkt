@@ -666,6 +666,8 @@
 (define (test-compiler prog llvm)
   (define val (eval-top-level prog))
   (define val0 (eval-llvm llvm))
+  (pretty-print val)
+  (pretty-print val0)
   (if (equal? val val0)
       #t
       (begin

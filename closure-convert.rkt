@@ -281,11 +281,10 @@
                      (define gx (gensym 'rvp))
                      (define check (gensym 'check))
                      (cons gx
-                           `(let ([,check (prim cons? ,gx)]) ; added this check although idk what to do at this point
-                              (let ([,x (prim car ,gx)])
+                           `(let ([,x (prim car ,gx)])
                                 (let ([,(car gx+e) (prim cdr ,gx)])
                                   ,(cdr gx+e)
-                                 )))))
+                                 ))))
                    (cons (gensym 'na) (remove-varargs body vst))
                    xs))
           
@@ -386,6 +385,79 @@
         (match-define `(,freevars ,main-body ,procs) (T-bottom-up no-varargs-cps '()))
         `((proc (main) ,main-body) . ,procs))))
 
+(define (valid_op? op ys)
+  (match op
+    ['cons? (= (length ys) 1)]
+    ['null? (= (length ys) 1)]
+    ['cons (= (length ys) 2)]
+    ['car (< (length ys) 2)]
+    ['cdr (= (length ys) 1)]
+    ['list (> (length ys) 0)]
+    ['first (= (length ys) 1)]
+    ['second (= (length ys) 1)]
+    ['third (= (length ys) 1)]
+    ['fourth (= (length ys) 1)]
+    ['fifth (= (length ys) 1)]
+    ['length (= (length ys) 1)]
+    ['list-tail (= (length ys) 2)]
+    ['drop (= (length ys) 2)]
+    ['take (= (length ys) 2)]
+    ['member (= (length ys) 2)]
+    ['memv (= (length ys) 2)]
+    ['map (> (length ys) 1)]
+    ['append (> (length ys) 0)]
+    ['foldl (>= (length ys) 3)]
+    ['foldr (>= (length ys) 3)]
+    ['vector? (= (length ys) 1)]
+    ['vector (>= (length ys) 1)]
+    ['make-vector (= (length ys) 2)]
+    ['vector-ref (>= (length ys) 2)]
+    ['vector-set! (>= (length ys) 3)]
+    ['vector-length (>= (length ys) 1)]
+    ['set (= (length ys) 1)] ; not sure about this
+    ['set->list (= (length ys) 1)]
+    ['list->set (= (length ys) 1)]
+    ['set-add (= (length ys) 2)]
+    ['set-union (= (length ys) 2)]
+    ['set-count (= (length ys) 1)]
+    ['set-first (= (length ys) 1)]
+    ['set-rest (= (length ys) 1)]
+    ['set-remove (= (length ys) 2)]
+    ['hash (> (length ys) 1)]
+    ['hash-ref (= (length ys) 2)]
+    ['hash-set (= (length ys) 3)]
+    ['hash-count (= (length ys) 1)]
+    ['hash-keys (= (length ys) 1)]
+    ['hash-has-key? (= (length ys) 2)]
+    ['hash? (= (length ys) 1)]
+    ['list? (= (length ys) 1)]
+    ['void? (= (length ys) 1)]
+    ['promise? (= (length ys) 1)]
+    ['procedure? (= (length ys) 1)]
+    ['number? (= (length ys) 1)]
+    ['integer? (= (length ys) 1)]
+    ['error (>= (length ys) 0)]
+    ['void (>= (length ys) 0)]
+    ['print (= (length ys) 1)]
+    ['display (= (length ys) 1)]
+    ['write (= (length ys) 1)]
+    ['exit (< (length ys) 2)] ; for completeness
+    ['halt (< (length ys) 2)]
+    ['- (> (length ys) 0)]
+    ['+ (>= (length ys) 0)]
+    ['* (>= (length ys) 0)]
+    ['/ (> (length ys) 0)]
+    ['= (> (length ys) 1)]
+    ['> (> (length ys) 1)]
+    ['< (> (length ys) 1)]
+    ['>= (> (length ys) 1)]
+    ['<= (> (length ys) 1)]
+    ['not (= (length ys) 1)]
+    ['eqv? (> (length ys) 1)]
+    ['eq? (> (length ys) 1)]
+    [_ #f]
+    )
+  )
 
 (define (proc->llvm procs)
   (define globals "")
@@ -515,7 +587,16 @@
                        (string-append "load; *" (s-> iptr)))
                      ,(e->llvm e0)))]
            [`(let ([,x (prim ,op ,ys ...)]) ,e0)
-            (string-append
+            (if (not (valid_op? op ys))
+                (begin
+                  (string-append
+                   (comment-line
+                    "  call i64 @too_many_args()" (string-append "too many args for " (symbol->string op)))
+                   (comment-line
+                    "  ret void" "")
+                  ))
+                (begin
+                  (string-append
              (comment-line
               "  %" (s-> x) " = call i64 @" (prim-name op) "("
               (if (null? ys)
@@ -525,7 +606,10 @@
                    (foldl (lambda (y acc) (string-append acc ", i64 %" (s-> y))) "" (cdr ys))))
               ")"
               (string-append "call " (prim-name op)))
-             (e->llvm e0))]
+             (e->llvm e0))
+                 )
+                )
+            ]
            [`(let ([,x (apply-prim ,op ,y)]) ,e0)
             (string-append
              (comment-line

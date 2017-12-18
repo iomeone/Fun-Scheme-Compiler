@@ -47,6 +47,15 @@
 #define DECODE_CLO(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_CLO(v) (((u64)(v)) | CLO_TAG)
 
+// Allocate 64 bytes. Reserve 8 for tag, 56 for data.
+#define ENCODE_CLO_MEM(v) \
+    u64 *p = (u64*)GC_MALLOC(64); \
+    p[0] = 1; p[1] = 0; p[2] = 0; p[3] = 0; p[4] = 0; p[5] = 0; p[6] = 0; p[7] = 0; \
+    p[8] = v;
+
+// Extract the 8 bits from the CLO
+#define DECODE_CLO_MEM(v) v[8]
+
 #define DECODE_CONS(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_CONS(v) (((u64)(v)) | CONS_TAG)
 
@@ -64,6 +73,7 @@
 
 #define DECODE_OTHER(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_OTHER(v) (((u64)(v)) | OTHER_TAG)
+
 
 
 // some apply-prim macros for expecting 1 argument or 2 arguments
@@ -193,13 +203,11 @@ u64 expect_other(u64 v, u64* rest)
     return p[0];
 }
 
-u64 remaining_args(u64 lst)
-{
-    u64* pp = DECODE_CONS(lst);
-    ASSERT_NOT_TAG(lst, CONS_TAG, "Too many arguments. (remaining_args)")
 
-    printf("too many args: %d\n", DECODE_INT(pp[0]));
-    return lst;
+u64 too_many_args()
+{
+    fatal_err("Too many arguments passed into prim.");
+    return V_VOID;
 }
 
 // expect char

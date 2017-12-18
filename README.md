@@ -136,6 +136,24 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
+4. Function is provided too many arguments.
+    This was fixed for all primitive operations. Originally, a primitive operation could accept a number of arguments (more than as specified in the racket-lang documentation). I have fixed this issue by adding a pass to `proc->llvm` in `closure-convert.rkt` named: `valid_op?`. 
+
+    This passed is called at any primitive operation emission prior to llvm conversion. Here, I match on the operation and check that the number of arguments passed to that operation meets the criteria provided by the racket-lang documentation.
+
+    ```scm
+    (define (valid_op? op ys)
+        (match op
+            ['cons? (= (length ys) 1)]
+            ['null? (= (length ys) 1)]
+            ['cons (= (length ys) 2)]
+            ...
+        )
+    )
+    ```
+
+    If a function is provided too many arguments, then `#t` is returned. Then, at LLVM IR emission, a call to `u64 too_many_args()` is issued and a `fatal_err()` is presented - thus, causing a run-time error.
+
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.
 
