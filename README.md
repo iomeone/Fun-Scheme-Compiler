@@ -4,7 +4,7 @@
 This repository contains the source code and documentation for the Fun Scheme Compiler (FSC).
 </p>
 
-#### This project was developed in my [CMSC430: Introduction to Compilers Course at the University of Maryland College Park](https://www.cs.umd.edu/class/fall2017/cmsc430/)  under the advising and teaching of [Prof. Thomas Gilray](https://thomas.gilray.org/).
+#### This project was developed in my [CMSC430: Introduction to Compilers Course at the University of Maryland College Park](https://www.cs.umd.edu/class/fall2017/cmsc430/) under the advising and teaching of [Prof. Thomas Gilray](https://thomas.gilray.org/).
 
 #### FSC compiles [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)) code in [this](https://www.cs.umd.edu/class/fall2017/cmsc430/assignment5.html) input language to LLVM IR. Each assignment of CMSC430 compartmentalized components of the final compiler into separate phases, namely assignments 2 through 5 on the course webpage.
 
@@ -39,15 +39,11 @@ Test passed!
 
 ```sh
 $ racket tests.rkt div-0
-"Evaluation failed:"
-(exn:fail:contract:divide-by-zero
- "/: division by zero"
- #<continuation-mark-set>)
-'(letrec* () (let ((x '1)) (letrec* () (/ x '0))))
-'(eval-llvm "bad status code")
+#<void>
+#<void>
 Test passed!
 ```
-(Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error at the top level.)
+Test `div-0` is a sample test of what happens when a program divides by 0. This is a run-time exception. 
 ...
 
 # (Basic) Supported Primitive Operations:
@@ -62,7 +58,6 @@ Test passed!
 | - | Numerically subtract | Int | 2 | Int x Int |
 | * | Numerically multiply | Int | 2 | Int x Int |
 | / | Numerically divide | Int | 2 | Int x Int |
-| print | Print to console | void | 1 | datum |
 
 <a href="SUPPORTED.md">Learn more</a> about all of FSC's supported primitve operations.
 
@@ -146,20 +141,11 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
 
 5. Function is provided too few arguments.
-    This was fixed for all primitive operations. Orginially, a primitive operation could properly accept less than number of arguments specified by the racket-lang documentation. This was fixed by modifying `utils.rkt` in the `simplify-ir` pass, whereby any default primitive operation is overwritten to throw a run-time error as it would, for example, in the Racket REPL.
-
-
-    For instance, this change was made to any call with `prim /` and no arguments as `(/)`:
-
-    ```scheme
-     (if (prim null? args) (prim halt '"library run-time error: Not enough arguments passed into /")
-     ...
-    ```
-
-    If no arguments are passed to `prim /` (as shown above), then execution is halted with a run-time error message. Otherwise, the exectuion proceeds.
+    This was fixed by throwing a run-time exception when there are arguments missing to a function application. Since all arguments are passed to an application site as a list (`cons`) of arguments, if there are not enough arguments passed, then the call to `prim car` and `prim cdr` will raise a run-time error since all arguments have been consumed.
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
 
+## 
 
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.
@@ -170,7 +156,7 @@ Specifically, I modified lines 611 and 617.
     [611] (system (string-append clang++-path " -std=c++11 header.cpp " " -I/home/bdwgc/include -pthread -S -emit-llvm -o header.ll /usr/local/lib/libgc.a"))
     [617] (system (string-append clang++-path " -std=c++11 combined.ll -I/home/bdwgc/include -pthread -o bin /usr/local/lib/libgc.a"))
 
-I was able to integrate bgwdc with header.cpp and make some changes to the default tagging scheme.
+I was able to integrate bgwdc with header.cpp and change the tagging scheme...
 
 ## Disclaimer:
 #### This compiler should not be used in any serious applications - it is meant to be learning project. With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.

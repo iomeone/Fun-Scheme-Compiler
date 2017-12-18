@@ -1,6 +1,14 @@
-### apply < proc > < arg list ... >
+### `cons? <argument>`
+Description: Checkls if the provided argument is a cons cell (list).
+Example:
+```scheme
+(cons? '()) ; #t
+(cons? 21)  ; #f
+```
+
+### `apply < proc > < arg list ... >`
 Description: Applies a procedure in proc to an argument list.
-Usage:
+Example:
 ```scheme
 (apply + '(1 2 3)) ; 5
 ```

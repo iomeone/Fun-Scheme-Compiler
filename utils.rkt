@@ -630,7 +630,7 @@
               (callback 'kill)
               v)
             (if (eq? status 'done-error)
-                (begin (pretty-print '(eval-llvm "bad status code")) (void))           
+                (void)           
                 (loop))
             ))))
 
