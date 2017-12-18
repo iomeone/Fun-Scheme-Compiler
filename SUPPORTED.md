@@ -167,6 +167,81 @@ Number of arguments: 0 or more
 
 Argument types: Any
 _____
+### `length lst`
+Description: Returns the length of a list `lst`.
+
+Example:
+```scheme
+(length '()) ; 0
+(length '(1 2 3)) ; 3
+```
+
+Return type: Int
+
+Number of arguments: 1
+
+Argument types: List
+_____
+### `length lst`
+Description: Returns the length of a list `lst`.
+
+Example:
+```scheme
+(length '()) ; 0
+(length '(1 2 3)) ; 3
+```
+
+Return type: Int
+
+Number of arguments: 1
+
+Argument types: List
+_____
+### `drop lst pos`
+Description: Returns a list with the element of `lst` after the first `pos` elements of `lst`. If `lst` has fewer than `pos` elements, then a run-time exception is thrown.
+
+Example:
+```scheme
+(drop '(1 2 3) 1 ) ; '(2 3)
+(drop '(1 2 3 4) 10) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: List
+
+Number of arguments: 2
+
+Argument types: List x Int
+_____
+### `member v lst`
+Description: Checks if `v` is in `lst`.
+
+Example:
+```scheme
+(drop '(1 2 3) 1 ) ; '(2 3)
+(drop '(1 2 3 4) 10) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: List
+
+Number of arguments: 2
+
+Argument types: List x Int
+_____
+### `length lst`
+Description: Returns the length of a list `lst`.
+
+Example:
+```scheme
+(length '()) ; 0
+(length '(1 2 3)) ; 3
+```
+
+Return type: Int
+
+Number of arguments: 1
+
+Argument types: List
+_____
 ### `apply proc lst`
 Description: Applies a procedure in proc to an argument list.
 
