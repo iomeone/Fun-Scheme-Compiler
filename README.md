@@ -45,12 +45,12 @@ $ racket tests.rkt div-0
  #<continuation-mark-set>)
 '(letrec* () (let ((x '1)) (letrec* () (/ x '0))))
 '(eval-llvm "bad status code")
-Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
+Test passed!
 ```
 (Note: do not be alarmed by the errors - the test passes. Division by zero is supposed to throw a run-time error at the top level.)
 ...
 
-# (Simple) Supported Primitive Operations:
+# (Basic) Supported Primitive Operations:
 | Primitive | Description | Return Type | Number of Arguments | Arguments Type |
 | --------- | ----------- | ----------- | ------------------- | -------------- |
 | = | Numerically equal | Boolean (#t / #f) | 2 | Int x Int |
@@ -64,7 +64,7 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 | / | Numerically divide | Int | 2 | Int x Int |
 | print | Print to console | void | 1 | datum |
 
-<a href="SUPPORTED.md">Learn more</a> about FSC's supported primitve operations.
+<a href="SUPPORTED.md">Learn more</a> about all of FSC's supported primitve operations.
 
 # Identified runtime errors and fixes
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
@@ -141,14 +141,32 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     If a function is provided too many arguments, then `#t` is returned. Then, at LLVM IR emission, a call to `u64 too_many_args()` is issued and a `fatal_err()` is presented - thus, causing a run-time error.
 
+    Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
+
+5. Function is provided too few arguments.
+    This was fixed for all primitive operations. Orginially, a primitive operation could function with less than number of arguments specified by the racket-lang documentation. This was fixed by modifying `utils.rkt` in the `simplify-ir` pass, whereby any default primitive operation is overwritten to throw a run-time error as it would in the Racket REPL, for example.
+
+
+    For example, this change was made to any call to `prim /` with no arguments as `(/):
+
+    ```scheme
+     (if (prim null? args) (prim halt '"library run-time error: Not enough arguments passed into /")
+     ...
+    ```
+
+    If no arguments are passed to `prim /` then execution is halted with a run-time error message.
+
+    Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
+     
+
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.
 
 #### I had to make some changes to how `utils.rkt` calls clang++ at compile time to work with my workstation, but feel free to modify the lines to fit your needs.
 Specifically, I modified lines 611 and 617. 
 
-    [611] `(system (string-append clang++-path " -std=c++11 header.cpp " " -I/home/bdwgc/include -pthread -S -emit-llvm -o header.ll /usr/local/lib/libgc.a"))`
-    [617] `(system (string-append clang++-path " -std=c++11 combined.ll -I/home/bdwgc/include -pthread -o bin /usr/local/lib/libgc.a"))`
+    [611] (system (string-append clang++-path " -std=c++11 header.cpp " " -I/home/bdwgc/include -pthread -S -emit-llvm -o header.ll /usr/local/lib/libgc.a"))
+    [617] (system (string-append clang++-path " -std=c++11 combined.ll -I/home/bdwgc/include -pthread -o bin /usr/local/lib/libgc.a"))
 
 I was able to integrate bgwdc with header.cpp and make some changes to the default tagging scheme.
 

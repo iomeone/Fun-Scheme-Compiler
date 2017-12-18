@@ -14,8 +14,8 @@
 
 (define str '(print (string #\A)))
 
-(define mom-test '(prim print '"Hello"))
 
-(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert mom-test)))))))
+
+(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert (simplify-ir (desugar (top-level '(/)))))))))))
 
 

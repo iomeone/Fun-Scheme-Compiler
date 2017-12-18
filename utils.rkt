@@ -435,7 +435,7 @@
                               lst
                               (let ([_0 (set! lst (prim cdr lst))])
                                 (cc cc))))))]
-                 [%/ (lambda args (if (prim null? args) '1
+                 [%/ (lambda args (if (prim null? args) (prim halt '"library run-time error: Not enough arguments passed into /")
                                       (if (prim null? (prim cdr args))
                                           (prim car args)
                                           (%foldl1 (lambda (n v) (prim / v n)) (prim car args) (prim cdr args)))))]
