@@ -439,7 +439,7 @@ Argument types: Any
 _____
 
 ### `apply proc lst`
-Description: Applies a procedure in proc to an argument list.
+Description: Applies a procedure in `proc` to an argument list `lst`. `proc` is supported by all prims listed in the documentation, as well.
 
 Example:
 ```scheme
@@ -453,3 +453,5 @@ Number of arguments: 2
 Argument types: Procedure x List
 ____
  
+
+### If any of the above documentation is unclear, please visit the Racket [documentation](https://docs.racket-lang.org/) for more info.
