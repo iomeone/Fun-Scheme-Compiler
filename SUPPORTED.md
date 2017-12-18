@@ -45,6 +45,128 @@ Number of arguments: 2
 
 Argument types: Any
 _____
+### `car lst`
+Description: Returns the first element of a list.
+
+Example:
+```scheme
+(car '(1 2 3 4)) ; 1
+(car '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `cdr lst`
+Description: Returns all elements of a list except for the first.
+
+Example:
+```scheme
+(cdr '(1 2 3 4 5 6 7)) ; '(2 3 4 5 6 7)
+(cdr '(1 2)) ; '(2)
+```
+
+Return type: List
+
+Number of arguments: 1
+
+Argument types: List
+_____
+### `first lst`
+Description: Returns the first element of a list.
+
+Example:
+```scheme
+(first '(1 2 3 4)) ; 1
+(first '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `second lst`
+Description: Returns the second element of a list.
+
+Example:
+```scheme
+(second '(1 2 3 4)) ; 2
+(second '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `third lst`
+Description: Returns the third element of a list.
+
+Example:
+```scheme
+(third '(1 2 3 4)) ; 3
+(third '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `fourth lst`
+Description: Returns the fourth element of a list.
+
+Example:
+```scheme
+(fourth '(1 2 3 4)) ; 4
+(fourth '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `fifth lst`
+Description: Returns the fifth element of a list.
+
+Example:
+```scheme
+(fifth '(1 2 3 4 5)) ; 5
+(fifth '()) ; library run-time error: Expected a cons value. (expect_cons)
+```
+
+Return type: Any
+
+Number of arguments: 1
+
+Argument types: cons
+_____
+### `list v ...`
+Description: Returns a list created by the elements in `v`.
+
+Example:
+```scheme
+(list) ; '()
+(list 1) ; '(1)
+(list 'a 1 (+ 1 2) "c") ; '(a 1 3 "c")
+
+```
+
+Return type: list
+
+Number of arguments: 0 or more
+
+Argument types: Any
+_____
 ### `apply proc lst`
 Description: Applies a procedure in proc to an argument list.
 
