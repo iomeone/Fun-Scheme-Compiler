@@ -64,20 +64,7 @@ Test passed!' (REMOVE THIS APOSTROPHE TO CORRECT SYNTAX HIGHLIGHTING IN ATOM)
 | / | Numerically divide | Int | 2 | Int x Int |
 | print | Print to console | void | 1 | datum |
 
-____
-### apply <proc> <arg list ...>
-Description: Applies a procedure in proc to an argument list.
-Usage:
-```scheme
-(apply + '(1 2 3)) ; 5
-```
-
-Return type: Datum (Int, Symbol, etc.)
-Number of arguments: At least 2
-Argument types: Atomic Expression x List ...
-____
-### 
-
+<a href="SUPPORTED.md">Learn more</a> about FSC's supported primitve operations.
 
 # Identified runtime errors and fixes
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
