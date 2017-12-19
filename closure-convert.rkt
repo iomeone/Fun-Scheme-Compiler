@@ -591,7 +591,7 @@
                 (begin
                   (string-append
                    (comment-line
-                    "  call i64 @too_many_args()" (string-append "too many args for " (symbol->string op)))
+                    "  call i64 @too_many_args()" (string-append "arity mismatch " (symbol->string op)))
                    (comment-line
                     "  ret void" "")
                   ))

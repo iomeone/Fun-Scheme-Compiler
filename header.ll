@@ -31,7 +31,7 @@ $_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_ = comdat any
 @.str.8 = private unnamed_addr constant [70 x i8] c"Expected null value (in expect_args1). Prim can only take 1 argument.\00", align 1
 @.str.9 = private unnamed_addr constant [37 x i8] c"Expected a cons value. (expect_cons)\00", align 1
 @.str.10 = private unnamed_addr constant [51 x i8] c"Expected a vector or special value. (expect_other)\00", align 1
-@.str.11 = private unnamed_addr constant [37 x i8] c"Too many arguments passed into prim.\00", align 1
+@.str.11 = private unnamed_addr constant [39 x i8] c"Arity mismatch in function application\00", align 1
 @.str.12 = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
 @.str.13 = private unnamed_addr constant [3 x i8] c"()\00", align 1
 @.str.14 = private unnamed_addr constant [13 x i8] c"#<procedure>\00", align 1
@@ -271,7 +271,7 @@ define i64 @expect_other(i64 %v, i64* %rest) #0 {
 
 ; Function Attrs: uwtable
 define i64 @too_many_args() #0 {
-  call void @fatal_err(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.11, i32 0, i32 0))
+  call void @fatal_err(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.11, i32 0, i32 0))
   ret i64 39
 }
 

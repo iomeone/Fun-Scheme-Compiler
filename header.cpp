@@ -195,7 +195,7 @@ u64 expect_other(u64 v, u64* rest)
 
 u64 too_many_args()
 {
-    fatal_err("Too many arguments passed into prim.");
+    fatal_err("Arity mismatch in function application");
     return V_VOID;
 }
 

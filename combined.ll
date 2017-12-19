@@ -31,7 +31,7 @@ $_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_ = comdat any
 @.str.8 = private unnamed_addr constant [70 x i8] c"Expected null value (in expect_args1). Prim can only take 1 argument.\00", align 1
 @.str.9 = private unnamed_addr constant [37 x i8] c"Expected a cons value. (expect_cons)\00", align 1
 @.str.10 = private unnamed_addr constant [51 x i8] c"Expected a vector or special value. (expect_other)\00", align 1
-@.str.11 = private unnamed_addr constant [37 x i8] c"Too many arguments passed into prim.\00", align 1
+@.str.11 = private unnamed_addr constant [39 x i8] c"Arity mismatch in function application\00", align 1
 @.str.12 = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
 @.str.13 = private unnamed_addr constant [3 x i8] c"()\00", align 1
 @.str.14 = private unnamed_addr constant [13 x i8] c"#<procedure>\00", align 1
@@ -271,7 +271,7 @@ define i64 @expect_other(i64 %v, i64* %rest) #0 {
 
 ; Function Attrs: uwtable
 define i64 @too_many_args() #0 {
-  call void @fatal_err(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.11, i32 0, i32 0))
+  call void @fatal_err(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.11, i32 0, i32 0))
   ret i64 39
 }
 
@@ -2295,27 +2295,27 @@ attributes #8 = { builtin nounwind }
 ;;;;;;
 
 define void @proc_main() {
-  %cloptr8565 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8566 = getelementptr inbounds i64, i64* %cloptr8565, i64 0                    ; &cloptr8565[0]
-  %f8567 = ptrtoint void(i64,i64,i64)* @lam8563 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8567, i64* %eptr8566                                                   ; store fptr
-  %arg7255 = ptrtoint i64* %cloptr8565 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8568 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8569 = getelementptr inbounds i64, i64* %cloptr8568, i64 0                    ; &cloptr8568[0]
-  %f8570 = ptrtoint void(i64,i64,i64)* @lam8561 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8570, i64* %eptr8569                                                   ; store fptr
-  %arg7254 = ptrtoint i64* %cloptr8568 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8571 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8572 = getelementptr inbounds i64, i64* %cloptr8571, i64 0                    ; &cloptr8571[0]
-  %f8573 = ptrtoint void(i64,i64,i64)* @lam8113 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8573, i64* %eptr8572                                                   ; store fptr
-  %arg7253 = ptrtoint i64* %cloptr8571 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8574 = inttoptr i64 %arg7255 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8574)                                         ; assert function application
-  %i0ptr8575 = getelementptr inbounds i64, i64* %cloptr8574, i64 0                   ; &cloptr8574[0]
-  %f8577 = load i64, i64* %i0ptr8575, align 8                                        ; load; *i0ptr8575
-  %fptr8576 = inttoptr i64 %f8577 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8576(i64 %arg7255, i64 %arg7254, i64 %arg7253)      ; tail call
+  %cloptr8551 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8552 = getelementptr inbounds i64, i64* %cloptr8551, i64 0                    ; &cloptr8551[0]
+  %f8553 = ptrtoint void(i64,i64,i64)* @lam8549 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8553, i64* %eptr8552                                                   ; store fptr
+  %arg7253 = ptrtoint i64* %cloptr8551 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8554 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8555 = getelementptr inbounds i64, i64* %cloptr8554, i64 0                    ; &cloptr8554[0]
+  %f8556 = ptrtoint void(i64,i64,i64)* @lam8547 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8556, i64* %eptr8555                                                   ; store fptr
+  %arg7252 = ptrtoint i64* %cloptr8554 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8557 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8558 = getelementptr inbounds i64, i64* %cloptr8557, i64 0                    ; &cloptr8557[0]
+  %f8559 = ptrtoint void(i64,i64,i64)* @lam8104 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8559, i64* %eptr8558                                                   ; store fptr
+  %arg7251 = ptrtoint i64* %cloptr8557 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8560 = inttoptr i64 %arg7253 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8560)                                         ; assert function application
+  %i0ptr8561 = getelementptr inbounds i64, i64* %cloptr8560, i64 0                   ; &cloptr8560[0]
+  %f8563 = load i64, i64* %i0ptr8561, align 8                                        ; load; *i0ptr8561
+  %fptr8562 = inttoptr i64 %f8563 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8562(i64 %arg7253, i64 %arg7252, i64 %arg7251)      ; tail call
   ret void
 }
 
@@ -2327,2271 +2327,2297 @@ define i32 @main() {
 
 
 
-define void @lam8563(i64 %env8564, i64 %cont7245, i64 %xSQ$yu) {
-  %cloptr8578 = inttoptr i64 %xSQ$yu to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8578)                                         ; assert function application
-  %i0ptr8579 = getelementptr inbounds i64, i64* %cloptr8578, i64 0                   ; &cloptr8578[0]
-  %f8581 = load i64, i64* %i0ptr8579, align 8                                        ; load; *i0ptr8579
-  %fptr8580 = inttoptr i64 %f8581 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8580(i64 %xSQ$yu, i64 %cont7245, i64 %xSQ$yu)       ; tail call
+define void @lam8549(i64 %env8550, i64 %cont7243, i64 %VZ7$yu) {
+  %cloptr8564 = inttoptr i64 %VZ7$yu to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8564)                                         ; assert function application
+  %i0ptr8565 = getelementptr inbounds i64, i64* %cloptr8564, i64 0                   ; &cloptr8564[0]
+  %f8567 = load i64, i64* %i0ptr8565, align 8                                        ; load; *i0ptr8565
+  %fptr8566 = inttoptr i64 %f8567 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8566(i64 %VZ7$yu, i64 %cont7243, i64 %VZ7$yu)       ; tail call
   ret void
 }
 
 
-define void @lam8561(i64 %env8562, i64 %_957066, i64 %IcL$Ycmb) {
-  %cloptr8582 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8584 = getelementptr inbounds i64, i64* %cloptr8582, i64 1                    ; &eptr8584[1]
-  store i64 %IcL$Ycmb, i64* %eptr8584                                                ; *eptr8584 = %IcL$Ycmb
-  %eptr8583 = getelementptr inbounds i64, i64* %cloptr8582, i64 0                    ; &cloptr8582[0]
-  %f8585 = ptrtoint void(i64,i64,i64)* @lam8559 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8585, i64* %eptr8583                                                   ; store fptr
-  %arg7260 = ptrtoint i64* %cloptr8582 to i64                                        ; closure cast; i64* -> i64
+define void @lam8547(i64 %env8548, i64 %_957064, i64 %BPC$Ycmb) {
+  %cloptr8568 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8570 = getelementptr inbounds i64, i64* %cloptr8568, i64 1                    ; &eptr8570[1]
+  store i64 %BPC$Ycmb, i64* %eptr8570                                                ; *eptr8570 = %BPC$Ycmb
+  %eptr8569 = getelementptr inbounds i64, i64* %cloptr8568, i64 0                    ; &cloptr8568[0]
+  %f8571 = ptrtoint void(i64,i64,i64)* @lam8545 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8571, i64* %eptr8569                                                   ; store fptr
+  %arg7258 = ptrtoint i64* %cloptr8568 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8572 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8573 = getelementptr inbounds i64, i64* %cloptr8572, i64 0                    ; &cloptr8572[0]
+  %f8574 = ptrtoint void(i64,i64,i64)* @lam8112 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8574, i64* %eptr8573                                                   ; store fptr
+  %arg7257 = ptrtoint i64* %cloptr8572 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8575 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8575)                                         ; assert function application
+  %i0ptr8576 = getelementptr inbounds i64, i64* %cloptr8575, i64 0                   ; &cloptr8575[0]
+  %f8578 = load i64, i64* %i0ptr8576, align 8                                        ; load; *i0ptr8576
+  %fptr8577 = inttoptr i64 %f8578 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8577(i64 %BPC$Ycmb, i64 %arg7258, i64 %arg7257)     ; tail call
+  ret void
+}
+
+
+define void @lam8545(i64 %env8546, i64 %_957065, i64 %AmT$_37foldr1) {
+  %envptr8579 = inttoptr i64 %env8546 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8580 = getelementptr inbounds i64, i64* %envptr8579, i64 1                  ; &envptr8579[1]
+  %BPC$Ycmb = load i64, i64* %envptr8580, align 8                                    ; load; *envptr8580
+  %cloptr8581 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8583 = getelementptr inbounds i64, i64* %cloptr8581, i64 1                    ; &eptr8583[1]
+  %eptr8584 = getelementptr inbounds i64, i64* %cloptr8581, i64 2                    ; &eptr8584[2]
+  store i64 %BPC$Ycmb, i64* %eptr8583                                                ; *eptr8583 = %BPC$Ycmb
+  store i64 %AmT$_37foldr1, i64* %eptr8584                                           ; *eptr8584 = %AmT$_37foldr1
+  %eptr8582 = getelementptr inbounds i64, i64* %cloptr8581, i64 0                    ; &cloptr8581[0]
+  %f8585 = ptrtoint void(i64,i64,i64)* @lam8543 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8585, i64* %eptr8582                                                   ; store fptr
+  %arg7261 = ptrtoint i64* %cloptr8581 to i64                                        ; closure cast; i64* -> i64
   %cloptr8586 = call i64* @alloc(i64 8)                                              ; malloc
   %eptr8587 = getelementptr inbounds i64, i64* %cloptr8586, i64 0                    ; &cloptr8586[0]
-  %f8588 = ptrtoint void(i64,i64,i64)* @lam8121 to i64                               ; fptr cast; i64(...)* -> i64
+  %f8588 = ptrtoint void(i64,i64,i64)* @lam8124 to i64                               ; fptr cast; i64(...)* -> i64
   store i64 %f8588, i64* %eptr8587                                                   ; store fptr
-  %arg7259 = ptrtoint i64* %cloptr8586 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8589 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  %arg7260 = ptrtoint i64* %cloptr8586 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8589 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr8589)                                         ; assert function application
   %i0ptr8590 = getelementptr inbounds i64, i64* %cloptr8589, i64 0                   ; &cloptr8589[0]
   %f8592 = load i64, i64* %i0ptr8590, align 8                                        ; load; *i0ptr8590
   %fptr8591 = inttoptr i64 %f8592 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8591(i64 %IcL$Ycmb, i64 %arg7260, i64 %arg7259)     ; tail call
+  musttail call fastcc void %fptr8591(i64 %BPC$Ycmb, i64 %arg7261, i64 %arg7260)     ; tail call
   ret void
 }
 
 
-define void @lam8559(i64 %env8560, i64 %_957067, i64 %Yrh$_37foldr1) {
-  %envptr8593 = inttoptr i64 %env8560 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8594 = getelementptr inbounds i64, i64* %envptr8593, i64 1                  ; &envptr8593[1]
-  %IcL$Ycmb = load i64, i64* %envptr8594, align 8                                    ; load; *envptr8594
-  %cloptr8595 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8597 = getelementptr inbounds i64, i64* %cloptr8595, i64 1                    ; &eptr8597[1]
-  %eptr8598 = getelementptr inbounds i64, i64* %cloptr8595, i64 2                    ; &eptr8598[2]
-  store i64 %IcL$Ycmb, i64* %eptr8597                                                ; *eptr8597 = %IcL$Ycmb
-  store i64 %Yrh$_37foldr1, i64* %eptr8598                                           ; *eptr8598 = %Yrh$_37foldr1
-  %eptr8596 = getelementptr inbounds i64, i64* %cloptr8595, i64 0                    ; &cloptr8595[0]
-  %f8599 = ptrtoint void(i64,i64,i64)* @lam8557 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8599, i64* %eptr8596                                                   ; store fptr
-  %arg7263 = ptrtoint i64* %cloptr8595 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8600 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8601 = getelementptr inbounds i64, i64* %cloptr8600, i64 0                    ; &cloptr8600[0]
-  %f8602 = ptrtoint void(i64,i64,i64)* @lam8133 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8602, i64* %eptr8601                                                   ; store fptr
-  %arg7262 = ptrtoint i64* %cloptr8600 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8603 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8603)                                         ; assert function application
-  %i0ptr8604 = getelementptr inbounds i64, i64* %cloptr8603, i64 0                   ; &cloptr8603[0]
-  %f8606 = load i64, i64* %i0ptr8604, align 8                                        ; load; *i0ptr8604
-  %fptr8605 = inttoptr i64 %f8606 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8605(i64 %IcL$Ycmb, i64 %arg7263, i64 %arg7262)     ; tail call
+define void @lam8543(i64 %env8544, i64 %_957066, i64 %m9D$_37map1) {
+  %envptr8593 = inttoptr i64 %env8544 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8594 = getelementptr inbounds i64, i64* %envptr8593, i64 2                  ; &envptr8593[2]
+  %AmT$_37foldr1 = load i64, i64* %envptr8594, align 8                               ; load; *envptr8594
+  %envptr8595 = inttoptr i64 %env8544 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8596 = getelementptr inbounds i64, i64* %envptr8595, i64 1                  ; &envptr8595[1]
+  %BPC$Ycmb = load i64, i64* %envptr8596, align 8                                    ; load; *envptr8596
+  %cloptr8597 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8599 = getelementptr inbounds i64, i64* %cloptr8597, i64 1                    ; &eptr8599[1]
+  %eptr8600 = getelementptr inbounds i64, i64* %cloptr8597, i64 2                    ; &eptr8600[2]
+  %eptr8601 = getelementptr inbounds i64, i64* %cloptr8597, i64 3                    ; &eptr8601[3]
+  store i64 %BPC$Ycmb, i64* %eptr8599                                                ; *eptr8599 = %BPC$Ycmb
+  store i64 %AmT$_37foldr1, i64* %eptr8600                                           ; *eptr8600 = %AmT$_37foldr1
+  store i64 %m9D$_37map1, i64* %eptr8601                                             ; *eptr8601 = %m9D$_37map1
+  %eptr8598 = getelementptr inbounds i64, i64* %cloptr8597, i64 0                    ; &cloptr8597[0]
+  %f8602 = ptrtoint void(i64,i64,i64)* @lam8541 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8602, i64* %eptr8598                                                   ; store fptr
+  %arg7264 = ptrtoint i64* %cloptr8597 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8603 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8604 = getelementptr inbounds i64, i64* %cloptr8603, i64 0                    ; &cloptr8603[0]
+  %f8605 = ptrtoint void(i64,i64,i64)* @lam8138 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8605, i64* %eptr8604                                                   ; store fptr
+  %arg7263 = ptrtoint i64* %cloptr8603 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8606 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8606)                                         ; assert function application
+  %i0ptr8607 = getelementptr inbounds i64, i64* %cloptr8606, i64 0                   ; &cloptr8606[0]
+  %f8609 = load i64, i64* %i0ptr8607, align 8                                        ; load; *i0ptr8607
+  %fptr8608 = inttoptr i64 %f8609 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8608(i64 %BPC$Ycmb, i64 %arg7264, i64 %arg7263)     ; tail call
   ret void
 }
 
 
-define void @lam8557(i64 %env8558, i64 %_957068, i64 %YVW$_37map1) {
-  %envptr8607 = inttoptr i64 %env8558 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8608 = getelementptr inbounds i64, i64* %envptr8607, i64 2                  ; &envptr8607[2]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8608, align 8                               ; load; *envptr8608
-  %envptr8609 = inttoptr i64 %env8558 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8610 = getelementptr inbounds i64, i64* %envptr8609, i64 1                  ; &envptr8609[1]
-  %IcL$Ycmb = load i64, i64* %envptr8610, align 8                                    ; load; *envptr8610
-  %cloptr8611 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8613 = getelementptr inbounds i64, i64* %cloptr8611, i64 1                    ; &eptr8613[1]
-  %eptr8614 = getelementptr inbounds i64, i64* %cloptr8611, i64 2                    ; &eptr8614[2]
-  %eptr8615 = getelementptr inbounds i64, i64* %cloptr8611, i64 3                    ; &eptr8615[3]
-  store i64 %IcL$Ycmb, i64* %eptr8613                                                ; *eptr8613 = %IcL$Ycmb
-  store i64 %Yrh$_37foldr1, i64* %eptr8614                                           ; *eptr8614 = %Yrh$_37foldr1
-  store i64 %YVW$_37map1, i64* %eptr8615                                             ; *eptr8615 = %YVW$_37map1
-  %eptr8612 = getelementptr inbounds i64, i64* %cloptr8611, i64 0                    ; &cloptr8611[0]
-  %f8616 = ptrtoint void(i64,i64,i64)* @lam8555 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8616, i64* %eptr8612                                                   ; store fptr
-  %arg7266 = ptrtoint i64* %cloptr8611 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8617 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8618 = getelementptr inbounds i64, i64* %cloptr8617, i64 0                    ; &cloptr8617[0]
-  %f8619 = ptrtoint void(i64,i64,i64)* @lam8147 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8619, i64* %eptr8618                                                   ; store fptr
-  %arg7265 = ptrtoint i64* %cloptr8617 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8620 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8620)                                         ; assert function application
-  %i0ptr8621 = getelementptr inbounds i64, i64* %cloptr8620, i64 0                   ; &cloptr8620[0]
-  %f8623 = load i64, i64* %i0ptr8621, align 8                                        ; load; *i0ptr8621
-  %fptr8622 = inttoptr i64 %f8623 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8622(i64 %IcL$Ycmb, i64 %arg7266, i64 %arg7265)     ; tail call
+define void @lam8541(i64 %env8542, i64 %_957067, i64 %eDM$_37take) {
+  %envptr8610 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8611 = getelementptr inbounds i64, i64* %envptr8610, i64 3                  ; &envptr8610[3]
+  %m9D$_37map1 = load i64, i64* %envptr8611, align 8                                 ; load; *envptr8611
+  %envptr8612 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8613 = getelementptr inbounds i64, i64* %envptr8612, i64 2                  ; &envptr8612[2]
+  %AmT$_37foldr1 = load i64, i64* %envptr8613, align 8                               ; load; *envptr8613
+  %envptr8614 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8615 = getelementptr inbounds i64, i64* %envptr8614, i64 1                  ; &envptr8614[1]
+  %BPC$Ycmb = load i64, i64* %envptr8615, align 8                                    ; load; *envptr8615
+  %cloptr8616 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr8618 = getelementptr inbounds i64, i64* %cloptr8616, i64 1                    ; &eptr8618[1]
+  %eptr8619 = getelementptr inbounds i64, i64* %cloptr8616, i64 2                    ; &eptr8619[2]
+  %eptr8620 = getelementptr inbounds i64, i64* %cloptr8616, i64 3                    ; &eptr8620[3]
+  %eptr8621 = getelementptr inbounds i64, i64* %cloptr8616, i64 4                    ; &eptr8621[4]
+  store i64 %eDM$_37take, i64* %eptr8618                                             ; *eptr8618 = %eDM$_37take
+  store i64 %BPC$Ycmb, i64* %eptr8619                                                ; *eptr8619 = %BPC$Ycmb
+  store i64 %AmT$_37foldr1, i64* %eptr8620                                           ; *eptr8620 = %AmT$_37foldr1
+  store i64 %m9D$_37map1, i64* %eptr8621                                             ; *eptr8621 = %m9D$_37map1
+  %eptr8617 = getelementptr inbounds i64, i64* %cloptr8616, i64 0                    ; &cloptr8616[0]
+  %f8622 = ptrtoint void(i64,i64,i64)* @lam8539 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8622, i64* %eptr8617                                                   ; store fptr
+  %arg7267 = ptrtoint i64* %cloptr8616 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8623 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8624 = getelementptr inbounds i64, i64* %cloptr8623, i64 0                    ; &cloptr8623[0]
+  %f8625 = ptrtoint void(i64,i64,i64)* @lam8149 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8625, i64* %eptr8624                                                   ; store fptr
+  %arg7266 = ptrtoint i64* %cloptr8623 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8626 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8626)                                         ; assert function application
+  %i0ptr8627 = getelementptr inbounds i64, i64* %cloptr8626, i64 0                   ; &cloptr8626[0]
+  %f8629 = load i64, i64* %i0ptr8627, align 8                                        ; load; *i0ptr8627
+  %fptr8628 = inttoptr i64 %f8629 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8628(i64 %BPC$Ycmb, i64 %arg7267, i64 %arg7266)     ; tail call
   ret void
 }
 
 
-define void @lam8555(i64 %env8556, i64 %_957069, i64 %aqS$_37take) {
-  %envptr8624 = inttoptr i64 %env8556 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8625 = getelementptr inbounds i64, i64* %envptr8624, i64 3                  ; &envptr8624[3]
-  %YVW$_37map1 = load i64, i64* %envptr8625, align 8                                 ; load; *envptr8625
-  %envptr8626 = inttoptr i64 %env8556 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8627 = getelementptr inbounds i64, i64* %envptr8626, i64 2                  ; &envptr8626[2]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8627, align 8                               ; load; *envptr8627
-  %envptr8628 = inttoptr i64 %env8556 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8629 = getelementptr inbounds i64, i64* %envptr8628, i64 1                  ; &envptr8628[1]
-  %IcL$Ycmb = load i64, i64* %envptr8629, align 8                                    ; load; *envptr8629
-  %cloptr8630 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr8632 = getelementptr inbounds i64, i64* %cloptr8630, i64 1                    ; &eptr8632[1]
-  %eptr8633 = getelementptr inbounds i64, i64* %cloptr8630, i64 2                    ; &eptr8633[2]
-  %eptr8634 = getelementptr inbounds i64, i64* %cloptr8630, i64 3                    ; &eptr8634[3]
-  %eptr8635 = getelementptr inbounds i64, i64* %cloptr8630, i64 4                    ; &eptr8635[4]
-  store i64 %aqS$_37take, i64* %eptr8632                                             ; *eptr8632 = %aqS$_37take
-  store i64 %IcL$Ycmb, i64* %eptr8633                                                ; *eptr8633 = %IcL$Ycmb
-  store i64 %Yrh$_37foldr1, i64* %eptr8634                                           ; *eptr8634 = %Yrh$_37foldr1
-  store i64 %YVW$_37map1, i64* %eptr8635                                             ; *eptr8635 = %YVW$_37map1
-  %eptr8631 = getelementptr inbounds i64, i64* %cloptr8630, i64 0                    ; &cloptr8630[0]
-  %f8636 = ptrtoint void(i64,i64,i64)* @lam8553 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8636, i64* %eptr8631                                                   ; store fptr
-  %arg7269 = ptrtoint i64* %cloptr8630 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8637 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8638 = getelementptr inbounds i64, i64* %cloptr8637, i64 0                    ; &cloptr8637[0]
-  %f8639 = ptrtoint void(i64,i64,i64)* @lam8158 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8639, i64* %eptr8638                                                   ; store fptr
-  %arg7268 = ptrtoint i64* %cloptr8637 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8640 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8640)                                         ; assert function application
-  %i0ptr8641 = getelementptr inbounds i64, i64* %cloptr8640, i64 0                   ; &cloptr8640[0]
-  %f8643 = load i64, i64* %i0ptr8641, align 8                                        ; load; *i0ptr8641
-  %fptr8642 = inttoptr i64 %f8643 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8642(i64 %IcL$Ycmb, i64 %arg7269, i64 %arg7268)     ; tail call
+define void @lam8539(i64 %env8540, i64 %_957068, i64 %QFP$_37length) {
+  %envptr8630 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8631 = getelementptr inbounds i64, i64* %envptr8630, i64 4                  ; &envptr8630[4]
+  %m9D$_37map1 = load i64, i64* %envptr8631, align 8                                 ; load; *envptr8631
+  %envptr8632 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8633 = getelementptr inbounds i64, i64* %envptr8632, i64 3                  ; &envptr8632[3]
+  %AmT$_37foldr1 = load i64, i64* %envptr8633, align 8                               ; load; *envptr8633
+  %envptr8634 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8635 = getelementptr inbounds i64, i64* %envptr8634, i64 2                  ; &envptr8634[2]
+  %BPC$Ycmb = load i64, i64* %envptr8635, align 8                                    ; load; *envptr8635
+  %envptr8636 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8637 = getelementptr inbounds i64, i64* %envptr8636, i64 1                  ; &envptr8636[1]
+  %eDM$_37take = load i64, i64* %envptr8637, align 8                                 ; load; *envptr8637
+  %cloptr8638 = call i64* @alloc(i64 48)                                             ; malloc
+  %eptr8640 = getelementptr inbounds i64, i64* %cloptr8638, i64 1                    ; &eptr8640[1]
+  %eptr8641 = getelementptr inbounds i64, i64* %cloptr8638, i64 2                    ; &eptr8641[2]
+  %eptr8642 = getelementptr inbounds i64, i64* %cloptr8638, i64 3                    ; &eptr8642[3]
+  %eptr8643 = getelementptr inbounds i64, i64* %cloptr8638, i64 4                    ; &eptr8643[4]
+  %eptr8644 = getelementptr inbounds i64, i64* %cloptr8638, i64 5                    ; &eptr8644[5]
+  store i64 %eDM$_37take, i64* %eptr8640                                             ; *eptr8640 = %eDM$_37take
+  store i64 %QFP$_37length, i64* %eptr8641                                           ; *eptr8641 = %QFP$_37length
+  store i64 %BPC$Ycmb, i64* %eptr8642                                                ; *eptr8642 = %BPC$Ycmb
+  store i64 %AmT$_37foldr1, i64* %eptr8643                                           ; *eptr8643 = %AmT$_37foldr1
+  store i64 %m9D$_37map1, i64* %eptr8644                                             ; *eptr8644 = %m9D$_37map1
+  %eptr8639 = getelementptr inbounds i64, i64* %cloptr8638, i64 0                    ; &cloptr8638[0]
+  %f8645 = ptrtoint void(i64,i64,i64)* @lam8537 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8645, i64* %eptr8639                                                   ; store fptr
+  %arg7270 = ptrtoint i64* %cloptr8638 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8646 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8647 = getelementptr inbounds i64, i64* %cloptr8646, i64 0                    ; &cloptr8646[0]
+  %f8648 = ptrtoint void(i64,i64,i64)* @lam8157 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8648, i64* %eptr8647                                                   ; store fptr
+  %arg7269 = ptrtoint i64* %cloptr8646 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8649 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8649)                                         ; assert function application
+  %i0ptr8650 = getelementptr inbounds i64, i64* %cloptr8649, i64 0                   ; &cloptr8649[0]
+  %f8652 = load i64, i64* %i0ptr8650, align 8                                        ; load; *i0ptr8650
+  %fptr8651 = inttoptr i64 %f8652 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8651(i64 %BPC$Ycmb, i64 %arg7270, i64 %arg7269)     ; tail call
   ret void
 }
 
 
-define void @lam8553(i64 %env8554, i64 %_957070, i64 %Va3$_37length) {
-  %envptr8644 = inttoptr i64 %env8554 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8645 = getelementptr inbounds i64, i64* %envptr8644, i64 4                  ; &envptr8644[4]
-  %YVW$_37map1 = load i64, i64* %envptr8645, align 8                                 ; load; *envptr8645
-  %envptr8646 = inttoptr i64 %env8554 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8647 = getelementptr inbounds i64, i64* %envptr8646, i64 3                  ; &envptr8646[3]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8647, align 8                               ; load; *envptr8647
-  %envptr8648 = inttoptr i64 %env8554 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8649 = getelementptr inbounds i64, i64* %envptr8648, i64 2                  ; &envptr8648[2]
-  %IcL$Ycmb = load i64, i64* %envptr8649, align 8                                    ; load; *envptr8649
-  %envptr8650 = inttoptr i64 %env8554 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8651 = getelementptr inbounds i64, i64* %envptr8650, i64 1                  ; &envptr8650[1]
-  %aqS$_37take = load i64, i64* %envptr8651, align 8                                 ; load; *envptr8651
-  %cloptr8652 = call i64* @alloc(i64 48)                                             ; malloc
-  %eptr8654 = getelementptr inbounds i64, i64* %cloptr8652, i64 1                    ; &eptr8654[1]
-  %eptr8655 = getelementptr inbounds i64, i64* %cloptr8652, i64 2                    ; &eptr8655[2]
-  %eptr8656 = getelementptr inbounds i64, i64* %cloptr8652, i64 3                    ; &eptr8656[3]
-  %eptr8657 = getelementptr inbounds i64, i64* %cloptr8652, i64 4                    ; &eptr8657[4]
-  %eptr8658 = getelementptr inbounds i64, i64* %cloptr8652, i64 5                    ; &eptr8658[5]
-  store i64 %aqS$_37take, i64* %eptr8654                                             ; *eptr8654 = %aqS$_37take
-  store i64 %Va3$_37length, i64* %eptr8655                                           ; *eptr8655 = %Va3$_37length
-  store i64 %IcL$Ycmb, i64* %eptr8656                                                ; *eptr8656 = %IcL$Ycmb
-  store i64 %Yrh$_37foldr1, i64* %eptr8657                                           ; *eptr8657 = %Yrh$_37foldr1
-  store i64 %YVW$_37map1, i64* %eptr8658                                             ; *eptr8658 = %YVW$_37map1
-  %eptr8653 = getelementptr inbounds i64, i64* %cloptr8652, i64 0                    ; &cloptr8652[0]
-  %f8659 = ptrtoint void(i64,i64,i64)* @lam8551 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8659, i64* %eptr8653                                                   ; store fptr
-  %arg7272 = ptrtoint i64* %cloptr8652 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8660 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8661 = getelementptr inbounds i64, i64* %cloptr8660, i64 0                    ; &cloptr8660[0]
-  %f8662 = ptrtoint void(i64,i64,i64)* @lam8166 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8662, i64* %eptr8661                                                   ; store fptr
-  %arg7271 = ptrtoint i64* %cloptr8660 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8663 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8663)                                         ; assert function application
-  %i0ptr8664 = getelementptr inbounds i64, i64* %cloptr8663, i64 0                   ; &cloptr8663[0]
-  %f8666 = load i64, i64* %i0ptr8664, align 8                                        ; load; *i0ptr8664
-  %fptr8665 = inttoptr i64 %f8666 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8665(i64 %IcL$Ycmb, i64 %arg7272, i64 %arg7271)     ; tail call
-  ret void
-}
-
-
-define void @lam8551(i64 %env8552, i64 %_957071, i64 %fVq$_37foldl1) {
-  %envptr8667 = inttoptr i64 %env8552 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8668 = getelementptr inbounds i64, i64* %envptr8667, i64 5                  ; &envptr8667[5]
-  %YVW$_37map1 = load i64, i64* %envptr8668, align 8                                 ; load; *envptr8668
-  %envptr8669 = inttoptr i64 %env8552 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8670 = getelementptr inbounds i64, i64* %envptr8669, i64 4                  ; &envptr8669[4]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8670, align 8                               ; load; *envptr8670
-  %envptr8671 = inttoptr i64 %env8552 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8672 = getelementptr inbounds i64, i64* %envptr8671, i64 3                  ; &envptr8671[3]
-  %IcL$Ycmb = load i64, i64* %envptr8672, align 8                                    ; load; *envptr8672
-  %envptr8673 = inttoptr i64 %env8552 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8674 = getelementptr inbounds i64, i64* %envptr8673, i64 2                  ; &envptr8673[2]
-  %Va3$_37length = load i64, i64* %envptr8674, align 8                               ; load; *envptr8674
-  %envptr8675 = inttoptr i64 %env8552 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8676 = getelementptr inbounds i64, i64* %envptr8675, i64 1                  ; &envptr8675[1]
-  %aqS$_37take = load i64, i64* %envptr8676, align 8                                 ; load; *envptr8676
-  %cloptr8677 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8679 = getelementptr inbounds i64, i64* %cloptr8677, i64 1                    ; &eptr8679[1]
-  store i64 %fVq$_37foldl1, i64* %eptr8679                                           ; *eptr8679 = %fVq$_37foldl1
-  %eptr8678 = getelementptr inbounds i64, i64* %cloptr8677, i64 0                    ; &cloptr8677[0]
-  %f8680 = ptrtoint void(i64,i64,i64)* @lam8549 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8680, i64* %eptr8678                                                   ; store fptr
-  %AfU$_37last = ptrtoint i64* %cloptr8677 to i64                                    ; closure cast; i64* -> i64
+define void @lam8537(i64 %env8538, i64 %_957069, i64 %LnC$_37foldl1) {
+  %envptr8653 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8654 = getelementptr inbounds i64, i64* %envptr8653, i64 5                  ; &envptr8653[5]
+  %m9D$_37map1 = load i64, i64* %envptr8654, align 8                                 ; load; *envptr8654
+  %envptr8655 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8656 = getelementptr inbounds i64, i64* %envptr8655, i64 4                  ; &envptr8655[4]
+  %AmT$_37foldr1 = load i64, i64* %envptr8656, align 8                               ; load; *envptr8656
+  %envptr8657 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8658 = getelementptr inbounds i64, i64* %envptr8657, i64 3                  ; &envptr8657[3]
+  %BPC$Ycmb = load i64, i64* %envptr8658, align 8                                    ; load; *envptr8658
+  %envptr8659 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8660 = getelementptr inbounds i64, i64* %envptr8659, i64 2                  ; &envptr8659[2]
+  %QFP$_37length = load i64, i64* %envptr8660, align 8                               ; load; *envptr8660
+  %envptr8661 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8662 = getelementptr inbounds i64, i64* %envptr8661, i64 1                  ; &envptr8661[1]
+  %eDM$_37take = load i64, i64* %envptr8662, align 8                                 ; load; *envptr8662
+  %cloptr8663 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8665 = getelementptr inbounds i64, i64* %cloptr8663, i64 1                    ; &eptr8665[1]
+  store i64 %LnC$_37foldl1, i64* %eptr8665                                           ; *eptr8665 = %LnC$_37foldl1
+  %eptr8664 = getelementptr inbounds i64, i64* %cloptr8663, i64 0                    ; &cloptr8663[0]
+  %f8666 = ptrtoint void(i64,i64,i64)* @lam8535 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8666, i64* %eptr8664                                                   ; store fptr
+  %EGV$_37last = ptrtoint i64* %cloptr8663 to i64                                    ; closure cast; i64* -> i64
+  %cloptr8667 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8669 = getelementptr inbounds i64, i64* %cloptr8667, i64 1                    ; &eptr8669[1]
+  %eptr8670 = getelementptr inbounds i64, i64* %cloptr8667, i64 2                    ; &eptr8670[2]
+  store i64 %eDM$_37take, i64* %eptr8669                                             ; *eptr8669 = %eDM$_37take
+  store i64 %QFP$_37length, i64* %eptr8670                                           ; *eptr8670 = %QFP$_37length
+  %eptr8668 = getelementptr inbounds i64, i64* %cloptr8667, i64 0                    ; &cloptr8667[0]
+  %f8671 = ptrtoint void(i64,i64,i64,i64)* @lam8529 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8671, i64* %eptr8668                                                   ; store fptr
+  %j7f$_37drop_45right = ptrtoint i64* %cloptr8667 to i64                            ; closure cast; i64* -> i64
+  %cloptr8672 = call i64* @alloc(i64 56)                                             ; malloc
+  %eptr8674 = getelementptr inbounds i64, i64* %cloptr8672, i64 1                    ; &eptr8674[1]
+  %eptr8675 = getelementptr inbounds i64, i64* %cloptr8672, i64 2                    ; &eptr8675[2]
+  %eptr8676 = getelementptr inbounds i64, i64* %cloptr8672, i64 3                    ; &eptr8676[3]
+  %eptr8677 = getelementptr inbounds i64, i64* %cloptr8672, i64 4                    ; &eptr8677[4]
+  %eptr8678 = getelementptr inbounds i64, i64* %cloptr8672, i64 5                    ; &eptr8678[5]
+  %eptr8679 = getelementptr inbounds i64, i64* %cloptr8672, i64 6                    ; &eptr8679[6]
+  store i64 %j7f$_37drop_45right, i64* %eptr8674                                     ; *eptr8674 = %j7f$_37drop_45right
+  store i64 %QFP$_37length, i64* %eptr8675                                           ; *eptr8675 = %QFP$_37length
+  store i64 %LnC$_37foldl1, i64* %eptr8676                                           ; *eptr8676 = %LnC$_37foldl1
+  store i64 %BPC$Ycmb, i64* %eptr8677                                                ; *eptr8677 = %BPC$Ycmb
+  store i64 %AmT$_37foldr1, i64* %eptr8678                                           ; *eptr8678 = %AmT$_37foldr1
+  store i64 %EGV$_37last, i64* %eptr8679                                             ; *eptr8679 = %EGV$_37last
+  %eptr8673 = getelementptr inbounds i64, i64* %cloptr8672, i64 0                    ; &cloptr8672[0]
+  %f8680 = ptrtoint void(i64,i64,i64)* @lam8525 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8680, i64* %eptr8673                                                   ; store fptr
+  %arg7290 = ptrtoint i64* %cloptr8672 to i64                                        ; closure cast; i64* -> i64
   %cloptr8681 = call i64* @alloc(i64 24)                                             ; malloc
   %eptr8683 = getelementptr inbounds i64, i64* %cloptr8681, i64 1                    ; &eptr8683[1]
   %eptr8684 = getelementptr inbounds i64, i64* %cloptr8681, i64 2                    ; &eptr8684[2]
-  store i64 %aqS$_37take, i64* %eptr8683                                             ; *eptr8683 = %aqS$_37take
-  store i64 %Va3$_37length, i64* %eptr8684                                           ; *eptr8684 = %Va3$_37length
+  store i64 %AmT$_37foldr1, i64* %eptr8683                                           ; *eptr8683 = %AmT$_37foldr1
+  store i64 %m9D$_37map1, i64* %eptr8684                                             ; *eptr8684 = %m9D$_37map1
   %eptr8682 = getelementptr inbounds i64, i64* %cloptr8681, i64 0                    ; &cloptr8681[0]
-  %f8685 = ptrtoint void(i64,i64,i64,i64)* @lam8543 to i64                           ; fptr cast; i64(...)* -> i64
+  %f8685 = ptrtoint void(i64,i64,i64)* @lam8194 to i64                               ; fptr cast; i64(...)* -> i64
   store i64 %f8685, i64* %eptr8682                                                   ; store fptr
-  %KiO$_37drop_45right = ptrtoint i64* %cloptr8681 to i64                            ; closure cast; i64* -> i64
-  %cloptr8686 = call i64* @alloc(i64 56)                                             ; malloc
-  %eptr8688 = getelementptr inbounds i64, i64* %cloptr8686, i64 1                    ; &eptr8688[1]
-  %eptr8689 = getelementptr inbounds i64, i64* %cloptr8686, i64 2                    ; &eptr8689[2]
-  %eptr8690 = getelementptr inbounds i64, i64* %cloptr8686, i64 3                    ; &eptr8690[3]
-  %eptr8691 = getelementptr inbounds i64, i64* %cloptr8686, i64 4                    ; &eptr8691[4]
-  %eptr8692 = getelementptr inbounds i64, i64* %cloptr8686, i64 5                    ; &eptr8692[5]
-  %eptr8693 = getelementptr inbounds i64, i64* %cloptr8686, i64 6                    ; &eptr8693[6]
-  store i64 %KiO$_37drop_45right, i64* %eptr8688                                     ; *eptr8688 = %KiO$_37drop_45right
-  store i64 %Va3$_37length, i64* %eptr8689                                           ; *eptr8689 = %Va3$_37length
-  store i64 %fVq$_37foldl1, i64* %eptr8690                                           ; *eptr8690 = %fVq$_37foldl1
-  store i64 %IcL$Ycmb, i64* %eptr8691                                                ; *eptr8691 = %IcL$Ycmb
-  store i64 %Yrh$_37foldr1, i64* %eptr8692                                           ; *eptr8692 = %Yrh$_37foldr1
-  store i64 %AfU$_37last, i64* %eptr8693                                             ; *eptr8693 = %AfU$_37last
-  %eptr8687 = getelementptr inbounds i64, i64* %cloptr8686, i64 0                    ; &cloptr8686[0]
-  %f8694 = ptrtoint void(i64,i64,i64)* @lam8539 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8694, i64* %eptr8687                                                   ; store fptr
-  %arg7292 = ptrtoint i64* %cloptr8686 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8695 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8697 = getelementptr inbounds i64, i64* %cloptr8695, i64 1                    ; &eptr8697[1]
-  %eptr8698 = getelementptr inbounds i64, i64* %cloptr8695, i64 2                    ; &eptr8698[2]
-  store i64 %Yrh$_37foldr1, i64* %eptr8697                                           ; *eptr8697 = %Yrh$_37foldr1
-  store i64 %YVW$_37map1, i64* %eptr8698                                             ; *eptr8698 = %YVW$_37map1
-  %eptr8696 = getelementptr inbounds i64, i64* %cloptr8695, i64 0                    ; &cloptr8695[0]
-  %f8699 = ptrtoint void(i64,i64,i64)* @lam8203 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8699, i64* %eptr8696                                                   ; store fptr
-  %arg7291 = ptrtoint i64* %cloptr8695 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8700 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8700)                                         ; assert function application
-  %i0ptr8701 = getelementptr inbounds i64, i64* %cloptr8700, i64 0                   ; &cloptr8700[0]
-  %f8703 = load i64, i64* %i0ptr8701, align 8                                        ; load; *i0ptr8701
-  %fptr8702 = inttoptr i64 %f8703 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8702(i64 %IcL$Ycmb, i64 %arg7292, i64 %arg7291)     ; tail call
+  %arg7289 = ptrtoint i64* %cloptr8681 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8686 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8686)                                         ; assert function application
+  %i0ptr8687 = getelementptr inbounds i64, i64* %cloptr8686, i64 0                   ; &cloptr8686[0]
+  %f8689 = load i64, i64* %i0ptr8687, align 8                                        ; load; *i0ptr8687
+  %fptr8688 = inttoptr i64 %f8689 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8688(i64 %BPC$Ycmb, i64 %arg7290, i64 %arg7289)     ; tail call
   ret void
 }
 
 
-define void @lam8549(i64 %env8550, i64 %cont7072, i64 %aKb$lst) {
-  %envptr8704 = inttoptr i64 %env8550 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8705 = getelementptr inbounds i64, i64* %envptr8704, i64 1                  ; &envptr8704[1]
-  %fVq$_37foldl1 = load i64, i64* %envptr8705, align 8                               ; load; *envptr8705
-  %cloptr8706 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8707 = getelementptr inbounds i64, i64* %cloptr8706, i64 0                    ; &cloptr8706[0]
-  %f8708 = ptrtoint void(i64,i64,i64,i64)* @lam8547 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8708, i64* %eptr8707                                                   ; store fptr
-  %arg7276 = ptrtoint i64* %cloptr8706 to i64                                        ; closure cast; i64* -> i64
-  %arg7275 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8709 = inttoptr i64 %fVq$_37foldl1 to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8709)                                         ; assert function application
-  %i0ptr8710 = getelementptr inbounds i64, i64* %cloptr8709, i64 0                   ; &cloptr8709[0]
-  %f8712 = load i64, i64* %i0ptr8710, align 8                                        ; load; *i0ptr8710
-  %fptr8711 = inttoptr i64 %f8712 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8711(i64 %fVq$_37foldl1, i64 %cont7072, i64 %arg7276, i64 %arg7275, i64 %aKb$lst); tail call
+define void @lam8535(i64 %env8536, i64 %cont7070, i64 %P2b$lst) {
+  %envptr8690 = inttoptr i64 %env8536 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8691 = getelementptr inbounds i64, i64* %envptr8690, i64 1                  ; &envptr8690[1]
+  %LnC$_37foldl1 = load i64, i64* %envptr8691, align 8                               ; load; *envptr8691
+  %cloptr8692 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8693 = getelementptr inbounds i64, i64* %cloptr8692, i64 0                    ; &cloptr8692[0]
+  %f8694 = ptrtoint void(i64,i64,i64,i64)* @lam8533 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8694, i64* %eptr8693                                                   ; store fptr
+  %arg7274 = ptrtoint i64* %cloptr8692 to i64                                        ; closure cast; i64* -> i64
+  %arg7273 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8695 = inttoptr i64 %LnC$_37foldl1 to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8695)                                         ; assert function application
+  %i0ptr8696 = getelementptr inbounds i64, i64* %cloptr8695, i64 0                   ; &cloptr8695[0]
+  %f8698 = load i64, i64* %i0ptr8696, align 8                                        ; load; *i0ptr8696
+  %fptr8697 = inttoptr i64 %f8698 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8697(i64 %LnC$_37foldl1, i64 %cont7070, i64 %arg7274, i64 %arg7273, i64 %P2b$lst); tail call
   ret void
 }
 
 
-define void @lam8547(i64 %env8548, i64 %cont7073, i64 %auG$x, i64 %NrE$y) {
-  %arg7280 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8713 = inttoptr i64 %cont7073 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8713)                                         ; assert function application
-  %i0ptr8714 = getelementptr inbounds i64, i64* %cloptr8713, i64 0                   ; &cloptr8713[0]
-  %f8716 = load i64, i64* %i0ptr8714, align 8                                        ; load; *i0ptr8714
-  %fptr8715 = inttoptr i64 %f8716 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8715(i64 %cont7073, i64 %arg7280, i64 %auG$x)       ; tail call
+define void @lam8533(i64 %env8534, i64 %cont7071, i64 %tY8$x, i64 %C5V$y) {
+  %arg7278 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8699 = inttoptr i64 %cont7071 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8699)                                         ; assert function application
+  %i0ptr8700 = getelementptr inbounds i64, i64* %cloptr8699, i64 0                   ; &cloptr8699[0]
+  %f8702 = load i64, i64* %i0ptr8700, align 8                                        ; load; *i0ptr8700
+  %fptr8701 = inttoptr i64 %f8702 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8701(i64 %cont7071, i64 %arg7278, i64 %tY8$x)       ; tail call
   ret void
 }
 
 
-define void @lam8543(i64 %env8544, i64 %cont7074, i64 %qwm$lst, i64 %N9W$n) {
-  %envptr8717 = inttoptr i64 %env8544 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8718 = getelementptr inbounds i64, i64* %envptr8717, i64 2                  ; &envptr8717[2]
-  %Va3$_37length = load i64, i64* %envptr8718, align 8                               ; load; *envptr8718
-  %envptr8719 = inttoptr i64 %env8544 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8720 = getelementptr inbounds i64, i64* %envptr8719, i64 1                  ; &envptr8719[1]
-  %aqS$_37take = load i64, i64* %envptr8720, align 8                                 ; load; *envptr8720
-  %cloptr8721 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr8723 = getelementptr inbounds i64, i64* %cloptr8721, i64 1                    ; &eptr8723[1]
-  %eptr8724 = getelementptr inbounds i64, i64* %cloptr8721, i64 2                    ; &eptr8724[2]
-  %eptr8725 = getelementptr inbounds i64, i64* %cloptr8721, i64 3                    ; &eptr8725[3]
-  %eptr8726 = getelementptr inbounds i64, i64* %cloptr8721, i64 4                    ; &eptr8726[4]
-  store i64 %aqS$_37take, i64* %eptr8723                                             ; *eptr8723 = %aqS$_37take
-  store i64 %N9W$n, i64* %eptr8724                                                   ; *eptr8724 = %N9W$n
-  store i64 %qwm$lst, i64* %eptr8725                                                 ; *eptr8725 = %qwm$lst
-  store i64 %cont7074, i64* %eptr8726                                                ; *eptr8726 = %cont7074
-  %eptr8722 = getelementptr inbounds i64, i64* %cloptr8721, i64 0                    ; &cloptr8721[0]
-  %f8727 = ptrtoint void(i64,i64,i64)* @lam8541 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8727, i64* %eptr8722                                                   ; store fptr
-  %arg7283 = ptrtoint i64* %cloptr8721 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8728 = inttoptr i64 %Va3$_37length to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8728)                                         ; assert function application
-  %i0ptr8729 = getelementptr inbounds i64, i64* %cloptr8728, i64 0                   ; &cloptr8728[0]
-  %f8731 = load i64, i64* %i0ptr8729, align 8                                        ; load; *i0ptr8729
-  %fptr8730 = inttoptr i64 %f8731 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8730(i64 %Va3$_37length, i64 %arg7283, i64 %qwm$lst); tail call
+define void @lam8529(i64 %env8530, i64 %cont7072, i64 %n8c$lst, i64 %iTV$n) {
+  %envptr8703 = inttoptr i64 %env8530 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8704 = getelementptr inbounds i64, i64* %envptr8703, i64 2                  ; &envptr8703[2]
+  %QFP$_37length = load i64, i64* %envptr8704, align 8                               ; load; *envptr8704
+  %envptr8705 = inttoptr i64 %env8530 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8706 = getelementptr inbounds i64, i64* %envptr8705, i64 1                  ; &envptr8705[1]
+  %eDM$_37take = load i64, i64* %envptr8706, align 8                                 ; load; *envptr8706
+  %cloptr8707 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr8709 = getelementptr inbounds i64, i64* %cloptr8707, i64 1                    ; &eptr8709[1]
+  %eptr8710 = getelementptr inbounds i64, i64* %cloptr8707, i64 2                    ; &eptr8710[2]
+  %eptr8711 = getelementptr inbounds i64, i64* %cloptr8707, i64 3                    ; &eptr8711[3]
+  %eptr8712 = getelementptr inbounds i64, i64* %cloptr8707, i64 4                    ; &eptr8712[4]
+  store i64 %eDM$_37take, i64* %eptr8709                                             ; *eptr8709 = %eDM$_37take
+  store i64 %iTV$n, i64* %eptr8710                                                   ; *eptr8710 = %iTV$n
+  store i64 %n8c$lst, i64* %eptr8711                                                 ; *eptr8711 = %n8c$lst
+  store i64 %cont7072, i64* %eptr8712                                                ; *eptr8712 = %cont7072
+  %eptr8708 = getelementptr inbounds i64, i64* %cloptr8707, i64 0                    ; &cloptr8707[0]
+  %f8713 = ptrtoint void(i64,i64,i64)* @lam8527 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8713, i64* %eptr8708                                                   ; store fptr
+  %arg7281 = ptrtoint i64* %cloptr8707 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8714 = inttoptr i64 %QFP$_37length to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8714)                                         ; assert function application
+  %i0ptr8715 = getelementptr inbounds i64, i64* %cloptr8714, i64 0                   ; &cloptr8714[0]
+  %f8717 = load i64, i64* %i0ptr8715, align 8                                        ; load; *i0ptr8715
+  %fptr8716 = inttoptr i64 %f8717 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8716(i64 %QFP$_37length, i64 %arg7281, i64 %n8c$lst); tail call
   ret void
 }
 
 
-define void @lam8541(i64 %env8542, i64 %_957075, i64 %a6969) {
-  %envptr8732 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8733 = getelementptr inbounds i64, i64* %envptr8732, i64 4                  ; &envptr8732[4]
-  %cont7074 = load i64, i64* %envptr8733, align 8                                    ; load; *envptr8733
-  %envptr8734 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8735 = getelementptr inbounds i64, i64* %envptr8734, i64 3                  ; &envptr8734[3]
-  %qwm$lst = load i64, i64* %envptr8735, align 8                                     ; load; *envptr8735
-  %envptr8736 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8737 = getelementptr inbounds i64, i64* %envptr8736, i64 2                  ; &envptr8736[2]
-  %N9W$n = load i64, i64* %envptr8737, align 8                                       ; load; *envptr8737
-  %envptr8738 = inttoptr i64 %env8542 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8739 = getelementptr inbounds i64, i64* %envptr8738, i64 1                  ; &envptr8738[1]
-  %aqS$_37take = load i64, i64* %envptr8739, align 8                                 ; load; *envptr8739
-  %a6970 = call i64 @prim__45(i64 %a6969, i64 %N9W$n)                                ; call prim__45
-  %cloptr8740 = inttoptr i64 %aqS$_37take to i64*                                    ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8740)                                         ; assert function application
-  %i0ptr8741 = getelementptr inbounds i64, i64* %cloptr8740, i64 0                   ; &cloptr8740[0]
-  %f8743 = load i64, i64* %i0ptr8741, align 8                                        ; load; *i0ptr8741
-  %fptr8742 = inttoptr i64 %f8743 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8742(i64 %aqS$_37take, i64 %cont7074, i64 %qwm$lst, i64 %a6970); tail call
+define void @lam8527(i64 %env8528, i64 %_957073, i64 %a6969) {
+  %envptr8718 = inttoptr i64 %env8528 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8719 = getelementptr inbounds i64, i64* %envptr8718, i64 4                  ; &envptr8718[4]
+  %cont7072 = load i64, i64* %envptr8719, align 8                                    ; load; *envptr8719
+  %envptr8720 = inttoptr i64 %env8528 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8721 = getelementptr inbounds i64, i64* %envptr8720, i64 3                  ; &envptr8720[3]
+  %n8c$lst = load i64, i64* %envptr8721, align 8                                     ; load; *envptr8721
+  %envptr8722 = inttoptr i64 %env8528 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8723 = getelementptr inbounds i64, i64* %envptr8722, i64 2                  ; &envptr8722[2]
+  %iTV$n = load i64, i64* %envptr8723, align 8                                       ; load; *envptr8723
+  %envptr8724 = inttoptr i64 %env8528 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8725 = getelementptr inbounds i64, i64* %envptr8724, i64 1                  ; &envptr8724[1]
+  %eDM$_37take = load i64, i64* %envptr8725, align 8                                 ; load; *envptr8725
+  %a6970 = call i64 @prim__45(i64 %a6969, i64 %iTV$n)                                ; call prim__45
+  %cloptr8726 = inttoptr i64 %eDM$_37take to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8726)                                         ; assert function application
+  %i0ptr8727 = getelementptr inbounds i64, i64* %cloptr8726, i64 0                   ; &cloptr8726[0]
+  %f8729 = load i64, i64* %i0ptr8727, align 8                                        ; load; *i0ptr8727
+  %fptr8728 = inttoptr i64 %f8729 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8728(i64 %eDM$_37take, i64 %cont7072, i64 %n8c$lst, i64 %a6970); tail call
   ret void
 }
 
 
-define void @lam8539(i64 %env8540, i64 %_957076, i64 %Ini$_37foldr) {
-  %envptr8744 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8745 = getelementptr inbounds i64, i64* %envptr8744, i64 6                  ; &envptr8744[6]
-  %AfU$_37last = load i64, i64* %envptr8745, align 8                                 ; load; *envptr8745
-  %envptr8746 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8747 = getelementptr inbounds i64, i64* %envptr8746, i64 5                  ; &envptr8746[5]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8747, align 8                               ; load; *envptr8747
-  %envptr8748 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8749 = getelementptr inbounds i64, i64* %envptr8748, i64 4                  ; &envptr8748[4]
-  %IcL$Ycmb = load i64, i64* %envptr8749, align 8                                    ; load; *envptr8749
-  %envptr8750 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8751 = getelementptr inbounds i64, i64* %envptr8750, i64 3                  ; &envptr8750[3]
-  %fVq$_37foldl1 = load i64, i64* %envptr8751, align 8                               ; load; *envptr8751
-  %envptr8752 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8753 = getelementptr inbounds i64, i64* %envptr8752, i64 2                  ; &envptr8752[2]
-  %Va3$_37length = load i64, i64* %envptr8753, align 8                               ; load; *envptr8753
-  %envptr8754 = inttoptr i64 %env8540 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8755 = getelementptr inbounds i64, i64* %envptr8754, i64 1                  ; &envptr8754[1]
-  %KiO$_37drop_45right = load i64, i64* %envptr8755, align 8                         ; load; *envptr8755
-  %cloptr8756 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8758 = getelementptr inbounds i64, i64* %cloptr8756, i64 1                    ; &eptr8758[1]
-  store i64 %Yrh$_37foldr1, i64* %eptr8758                                           ; *eptr8758 = %Yrh$_37foldr1
-  %eptr8757 = getelementptr inbounds i64, i64* %cloptr8756, i64 0                    ; &cloptr8756[0]
-  %f8759 = ptrtoint void(i64,i64,i64,i64)* @lam8537 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8759, i64* %eptr8757                                                   ; store fptr
-  %KqY$_37map1 = ptrtoint i64* %cloptr8756 to i64                                    ; closure cast; i64* -> i64
-  %cloptr8760 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8762 = getelementptr inbounds i64, i64* %cloptr8760, i64 1                    ; &eptr8762[1]
-  %eptr8763 = getelementptr inbounds i64, i64* %cloptr8760, i64 2                    ; &eptr8763[2]
-  %eptr8764 = getelementptr inbounds i64, i64* %cloptr8760, i64 3                    ; &eptr8764[3]
-  store i64 %KiO$_37drop_45right, i64* %eptr8762                                     ; *eptr8762 = %KiO$_37drop_45right
-  store i64 %Ini$_37foldr, i64* %eptr8763                                            ; *eptr8763 = %Ini$_37foldr
-  store i64 %AfU$_37last, i64* %eptr8764                                             ; *eptr8764 = %AfU$_37last
-  %eptr8761 = getelementptr inbounds i64, i64* %cloptr8760, i64 0                    ; &cloptr8760[0]
-  %f8765 = ptrtoint void(i64,i64)* @lam8529 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f8765, i64* %eptr8761                                                   ; store fptr
-  %Obd$_37map = ptrtoint i64* %cloptr8760 to i64                                     ; closure cast; i64* -> i64
-  %cloptr8766 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8768 = getelementptr inbounds i64, i64* %cloptr8766, i64 1                    ; &eptr8768[1]
-  %eptr8769 = getelementptr inbounds i64, i64* %cloptr8766, i64 2                    ; &eptr8769[2]
-  store i64 %Va3$_37length, i64* %eptr8768                                           ; *eptr8768 = %Va3$_37length
-  store i64 %fVq$_37foldl1, i64* %eptr8769                                           ; *eptr8769 = %fVq$_37foldl1
-  %eptr8767 = getelementptr inbounds i64, i64* %cloptr8766, i64 0                    ; &cloptr8766[0]
-  %f8770 = ptrtoint void(i64,i64,i64)* @lam8516 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8770, i64* %eptr8767                                                   ; store fptr
-  %arg7334 = ptrtoint i64* %cloptr8766 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8771 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8773 = getelementptr inbounds i64, i64* %cloptr8771, i64 1                    ; &eptr8773[1]
-  %eptr8774 = getelementptr inbounds i64, i64* %cloptr8771, i64 2                    ; &eptr8774[2]
-  %eptr8775 = getelementptr inbounds i64, i64* %cloptr8771, i64 3                    ; &eptr8775[3]
-  store i64 %Yrh$_37foldr1, i64* %eptr8773                                           ; *eptr8773 = %Yrh$_37foldr1
-  store i64 %KqY$_37map1, i64* %eptr8774                                             ; *eptr8774 = %KqY$_37map1
-  store i64 %Ini$_37foldr, i64* %eptr8775                                            ; *eptr8775 = %Ini$_37foldr
-  %eptr8772 = getelementptr inbounds i64, i64* %cloptr8771, i64 0                    ; &cloptr8771[0]
-  %f8776 = ptrtoint void(i64,i64,i64)* @lam8240 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8776, i64* %eptr8772                                                   ; store fptr
-  %arg7333 = ptrtoint i64* %cloptr8771 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8777 = inttoptr i64 %IcL$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8777)                                         ; assert function application
-  %i0ptr8778 = getelementptr inbounds i64, i64* %cloptr8777, i64 0                   ; &cloptr8777[0]
-  %f8780 = load i64, i64* %i0ptr8778, align 8                                        ; load; *i0ptr8778
-  %fptr8779 = inttoptr i64 %f8780 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8779(i64 %IcL$Ycmb, i64 %arg7334, i64 %arg7333)     ; tail call
+define void @lam8525(i64 %env8526, i64 %_957074, i64 %tct$_37foldr) {
+  %envptr8730 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8731 = getelementptr inbounds i64, i64* %envptr8730, i64 6                  ; &envptr8730[6]
+  %EGV$_37last = load i64, i64* %envptr8731, align 8                                 ; load; *envptr8731
+  %envptr8732 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8733 = getelementptr inbounds i64, i64* %envptr8732, i64 5                  ; &envptr8732[5]
+  %AmT$_37foldr1 = load i64, i64* %envptr8733, align 8                               ; load; *envptr8733
+  %envptr8734 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8735 = getelementptr inbounds i64, i64* %envptr8734, i64 4                  ; &envptr8734[4]
+  %BPC$Ycmb = load i64, i64* %envptr8735, align 8                                    ; load; *envptr8735
+  %envptr8736 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8737 = getelementptr inbounds i64, i64* %envptr8736, i64 3                  ; &envptr8736[3]
+  %LnC$_37foldl1 = load i64, i64* %envptr8737, align 8                               ; load; *envptr8737
+  %envptr8738 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8739 = getelementptr inbounds i64, i64* %envptr8738, i64 2                  ; &envptr8738[2]
+  %QFP$_37length = load i64, i64* %envptr8739, align 8                               ; load; *envptr8739
+  %envptr8740 = inttoptr i64 %env8526 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8741 = getelementptr inbounds i64, i64* %envptr8740, i64 1                  ; &envptr8740[1]
+  %j7f$_37drop_45right = load i64, i64* %envptr8741, align 8                         ; load; *envptr8741
+  %cloptr8742 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8744 = getelementptr inbounds i64, i64* %cloptr8742, i64 1                    ; &eptr8744[1]
+  store i64 %AmT$_37foldr1, i64* %eptr8744                                           ; *eptr8744 = %AmT$_37foldr1
+  %eptr8743 = getelementptr inbounds i64, i64* %cloptr8742, i64 0                    ; &cloptr8742[0]
+  %f8745 = ptrtoint void(i64,i64,i64,i64)* @lam8523 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8745, i64* %eptr8743                                                   ; store fptr
+  %XiW$_37map1 = ptrtoint i64* %cloptr8742 to i64                                    ; closure cast; i64* -> i64
+  %cloptr8746 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8748 = getelementptr inbounds i64, i64* %cloptr8746, i64 1                    ; &eptr8748[1]
+  %eptr8749 = getelementptr inbounds i64, i64* %cloptr8746, i64 2                    ; &eptr8749[2]
+  %eptr8750 = getelementptr inbounds i64, i64* %cloptr8746, i64 3                    ; &eptr8750[3]
+  store i64 %j7f$_37drop_45right, i64* %eptr8748                                     ; *eptr8748 = %j7f$_37drop_45right
+  store i64 %tct$_37foldr, i64* %eptr8749                                            ; *eptr8749 = %tct$_37foldr
+  store i64 %EGV$_37last, i64* %eptr8750                                             ; *eptr8750 = %EGV$_37last
+  %eptr8747 = getelementptr inbounds i64, i64* %cloptr8746, i64 0                    ; &cloptr8746[0]
+  %f8751 = ptrtoint void(i64,i64)* @lam8515 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f8751, i64* %eptr8747                                                   ; store fptr
+  %Bt6$_37map = ptrtoint i64* %cloptr8746 to i64                                     ; closure cast; i64* -> i64
+  %cloptr8752 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8754 = getelementptr inbounds i64, i64* %cloptr8752, i64 1                    ; &eptr8754[1]
+  %eptr8755 = getelementptr inbounds i64, i64* %cloptr8752, i64 2                    ; &eptr8755[2]
+  store i64 %QFP$_37length, i64* %eptr8754                                           ; *eptr8754 = %QFP$_37length
+  store i64 %LnC$_37foldl1, i64* %eptr8755                                           ; *eptr8755 = %LnC$_37foldl1
+  %eptr8753 = getelementptr inbounds i64, i64* %cloptr8752, i64 0                    ; &cloptr8752[0]
+  %f8756 = ptrtoint void(i64,i64,i64)* @lam8502 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8756, i64* %eptr8753                                                   ; store fptr
+  %arg7332 = ptrtoint i64* %cloptr8752 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8757 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8759 = getelementptr inbounds i64, i64* %cloptr8757, i64 1                    ; &eptr8759[1]
+  %eptr8760 = getelementptr inbounds i64, i64* %cloptr8757, i64 2                    ; &eptr8760[2]
+  %eptr8761 = getelementptr inbounds i64, i64* %cloptr8757, i64 3                    ; &eptr8761[3]
+  store i64 %AmT$_37foldr1, i64* %eptr8759                                           ; *eptr8759 = %AmT$_37foldr1
+  store i64 %XiW$_37map1, i64* %eptr8760                                             ; *eptr8760 = %XiW$_37map1
+  store i64 %tct$_37foldr, i64* %eptr8761                                            ; *eptr8761 = %tct$_37foldr
+  %eptr8758 = getelementptr inbounds i64, i64* %cloptr8757, i64 0                    ; &cloptr8757[0]
+  %f8762 = ptrtoint void(i64,i64,i64)* @lam8231 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8762, i64* %eptr8758                                                   ; store fptr
+  %arg7331 = ptrtoint i64* %cloptr8757 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8763 = inttoptr i64 %BPC$Ycmb to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8763)                                         ; assert function application
+  %i0ptr8764 = getelementptr inbounds i64, i64* %cloptr8763, i64 0                   ; &cloptr8763[0]
+  %f8766 = load i64, i64* %i0ptr8764, align 8                                        ; load; *i0ptr8764
+  %fptr8765 = inttoptr i64 %f8766 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8765(i64 %BPC$Ycmb, i64 %arg7332, i64 %arg7331)     ; tail call
   ret void
 }
 
 
-define void @lam8537(i64 %env8538, i64 %cont7077, i64 %RbS$f, i64 %Vf1$lst) {
-  %envptr8781 = inttoptr i64 %env8538 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8782 = getelementptr inbounds i64, i64* %envptr8781, i64 1                  ; &envptr8781[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr8782, align 8                               ; load; *envptr8782
-  %cloptr8783 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8785 = getelementptr inbounds i64, i64* %cloptr8783, i64 1                    ; &eptr8785[1]
-  store i64 %RbS$f, i64* %eptr8785                                                   ; *eptr8785 = %RbS$f
-  %eptr8784 = getelementptr inbounds i64, i64* %cloptr8783, i64 0                    ; &cloptr8783[0]
-  %f8786 = ptrtoint void(i64,i64,i64,i64)* @lam8535 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8786, i64* %eptr8784                                                   ; store fptr
-  %arg7296 = ptrtoint i64* %cloptr8783 to i64                                        ; closure cast; i64* -> i64
-  %arg7295 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8787 = inttoptr i64 %Yrh$_37foldr1 to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8787)                                         ; assert function application
-  %i0ptr8788 = getelementptr inbounds i64, i64* %cloptr8787, i64 0                   ; &cloptr8787[0]
-  %f8790 = load i64, i64* %i0ptr8788, align 8                                        ; load; *i0ptr8788
-  %fptr8789 = inttoptr i64 %f8790 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8789(i64 %Yrh$_37foldr1, i64 %cont7077, i64 %arg7296, i64 %arg7295, i64 %Vf1$lst); tail call
+define void @lam8523(i64 %env8524, i64 %cont7075, i64 %xRO$f, i64 %sCU$lst) {
+  %envptr8767 = inttoptr i64 %env8524 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8768 = getelementptr inbounds i64, i64* %envptr8767, i64 1                  ; &envptr8767[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr8768, align 8                               ; load; *envptr8768
+  %cloptr8769 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8771 = getelementptr inbounds i64, i64* %cloptr8769, i64 1                    ; &eptr8771[1]
+  store i64 %xRO$f, i64* %eptr8771                                                   ; *eptr8771 = %xRO$f
+  %eptr8770 = getelementptr inbounds i64, i64* %cloptr8769, i64 0                    ; &cloptr8769[0]
+  %f8772 = ptrtoint void(i64,i64,i64,i64)* @lam8521 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8772, i64* %eptr8770                                                   ; store fptr
+  %arg7294 = ptrtoint i64* %cloptr8769 to i64                                        ; closure cast; i64* -> i64
+  %arg7293 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8773 = inttoptr i64 %AmT$_37foldr1 to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8773)                                         ; assert function application
+  %i0ptr8774 = getelementptr inbounds i64, i64* %cloptr8773, i64 0                   ; &cloptr8773[0]
+  %f8776 = load i64, i64* %i0ptr8774, align 8                                        ; load; *i0ptr8774
+  %fptr8775 = inttoptr i64 %f8776 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8775(i64 %AmT$_37foldr1, i64 %cont7075, i64 %arg7294, i64 %arg7293, i64 %sCU$lst); tail call
   ret void
 }
 
 
-define void @lam8535(i64 %env8536, i64 %cont7078, i64 %b4e$v, i64 %otE$r) {
-  %envptr8791 = inttoptr i64 %env8536 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8792 = getelementptr inbounds i64, i64* %envptr8791, i64 1                  ; &envptr8791[1]
-  %RbS$f = load i64, i64* %envptr8792, align 8                                       ; load; *envptr8792
-  %cloptr8793 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8795 = getelementptr inbounds i64, i64* %cloptr8793, i64 1                    ; &eptr8795[1]
-  %eptr8796 = getelementptr inbounds i64, i64* %cloptr8793, i64 2                    ; &eptr8796[2]
-  store i64 %otE$r, i64* %eptr8795                                                   ; *eptr8795 = %otE$r
-  store i64 %cont7078, i64* %eptr8796                                                ; *eptr8796 = %cont7078
-  %eptr8794 = getelementptr inbounds i64, i64* %cloptr8793, i64 0                    ; &cloptr8793[0]
-  %f8797 = ptrtoint void(i64,i64,i64)* @lam8533 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8797, i64* %eptr8794                                                   ; store fptr
-  %arg7300 = ptrtoint i64* %cloptr8793 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8798 = inttoptr i64 %RbS$f to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8798)                                         ; assert function application
-  %i0ptr8799 = getelementptr inbounds i64, i64* %cloptr8798, i64 0                   ; &cloptr8798[0]
-  %f8801 = load i64, i64* %i0ptr8799, align 8                                        ; load; *i0ptr8799
-  %fptr8800 = inttoptr i64 %f8801 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8800(i64 %RbS$f, i64 %arg7300, i64 %b4e$v)          ; tail call
+define void @lam8521(i64 %env8522, i64 %cont7076, i64 %y7m$v, i64 %Xx9$r) {
+  %envptr8777 = inttoptr i64 %env8522 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8778 = getelementptr inbounds i64, i64* %envptr8777, i64 1                  ; &envptr8777[1]
+  %xRO$f = load i64, i64* %envptr8778, align 8                                       ; load; *envptr8778
+  %cloptr8779 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8781 = getelementptr inbounds i64, i64* %cloptr8779, i64 1                    ; &eptr8781[1]
+  %eptr8782 = getelementptr inbounds i64, i64* %cloptr8779, i64 2                    ; &eptr8782[2]
+  store i64 %Xx9$r, i64* %eptr8781                                                   ; *eptr8781 = %Xx9$r
+  store i64 %cont7076, i64* %eptr8782                                                ; *eptr8782 = %cont7076
+  %eptr8780 = getelementptr inbounds i64, i64* %cloptr8779, i64 0                    ; &cloptr8779[0]
+  %f8783 = ptrtoint void(i64,i64,i64)* @lam8519 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8783, i64* %eptr8780                                                   ; store fptr
+  %arg7298 = ptrtoint i64* %cloptr8779 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8784 = inttoptr i64 %xRO$f to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8784)                                         ; assert function application
+  %i0ptr8785 = getelementptr inbounds i64, i64* %cloptr8784, i64 0                   ; &cloptr8784[0]
+  %f8787 = load i64, i64* %i0ptr8785, align 8                                        ; load; *i0ptr8785
+  %fptr8786 = inttoptr i64 %f8787 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8786(i64 %xRO$f, i64 %arg7298, i64 %y7m$v)          ; tail call
   ret void
 }
 
 
-define void @lam8533(i64 %env8534, i64 %_957079, i64 %a6979) {
-  %envptr8802 = inttoptr i64 %env8534 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8803 = getelementptr inbounds i64, i64* %envptr8802, i64 2                  ; &envptr8802[2]
-  %cont7078 = load i64, i64* %envptr8803, align 8                                    ; load; *envptr8803
-  %envptr8804 = inttoptr i64 %env8534 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8805 = getelementptr inbounds i64, i64* %envptr8804, i64 1                  ; &envptr8804[1]
-  %otE$r = load i64, i64* %envptr8805, align 8                                       ; load; *envptr8805
-  %retprim7080 = call i64 @prim_cons(i64 %a6979, i64 %otE$r)                         ; call prim_cons
-  %arg7305 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8806 = inttoptr i64 %cont7078 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8806)                                         ; assert function application
-  %i0ptr8807 = getelementptr inbounds i64, i64* %cloptr8806, i64 0                   ; &cloptr8806[0]
-  %f8809 = load i64, i64* %i0ptr8807, align 8                                        ; load; *i0ptr8807
-  %fptr8808 = inttoptr i64 %f8809 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8808(i64 %cont7078, i64 %arg7305, i64 %retprim7080) ; tail call
+define void @lam8519(i64 %env8520, i64 %_957077, i64 %a6979) {
+  %envptr8788 = inttoptr i64 %env8520 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8789 = getelementptr inbounds i64, i64* %envptr8788, i64 2                  ; &envptr8788[2]
+  %cont7076 = load i64, i64* %envptr8789, align 8                                    ; load; *envptr8789
+  %envptr8790 = inttoptr i64 %env8520 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8791 = getelementptr inbounds i64, i64* %envptr8790, i64 1                  ; &envptr8790[1]
+  %Xx9$r = load i64, i64* %envptr8791, align 8                                       ; load; *envptr8791
+  %retprim7078 = call i64 @prim_cons(i64 %a6979, i64 %Xx9$r)                         ; call prim_cons
+  %arg7303 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8792 = inttoptr i64 %cont7076 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8792)                                         ; assert function application
+  %i0ptr8793 = getelementptr inbounds i64, i64* %cloptr8792, i64 0                   ; &cloptr8792[0]
+  %f8795 = load i64, i64* %i0ptr8793, align 8                                        ; load; *i0ptr8793
+  %fptr8794 = inttoptr i64 %f8795 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8794(i64 %cont7076, i64 %arg7303, i64 %retprim7078) ; tail call
   ret void
 }
 
 
-define void @lam8529(i64 %env8530, i64 %xOy$args7082) {
-  %envptr8810 = inttoptr i64 %env8530 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8811 = getelementptr inbounds i64, i64* %envptr8810, i64 3                  ; &envptr8810[3]
-  %AfU$_37last = load i64, i64* %envptr8811, align 8                                 ; load; *envptr8811
-  %envptr8812 = inttoptr i64 %env8530 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8813 = getelementptr inbounds i64, i64* %envptr8812, i64 2                  ; &envptr8812[2]
-  %Ini$_37foldr = load i64, i64* %envptr8813, align 8                                ; load; *envptr8813
-  %envptr8814 = inttoptr i64 %env8530 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8815 = getelementptr inbounds i64, i64* %envptr8814, i64 1                  ; &envptr8814[1]
-  %KiO$_37drop_45right = load i64, i64* %envptr8815, align 8                         ; load; *envptr8815
-  %cont7081 = call i64 @prim_car(i64 %xOy$args7082)                                  ; call prim_car
-  %xOy$args = call i64 @prim_cdr(i64 %xOy$args7082)                                  ; call prim_cdr
-  %bH1$f = call i64 @prim_car(i64 %xOy$args)                                         ; call prim_car
-  %WNC$lsts = call i64 @prim_cdr(i64 %xOy$args)                                      ; call prim_cdr
-  %arg7312 = add i64 0, 0                                                            ; quoted ()
-  %a6983 = call i64 @prim_cons(i64 %arg7312, i64 %WNC$lsts)                          ; call prim_cons
-  %cloptr8816 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8818 = getelementptr inbounds i64, i64* %cloptr8816, i64 1                    ; &eptr8818[1]
-  %eptr8819 = getelementptr inbounds i64, i64* %cloptr8816, i64 2                    ; &eptr8819[2]
-  %eptr8820 = getelementptr inbounds i64, i64* %cloptr8816, i64 3                    ; &eptr8820[3]
-  store i64 %KiO$_37drop_45right, i64* %eptr8818                                     ; *eptr8818 = %KiO$_37drop_45right
-  store i64 %AfU$_37last, i64* %eptr8819                                             ; *eptr8819 = %AfU$_37last
-  store i64 %bH1$f, i64* %eptr8820                                                   ; *eptr8820 = %bH1$f
-  %eptr8817 = getelementptr inbounds i64, i64* %cloptr8816, i64 0                    ; &cloptr8816[0]
-  %f8821 = ptrtoint void(i64,i64)* @lam8526 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f8821, i64* %eptr8817                                                   ; store fptr
-  %arg7314 = ptrtoint i64* %cloptr8816 to i64                                        ; closure cast; i64* -> i64
-  %a6984 = call i64 @prim_cons(i64 %arg7314, i64 %a6983)                             ; call prim_cons
-  %cps_45lst7090 = call i64 @prim_cons(i64 %cont7081, i64 %a6984)                    ; call prim_cons
-  %cloptr8822 = inttoptr i64 %Ini$_37foldr to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8822)                                         ; assert function application
-  %i0ptr8823 = getelementptr inbounds i64, i64* %cloptr8822, i64 0                   ; &cloptr8822[0]
-  %f8825 = load i64, i64* %i0ptr8823, align 8                                        ; load; *i0ptr8823
-  %fptr8824 = inttoptr i64 %f8825 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8824(i64 %Ini$_37foldr, i64 %cps_45lst7090)         ; tail call
+define void @lam8515(i64 %env8516, i64 %dlK$args7080) {
+  %envptr8796 = inttoptr i64 %env8516 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8797 = getelementptr inbounds i64, i64* %envptr8796, i64 3                  ; &envptr8796[3]
+  %EGV$_37last = load i64, i64* %envptr8797, align 8                                 ; load; *envptr8797
+  %envptr8798 = inttoptr i64 %env8516 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8799 = getelementptr inbounds i64, i64* %envptr8798, i64 2                  ; &envptr8798[2]
+  %tct$_37foldr = load i64, i64* %envptr8799, align 8                                ; load; *envptr8799
+  %envptr8800 = inttoptr i64 %env8516 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8801 = getelementptr inbounds i64, i64* %envptr8800, i64 1                  ; &envptr8800[1]
+  %j7f$_37drop_45right = load i64, i64* %envptr8801, align 8                         ; load; *envptr8801
+  %cont7079 = call i64 @prim_car(i64 %dlK$args7080)                                  ; call prim_car
+  %dlK$args = call i64 @prim_cdr(i64 %dlK$args7080)                                  ; call prim_cdr
+  %ktB$f = call i64 @prim_car(i64 %dlK$args)                                         ; call prim_car
+  %jzK$lsts = call i64 @prim_cdr(i64 %dlK$args)                                      ; call prim_cdr
+  %arg7310 = add i64 0, 0                                                            ; quoted ()
+  %a6983 = call i64 @prim_cons(i64 %arg7310, i64 %jzK$lsts)                          ; call prim_cons
+  %cloptr8802 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8804 = getelementptr inbounds i64, i64* %cloptr8802, i64 1                    ; &eptr8804[1]
+  %eptr8805 = getelementptr inbounds i64, i64* %cloptr8802, i64 2                    ; &eptr8805[2]
+  %eptr8806 = getelementptr inbounds i64, i64* %cloptr8802, i64 3                    ; &eptr8806[3]
+  store i64 %j7f$_37drop_45right, i64* %eptr8804                                     ; *eptr8804 = %j7f$_37drop_45right
+  store i64 %EGV$_37last, i64* %eptr8805                                             ; *eptr8805 = %EGV$_37last
+  store i64 %ktB$f, i64* %eptr8806                                                   ; *eptr8806 = %ktB$f
+  %eptr8803 = getelementptr inbounds i64, i64* %cloptr8802, i64 0                    ; &cloptr8802[0]
+  %f8807 = ptrtoint void(i64,i64)* @lam8512 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f8807, i64* %eptr8803                                                   ; store fptr
+  %arg7312 = ptrtoint i64* %cloptr8802 to i64                                        ; closure cast; i64* -> i64
+  %a6984 = call i64 @prim_cons(i64 %arg7312, i64 %a6983)                             ; call prim_cons
+  %cps_45lst7088 = call i64 @prim_cons(i64 %cont7079, i64 %a6984)                    ; call prim_cons
+  %cloptr8808 = inttoptr i64 %tct$_37foldr to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8808)                                         ; assert function application
+  %i0ptr8809 = getelementptr inbounds i64, i64* %cloptr8808, i64 0                   ; &cloptr8808[0]
+  %f8811 = load i64, i64* %i0ptr8809, align 8                                        ; load; *i0ptr8809
+  %fptr8810 = inttoptr i64 %f8811 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8810(i64 %tct$_37foldr, i64 %cps_45lst7088)         ; tail call
   ret void
 }
 
 
-define void @lam8526(i64 %env8527, i64 %HbK$fargs7084) {
-  %envptr8826 = inttoptr i64 %env8527 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8827 = getelementptr inbounds i64, i64* %envptr8826, i64 3                  ; &envptr8826[3]
-  %bH1$f = load i64, i64* %envptr8827, align 8                                       ; load; *envptr8827
-  %envptr8828 = inttoptr i64 %env8527 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8829 = getelementptr inbounds i64, i64* %envptr8828, i64 2                  ; &envptr8828[2]
-  %AfU$_37last = load i64, i64* %envptr8829, align 8                                 ; load; *envptr8829
-  %envptr8830 = inttoptr i64 %env8527 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8831 = getelementptr inbounds i64, i64* %envptr8830, i64 1                  ; &envptr8830[1]
-  %KiO$_37drop_45right = load i64, i64* %envptr8831, align 8                         ; load; *envptr8831
-  %cont7083 = call i64 @prim_car(i64 %HbK$fargs7084)                                 ; call prim_car
-  %HbK$fargs = call i64 @prim_cdr(i64 %HbK$fargs7084)                                ; call prim_cdr
-  %cloptr8832 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr8834 = getelementptr inbounds i64, i64* %cloptr8832, i64 1                    ; &eptr8834[1]
-  %eptr8835 = getelementptr inbounds i64, i64* %cloptr8832, i64 2                    ; &eptr8835[2]
-  %eptr8836 = getelementptr inbounds i64, i64* %cloptr8832, i64 3                    ; &eptr8836[3]
-  %eptr8837 = getelementptr inbounds i64, i64* %cloptr8832, i64 4                    ; &eptr8837[4]
-  store i64 %HbK$fargs, i64* %eptr8834                                               ; *eptr8834 = %HbK$fargs
-  store i64 %cont7083, i64* %eptr8835                                                ; *eptr8835 = %cont7083
-  store i64 %AfU$_37last, i64* %eptr8836                                             ; *eptr8836 = %AfU$_37last
-  store i64 %bH1$f, i64* %eptr8837                                                   ; *eptr8837 = %bH1$f
-  %eptr8833 = getelementptr inbounds i64, i64* %cloptr8832, i64 0                    ; &cloptr8832[0]
-  %f8838 = ptrtoint void(i64,i64,i64)* @lam8524 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8838, i64* %eptr8833                                                   ; store fptr
-  %arg7319 = ptrtoint i64* %cloptr8832 to i64                                        ; closure cast; i64* -> i64
-  %arg7317 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %cloptr8839 = inttoptr i64 %KiO$_37drop_45right to i64*                            ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8839)                                         ; assert function application
-  %i0ptr8840 = getelementptr inbounds i64, i64* %cloptr8839, i64 0                   ; &cloptr8839[0]
-  %f8842 = load i64, i64* %i0ptr8840, align 8                                        ; load; *i0ptr8840
-  %fptr8841 = inttoptr i64 %f8842 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8841(i64 %KiO$_37drop_45right, i64 %arg7319, i64 %HbK$fargs, i64 %arg7317); tail call
+define void @lam8512(i64 %env8513, i64 %zzA$fargs7082) {
+  %envptr8812 = inttoptr i64 %env8513 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8813 = getelementptr inbounds i64, i64* %envptr8812, i64 3                  ; &envptr8812[3]
+  %ktB$f = load i64, i64* %envptr8813, align 8                                       ; load; *envptr8813
+  %envptr8814 = inttoptr i64 %env8513 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8815 = getelementptr inbounds i64, i64* %envptr8814, i64 2                  ; &envptr8814[2]
+  %EGV$_37last = load i64, i64* %envptr8815, align 8                                 ; load; *envptr8815
+  %envptr8816 = inttoptr i64 %env8513 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8817 = getelementptr inbounds i64, i64* %envptr8816, i64 1                  ; &envptr8816[1]
+  %j7f$_37drop_45right = load i64, i64* %envptr8817, align 8                         ; load; *envptr8817
+  %cont7081 = call i64 @prim_car(i64 %zzA$fargs7082)                                 ; call prim_car
+  %zzA$fargs = call i64 @prim_cdr(i64 %zzA$fargs7082)                                ; call prim_cdr
+  %cloptr8818 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr8820 = getelementptr inbounds i64, i64* %cloptr8818, i64 1                    ; &eptr8820[1]
+  %eptr8821 = getelementptr inbounds i64, i64* %cloptr8818, i64 2                    ; &eptr8821[2]
+  %eptr8822 = getelementptr inbounds i64, i64* %cloptr8818, i64 3                    ; &eptr8822[3]
+  %eptr8823 = getelementptr inbounds i64, i64* %cloptr8818, i64 4                    ; &eptr8823[4]
+  store i64 %zzA$fargs, i64* %eptr8820                                               ; *eptr8820 = %zzA$fargs
+  store i64 %EGV$_37last, i64* %eptr8821                                             ; *eptr8821 = %EGV$_37last
+  store i64 %cont7081, i64* %eptr8822                                                ; *eptr8822 = %cont7081
+  store i64 %ktB$f, i64* %eptr8823                                                   ; *eptr8823 = %ktB$f
+  %eptr8819 = getelementptr inbounds i64, i64* %cloptr8818, i64 0                    ; &cloptr8818[0]
+  %f8824 = ptrtoint void(i64,i64,i64)* @lam8510 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8824, i64* %eptr8819                                                   ; store fptr
+  %arg7317 = ptrtoint i64* %cloptr8818 to i64                                        ; closure cast; i64* -> i64
+  %arg7315 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %cloptr8825 = inttoptr i64 %j7f$_37drop_45right to i64*                            ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8825)                                         ; assert function application
+  %i0ptr8826 = getelementptr inbounds i64, i64* %cloptr8825, i64 0                   ; &cloptr8825[0]
+  %f8828 = load i64, i64* %i0ptr8826, align 8                                        ; load; *i0ptr8826
+  %fptr8827 = inttoptr i64 %f8828 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8827(i64 %j7f$_37drop_45right, i64 %arg7317, i64 %zzA$fargs, i64 %arg7315); tail call
   ret void
 }
 
 
-define void @lam8524(i64 %env8525, i64 %_957085, i64 %a6980) {
-  %envptr8843 = inttoptr i64 %env8525 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8844 = getelementptr inbounds i64, i64* %envptr8843, i64 4                  ; &envptr8843[4]
-  %bH1$f = load i64, i64* %envptr8844, align 8                                       ; load; *envptr8844
-  %envptr8845 = inttoptr i64 %env8525 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8846 = getelementptr inbounds i64, i64* %envptr8845, i64 3                  ; &envptr8845[3]
-  %AfU$_37last = load i64, i64* %envptr8846, align 8                                 ; load; *envptr8846
-  %envptr8847 = inttoptr i64 %env8525 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8848 = getelementptr inbounds i64, i64* %envptr8847, i64 2                  ; &envptr8847[2]
-  %cont7083 = load i64, i64* %envptr8848, align 8                                    ; load; *envptr8848
-  %envptr8849 = inttoptr i64 %env8525 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8850 = getelementptr inbounds i64, i64* %envptr8849, i64 1                  ; &envptr8849[1]
-  %HbK$fargs = load i64, i64* %envptr8850, align 8                                   ; load; *envptr8850
-  %cloptr8851 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8853 = getelementptr inbounds i64, i64* %cloptr8851, i64 1                    ; &eptr8853[1]
-  %eptr8854 = getelementptr inbounds i64, i64* %cloptr8851, i64 2                    ; &eptr8854[2]
-  %eptr8855 = getelementptr inbounds i64, i64* %cloptr8851, i64 3                    ; &eptr8855[3]
-  store i64 %HbK$fargs, i64* %eptr8853                                               ; *eptr8853 = %HbK$fargs
-  store i64 %cont7083, i64* %eptr8854                                                ; *eptr8854 = %cont7083
-  store i64 %AfU$_37last, i64* %eptr8855                                             ; *eptr8855 = %AfU$_37last
-  %eptr8852 = getelementptr inbounds i64, i64* %cloptr8851, i64 0                    ; &cloptr8851[0]
-  %f8856 = ptrtoint void(i64,i64,i64)* @lam8522 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8856, i64* %eptr8852                                                   ; store fptr
-  %arg7322 = ptrtoint i64* %cloptr8851 to i64                                        ; closure cast; i64* -> i64
-  %cps_45lst7089 = call i64 @prim_cons(i64 %arg7322, i64 %a6980)                     ; call prim_cons
-  %cloptr8857 = inttoptr i64 %bH1$f to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8857)                                         ; assert function application
-  %i0ptr8858 = getelementptr inbounds i64, i64* %cloptr8857, i64 0                   ; &cloptr8857[0]
-  %f8860 = load i64, i64* %i0ptr8858, align 8                                        ; load; *i0ptr8858
-  %fptr8859 = inttoptr i64 %f8860 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8859(i64 %bH1$f, i64 %cps_45lst7089)                ; tail call
+define void @lam8510(i64 %env8511, i64 %_957083, i64 %a6980) {
+  %envptr8829 = inttoptr i64 %env8511 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8830 = getelementptr inbounds i64, i64* %envptr8829, i64 4                  ; &envptr8829[4]
+  %ktB$f = load i64, i64* %envptr8830, align 8                                       ; load; *envptr8830
+  %envptr8831 = inttoptr i64 %env8511 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8832 = getelementptr inbounds i64, i64* %envptr8831, i64 3                  ; &envptr8831[3]
+  %cont7081 = load i64, i64* %envptr8832, align 8                                    ; load; *envptr8832
+  %envptr8833 = inttoptr i64 %env8511 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8834 = getelementptr inbounds i64, i64* %envptr8833, i64 2                  ; &envptr8833[2]
+  %EGV$_37last = load i64, i64* %envptr8834, align 8                                 ; load; *envptr8834
+  %envptr8835 = inttoptr i64 %env8511 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8836 = getelementptr inbounds i64, i64* %envptr8835, i64 1                  ; &envptr8835[1]
+  %zzA$fargs = load i64, i64* %envptr8836, align 8                                   ; load; *envptr8836
+  %cloptr8837 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8839 = getelementptr inbounds i64, i64* %cloptr8837, i64 1                    ; &eptr8839[1]
+  %eptr8840 = getelementptr inbounds i64, i64* %cloptr8837, i64 2                    ; &eptr8840[2]
+  %eptr8841 = getelementptr inbounds i64, i64* %cloptr8837, i64 3                    ; &eptr8841[3]
+  store i64 %zzA$fargs, i64* %eptr8839                                               ; *eptr8839 = %zzA$fargs
+  store i64 %EGV$_37last, i64* %eptr8840                                             ; *eptr8840 = %EGV$_37last
+  store i64 %cont7081, i64* %eptr8841                                                ; *eptr8841 = %cont7081
+  %eptr8838 = getelementptr inbounds i64, i64* %cloptr8837, i64 0                    ; &cloptr8837[0]
+  %f8842 = ptrtoint void(i64,i64,i64)* @lam8508 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8842, i64* %eptr8838                                                   ; store fptr
+  %arg7320 = ptrtoint i64* %cloptr8837 to i64                                        ; closure cast; i64* -> i64
+  %cps_45lst7087 = call i64 @prim_cons(i64 %arg7320, i64 %a6980)                     ; call prim_cons
+  %cloptr8843 = inttoptr i64 %ktB$f to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8843)                                         ; assert function application
+  %i0ptr8844 = getelementptr inbounds i64, i64* %cloptr8843, i64 0                   ; &cloptr8843[0]
+  %f8846 = load i64, i64* %i0ptr8844, align 8                                        ; load; *i0ptr8844
+  %fptr8845 = inttoptr i64 %f8846 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8845(i64 %ktB$f, i64 %cps_45lst7087)                ; tail call
   ret void
 }
 
 
-define void @lam8522(i64 %env8523, i64 %_957086, i64 %a6981) {
-  %envptr8861 = inttoptr i64 %env8523 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8862 = getelementptr inbounds i64, i64* %envptr8861, i64 3                  ; &envptr8861[3]
-  %AfU$_37last = load i64, i64* %envptr8862, align 8                                 ; load; *envptr8862
-  %envptr8863 = inttoptr i64 %env8523 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8864 = getelementptr inbounds i64, i64* %envptr8863, i64 2                  ; &envptr8863[2]
-  %cont7083 = load i64, i64* %envptr8864, align 8                                    ; load; *envptr8864
-  %envptr8865 = inttoptr i64 %env8523 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8866 = getelementptr inbounds i64, i64* %envptr8865, i64 1                  ; &envptr8865[1]
-  %HbK$fargs = load i64, i64* %envptr8866, align 8                                   ; load; *envptr8866
-  %cloptr8867 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8869 = getelementptr inbounds i64, i64* %cloptr8867, i64 1                    ; &eptr8869[1]
-  %eptr8870 = getelementptr inbounds i64, i64* %cloptr8867, i64 2                    ; &eptr8870[2]
-  store i64 %cont7083, i64* %eptr8869                                                ; *eptr8869 = %cont7083
-  store i64 %a6981, i64* %eptr8870                                                   ; *eptr8870 = %a6981
-  %eptr8868 = getelementptr inbounds i64, i64* %cloptr8867, i64 0                    ; &cloptr8867[0]
-  %f8871 = ptrtoint void(i64,i64,i64)* @lam8520 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8871, i64* %eptr8868                                                   ; store fptr
-  %arg7324 = ptrtoint i64* %cloptr8867 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8872 = inttoptr i64 %AfU$_37last to i64*                                    ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8872)                                         ; assert function application
-  %i0ptr8873 = getelementptr inbounds i64, i64* %cloptr8872, i64 0                   ; &cloptr8872[0]
-  %f8875 = load i64, i64* %i0ptr8873, align 8                                        ; load; *i0ptr8873
-  %fptr8874 = inttoptr i64 %f8875 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8874(i64 %AfU$_37last, i64 %arg7324, i64 %HbK$fargs); tail call
+define void @lam8508(i64 %env8509, i64 %_957084, i64 %a6981) {
+  %envptr8847 = inttoptr i64 %env8509 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8848 = getelementptr inbounds i64, i64* %envptr8847, i64 3                  ; &envptr8847[3]
+  %cont7081 = load i64, i64* %envptr8848, align 8                                    ; load; *envptr8848
+  %envptr8849 = inttoptr i64 %env8509 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8850 = getelementptr inbounds i64, i64* %envptr8849, i64 2                  ; &envptr8849[2]
+  %EGV$_37last = load i64, i64* %envptr8850, align 8                                 ; load; *envptr8850
+  %envptr8851 = inttoptr i64 %env8509 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8852 = getelementptr inbounds i64, i64* %envptr8851, i64 1                  ; &envptr8851[1]
+  %zzA$fargs = load i64, i64* %envptr8852, align 8                                   ; load; *envptr8852
+  %cloptr8853 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8855 = getelementptr inbounds i64, i64* %cloptr8853, i64 1                    ; &eptr8855[1]
+  %eptr8856 = getelementptr inbounds i64, i64* %cloptr8853, i64 2                    ; &eptr8856[2]
+  store i64 %a6981, i64* %eptr8855                                                   ; *eptr8855 = %a6981
+  store i64 %cont7081, i64* %eptr8856                                                ; *eptr8856 = %cont7081
+  %eptr8854 = getelementptr inbounds i64, i64* %cloptr8853, i64 0                    ; &cloptr8853[0]
+  %f8857 = ptrtoint void(i64,i64,i64)* @lam8506 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8857, i64* %eptr8854                                                   ; store fptr
+  %arg7322 = ptrtoint i64* %cloptr8853 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8858 = inttoptr i64 %EGV$_37last to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8858)                                         ; assert function application
+  %i0ptr8859 = getelementptr inbounds i64, i64* %cloptr8858, i64 0                   ; &cloptr8858[0]
+  %f8861 = load i64, i64* %i0ptr8859, align 8                                        ; load; *i0ptr8859
+  %fptr8860 = inttoptr i64 %f8861 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8860(i64 %EGV$_37last, i64 %arg7322, i64 %zzA$fargs); tail call
   ret void
 }
 
 
-define void @lam8520(i64 %env8521, i64 %_957087, i64 %a6982) {
-  %envptr8876 = inttoptr i64 %env8521 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8877 = getelementptr inbounds i64, i64* %envptr8876, i64 2                  ; &envptr8876[2]
-  %a6981 = load i64, i64* %envptr8877, align 8                                       ; load; *envptr8877
-  %envptr8878 = inttoptr i64 %env8521 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8879 = getelementptr inbounds i64, i64* %envptr8878, i64 1                  ; &envptr8878[1]
-  %cont7083 = load i64, i64* %envptr8879, align 8                                    ; load; *envptr8879
-  %retprim7088 = call i64 @prim_cons(i64 %a6981, i64 %a6982)                         ; call prim_cons
-  %arg7329 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8880 = inttoptr i64 %cont7083 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8880)                                         ; assert function application
-  %i0ptr8881 = getelementptr inbounds i64, i64* %cloptr8880, i64 0                   ; &cloptr8880[0]
-  %f8883 = load i64, i64* %i0ptr8881, align 8                                        ; load; *i0ptr8881
-  %fptr8882 = inttoptr i64 %f8883 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8882(i64 %cont7083, i64 %arg7329, i64 %retprim7088) ; tail call
+define void @lam8506(i64 %env8507, i64 %_957085, i64 %a6982) {
+  %envptr8862 = inttoptr i64 %env8507 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8863 = getelementptr inbounds i64, i64* %envptr8862, i64 2                  ; &envptr8862[2]
+  %cont7081 = load i64, i64* %envptr8863, align 8                                    ; load; *envptr8863
+  %envptr8864 = inttoptr i64 %env8507 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8865 = getelementptr inbounds i64, i64* %envptr8864, i64 1                  ; &envptr8864[1]
+  %a6981 = load i64, i64* %envptr8865, align 8                                       ; load; *envptr8865
+  %retprim7086 = call i64 @prim_cons(i64 %a6981, i64 %a6982)                         ; call prim_cons
+  %arg7327 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8866 = inttoptr i64 %cont7081 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8866)                                         ; assert function application
+  %i0ptr8867 = getelementptr inbounds i64, i64* %cloptr8866, i64 0                   ; &cloptr8866[0]
+  %f8869 = load i64, i64* %i0ptr8867, align 8                                        ; load; *i0ptr8867
+  %fptr8868 = inttoptr i64 %f8869 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8868(i64 %cont7081, i64 %arg7327, i64 %retprim7086) ; tail call
   ret void
 }
 
 
-define void @lam8516(i64 %env8517, i64 %_957091, i64 %OFI$_37foldl) {
-  %envptr8884 = inttoptr i64 %env8517 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8885 = getelementptr inbounds i64, i64* %envptr8884, i64 2                  ; &envptr8884[2]
-  %fVq$_37foldl1 = load i64, i64* %envptr8885, align 8                               ; load; *envptr8885
-  %envptr8886 = inttoptr i64 %env8517 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8887 = getelementptr inbounds i64, i64* %envptr8886, i64 1                  ; &envptr8886[1]
-  %Va3$_37length = load i64, i64* %envptr8887, align 8                               ; load; *envptr8887
-  %cloptr8888 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8889 = getelementptr inbounds i64, i64* %cloptr8888, i64 0                    ; &cloptr8888[0]
-  %f8890 = ptrtoint void(i64,i64,i64,i64)* @lam8514 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8890, i64* %eptr8889                                                   ; store fptr
-  %OTq$_37_62 = ptrtoint i64* %cloptr8888 to i64                                     ; closure cast; i64* -> i64
-  %cloptr8891 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8892 = getelementptr inbounds i64, i64* %cloptr8891, i64 0                    ; &cloptr8891[0]
-  %f8893 = ptrtoint void(i64,i64,i64,i64)* @lam8511 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8893, i64* %eptr8892                                                   ; store fptr
-  %E0s$_37_62_61 = ptrtoint i64* %cloptr8891 to i64                                  ; closure cast; i64* -> i64
-  %arg7349 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %arg7348 = add i64 0, 0                                                            ; quoted ()
-  %Dky$_37append = call i64 @prim_make_45vector(i64 %arg7349, i64 %arg7348)          ; call prim_make_45vector
-  %arg7351 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %cloptr8894 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8896 = getelementptr inbounds i64, i64* %cloptr8894, i64 1                    ; &eptr8896[1]
-  store i64 %Dky$_37append, i64* %eptr8896                                           ; *eptr8896 = %Dky$_37append
-  %eptr8895 = getelementptr inbounds i64, i64* %cloptr8894, i64 0                    ; &cloptr8894[0]
-  %f8897 = ptrtoint void(i64,i64,i64,i64)* @lam8505 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8897, i64* %eptr8895                                                   ; store fptr
-  %arg7350 = ptrtoint i64* %cloptr8894 to i64                                        ; closure cast; i64* -> i64
-  %rkN$_950 = call i64 @prim_vector_45set_33(i64 %Dky$_37append, i64 %arg7351, i64 %arg7350); call prim_vector_45set_33
-  %arg7370 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7181 = call i64 @prim_vector_45ref(i64 %Dky$_37append, i64 %arg7370)       ; call prim_vector_45ref
-  %cloptr8898 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8900 = getelementptr inbounds i64, i64* %cloptr8898, i64 1                    ; &eptr8900[1]
-  %eptr8901 = getelementptr inbounds i64, i64* %cloptr8898, i64 2                    ; &eptr8901[2]
-  %eptr8902 = getelementptr inbounds i64, i64* %cloptr8898, i64 3                    ; &eptr8902[3]
-  store i64 %Va3$_37length, i64* %eptr8900                                           ; *eptr8900 = %Va3$_37length
-  store i64 %fVq$_37foldl1, i64* %eptr8901                                           ; *eptr8901 = %fVq$_37foldl1
-  store i64 %OTq$_37_62, i64* %eptr8902                                              ; *eptr8902 = %OTq$_37_62
-  %eptr8899 = getelementptr inbounds i64, i64* %cloptr8898, i64 0                    ; &cloptr8898[0]
-  %f8903 = ptrtoint void(i64,i64,i64)* @lam8497 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8903, i64* %eptr8899                                                   ; store fptr
-  %arg7374 = ptrtoint i64* %cloptr8898 to i64                                        ; closure cast; i64* -> i64
-  %arg7373 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8904 = inttoptr i64 %arg7374 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8904)                                         ; assert function application
-  %i0ptr8905 = getelementptr inbounds i64, i64* %cloptr8904, i64 0                   ; &cloptr8904[0]
-  %f8907 = load i64, i64* %i0ptr8905, align 8                                        ; load; *i0ptr8905
-  %fptr8906 = inttoptr i64 %f8907 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8906(i64 %arg7374, i64 %arg7373, i64 %retprim7181)  ; tail call
-  ret void
-}
-
-
-define void @lam8514(i64 %env8515, i64 %cont7092, i64 %sL4$a, i64 %fBA$b) {
-  %a6992 = call i64 @prim__60_61(i64 %sL4$a, i64 %fBA$b)                             ; call prim__60_61
-  %retprim7093 = call i64 @prim_not(i64 %a6992)                                      ; call prim_not
-  %arg7340 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8908 = inttoptr i64 %cont7092 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8908)                                         ; assert function application
-  %i0ptr8909 = getelementptr inbounds i64, i64* %cloptr8908, i64 0                   ; &cloptr8908[0]
-  %f8911 = load i64, i64* %i0ptr8909, align 8                                        ; load; *i0ptr8909
-  %fptr8910 = inttoptr i64 %f8911 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8910(i64 %cont7092, i64 %arg7340, i64 %retprim7093) ; tail call
-  ret void
-}
-
-
-define void @lam8511(i64 %env8512, i64 %cont7094, i64 %NMl$a, i64 %n8L$b) {
-  %a6993 = call i64 @prim__60(i64 %NMl$a, i64 %n8L$b)                                ; call prim__60
-  %retprim7095 = call i64 @prim_not(i64 %a6993)                                      ; call prim_not
+define void @lam8502(i64 %env8503, i64 %_957089, i64 %vEC$_37foldl) {
+  %envptr8870 = inttoptr i64 %env8503 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8871 = getelementptr inbounds i64, i64* %envptr8870, i64 2                  ; &envptr8870[2]
+  %LnC$_37foldl1 = load i64, i64* %envptr8871, align 8                               ; load; *envptr8871
+  %envptr8872 = inttoptr i64 %env8503 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8873 = getelementptr inbounds i64, i64* %envptr8872, i64 1                  ; &envptr8872[1]
+  %QFP$_37length = load i64, i64* %envptr8873, align 8                               ; load; *envptr8873
+  %cloptr8874 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8875 = getelementptr inbounds i64, i64* %cloptr8874, i64 0                    ; &cloptr8874[0]
+  %f8876 = ptrtoint void(i64,i64,i64,i64)* @lam8500 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8876, i64* %eptr8875                                                   ; store fptr
+  %hIh$_37_62 = ptrtoint i64* %cloptr8874 to i64                                     ; closure cast; i64* -> i64
+  %cloptr8877 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8878 = getelementptr inbounds i64, i64* %cloptr8877, i64 0                    ; &cloptr8877[0]
+  %f8879 = ptrtoint void(i64,i64,i64,i64)* @lam8497 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8879, i64* %eptr8878                                                   ; store fptr
+  %LGr$_37_62_61 = ptrtoint i64* %cloptr8877 to i64                                  ; closure cast; i64* -> i64
+  %arg7347 = call i64 @const_init_int(i64 1)                                         ; quoted int
   %arg7346 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8912 = inttoptr i64 %cont7094 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8912)                                         ; assert function application
-  %i0ptr8913 = getelementptr inbounds i64, i64* %cloptr8912, i64 0                   ; &cloptr8912[0]
-  %f8915 = load i64, i64* %i0ptr8913, align 8                                        ; load; *i0ptr8913
-  %fptr8914 = inttoptr i64 %f8915 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8914(i64 %cont7094, i64 %arg7346, i64 %retprim7095) ; tail call
+  %zhw$_37append = call i64 @prim_make_45vector(i64 %arg7347, i64 %arg7346)          ; call prim_make_45vector
+  %arg7349 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %cloptr8880 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8882 = getelementptr inbounds i64, i64* %cloptr8880, i64 1                    ; &eptr8882[1]
+  store i64 %zhw$_37append, i64* %eptr8882                                           ; *eptr8882 = %zhw$_37append
+  %eptr8881 = getelementptr inbounds i64, i64* %cloptr8880, i64 0                    ; &cloptr8880[0]
+  %f8883 = ptrtoint void(i64,i64,i64,i64)* @lam8491 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8883, i64* %eptr8881                                                   ; store fptr
+  %arg7348 = ptrtoint i64* %cloptr8880 to i64                                        ; closure cast; i64* -> i64
+  %YlP$_950 = call i64 @prim_vector_45set_33(i64 %zhw$_37append, i64 %arg7349, i64 %arg7348); call prim_vector_45set_33
+  %arg7368 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7179 = call i64 @prim_vector_45ref(i64 %zhw$_37append, i64 %arg7368)       ; call prim_vector_45ref
+  %cloptr8884 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8886 = getelementptr inbounds i64, i64* %cloptr8884, i64 1                    ; &eptr8886[1]
+  %eptr8887 = getelementptr inbounds i64, i64* %cloptr8884, i64 2                    ; &eptr8887[2]
+  %eptr8888 = getelementptr inbounds i64, i64* %cloptr8884, i64 3                    ; &eptr8888[3]
+  store i64 %QFP$_37length, i64* %eptr8886                                           ; *eptr8886 = %QFP$_37length
+  store i64 %LnC$_37foldl1, i64* %eptr8887                                           ; *eptr8887 = %LnC$_37foldl1
+  store i64 %hIh$_37_62, i64* %eptr8888                                              ; *eptr8888 = %hIh$_37_62
+  %eptr8885 = getelementptr inbounds i64, i64* %cloptr8884, i64 0                    ; &cloptr8884[0]
+  %f8889 = ptrtoint void(i64,i64,i64)* @lam8483 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8889, i64* %eptr8885                                                   ; store fptr
+  %arg7372 = ptrtoint i64* %cloptr8884 to i64                                        ; closure cast; i64* -> i64
+  %arg7371 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8890 = inttoptr i64 %arg7372 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8890)                                         ; assert function application
+  %i0ptr8891 = getelementptr inbounds i64, i64* %cloptr8890, i64 0                   ; &cloptr8890[0]
+  %f8893 = load i64, i64* %i0ptr8891, align 8                                        ; load; *i0ptr8891
+  %fptr8892 = inttoptr i64 %f8893 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8892(i64 %arg7372, i64 %arg7371, i64 %retprim7179)  ; tail call
   ret void
 }
 
 
-define void @lam8505(i64 %env8506, i64 %cont7178, i64 %yua$ls0, i64 %TBF$ls1) {
-  %envptr8916 = inttoptr i64 %env8506 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8917 = getelementptr inbounds i64, i64* %envptr8916, i64 1                  ; &envptr8916[1]
-  %Dky$_37append = load i64, i64* %envptr8917, align 8                               ; load; *envptr8917
-  %a6994 = call i64 @prim_null_63(i64 %yua$ls0)                                      ; call prim_null_63
-  %cmp8918 = icmp eq i64 %a6994, 15                                                  ; false?
-  br i1 %cmp8918, label %else8920, label %then8919                                   ; if
-
-then8919:
-  %arg7355 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8921 = inttoptr i64 %cont7178 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8921)                                         ; assert function application
-  %i0ptr8922 = getelementptr inbounds i64, i64* %cloptr8921, i64 0                   ; &cloptr8921[0]
-  %f8924 = load i64, i64* %i0ptr8922, align 8                                        ; load; *i0ptr8922
-  %fptr8923 = inttoptr i64 %f8924 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8923(i64 %cont7178, i64 %arg7355, i64 %TBF$ls1)     ; tail call
-  ret void
-
-else8920:
-  %a6995 = call i64 @prim_car(i64 %yua$ls0)                                          ; call prim_car
-  %arg7358 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a6996 = call i64 @prim_vector_45ref(i64 %Dky$_37append, i64 %arg7358)             ; call prim_vector_45ref
-  %a6997 = call i64 @prim_cdr(i64 %yua$ls0)                                          ; call prim_cdr
-  %cloptr8925 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8927 = getelementptr inbounds i64, i64* %cloptr8925, i64 1                    ; &eptr8927[1]
-  %eptr8928 = getelementptr inbounds i64, i64* %cloptr8925, i64 2                    ; &eptr8928[2]
-  store i64 %cont7178, i64* %eptr8927                                                ; *eptr8927 = %cont7178
-  store i64 %a6995, i64* %eptr8928                                                   ; *eptr8928 = %a6995
-  %eptr8926 = getelementptr inbounds i64, i64* %cloptr8925, i64 0                    ; &cloptr8925[0]
-  %f8929 = ptrtoint void(i64,i64,i64)* @lam8502 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8929, i64* %eptr8926                                                   ; store fptr
-  %arg7363 = ptrtoint i64* %cloptr8925 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8930 = inttoptr i64 %a6996 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8930)                                         ; assert function application
-  %i0ptr8931 = getelementptr inbounds i64, i64* %cloptr8930, i64 0                   ; &cloptr8930[0]
-  %f8933 = load i64, i64* %i0ptr8931, align 8                                        ; load; *i0ptr8931
-  %fptr8932 = inttoptr i64 %f8933 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8932(i64 %a6996, i64 %arg7363, i64 %a6997, i64 %TBF$ls1); tail call
+define void @lam8500(i64 %env8501, i64 %cont7090, i64 %Ikk$a, i64 %I6Q$b) {
+  %a6992 = call i64 @prim__60_61(i64 %Ikk$a, i64 %I6Q$b)                             ; call prim__60_61
+  %retprim7091 = call i64 @prim_not(i64 %a6992)                                      ; call prim_not
+  %arg7338 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8894 = inttoptr i64 %cont7090 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8894)                                         ; assert function application
+  %i0ptr8895 = getelementptr inbounds i64, i64* %cloptr8894, i64 0                   ; &cloptr8894[0]
+  %f8897 = load i64, i64* %i0ptr8895, align 8                                        ; load; *i0ptr8895
+  %fptr8896 = inttoptr i64 %f8897 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8896(i64 %cont7090, i64 %arg7338, i64 %retprim7091) ; tail call
   ret void
 }
 
 
-define void @lam8502(i64 %env8503, i64 %_957179, i64 %a6998) {
-  %envptr8934 = inttoptr i64 %env8503 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8935 = getelementptr inbounds i64, i64* %envptr8934, i64 2                  ; &envptr8934[2]
-  %a6995 = load i64, i64* %envptr8935, align 8                                       ; load; *envptr8935
-  %envptr8936 = inttoptr i64 %env8503 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8937 = getelementptr inbounds i64, i64* %envptr8936, i64 1                  ; &envptr8936[1]
-  %cont7178 = load i64, i64* %envptr8937, align 8                                    ; load; *envptr8937
-  %retprim7180 = call i64 @prim_cons(i64 %a6995, i64 %a6998)                         ; call prim_cons
-  %arg7368 = add i64 0, 0                                                            ; quoted ()
-  %cloptr8938 = inttoptr i64 %cont7178 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8938)                                         ; assert function application
-  %i0ptr8939 = getelementptr inbounds i64, i64* %cloptr8938, i64 0                   ; &cloptr8938[0]
-  %f8941 = load i64, i64* %i0ptr8939, align 8                                        ; load; *i0ptr8939
-  %fptr8940 = inttoptr i64 %f8941 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8940(i64 %cont7178, i64 %arg7368, i64 %retprim7180) ; tail call
+define void @lam8497(i64 %env8498, i64 %cont7092, i64 %koE$a, i64 %pHy$b) {
+  %a6993 = call i64 @prim__60(i64 %koE$a, i64 %pHy$b)                                ; call prim__60
+  %retprim7093 = call i64 @prim_not(i64 %a6993)                                      ; call prim_not
+  %arg7344 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8898 = inttoptr i64 %cont7092 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8898)                                         ; assert function application
+  %i0ptr8899 = getelementptr inbounds i64, i64* %cloptr8898, i64 0                   ; &cloptr8898[0]
+  %f8901 = load i64, i64* %i0ptr8899, align 8                                        ; load; *i0ptr8899
+  %fptr8900 = inttoptr i64 %f8901 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8900(i64 %cont7092, i64 %arg7344, i64 %retprim7093) ; tail call
   ret void
 }
 
 
-define void @lam8497(i64 %env8498, i64 %_957096, i64 %mva$_37append) {
-  %envptr8942 = inttoptr i64 %env8498 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8943 = getelementptr inbounds i64, i64* %envptr8942, i64 3                  ; &envptr8942[3]
-  %OTq$_37_62 = load i64, i64* %envptr8943, align 8                                  ; load; *envptr8943
-  %envptr8944 = inttoptr i64 %env8498 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8945 = getelementptr inbounds i64, i64* %envptr8944, i64 2                  ; &envptr8944[2]
-  %fVq$_37foldl1 = load i64, i64* %envptr8945, align 8                               ; load; *envptr8945
-  %envptr8946 = inttoptr i64 %env8498 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr8947 = getelementptr inbounds i64, i64* %envptr8946, i64 1                  ; &envptr8946[1]
-  %Va3$_37length = load i64, i64* %envptr8947, align 8                               ; load; *envptr8947
-  %cloptr8948 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8949 = getelementptr inbounds i64, i64* %cloptr8948, i64 0                    ; &cloptr8948[0]
-  %f8950 = ptrtoint void(i64,i64,i64)* @lam8495 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8950, i64* %eptr8949                                                   ; store fptr
-  %NTz$_37list_63 = ptrtoint i64* %cloptr8948 to i64                                 ; closure cast; i64* -> i64
-  %cloptr8951 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8952 = getelementptr inbounds i64, i64* %cloptr8951, i64 0                    ; &cloptr8951[0]
-  %f8953 = ptrtoint void(i64,i64,i64,i64)* @lam8455 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8953, i64* %eptr8952                                                   ; store fptr
-  %SfN$_37drop = ptrtoint i64* %cloptr8951 to i64                                    ; closure cast; i64* -> i64
-  %cloptr8954 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8955 = getelementptr inbounds i64, i64* %cloptr8954, i64 0                    ; &cloptr8954[0]
-  %f8956 = ptrtoint void(i64,i64,i64,i64)* @lam8415 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f8956, i64* %eptr8955                                                   ; store fptr
-  %KCT$_37memv = ptrtoint i64* %cloptr8954 to i64                                    ; closure cast; i64* -> i64
-  %cloptr8957 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr8959 = getelementptr inbounds i64, i64* %cloptr8957, i64 1                    ; &eptr8959[1]
-  store i64 %fVq$_37foldl1, i64* %eptr8959                                           ; *eptr8959 = %fVq$_37foldl1
-  %eptr8958 = getelementptr inbounds i64, i64* %cloptr8957, i64 0                    ; &cloptr8957[0]
-  %f8960 = ptrtoint void(i64,i64)* @lam8384 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f8960, i64* %eptr8958                                                   ; store fptr
-  %fx5$_37_47 = ptrtoint i64* %cloptr8957 to i64                                     ; closure cast; i64* -> i64
-  %cloptr8961 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8962 = getelementptr inbounds i64, i64* %cloptr8961, i64 0                    ; &cloptr8961[0]
-  %f8963 = ptrtoint void(i64,i64,i64)* @lam8376 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8963, i64* %eptr8962                                                   ; store fptr
-  %ZmX$_37first = ptrtoint i64* %cloptr8961 to i64                                   ; closure cast; i64* -> i64
-  %cloptr8964 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8965 = getelementptr inbounds i64, i64* %cloptr8964, i64 0                    ; &cloptr8964[0]
-  %f8966 = ptrtoint void(i64,i64,i64)* @lam8373 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8966, i64* %eptr8965                                                   ; store fptr
-  %ZCG$_37second = ptrtoint i64* %cloptr8964 to i64                                  ; closure cast; i64* -> i64
-  %cloptr8967 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8968 = getelementptr inbounds i64, i64* %cloptr8967, i64 0                    ; &cloptr8967[0]
-  %f8969 = ptrtoint void(i64,i64,i64)* @lam8370 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8969, i64* %eptr8968                                                   ; store fptr
-  %Ere$_37third = ptrtoint i64* %cloptr8967 to i64                                   ; closure cast; i64* -> i64
-  %cloptr8970 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8971 = getelementptr inbounds i64, i64* %cloptr8970, i64 0                    ; &cloptr8970[0]
-  %f8972 = ptrtoint void(i64,i64,i64)* @lam8367 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8972, i64* %eptr8971                                                   ; store fptr
-  %Qjo$_37fourth = ptrtoint i64* %cloptr8970 to i64                                  ; closure cast; i64* -> i64
-  %cloptr8973 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8974 = getelementptr inbounds i64, i64* %cloptr8973, i64 0                    ; &cloptr8973[0]
-  %f8975 = ptrtoint void(i64,i64,i64)* @lam8364 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8975, i64* %eptr8974                                                   ; store fptr
-  %vry$promise_63 = ptrtoint i64* %cloptr8973 to i64                                 ; closure cast; i64* -> i64
-  %cloptr8976 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8977 = getelementptr inbounds i64, i64* %cloptr8976, i64 0                    ; &cloptr8976[0]
-  %f8978 = ptrtoint void(i64,i64)* @lam8358 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f8978, i64* %eptr8977                                                   ; store fptr
-  %arg7636 = ptrtoint i64* %cloptr8976 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8979 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr8981 = getelementptr inbounds i64, i64* %cloptr8979, i64 1                    ; &eptr8981[1]
-  %eptr8982 = getelementptr inbounds i64, i64* %cloptr8979, i64 2                    ; &eptr8982[2]
-  %eptr8983 = getelementptr inbounds i64, i64* %cloptr8979, i64 3                    ; &eptr8983[3]
-  store i64 %Va3$_37length, i64* %eptr8981                                           ; *eptr8981 = %Va3$_37length
-  store i64 %OTq$_37_62, i64* %eptr8982                                              ; *eptr8982 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr8983                                             ; *eptr8983 = %SfN$_37drop
-  %eptr8980 = getelementptr inbounds i64, i64* %cloptr8979, i64 0                    ; &cloptr8979[0]
-  %f8984 = ptrtoint void(i64,i64,i64)* @lam8355 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8984, i64* %eptr8980                                                   ; store fptr
-  %arg7635 = ptrtoint i64* %cloptr8979 to i64                                        ; closure cast; i64* -> i64
-  %rva8103 = add i64 0, 0                                                            ; quoted ()
-  %rva8102 = call i64 @prim_cons(i64 %arg7635, i64 %rva8103)                         ; call prim_cons
-  %cloptr8985 = inttoptr i64 %arg7636 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr8985)                                         ; assert function application
-  %i0ptr8986 = getelementptr inbounds i64, i64* %cloptr8985, i64 0                   ; &cloptr8985[0]
-  %f8988 = load i64, i64* %i0ptr8986, align 8                                        ; load; *i0ptr8986
-  %fptr8987 = inttoptr i64 %f8988 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr8987(i64 %arg7636, i64 %rva8102)                    ; tail call
+define void @lam8491(i64 %env8492, i64 %cont7176, i64 %zsP$ls0, i64 %nsT$ls1) {
+  %envptr8902 = inttoptr i64 %env8492 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8903 = getelementptr inbounds i64, i64* %envptr8902, i64 1                  ; &envptr8902[1]
+  %zhw$_37append = load i64, i64* %envptr8903, align 8                               ; load; *envptr8903
+  %a6994 = call i64 @prim_null_63(i64 %zsP$ls0)                                      ; call prim_null_63
+  %cmp8904 = icmp eq i64 %a6994, 15                                                  ; false?
+  br i1 %cmp8904, label %else8906, label %then8905                                   ; if
+
+then8905:
+  %arg7353 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8907 = inttoptr i64 %cont7176 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8907)                                         ; assert function application
+  %i0ptr8908 = getelementptr inbounds i64, i64* %cloptr8907, i64 0                   ; &cloptr8907[0]
+  %f8910 = load i64, i64* %i0ptr8908, align 8                                        ; load; *i0ptr8908
+  %fptr8909 = inttoptr i64 %f8910 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8909(i64 %cont7176, i64 %arg7353, i64 %nsT$ls1)     ; tail call
+  ret void
+
+else8906:
+  %a6995 = call i64 @prim_car(i64 %zsP$ls0)                                          ; call prim_car
+  %arg7356 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a6996 = call i64 @prim_vector_45ref(i64 %zhw$_37append, i64 %arg7356)             ; call prim_vector_45ref
+  %a6997 = call i64 @prim_cdr(i64 %zsP$ls0)                                          ; call prim_cdr
+  %cloptr8911 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8913 = getelementptr inbounds i64, i64* %cloptr8911, i64 1                    ; &eptr8913[1]
+  %eptr8914 = getelementptr inbounds i64, i64* %cloptr8911, i64 2                    ; &eptr8914[2]
+  store i64 %cont7176, i64* %eptr8913                                                ; *eptr8913 = %cont7176
+  store i64 %a6995, i64* %eptr8914                                                   ; *eptr8914 = %a6995
+  %eptr8912 = getelementptr inbounds i64, i64* %cloptr8911, i64 0                    ; &cloptr8911[0]
+  %f8915 = ptrtoint void(i64,i64,i64)* @lam8488 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8915, i64* %eptr8912                                                   ; store fptr
+  %arg7361 = ptrtoint i64* %cloptr8911 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8916 = inttoptr i64 %a6996 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8916)                                         ; assert function application
+  %i0ptr8917 = getelementptr inbounds i64, i64* %cloptr8916, i64 0                   ; &cloptr8916[0]
+  %f8919 = load i64, i64* %i0ptr8917, align 8                                        ; load; *i0ptr8917
+  %fptr8918 = inttoptr i64 %f8919 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8918(i64 %a6996, i64 %arg7361, i64 %a6997, i64 %nsT$ls1); tail call
   ret void
 }
 
 
-define void @lam8495(i64 %env8496, i64 %cont7097, i64 %aXa$a) {
-  %arg7376 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %Nwi$a = call i64 @prim_make_45vector(i64 %arg7376, i64 %aXa$a)                    ; call prim_make_45vector
-  %cloptr8989 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr8990 = getelementptr inbounds i64, i64* %cloptr8989, i64 0                    ; &cloptr8989[0]
-  %f8991 = ptrtoint void(i64,i64,i64)* @lam8492 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8991, i64* %eptr8990                                                   ; store fptr
-  %arg7379 = ptrtoint i64* %cloptr8989 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8992 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8994 = getelementptr inbounds i64, i64* %cloptr8992, i64 1                    ; &eptr8994[1]
-  %eptr8995 = getelementptr inbounds i64, i64* %cloptr8992, i64 2                    ; &eptr8995[2]
-  store i64 %Nwi$a, i64* %eptr8994                                                   ; *eptr8994 = %Nwi$a
-  store i64 %cont7097, i64* %eptr8995                                                ; *eptr8995 = %cont7097
-  %eptr8993 = getelementptr inbounds i64, i64* %cloptr8992, i64 0                    ; &cloptr8992[0]
-  %f8996 = ptrtoint void(i64,i64,i64)* @lam8489 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f8996, i64* %eptr8993                                                   ; store fptr
-  %arg7378 = ptrtoint i64* %cloptr8992 to i64                                        ; closure cast; i64* -> i64
-  %cloptr8997 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr8999 = getelementptr inbounds i64, i64* %cloptr8997, i64 1                    ; &eptr8999[1]
-  %eptr9000 = getelementptr inbounds i64, i64* %cloptr8997, i64 2                    ; &eptr9000[2]
-  store i64 %Nwi$a, i64* %eptr8999                                                   ; *eptr8999 = %Nwi$a
-  store i64 %cont7097, i64* %eptr9000                                                ; *eptr9000 = %cont7097
-  %eptr8998 = getelementptr inbounds i64, i64* %cloptr8997, i64 0                    ; &cloptr8997[0]
-  %f9001 = ptrtoint void(i64,i64,i64)* @lam8472 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9001, i64* %eptr8998                                                   ; store fptr
-  %arg7377 = ptrtoint i64* %cloptr8997 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9002 = inttoptr i64 %arg7379 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9002)                                         ; assert function application
-  %i0ptr9003 = getelementptr inbounds i64, i64* %cloptr9002, i64 0                   ; &cloptr9002[0]
-  %f9005 = load i64, i64* %i0ptr9003, align 8                                        ; load; *i0ptr9003
-  %fptr9004 = inttoptr i64 %f9005 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9004(i64 %arg7379, i64 %arg7378, i64 %arg7377)      ; tail call
+define void @lam8488(i64 %env8489, i64 %_957177, i64 %a6998) {
+  %envptr8920 = inttoptr i64 %env8489 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8921 = getelementptr inbounds i64, i64* %envptr8920, i64 2                  ; &envptr8920[2]
+  %a6995 = load i64, i64* %envptr8921, align 8                                       ; load; *envptr8921
+  %envptr8922 = inttoptr i64 %env8489 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8923 = getelementptr inbounds i64, i64* %envptr8922, i64 1                  ; &envptr8922[1]
+  %cont7176 = load i64, i64* %envptr8923, align 8                                    ; load; *envptr8923
+  %retprim7178 = call i64 @prim_cons(i64 %a6995, i64 %a6998)                         ; call prim_cons
+  %arg7366 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8924 = inttoptr i64 %cont7176 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8924)                                         ; assert function application
+  %i0ptr8925 = getelementptr inbounds i64, i64* %cloptr8924, i64 0                   ; &cloptr8924[0]
+  %f8927 = load i64, i64* %i0ptr8925, align 8                                        ; load; *i0ptr8925
+  %fptr8926 = inttoptr i64 %f8927 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8926(i64 %cont7176, i64 %arg7366, i64 %retprim7178) ; tail call
   ret void
 }
 
 
-define void @lam8492(i64 %env8493, i64 %cont7103, i64 %r32$k) {
-  %arg7381 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9006 = inttoptr i64 %cont7103 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9006)                                         ; assert function application
-  %i0ptr9007 = getelementptr inbounds i64, i64* %cloptr9006, i64 0                   ; &cloptr9006[0]
-  %f9009 = load i64, i64* %i0ptr9007, align 8                                        ; load; *i0ptr9007
-  %fptr9008 = inttoptr i64 %f9009 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9008(i64 %cont7103, i64 %arg7381, i64 %r32$k)       ; tail call
+define void @lam8483(i64 %env8484, i64 %_957094, i64 %t1B$_37append) {
+  %envptr8928 = inttoptr i64 %env8484 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8929 = getelementptr inbounds i64, i64* %envptr8928, i64 3                  ; &envptr8928[3]
+  %hIh$_37_62 = load i64, i64* %envptr8929, align 8                                  ; load; *envptr8929
+  %envptr8930 = inttoptr i64 %env8484 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8931 = getelementptr inbounds i64, i64* %envptr8930, i64 2                  ; &envptr8930[2]
+  %LnC$_37foldl1 = load i64, i64* %envptr8931, align 8                               ; load; *envptr8931
+  %envptr8932 = inttoptr i64 %env8484 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8933 = getelementptr inbounds i64, i64* %envptr8932, i64 1                  ; &envptr8932[1]
+  %QFP$_37length = load i64, i64* %envptr8933, align 8                               ; load; *envptr8933
+  %cloptr8934 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8935 = getelementptr inbounds i64, i64* %cloptr8934, i64 0                    ; &cloptr8934[0]
+  %f8936 = ptrtoint void(i64,i64,i64)* @lam8481 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8936, i64* %eptr8935                                                   ; store fptr
+  %XpU$_37list_63 = ptrtoint i64* %cloptr8934 to i64                                 ; closure cast; i64* -> i64
+  %cloptr8937 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8938 = getelementptr inbounds i64, i64* %cloptr8937, i64 0                    ; &cloptr8937[0]
+  %f8939 = ptrtoint void(i64,i64,i64,i64)* @lam8441 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8939, i64* %eptr8938                                                   ; store fptr
+  %JBG$_37drop = ptrtoint i64* %cloptr8937 to i64                                    ; closure cast; i64* -> i64
+  %cloptr8940 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8941 = getelementptr inbounds i64, i64* %cloptr8940, i64 0                    ; &cloptr8940[0]
+  %f8942 = ptrtoint void(i64,i64,i64,i64)* @lam8401 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f8942, i64* %eptr8941                                                   ; store fptr
+  %oDK$_37memv = ptrtoint i64* %cloptr8940 to i64                                    ; closure cast; i64* -> i64
+  %cloptr8943 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr8945 = getelementptr inbounds i64, i64* %cloptr8943, i64 1                    ; &eptr8945[1]
+  store i64 %LnC$_37foldl1, i64* %eptr8945                                           ; *eptr8945 = %LnC$_37foldl1
+  %eptr8944 = getelementptr inbounds i64, i64* %cloptr8943, i64 0                    ; &cloptr8943[0]
+  %f8946 = ptrtoint void(i64,i64)* @lam8370 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f8946, i64* %eptr8944                                                   ; store fptr
+  %zMB$_37_47 = ptrtoint i64* %cloptr8943 to i64                                     ; closure cast; i64* -> i64
+  %cloptr8947 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8948 = getelementptr inbounds i64, i64* %cloptr8947, i64 0                    ; &cloptr8947[0]
+  %f8949 = ptrtoint void(i64,i64,i64)* @lam8362 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8949, i64* %eptr8948                                                   ; store fptr
+  %OZg$_37first = ptrtoint i64* %cloptr8947 to i64                                   ; closure cast; i64* -> i64
+  %cloptr8950 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8951 = getelementptr inbounds i64, i64* %cloptr8950, i64 0                    ; &cloptr8950[0]
+  %f8952 = ptrtoint void(i64,i64,i64)* @lam8359 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8952, i64* %eptr8951                                                   ; store fptr
+  %I5p$_37second = ptrtoint i64* %cloptr8950 to i64                                  ; closure cast; i64* -> i64
+  %cloptr8953 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8954 = getelementptr inbounds i64, i64* %cloptr8953, i64 0                    ; &cloptr8953[0]
+  %f8955 = ptrtoint void(i64,i64,i64)* @lam8356 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8955, i64* %eptr8954                                                   ; store fptr
+  %Hi9$_37third = ptrtoint i64* %cloptr8953 to i64                                   ; closure cast; i64* -> i64
+  %cloptr8956 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8957 = getelementptr inbounds i64, i64* %cloptr8956, i64 0                    ; &cloptr8956[0]
+  %f8958 = ptrtoint void(i64,i64,i64)* @lam8353 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8958, i64* %eptr8957                                                   ; store fptr
+  %ZNx$_37fourth = ptrtoint i64* %cloptr8956 to i64                                  ; closure cast; i64* -> i64
+  %cloptr8959 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8960 = getelementptr inbounds i64, i64* %cloptr8959, i64 0                    ; &cloptr8959[0]
+  %f8961 = ptrtoint void(i64,i64,i64)* @lam8350 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8961, i64* %eptr8960                                                   ; store fptr
+  %smn$promise_63 = ptrtoint i64* %cloptr8959 to i64                                 ; closure cast; i64* -> i64
+  %cloptr8962 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8963 = getelementptr inbounds i64, i64* %cloptr8962, i64 0                    ; &cloptr8962[0]
+  %f8964 = ptrtoint void(i64,i64)* @lam8344 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f8964, i64* %eptr8963                                                   ; store fptr
+  %arg7634 = ptrtoint i64* %cloptr8962 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8965 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr8967 = getelementptr inbounds i64, i64* %cloptr8965, i64 1                    ; &eptr8967[1]
+  %eptr8968 = getelementptr inbounds i64, i64* %cloptr8965, i64 2                    ; &eptr8968[2]
+  %eptr8969 = getelementptr inbounds i64, i64* %cloptr8965, i64 3                    ; &eptr8969[3]
+  store i64 %QFP$_37length, i64* %eptr8967                                           ; *eptr8967 = %QFP$_37length
+  store i64 %hIh$_37_62, i64* %eptr8968                                              ; *eptr8968 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr8969                                             ; *eptr8969 = %JBG$_37drop
+  %eptr8966 = getelementptr inbounds i64, i64* %cloptr8965, i64 0                    ; &cloptr8965[0]
+  %f8970 = ptrtoint void(i64,i64,i64)* @lam8341 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8970, i64* %eptr8966                                                   ; store fptr
+  %arg7633 = ptrtoint i64* %cloptr8965 to i64                                        ; closure cast; i64* -> i64
+  %rva8094 = add i64 0, 0                                                            ; quoted ()
+  %rva8093 = call i64 @prim_cons(i64 %arg7633, i64 %rva8094)                         ; call prim_cons
+  %cloptr8971 = inttoptr i64 %arg7634 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8971)                                         ; assert function application
+  %i0ptr8972 = getelementptr inbounds i64, i64* %cloptr8971, i64 0                   ; &cloptr8971[0]
+  %f8974 = load i64, i64* %i0ptr8972, align 8                                        ; load; *i0ptr8972
+  %fptr8973 = inttoptr i64 %f8974 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8973(i64 %arg7634, i64 %rva8093)                    ; tail call
   ret void
 }
 
 
-define void @lam8489(i64 %env8490, i64 %_957098, i64 %kEY$cc) {
-  %envptr9010 = inttoptr i64 %env8490 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9011 = getelementptr inbounds i64, i64* %envptr9010, i64 2                  ; &envptr9010[2]
-  %cont7097 = load i64, i64* %envptr9011, align 8                                    ; load; *envptr9011
-  %envptr9012 = inttoptr i64 %env8490 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9013 = getelementptr inbounds i64, i64* %envptr9012, i64 1                  ; &envptr9012[1]
-  %Nwi$a = load i64, i64* %envptr9013, align 8                                       ; load; *envptr9013
-  %arg7383 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a6999 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7383)                     ; call prim_vector_45ref
+define void @lam8481(i64 %env8482, i64 %cont7095, i64 %jcn$a) {
+  %arg7374 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %f8a$a = call i64 @prim_make_45vector(i64 %arg7374, i64 %jcn$a)                    ; call prim_make_45vector
+  %cloptr8975 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr8976 = getelementptr inbounds i64, i64* %cloptr8975, i64 0                    ; &cloptr8975[0]
+  %f8977 = ptrtoint void(i64,i64,i64)* @lam8478 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8977, i64* %eptr8976                                                   ; store fptr
+  %arg7377 = ptrtoint i64* %cloptr8975 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8978 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8980 = getelementptr inbounds i64, i64* %cloptr8978, i64 1                    ; &eptr8980[1]
+  %eptr8981 = getelementptr inbounds i64, i64* %cloptr8978, i64 2                    ; &eptr8981[2]
+  store i64 %f8a$a, i64* %eptr8980                                                   ; *eptr8980 = %f8a$a
+  store i64 %cont7095, i64* %eptr8981                                                ; *eptr8981 = %cont7095
+  %eptr8979 = getelementptr inbounds i64, i64* %cloptr8978, i64 0                    ; &cloptr8978[0]
+  %f8982 = ptrtoint void(i64,i64,i64)* @lam8475 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8982, i64* %eptr8979                                                   ; store fptr
+  %arg7376 = ptrtoint i64* %cloptr8978 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8983 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr8985 = getelementptr inbounds i64, i64* %cloptr8983, i64 1                    ; &eptr8985[1]
+  %eptr8986 = getelementptr inbounds i64, i64* %cloptr8983, i64 2                    ; &eptr8986[2]
+  store i64 %f8a$a, i64* %eptr8985                                                   ; *eptr8985 = %f8a$a
+  store i64 %cont7095, i64* %eptr8986                                                ; *eptr8986 = %cont7095
+  %eptr8984 = getelementptr inbounds i64, i64* %cloptr8983, i64 0                    ; &cloptr8983[0]
+  %f8987 = ptrtoint void(i64,i64,i64)* @lam8458 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f8987, i64* %eptr8984                                                   ; store fptr
+  %arg7375 = ptrtoint i64* %cloptr8983 to i64                                        ; closure cast; i64* -> i64
+  %cloptr8988 = inttoptr i64 %arg7377 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8988)                                         ; assert function application
+  %i0ptr8989 = getelementptr inbounds i64, i64* %cloptr8988, i64 0                   ; &cloptr8988[0]
+  %f8991 = load i64, i64* %i0ptr8989, align 8                                        ; load; *i0ptr8989
+  %fptr8990 = inttoptr i64 %f8991 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8990(i64 %arg7377, i64 %arg7376, i64 %arg7375)      ; tail call
+  ret void
+}
+
+
+define void @lam8478(i64 %env8479, i64 %cont7101, i64 %PBG$k) {
+  %arg7379 = add i64 0, 0                                                            ; quoted ()
+  %cloptr8992 = inttoptr i64 %cont7101 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr8992)                                         ; assert function application
+  %i0ptr8993 = getelementptr inbounds i64, i64* %cloptr8992, i64 0                   ; &cloptr8992[0]
+  %f8995 = load i64, i64* %i0ptr8993, align 8                                        ; load; *i0ptr8993
+  %fptr8994 = inttoptr i64 %f8995 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr8994(i64 %cont7101, i64 %arg7379, i64 %PBG$k)       ; tail call
+  ret void
+}
+
+
+define void @lam8475(i64 %env8476, i64 %_957096, i64 %syH$cc) {
+  %envptr8996 = inttoptr i64 %env8476 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8997 = getelementptr inbounds i64, i64* %envptr8996, i64 2                  ; &envptr8996[2]
+  %cont7095 = load i64, i64* %envptr8997, align 8                                    ; load; *envptr8997
+  %envptr8998 = inttoptr i64 %env8476 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr8999 = getelementptr inbounds i64, i64* %envptr8998, i64 1                  ; &envptr8998[1]
+  %f8a$a = load i64, i64* %envptr8999, align 8                                       ; load; *envptr8999
+  %arg7381 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a6999 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7381)                     ; call prim_vector_45ref
   %a7000 = call i64 @prim_null_63(i64 %a6999)                                        ; call prim_null_63
-  %cmp9014 = icmp eq i64 %a7000, 15                                                  ; false?
-  br i1 %cmp9014, label %else9016, label %then9015                                   ; if
+  %cmp9000 = icmp eq i64 %a7000, 15                                                  ; false?
+  br i1 %cmp9000, label %else9002, label %then9001                                   ; if
 
-then9015:
-  %arg7387 = add i64 0, 0                                                            ; quoted ()
-  %arg7386 = call i64 @const_init_true()                                             ; quoted #t
-  %cloptr9017 = inttoptr i64 %cont7097 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9017)                                         ; assert function application
-  %i0ptr9018 = getelementptr inbounds i64, i64* %cloptr9017, i64 0                   ; &cloptr9017[0]
-  %f9020 = load i64, i64* %i0ptr9018, align 8                                        ; load; *i0ptr9018
-  %fptr9019 = inttoptr i64 %f9020 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9019(i64 %cont7097, i64 %arg7387, i64 %arg7386)     ; tail call
+then9001:
+  %arg7385 = add i64 0, 0                                                            ; quoted ()
+  %arg7384 = call i64 @const_init_true()                                             ; quoted #t
+  %cloptr9003 = inttoptr i64 %cont7095 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9003)                                         ; assert function application
+  %i0ptr9004 = getelementptr inbounds i64, i64* %cloptr9003, i64 0                   ; &cloptr9003[0]
+  %f9006 = load i64, i64* %i0ptr9004, align 8                                        ; load; *i0ptr9004
+  %fptr9005 = inttoptr i64 %f9006 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9005(i64 %cont7095, i64 %arg7385, i64 %arg7384)     ; tail call
   ret void
 
-else9016:
-  %arg7389 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7001 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7389)                     ; call prim_vector_45ref
+else9002:
+  %arg7387 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7001 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7387)                     ; call prim_vector_45ref
   %a7002 = call i64 @prim_cons_63(i64 %a7001)                                        ; call prim_cons_63
-  %cmp9021 = icmp eq i64 %a7002, 15                                                  ; false?
-  br i1 %cmp9021, label %else9023, label %then9022                                   ; if
+  %cmp9007 = icmp eq i64 %a7002, 15                                                  ; false?
+  br i1 %cmp9007, label %else9009, label %then9008                                   ; if
 
-then9022:
-  %arg7392 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7003 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7392)                     ; call prim_vector_45ref
-  %retprim7102 = call i64 @prim_cdr(i64 %a7003)                                      ; call prim_cdr
-  %cloptr9024 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9026 = getelementptr inbounds i64, i64* %cloptr9024, i64 1                    ; &eptr9026[1]
-  %eptr9027 = getelementptr inbounds i64, i64* %cloptr9024, i64 2                    ; &eptr9027[2]
-  %eptr9028 = getelementptr inbounds i64, i64* %cloptr9024, i64 3                    ; &eptr9028[3]
-  store i64 %kEY$cc, i64* %eptr9026                                                  ; *eptr9026 = %kEY$cc
-  store i64 %Nwi$a, i64* %eptr9027                                                   ; *eptr9027 = %Nwi$a
-  store i64 %cont7097, i64* %eptr9028                                                ; *eptr9028 = %cont7097
-  %eptr9025 = getelementptr inbounds i64, i64* %cloptr9024, i64 0                    ; &cloptr9024[0]
-  %f9029 = ptrtoint void(i64,i64,i64)* @lam8482 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9029, i64* %eptr9025                                                   ; store fptr
-  %arg7397 = ptrtoint i64* %cloptr9024 to i64                                        ; closure cast; i64* -> i64
-  %arg7396 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9030 = inttoptr i64 %arg7397 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9030)                                         ; assert function application
-  %i0ptr9031 = getelementptr inbounds i64, i64* %cloptr9030, i64 0                   ; &cloptr9030[0]
-  %f9033 = load i64, i64* %i0ptr9031, align 8                                        ; load; *i0ptr9031
-  %fptr9032 = inttoptr i64 %f9033 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9032(i64 %arg7397, i64 %arg7396, i64 %retprim7102)  ; tail call
+then9008:
+  %arg7390 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7003 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7390)                     ; call prim_vector_45ref
+  %retprim7100 = call i64 @prim_cdr(i64 %a7003)                                      ; call prim_cdr
+  %cloptr9010 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9012 = getelementptr inbounds i64, i64* %cloptr9010, i64 1                    ; &eptr9012[1]
+  %eptr9013 = getelementptr inbounds i64, i64* %cloptr9010, i64 2                    ; &eptr9013[2]
+  %eptr9014 = getelementptr inbounds i64, i64* %cloptr9010, i64 3                    ; &eptr9014[3]
+  store i64 %syH$cc, i64* %eptr9012                                                  ; *eptr9012 = %syH$cc
+  store i64 %f8a$a, i64* %eptr9013                                                   ; *eptr9013 = %f8a$a
+  store i64 %cont7095, i64* %eptr9014                                                ; *eptr9014 = %cont7095
+  %eptr9011 = getelementptr inbounds i64, i64* %cloptr9010, i64 0                    ; &cloptr9010[0]
+  %f9015 = ptrtoint void(i64,i64,i64)* @lam8468 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9015, i64* %eptr9011                                                   ; store fptr
+  %arg7395 = ptrtoint i64* %cloptr9010 to i64                                        ; closure cast; i64* -> i64
+  %arg7394 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9016 = inttoptr i64 %arg7395 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9016)                                         ; assert function application
+  %i0ptr9017 = getelementptr inbounds i64, i64* %cloptr9016, i64 0                   ; &cloptr9016[0]
+  %f9019 = load i64, i64* %i0ptr9017, align 8                                        ; load; *i0ptr9017
+  %fptr9018 = inttoptr i64 %f9019 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9018(i64 %arg7395, i64 %arg7394, i64 %retprim7100)  ; tail call
   ret void
 
-else9023:
-  %arg7411 = add i64 0, 0                                                            ; quoted ()
-  %arg7410 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr9034 = inttoptr i64 %cont7097 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9034)                                         ; assert function application
-  %i0ptr9035 = getelementptr inbounds i64, i64* %cloptr9034, i64 0                   ; &cloptr9034[0]
-  %f9037 = load i64, i64* %i0ptr9035, align 8                                        ; load; *i0ptr9035
-  %fptr9036 = inttoptr i64 %f9037 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9036(i64 %cont7097, i64 %arg7411, i64 %arg7410)     ; tail call
+else9009:
+  %arg7409 = add i64 0, 0                                                            ; quoted ()
+  %arg7408 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr9020 = inttoptr i64 %cont7095 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9020)                                         ; assert function application
+  %i0ptr9021 = getelementptr inbounds i64, i64* %cloptr9020, i64 0                   ; &cloptr9020[0]
+  %f9023 = load i64, i64* %i0ptr9021, align 8                                        ; load; *i0ptr9021
+  %fptr9022 = inttoptr i64 %f9023 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9022(i64 %cont7095, i64 %arg7409, i64 %arg7408)     ; tail call
   ret void
 }
 
 
-define void @lam8482(i64 %env8483, i64 %_957099, i64 %QXB$b) {
-  %envptr9038 = inttoptr i64 %env8483 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9039 = getelementptr inbounds i64, i64* %envptr9038, i64 3                  ; &envptr9038[3]
-  %cont7097 = load i64, i64* %envptr9039, align 8                                    ; load; *envptr9039
-  %envptr9040 = inttoptr i64 %env8483 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9041 = getelementptr inbounds i64, i64* %envptr9040, i64 2                  ; &envptr9040[2]
-  %Nwi$a = load i64, i64* %envptr9041, align 8                                       ; load; *envptr9041
-  %envptr9042 = inttoptr i64 %env8483 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9043 = getelementptr inbounds i64, i64* %envptr9042, i64 1                  ; &envptr9042[1]
-  %kEY$cc = load i64, i64* %envptr9043, align 8                                      ; load; *envptr9043
-  %arg7398 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7004 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7398)                     ; call prim_vector_45ref
+define void @lam8468(i64 %env8469, i64 %_957097, i64 %SUE$b) {
+  %envptr9024 = inttoptr i64 %env8469 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9025 = getelementptr inbounds i64, i64* %envptr9024, i64 3                  ; &envptr9024[3]
+  %cont7095 = load i64, i64* %envptr9025, align 8                                    ; load; *envptr9025
+  %envptr9026 = inttoptr i64 %env8469 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9027 = getelementptr inbounds i64, i64* %envptr9026, i64 2                  ; &envptr9026[2]
+  %f8a$a = load i64, i64* %envptr9027, align 8                                       ; load; *envptr9027
+  %envptr9028 = inttoptr i64 %env8469 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9029 = getelementptr inbounds i64, i64* %envptr9028, i64 1                  ; &envptr9028[1]
+  %syH$cc = load i64, i64* %envptr9029, align 8                                      ; load; *envptr9029
+  %arg7396 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7004 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7396)                     ; call prim_vector_45ref
   %a7005 = call i64 @prim_cdr(i64 %a7004)                                            ; call prim_cdr
-  %arg7402 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7101 = call i64 @prim_vector_45set_33(i64 %Nwi$a, i64 %arg7402, i64 %a7005); call prim_vector_45set_33
-  %cloptr9044 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9046 = getelementptr inbounds i64, i64* %cloptr9044, i64 1                    ; &eptr9046[1]
-  %eptr9047 = getelementptr inbounds i64, i64* %cloptr9044, i64 2                    ; &eptr9047[2]
-  store i64 %kEY$cc, i64* %eptr9046                                                  ; *eptr9046 = %kEY$cc
-  store i64 %cont7097, i64* %eptr9047                                                ; *eptr9047 = %cont7097
-  %eptr9045 = getelementptr inbounds i64, i64* %cloptr9044, i64 0                    ; &cloptr9044[0]
-  %f9048 = ptrtoint void(i64,i64,i64)* @lam8478 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9048, i64* %eptr9045                                                   ; store fptr
-  %arg7406 = ptrtoint i64* %cloptr9044 to i64                                        ; closure cast; i64* -> i64
-  %arg7405 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9049 = inttoptr i64 %arg7406 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9049)                                         ; assert function application
-  %i0ptr9050 = getelementptr inbounds i64, i64* %cloptr9049, i64 0                   ; &cloptr9049[0]
-  %f9052 = load i64, i64* %i0ptr9050, align 8                                        ; load; *i0ptr9050
-  %fptr9051 = inttoptr i64 %f9052 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9051(i64 %arg7406, i64 %arg7405, i64 %retprim7101)  ; tail call
+  %arg7400 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7099 = call i64 @prim_vector_45set_33(i64 %f8a$a, i64 %arg7400, i64 %a7005); call prim_vector_45set_33
+  %cloptr9030 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9032 = getelementptr inbounds i64, i64* %cloptr9030, i64 1                    ; &eptr9032[1]
+  %eptr9033 = getelementptr inbounds i64, i64* %cloptr9030, i64 2                    ; &eptr9033[2]
+  store i64 %syH$cc, i64* %eptr9032                                                  ; *eptr9032 = %syH$cc
+  store i64 %cont7095, i64* %eptr9033                                                ; *eptr9033 = %cont7095
+  %eptr9031 = getelementptr inbounds i64, i64* %cloptr9030, i64 0                    ; &cloptr9030[0]
+  %f9034 = ptrtoint void(i64,i64,i64)* @lam8464 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9034, i64* %eptr9031                                                   ; store fptr
+  %arg7404 = ptrtoint i64* %cloptr9030 to i64                                        ; closure cast; i64* -> i64
+  %arg7403 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9035 = inttoptr i64 %arg7404 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9035)                                         ; assert function application
+  %i0ptr9036 = getelementptr inbounds i64, i64* %cloptr9035, i64 0                   ; &cloptr9035[0]
+  %f9038 = load i64, i64* %i0ptr9036, align 8                                        ; load; *i0ptr9036
+  %fptr9037 = inttoptr i64 %f9038 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9037(i64 %arg7404, i64 %arg7403, i64 %retprim7099)  ; tail call
   ret void
 }
 
 
-define void @lam8478(i64 %env8479, i64 %_957100, i64 %MUc$_950) {
-  %envptr9053 = inttoptr i64 %env8479 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9054 = getelementptr inbounds i64, i64* %envptr9053, i64 2                  ; &envptr9053[2]
-  %cont7097 = load i64, i64* %envptr9054, align 8                                    ; load; *envptr9054
-  %envptr9055 = inttoptr i64 %env8479 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9056 = getelementptr inbounds i64, i64* %envptr9055, i64 1                  ; &envptr9055[1]
-  %kEY$cc = load i64, i64* %envptr9056, align 8                                      ; load; *envptr9056
-  %cloptr9057 = inttoptr i64 %kEY$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9057)                                         ; assert function application
-  %i0ptr9058 = getelementptr inbounds i64, i64* %cloptr9057, i64 0                   ; &cloptr9057[0]
-  %f9060 = load i64, i64* %i0ptr9058, align 8                                        ; load; *i0ptr9058
-  %fptr9059 = inttoptr i64 %f9060 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9059(i64 %kEY$cc, i64 %cont7097, i64 %kEY$cc)       ; tail call
+define void @lam8464(i64 %env8465, i64 %_957098, i64 %cUZ$_950) {
+  %envptr9039 = inttoptr i64 %env8465 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9040 = getelementptr inbounds i64, i64* %envptr9039, i64 2                  ; &envptr9039[2]
+  %cont7095 = load i64, i64* %envptr9040, align 8                                    ; load; *envptr9040
+  %envptr9041 = inttoptr i64 %env8465 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9042 = getelementptr inbounds i64, i64* %envptr9041, i64 1                  ; &envptr9041[1]
+  %syH$cc = load i64, i64* %envptr9042, align 8                                      ; load; *envptr9042
+  %cloptr9043 = inttoptr i64 %syH$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9043)                                         ; assert function application
+  %i0ptr9044 = getelementptr inbounds i64, i64* %cloptr9043, i64 0                   ; &cloptr9043[0]
+  %f9046 = load i64, i64* %i0ptr9044, align 8                                        ; load; *i0ptr9044
+  %fptr9045 = inttoptr i64 %f9046 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9045(i64 %syH$cc, i64 %cont7095, i64 %syH$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8472(i64 %env8473, i64 %_957098, i64 %kEY$cc) {
-  %envptr9061 = inttoptr i64 %env8473 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9062 = getelementptr inbounds i64, i64* %envptr9061, i64 2                  ; &envptr9061[2]
-  %cont7097 = load i64, i64* %envptr9062, align 8                                    ; load; *envptr9062
-  %envptr9063 = inttoptr i64 %env8473 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9064 = getelementptr inbounds i64, i64* %envptr9063, i64 1                  ; &envptr9063[1]
-  %Nwi$a = load i64, i64* %envptr9064, align 8                                       ; load; *envptr9064
-  %arg7413 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a6999 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7413)                     ; call prim_vector_45ref
+define void @lam8458(i64 %env8459, i64 %_957096, i64 %syH$cc) {
+  %envptr9047 = inttoptr i64 %env8459 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9048 = getelementptr inbounds i64, i64* %envptr9047, i64 2                  ; &envptr9047[2]
+  %cont7095 = load i64, i64* %envptr9048, align 8                                    ; load; *envptr9048
+  %envptr9049 = inttoptr i64 %env8459 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9050 = getelementptr inbounds i64, i64* %envptr9049, i64 1                  ; &envptr9049[1]
+  %f8a$a = load i64, i64* %envptr9050, align 8                                       ; load; *envptr9050
+  %arg7411 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a6999 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7411)                     ; call prim_vector_45ref
   %a7000 = call i64 @prim_null_63(i64 %a6999)                                        ; call prim_null_63
-  %cmp9065 = icmp eq i64 %a7000, 15                                                  ; false?
-  br i1 %cmp9065, label %else9067, label %then9066                                   ; if
+  %cmp9051 = icmp eq i64 %a7000, 15                                                  ; false?
+  br i1 %cmp9051, label %else9053, label %then9052                                   ; if
 
-then9066:
-  %arg7417 = add i64 0, 0                                                            ; quoted ()
-  %arg7416 = call i64 @const_init_true()                                             ; quoted #t
-  %cloptr9068 = inttoptr i64 %cont7097 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9068)                                         ; assert function application
-  %i0ptr9069 = getelementptr inbounds i64, i64* %cloptr9068, i64 0                   ; &cloptr9068[0]
-  %f9071 = load i64, i64* %i0ptr9069, align 8                                        ; load; *i0ptr9069
-  %fptr9070 = inttoptr i64 %f9071 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9070(i64 %cont7097, i64 %arg7417, i64 %arg7416)     ; tail call
+then9052:
+  %arg7415 = add i64 0, 0                                                            ; quoted ()
+  %arg7414 = call i64 @const_init_true()                                             ; quoted #t
+  %cloptr9054 = inttoptr i64 %cont7095 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9054)                                         ; assert function application
+  %i0ptr9055 = getelementptr inbounds i64, i64* %cloptr9054, i64 0                   ; &cloptr9054[0]
+  %f9057 = load i64, i64* %i0ptr9055, align 8                                        ; load; *i0ptr9055
+  %fptr9056 = inttoptr i64 %f9057 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9056(i64 %cont7095, i64 %arg7415, i64 %arg7414)     ; tail call
   ret void
 
-else9067:
-  %arg7419 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7001 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7419)                     ; call prim_vector_45ref
+else9053:
+  %arg7417 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7001 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7417)                     ; call prim_vector_45ref
   %a7002 = call i64 @prim_cons_63(i64 %a7001)                                        ; call prim_cons_63
-  %cmp9072 = icmp eq i64 %a7002, 15                                                  ; false?
-  br i1 %cmp9072, label %else9074, label %then9073                                   ; if
+  %cmp9058 = icmp eq i64 %a7002, 15                                                  ; false?
+  br i1 %cmp9058, label %else9060, label %then9059                                   ; if
 
-then9073:
-  %arg7422 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7003 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7422)                     ; call prim_vector_45ref
-  %retprim7102 = call i64 @prim_cdr(i64 %a7003)                                      ; call prim_cdr
-  %cloptr9075 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9077 = getelementptr inbounds i64, i64* %cloptr9075, i64 1                    ; &eptr9077[1]
-  %eptr9078 = getelementptr inbounds i64, i64* %cloptr9075, i64 2                    ; &eptr9078[2]
-  %eptr9079 = getelementptr inbounds i64, i64* %cloptr9075, i64 3                    ; &eptr9079[3]
-  store i64 %kEY$cc, i64* %eptr9077                                                  ; *eptr9077 = %kEY$cc
-  store i64 %Nwi$a, i64* %eptr9078                                                   ; *eptr9078 = %Nwi$a
-  store i64 %cont7097, i64* %eptr9079                                                ; *eptr9079 = %cont7097
-  %eptr9076 = getelementptr inbounds i64, i64* %cloptr9075, i64 0                    ; &cloptr9075[0]
-  %f9080 = ptrtoint void(i64,i64,i64)* @lam8465 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9080, i64* %eptr9076                                                   ; store fptr
-  %arg7427 = ptrtoint i64* %cloptr9075 to i64                                        ; closure cast; i64* -> i64
-  %arg7426 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9081 = inttoptr i64 %arg7427 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9081)                                         ; assert function application
-  %i0ptr9082 = getelementptr inbounds i64, i64* %cloptr9081, i64 0                   ; &cloptr9081[0]
-  %f9084 = load i64, i64* %i0ptr9082, align 8                                        ; load; *i0ptr9082
-  %fptr9083 = inttoptr i64 %f9084 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9083(i64 %arg7427, i64 %arg7426, i64 %retprim7102)  ; tail call
+then9059:
+  %arg7420 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7003 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7420)                     ; call prim_vector_45ref
+  %retprim7100 = call i64 @prim_cdr(i64 %a7003)                                      ; call prim_cdr
+  %cloptr9061 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9063 = getelementptr inbounds i64, i64* %cloptr9061, i64 1                    ; &eptr9063[1]
+  %eptr9064 = getelementptr inbounds i64, i64* %cloptr9061, i64 2                    ; &eptr9064[2]
+  %eptr9065 = getelementptr inbounds i64, i64* %cloptr9061, i64 3                    ; &eptr9065[3]
+  store i64 %syH$cc, i64* %eptr9063                                                  ; *eptr9063 = %syH$cc
+  store i64 %f8a$a, i64* %eptr9064                                                   ; *eptr9064 = %f8a$a
+  store i64 %cont7095, i64* %eptr9065                                                ; *eptr9065 = %cont7095
+  %eptr9062 = getelementptr inbounds i64, i64* %cloptr9061, i64 0                    ; &cloptr9061[0]
+  %f9066 = ptrtoint void(i64,i64,i64)* @lam8451 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9066, i64* %eptr9062                                                   ; store fptr
+  %arg7425 = ptrtoint i64* %cloptr9061 to i64                                        ; closure cast; i64* -> i64
+  %arg7424 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9067 = inttoptr i64 %arg7425 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9067)                                         ; assert function application
+  %i0ptr9068 = getelementptr inbounds i64, i64* %cloptr9067, i64 0                   ; &cloptr9067[0]
+  %f9070 = load i64, i64* %i0ptr9068, align 8                                        ; load; *i0ptr9068
+  %fptr9069 = inttoptr i64 %f9070 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9069(i64 %arg7425, i64 %arg7424, i64 %retprim7100)  ; tail call
   ret void
 
-else9074:
-  %arg7441 = add i64 0, 0                                                            ; quoted ()
-  %arg7440 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr9085 = inttoptr i64 %cont7097 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9085)                                         ; assert function application
-  %i0ptr9086 = getelementptr inbounds i64, i64* %cloptr9085, i64 0                   ; &cloptr9085[0]
-  %f9088 = load i64, i64* %i0ptr9086, align 8                                        ; load; *i0ptr9086
-  %fptr9087 = inttoptr i64 %f9088 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9087(i64 %cont7097, i64 %arg7441, i64 %arg7440)     ; tail call
+else9060:
+  %arg7439 = add i64 0, 0                                                            ; quoted ()
+  %arg7438 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr9071 = inttoptr i64 %cont7095 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9071)                                         ; assert function application
+  %i0ptr9072 = getelementptr inbounds i64, i64* %cloptr9071, i64 0                   ; &cloptr9071[0]
+  %f9074 = load i64, i64* %i0ptr9072, align 8                                        ; load; *i0ptr9072
+  %fptr9073 = inttoptr i64 %f9074 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9073(i64 %cont7095, i64 %arg7439, i64 %arg7438)     ; tail call
   ret void
 }
 
 
-define void @lam8465(i64 %env8466, i64 %_957099, i64 %QXB$b) {
-  %envptr9089 = inttoptr i64 %env8466 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9090 = getelementptr inbounds i64, i64* %envptr9089, i64 3                  ; &envptr9089[3]
-  %cont7097 = load i64, i64* %envptr9090, align 8                                    ; load; *envptr9090
-  %envptr9091 = inttoptr i64 %env8466 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9092 = getelementptr inbounds i64, i64* %envptr9091, i64 2                  ; &envptr9091[2]
-  %Nwi$a = load i64, i64* %envptr9092, align 8                                       ; load; *envptr9092
-  %envptr9093 = inttoptr i64 %env8466 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9094 = getelementptr inbounds i64, i64* %envptr9093, i64 1                  ; &envptr9093[1]
-  %kEY$cc = load i64, i64* %envptr9094, align 8                                      ; load; *envptr9094
-  %arg7428 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7004 = call i64 @prim_vector_45ref(i64 %Nwi$a, i64 %arg7428)                     ; call prim_vector_45ref
+define void @lam8451(i64 %env8452, i64 %_957097, i64 %SUE$b) {
+  %envptr9075 = inttoptr i64 %env8452 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9076 = getelementptr inbounds i64, i64* %envptr9075, i64 3                  ; &envptr9075[3]
+  %cont7095 = load i64, i64* %envptr9076, align 8                                    ; load; *envptr9076
+  %envptr9077 = inttoptr i64 %env8452 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9078 = getelementptr inbounds i64, i64* %envptr9077, i64 2                  ; &envptr9077[2]
+  %f8a$a = load i64, i64* %envptr9078, align 8                                       ; load; *envptr9078
+  %envptr9079 = inttoptr i64 %env8452 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9080 = getelementptr inbounds i64, i64* %envptr9079, i64 1                  ; &envptr9079[1]
+  %syH$cc = load i64, i64* %envptr9080, align 8                                      ; load; *envptr9080
+  %arg7426 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7004 = call i64 @prim_vector_45ref(i64 %f8a$a, i64 %arg7426)                     ; call prim_vector_45ref
   %a7005 = call i64 @prim_cdr(i64 %a7004)                                            ; call prim_cdr
-  %arg7432 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7101 = call i64 @prim_vector_45set_33(i64 %Nwi$a, i64 %arg7432, i64 %a7005); call prim_vector_45set_33
-  %cloptr9095 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9097 = getelementptr inbounds i64, i64* %cloptr9095, i64 1                    ; &eptr9097[1]
-  %eptr9098 = getelementptr inbounds i64, i64* %cloptr9095, i64 2                    ; &eptr9098[2]
-  store i64 %kEY$cc, i64* %eptr9097                                                  ; *eptr9097 = %kEY$cc
-  store i64 %cont7097, i64* %eptr9098                                                ; *eptr9098 = %cont7097
-  %eptr9096 = getelementptr inbounds i64, i64* %cloptr9095, i64 0                    ; &cloptr9095[0]
-  %f9099 = ptrtoint void(i64,i64,i64)* @lam8461 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9099, i64* %eptr9096                                                   ; store fptr
-  %arg7436 = ptrtoint i64* %cloptr9095 to i64                                        ; closure cast; i64* -> i64
-  %arg7435 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9100 = inttoptr i64 %arg7436 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9100)                                         ; assert function application
-  %i0ptr9101 = getelementptr inbounds i64, i64* %cloptr9100, i64 0                   ; &cloptr9100[0]
-  %f9103 = load i64, i64* %i0ptr9101, align 8                                        ; load; *i0ptr9101
-  %fptr9102 = inttoptr i64 %f9103 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9102(i64 %arg7436, i64 %arg7435, i64 %retprim7101)  ; tail call
+  %arg7430 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7099 = call i64 @prim_vector_45set_33(i64 %f8a$a, i64 %arg7430, i64 %a7005); call prim_vector_45set_33
+  %cloptr9081 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9083 = getelementptr inbounds i64, i64* %cloptr9081, i64 1                    ; &eptr9083[1]
+  %eptr9084 = getelementptr inbounds i64, i64* %cloptr9081, i64 2                    ; &eptr9084[2]
+  store i64 %syH$cc, i64* %eptr9083                                                  ; *eptr9083 = %syH$cc
+  store i64 %cont7095, i64* %eptr9084                                                ; *eptr9084 = %cont7095
+  %eptr9082 = getelementptr inbounds i64, i64* %cloptr9081, i64 0                    ; &cloptr9081[0]
+  %f9085 = ptrtoint void(i64,i64,i64)* @lam8447 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9085, i64* %eptr9082                                                   ; store fptr
+  %arg7434 = ptrtoint i64* %cloptr9081 to i64                                        ; closure cast; i64* -> i64
+  %arg7433 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9086 = inttoptr i64 %arg7434 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9086)                                         ; assert function application
+  %i0ptr9087 = getelementptr inbounds i64, i64* %cloptr9086, i64 0                   ; &cloptr9086[0]
+  %f9089 = load i64, i64* %i0ptr9087, align 8                                        ; load; *i0ptr9087
+  %fptr9088 = inttoptr i64 %f9089 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9088(i64 %arg7434, i64 %arg7433, i64 %retprim7099)  ; tail call
   ret void
 }
 
 
-define void @lam8461(i64 %env8462, i64 %_957100, i64 %MUc$_950) {
-  %envptr9104 = inttoptr i64 %env8462 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9105 = getelementptr inbounds i64, i64* %envptr9104, i64 2                  ; &envptr9104[2]
-  %cont7097 = load i64, i64* %envptr9105, align 8                                    ; load; *envptr9105
-  %envptr9106 = inttoptr i64 %env8462 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9107 = getelementptr inbounds i64, i64* %envptr9106, i64 1                  ; &envptr9106[1]
-  %kEY$cc = load i64, i64* %envptr9107, align 8                                      ; load; *envptr9107
-  %cloptr9108 = inttoptr i64 %kEY$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9108)                                         ; assert function application
-  %i0ptr9109 = getelementptr inbounds i64, i64* %cloptr9108, i64 0                   ; &cloptr9108[0]
-  %f9111 = load i64, i64* %i0ptr9109, align 8                                        ; load; *i0ptr9109
-  %fptr9110 = inttoptr i64 %f9111 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9110(i64 %kEY$cc, i64 %cont7097, i64 %kEY$cc)       ; tail call
+define void @lam8447(i64 %env8448, i64 %_957098, i64 %cUZ$_950) {
+  %envptr9090 = inttoptr i64 %env8448 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9091 = getelementptr inbounds i64, i64* %envptr9090, i64 2                  ; &envptr9090[2]
+  %cont7095 = load i64, i64* %envptr9091, align 8                                    ; load; *envptr9091
+  %envptr9092 = inttoptr i64 %env8448 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9093 = getelementptr inbounds i64, i64* %envptr9092, i64 1                  ; &envptr9092[1]
+  %syH$cc = load i64, i64* %envptr9093, align 8                                      ; load; *envptr9093
+  %cloptr9094 = inttoptr i64 %syH$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9094)                                         ; assert function application
+  %i0ptr9095 = getelementptr inbounds i64, i64* %cloptr9094, i64 0                   ; &cloptr9094[0]
+  %f9097 = load i64, i64* %i0ptr9095, align 8                                        ; load; *i0ptr9095
+  %fptr9096 = inttoptr i64 %f9097 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9096(i64 %syH$cc, i64 %cont7095, i64 %syH$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8455(i64 %env8456, i64 %cont7104, i64 %ywZ$lst, i64 %Tqh$n) {
+define void @lam8441(i64 %env8442, i64 %cont7102, i64 %Lfq$lst, i64 %EWV$n) {
+  %arg7442 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %Kzb$lst = call i64 @prim_make_45vector(i64 %arg7442, i64 %Lfq$lst)                ; call prim_make_45vector
   %arg7444 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %XOH$lst = call i64 @prim_make_45vector(i64 %arg7444, i64 %ywZ$lst)                ; call prim_make_45vector
-  %arg7446 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %FkA$n = call i64 @prim_make_45vector(i64 %arg7446, i64 %Tqh$n)                    ; call prim_make_45vector
-  %cloptr9112 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9113 = getelementptr inbounds i64, i64* %cloptr9112, i64 0                    ; &cloptr9112[0]
-  %f9114 = ptrtoint void(i64,i64,i64)* @lam8451 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9114, i64* %eptr9113                                                   ; store fptr
-  %arg7449 = ptrtoint i64* %cloptr9112 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9115 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9117 = getelementptr inbounds i64, i64* %cloptr9115, i64 1                    ; &eptr9117[1]
-  %eptr9118 = getelementptr inbounds i64, i64* %cloptr9115, i64 2                    ; &eptr9118[2]
-  %eptr9119 = getelementptr inbounds i64, i64* %cloptr9115, i64 3                    ; &eptr9119[3]
-  store i64 %FkA$n, i64* %eptr9117                                                   ; *eptr9117 = %FkA$n
-  store i64 %XOH$lst, i64* %eptr9118                                                 ; *eptr9118 = %XOH$lst
-  store i64 %cont7104, i64* %eptr9119                                                ; *eptr9119 = %cont7104
-  %eptr9116 = getelementptr inbounds i64, i64* %cloptr9115, i64 0                    ; &cloptr9115[0]
-  %f9120 = ptrtoint void(i64,i64,i64)* @lam8449 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9120, i64* %eptr9116                                                   ; store fptr
-  %arg7448 = ptrtoint i64* %cloptr9115 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9121 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9123 = getelementptr inbounds i64, i64* %cloptr9121, i64 1                    ; &eptr9123[1]
-  %eptr9124 = getelementptr inbounds i64, i64* %cloptr9121, i64 2                    ; &eptr9124[2]
-  %eptr9125 = getelementptr inbounds i64, i64* %cloptr9121, i64 3                    ; &eptr9125[3]
-  store i64 %FkA$n, i64* %eptr9123                                                   ; *eptr9123 = %FkA$n
-  store i64 %XOH$lst, i64* %eptr9124                                                 ; *eptr9124 = %XOH$lst
-  store i64 %cont7104, i64* %eptr9125                                                ; *eptr9125 = %cont7104
-  %eptr9122 = getelementptr inbounds i64, i64* %cloptr9121, i64 0                    ; &cloptr9121[0]
-  %f9126 = ptrtoint void(i64,i64,i64)* @lam8432 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9126, i64* %eptr9122                                                   ; store fptr
-  %arg7447 = ptrtoint i64* %cloptr9121 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9127 = inttoptr i64 %arg7449 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9127)                                         ; assert function application
-  %i0ptr9128 = getelementptr inbounds i64, i64* %cloptr9127, i64 0                   ; &cloptr9127[0]
-  %f9130 = load i64, i64* %i0ptr9128, align 8                                        ; load; *i0ptr9128
-  %fptr9129 = inttoptr i64 %f9130 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9129(i64 %arg7449, i64 %arg7448, i64 %arg7447)      ; tail call
+  %jBC$n = call i64 @prim_make_45vector(i64 %arg7444, i64 %EWV$n)                    ; call prim_make_45vector
+  %cloptr9098 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9099 = getelementptr inbounds i64, i64* %cloptr9098, i64 0                    ; &cloptr9098[0]
+  %f9100 = ptrtoint void(i64,i64,i64)* @lam8437 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9100, i64* %eptr9099                                                   ; store fptr
+  %arg7447 = ptrtoint i64* %cloptr9098 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9101 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9103 = getelementptr inbounds i64, i64* %cloptr9101, i64 1                    ; &eptr9103[1]
+  %eptr9104 = getelementptr inbounds i64, i64* %cloptr9101, i64 2                    ; &eptr9104[2]
+  %eptr9105 = getelementptr inbounds i64, i64* %cloptr9101, i64 3                    ; &eptr9105[3]
+  store i64 %jBC$n, i64* %eptr9103                                                   ; *eptr9103 = %jBC$n
+  store i64 %Kzb$lst, i64* %eptr9104                                                 ; *eptr9104 = %Kzb$lst
+  store i64 %cont7102, i64* %eptr9105                                                ; *eptr9105 = %cont7102
+  %eptr9102 = getelementptr inbounds i64, i64* %cloptr9101, i64 0                    ; &cloptr9101[0]
+  %f9106 = ptrtoint void(i64,i64,i64)* @lam8435 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9106, i64* %eptr9102                                                   ; store fptr
+  %arg7446 = ptrtoint i64* %cloptr9101 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9107 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9109 = getelementptr inbounds i64, i64* %cloptr9107, i64 1                    ; &eptr9109[1]
+  %eptr9110 = getelementptr inbounds i64, i64* %cloptr9107, i64 2                    ; &eptr9110[2]
+  %eptr9111 = getelementptr inbounds i64, i64* %cloptr9107, i64 3                    ; &eptr9111[3]
+  store i64 %jBC$n, i64* %eptr9109                                                   ; *eptr9109 = %jBC$n
+  store i64 %Kzb$lst, i64* %eptr9110                                                 ; *eptr9110 = %Kzb$lst
+  store i64 %cont7102, i64* %eptr9111                                                ; *eptr9111 = %cont7102
+  %eptr9108 = getelementptr inbounds i64, i64* %cloptr9107, i64 0                    ; &cloptr9107[0]
+  %f9112 = ptrtoint void(i64,i64,i64)* @lam8418 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9112, i64* %eptr9108                                                   ; store fptr
+  %arg7445 = ptrtoint i64* %cloptr9107 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9113 = inttoptr i64 %arg7447 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9113)                                         ; assert function application
+  %i0ptr9114 = getelementptr inbounds i64, i64* %cloptr9113, i64 0                   ; &cloptr9113[0]
+  %f9116 = load i64, i64* %i0ptr9114, align 8                                        ; load; *i0ptr9114
+  %fptr9115 = inttoptr i64 %f9116 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9115(i64 %arg7447, i64 %arg7446, i64 %arg7445)      ; tail call
   ret void
 }
 
 
-define void @lam8451(i64 %env8452, i64 %cont7111, i64 %jGD$u) {
-  %cloptr9131 = inttoptr i64 %jGD$u to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9131)                                         ; assert function application
-  %i0ptr9132 = getelementptr inbounds i64, i64* %cloptr9131, i64 0                   ; &cloptr9131[0]
-  %f9134 = load i64, i64* %i0ptr9132, align 8                                        ; load; *i0ptr9132
-  %fptr9133 = inttoptr i64 %f9134 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9133(i64 %jGD$u, i64 %cont7111, i64 %jGD$u)         ; tail call
+define void @lam8437(i64 %env8438, i64 %cont7109, i64 %oAG$u) {
+  %cloptr9117 = inttoptr i64 %oAG$u to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9117)                                         ; assert function application
+  %i0ptr9118 = getelementptr inbounds i64, i64* %cloptr9117, i64 0                   ; &cloptr9117[0]
+  %f9120 = load i64, i64* %i0ptr9118, align 8                                        ; load; *i0ptr9118
+  %fptr9119 = inttoptr i64 %f9120 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9119(i64 %oAG$u, i64 %cont7109, i64 %oAG$u)         ; tail call
   ret void
 }
 
 
-define void @lam8449(i64 %env8450, i64 %_957105, i64 %OQa$cc) {
-  %envptr9135 = inttoptr i64 %env8450 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9136 = getelementptr inbounds i64, i64* %envptr9135, i64 3                  ; &envptr9135[3]
-  %cont7104 = load i64, i64* %envptr9136, align 8                                    ; load; *envptr9136
-  %envptr9137 = inttoptr i64 %env8450 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9138 = getelementptr inbounds i64, i64* %envptr9137, i64 2                  ; &envptr9137[2]
-  %XOH$lst = load i64, i64* %envptr9138, align 8                                     ; load; *envptr9138
-  %envptr9139 = inttoptr i64 %env8450 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9140 = getelementptr inbounds i64, i64* %envptr9139, i64 1                  ; &envptr9139[1]
-  %FkA$n = load i64, i64* %envptr9140, align 8                                       ; load; *envptr9140
-  %arg7453 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7006 = call i64 @prim_vector_45ref(i64 %FkA$n, i64 %arg7453)                     ; call prim_vector_45ref
-  %arg7456 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7007 = call i64 @prim__61(i64 %arg7456, i64 %a7006)                              ; call prim__61
-  %cmp9141 = icmp eq i64 %a7007, 15                                                  ; false?
-  br i1 %cmp9141, label %else9143, label %then9142                                   ; if
+define void @lam8435(i64 %env8436, i64 %_957103, i64 %W61$cc) {
+  %envptr9121 = inttoptr i64 %env8436 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9122 = getelementptr inbounds i64, i64* %envptr9121, i64 3                  ; &envptr9121[3]
+  %cont7102 = load i64, i64* %envptr9122, align 8                                    ; load; *envptr9122
+  %envptr9123 = inttoptr i64 %env8436 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9124 = getelementptr inbounds i64, i64* %envptr9123, i64 2                  ; &envptr9123[2]
+  %Kzb$lst = load i64, i64* %envptr9124, align 8                                     ; load; *envptr9124
+  %envptr9125 = inttoptr i64 %env8436 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9126 = getelementptr inbounds i64, i64* %envptr9125, i64 1                  ; &envptr9125[1]
+  %jBC$n = load i64, i64* %envptr9126, align 8                                       ; load; *envptr9126
+  %arg7451 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7006 = call i64 @prim_vector_45ref(i64 %jBC$n, i64 %arg7451)                     ; call prim_vector_45ref
+  %arg7454 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7007 = call i64 @prim__61(i64 %arg7454, i64 %a7006)                              ; call prim__61
+  %cmp9127 = icmp eq i64 %a7007, 15                                                  ; false?
+  br i1 %cmp9127, label %else9129, label %then9128                                   ; if
 
-then9142:
-  %arg7457 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7106 = call i64 @prim_vector_45ref(i64 %XOH$lst, i64 %arg7457)             ; call prim_vector_45ref
-  %arg7460 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9144 = inttoptr i64 %cont7104 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9144)                                         ; assert function application
-  %i0ptr9145 = getelementptr inbounds i64, i64* %cloptr9144, i64 0                   ; &cloptr9144[0]
-  %f9147 = load i64, i64* %i0ptr9145, align 8                                        ; load; *i0ptr9145
-  %fptr9146 = inttoptr i64 %f9147 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9146(i64 %cont7104, i64 %arg7460, i64 %retprim7106) ; tail call
+then9128:
+  %arg7455 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7104 = call i64 @prim_vector_45ref(i64 %Kzb$lst, i64 %arg7455)             ; call prim_vector_45ref
+  %arg7458 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9130 = inttoptr i64 %cont7102 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9130)                                         ; assert function application
+  %i0ptr9131 = getelementptr inbounds i64, i64* %cloptr9130, i64 0                   ; &cloptr9130[0]
+  %f9133 = load i64, i64* %i0ptr9131, align 8                                        ; load; *i0ptr9131
+  %fptr9132 = inttoptr i64 %f9133 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9132(i64 %cont7102, i64 %arg7458, i64 %retprim7104) ; tail call
   ret void
 
-else9143:
-  %arg7462 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7008 = call i64 @prim_vector_45ref(i64 %XOH$lst, i64 %arg7462)                   ; call prim_vector_45ref
+else9129:
+  %arg7460 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7008 = call i64 @prim_vector_45ref(i64 %Kzb$lst, i64 %arg7460)                   ; call prim_vector_45ref
   %a7009 = call i64 @prim_cdr(i64 %a7008)                                            ; call prim_cdr
-  %arg7466 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7110 = call i64 @prim_vector_45set_33(i64 %XOH$lst, i64 %arg7466, i64 %a7009); call prim_vector_45set_33
-  %cloptr9148 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9150 = getelementptr inbounds i64, i64* %cloptr9148, i64 1                    ; &eptr9150[1]
-  %eptr9151 = getelementptr inbounds i64, i64* %cloptr9148, i64 2                    ; &eptr9151[2]
-  %eptr9152 = getelementptr inbounds i64, i64* %cloptr9148, i64 3                    ; &eptr9152[3]
-  store i64 %FkA$n, i64* %eptr9150                                                   ; *eptr9150 = %FkA$n
-  store i64 %cont7104, i64* %eptr9151                                                ; *eptr9151 = %cont7104
-  store i64 %OQa$cc, i64* %eptr9152                                                  ; *eptr9152 = %OQa$cc
-  %eptr9149 = getelementptr inbounds i64, i64* %cloptr9148, i64 0                    ; &cloptr9148[0]
-  %f9153 = ptrtoint void(i64,i64,i64)* @lam8443 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9153, i64* %eptr9149                                                   ; store fptr
-  %arg7470 = ptrtoint i64* %cloptr9148 to i64                                        ; closure cast; i64* -> i64
-  %arg7469 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9154 = inttoptr i64 %arg7470 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9154)                                         ; assert function application
-  %i0ptr9155 = getelementptr inbounds i64, i64* %cloptr9154, i64 0                   ; &cloptr9154[0]
-  %f9157 = load i64, i64* %i0ptr9155, align 8                                        ; load; *i0ptr9155
-  %fptr9156 = inttoptr i64 %f9157 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9156(i64 %arg7470, i64 %arg7469, i64 %retprim7110)  ; tail call
+  %arg7464 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7108 = call i64 @prim_vector_45set_33(i64 %Kzb$lst, i64 %arg7464, i64 %a7009); call prim_vector_45set_33
+  %cloptr9134 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9136 = getelementptr inbounds i64, i64* %cloptr9134, i64 1                    ; &eptr9136[1]
+  %eptr9137 = getelementptr inbounds i64, i64* %cloptr9134, i64 2                    ; &eptr9137[2]
+  %eptr9138 = getelementptr inbounds i64, i64* %cloptr9134, i64 3                    ; &eptr9138[3]
+  store i64 %jBC$n, i64* %eptr9136                                                   ; *eptr9136 = %jBC$n
+  store i64 %cont7102, i64* %eptr9137                                                ; *eptr9137 = %cont7102
+  store i64 %W61$cc, i64* %eptr9138                                                  ; *eptr9138 = %W61$cc
+  %eptr9135 = getelementptr inbounds i64, i64* %cloptr9134, i64 0                    ; &cloptr9134[0]
+  %f9139 = ptrtoint void(i64,i64,i64)* @lam8429 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9139, i64* %eptr9135                                                   ; store fptr
+  %arg7468 = ptrtoint i64* %cloptr9134 to i64                                        ; closure cast; i64* -> i64
+  %arg7467 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9140 = inttoptr i64 %arg7468 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9140)                                         ; assert function application
+  %i0ptr9141 = getelementptr inbounds i64, i64* %cloptr9140, i64 0                   ; &cloptr9140[0]
+  %f9143 = load i64, i64* %i0ptr9141, align 8                                        ; load; *i0ptr9141
+  %fptr9142 = inttoptr i64 %f9143 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9142(i64 %arg7468, i64 %arg7467, i64 %retprim7108)  ; tail call
   ret void
 }
 
 
-define void @lam8443(i64 %env8444, i64 %_957107, i64 %F7S$_950) {
-  %envptr9158 = inttoptr i64 %env8444 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9159 = getelementptr inbounds i64, i64* %envptr9158, i64 3                  ; &envptr9158[3]
-  %OQa$cc = load i64, i64* %envptr9159, align 8                                      ; load; *envptr9159
-  %envptr9160 = inttoptr i64 %env8444 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9161 = getelementptr inbounds i64, i64* %envptr9160, i64 2                  ; &envptr9160[2]
-  %cont7104 = load i64, i64* %envptr9161, align 8                                    ; load; *envptr9161
-  %envptr9162 = inttoptr i64 %env8444 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9163 = getelementptr inbounds i64, i64* %envptr9162, i64 1                  ; &envptr9162[1]
-  %FkA$n = load i64, i64* %envptr9163, align 8                                       ; load; *envptr9163
-  %arg7471 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7010 = call i64 @prim_vector_45ref(i64 %FkA$n, i64 %arg7471)                     ; call prim_vector_45ref
-  %arg7473 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %a7011 = call i64 @prim__45(i64 %a7010, i64 %arg7473)                              ; call prim__45
-  %arg7476 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7109 = call i64 @prim_vector_45set_33(i64 %FkA$n, i64 %arg7476, i64 %a7011); call prim_vector_45set_33
-  %cloptr9164 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9166 = getelementptr inbounds i64, i64* %cloptr9164, i64 1                    ; &eptr9166[1]
-  %eptr9167 = getelementptr inbounds i64, i64* %cloptr9164, i64 2                    ; &eptr9167[2]
-  store i64 %cont7104, i64* %eptr9166                                                ; *eptr9166 = %cont7104
-  store i64 %OQa$cc, i64* %eptr9167                                                  ; *eptr9167 = %OQa$cc
-  %eptr9165 = getelementptr inbounds i64, i64* %cloptr9164, i64 0                    ; &cloptr9164[0]
-  %f9168 = ptrtoint void(i64,i64,i64)* @lam8438 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9168, i64* %eptr9165                                                   ; store fptr
-  %arg7480 = ptrtoint i64* %cloptr9164 to i64                                        ; closure cast; i64* -> i64
-  %arg7479 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9169 = inttoptr i64 %arg7480 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9169)                                         ; assert function application
-  %i0ptr9170 = getelementptr inbounds i64, i64* %cloptr9169, i64 0                   ; &cloptr9169[0]
-  %f9172 = load i64, i64* %i0ptr9170, align 8                                        ; load; *i0ptr9170
-  %fptr9171 = inttoptr i64 %f9172 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9171(i64 %arg7480, i64 %arg7479, i64 %retprim7109)  ; tail call
+define void @lam8429(i64 %env8430, i64 %_957105, i64 %O41$_950) {
+  %envptr9144 = inttoptr i64 %env8430 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9145 = getelementptr inbounds i64, i64* %envptr9144, i64 3                  ; &envptr9144[3]
+  %W61$cc = load i64, i64* %envptr9145, align 8                                      ; load; *envptr9145
+  %envptr9146 = inttoptr i64 %env8430 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9147 = getelementptr inbounds i64, i64* %envptr9146, i64 2                  ; &envptr9146[2]
+  %cont7102 = load i64, i64* %envptr9147, align 8                                    ; load; *envptr9147
+  %envptr9148 = inttoptr i64 %env8430 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9149 = getelementptr inbounds i64, i64* %envptr9148, i64 1                  ; &envptr9148[1]
+  %jBC$n = load i64, i64* %envptr9149, align 8                                       ; load; *envptr9149
+  %arg7469 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7010 = call i64 @prim_vector_45ref(i64 %jBC$n, i64 %arg7469)                     ; call prim_vector_45ref
+  %arg7471 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %a7011 = call i64 @prim__45(i64 %a7010, i64 %arg7471)                              ; call prim__45
+  %arg7474 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7107 = call i64 @prim_vector_45set_33(i64 %jBC$n, i64 %arg7474, i64 %a7011); call prim_vector_45set_33
+  %cloptr9150 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9152 = getelementptr inbounds i64, i64* %cloptr9150, i64 1                    ; &eptr9152[1]
+  %eptr9153 = getelementptr inbounds i64, i64* %cloptr9150, i64 2                    ; &eptr9153[2]
+  store i64 %cont7102, i64* %eptr9152                                                ; *eptr9152 = %cont7102
+  store i64 %W61$cc, i64* %eptr9153                                                  ; *eptr9153 = %W61$cc
+  %eptr9151 = getelementptr inbounds i64, i64* %cloptr9150, i64 0                    ; &cloptr9150[0]
+  %f9154 = ptrtoint void(i64,i64,i64)* @lam8424 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9154, i64* %eptr9151                                                   ; store fptr
+  %arg7478 = ptrtoint i64* %cloptr9150 to i64                                        ; closure cast; i64* -> i64
+  %arg7477 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9155 = inttoptr i64 %arg7478 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9155)                                         ; assert function application
+  %i0ptr9156 = getelementptr inbounds i64, i64* %cloptr9155, i64 0                   ; &cloptr9155[0]
+  %f9158 = load i64, i64* %i0ptr9156, align 8                                        ; load; *i0ptr9156
+  %fptr9157 = inttoptr i64 %f9158 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9157(i64 %arg7478, i64 %arg7477, i64 %retprim7107)  ; tail call
   ret void
 }
 
 
-define void @lam8438(i64 %env8439, i64 %_957108, i64 %aac$_951) {
-  %envptr9173 = inttoptr i64 %env8439 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9174 = getelementptr inbounds i64, i64* %envptr9173, i64 2                  ; &envptr9173[2]
-  %OQa$cc = load i64, i64* %envptr9174, align 8                                      ; load; *envptr9174
-  %envptr9175 = inttoptr i64 %env8439 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9176 = getelementptr inbounds i64, i64* %envptr9175, i64 1                  ; &envptr9175[1]
-  %cont7104 = load i64, i64* %envptr9176, align 8                                    ; load; *envptr9176
-  %cloptr9177 = inttoptr i64 %OQa$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9177)                                         ; assert function application
-  %i0ptr9178 = getelementptr inbounds i64, i64* %cloptr9177, i64 0                   ; &cloptr9177[0]
-  %f9180 = load i64, i64* %i0ptr9178, align 8                                        ; load; *i0ptr9178
-  %fptr9179 = inttoptr i64 %f9180 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9179(i64 %OQa$cc, i64 %cont7104, i64 %OQa$cc)       ; tail call
+define void @lam8424(i64 %env8425, i64 %_957106, i64 %gte$_951) {
+  %envptr9159 = inttoptr i64 %env8425 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9160 = getelementptr inbounds i64, i64* %envptr9159, i64 2                  ; &envptr9159[2]
+  %W61$cc = load i64, i64* %envptr9160, align 8                                      ; load; *envptr9160
+  %envptr9161 = inttoptr i64 %env8425 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9162 = getelementptr inbounds i64, i64* %envptr9161, i64 1                  ; &envptr9161[1]
+  %cont7102 = load i64, i64* %envptr9162, align 8                                    ; load; *envptr9162
+  %cloptr9163 = inttoptr i64 %W61$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9163)                                         ; assert function application
+  %i0ptr9164 = getelementptr inbounds i64, i64* %cloptr9163, i64 0                   ; &cloptr9163[0]
+  %f9166 = load i64, i64* %i0ptr9164, align 8                                        ; load; *i0ptr9164
+  %fptr9165 = inttoptr i64 %f9166 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9165(i64 %W61$cc, i64 %cont7102, i64 %W61$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8432(i64 %env8433, i64 %_957105, i64 %OQa$cc) {
-  %envptr9181 = inttoptr i64 %env8433 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9182 = getelementptr inbounds i64, i64* %envptr9181, i64 3                  ; &envptr9181[3]
-  %cont7104 = load i64, i64* %envptr9182, align 8                                    ; load; *envptr9182
-  %envptr9183 = inttoptr i64 %env8433 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9184 = getelementptr inbounds i64, i64* %envptr9183, i64 2                  ; &envptr9183[2]
-  %XOH$lst = load i64, i64* %envptr9184, align 8                                     ; load; *envptr9184
-  %envptr9185 = inttoptr i64 %env8433 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9186 = getelementptr inbounds i64, i64* %envptr9185, i64 1                  ; &envptr9185[1]
-  %FkA$n = load i64, i64* %envptr9186, align 8                                       ; load; *envptr9186
-  %arg7484 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7006 = call i64 @prim_vector_45ref(i64 %FkA$n, i64 %arg7484)                     ; call prim_vector_45ref
-  %arg7487 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7007 = call i64 @prim__61(i64 %arg7487, i64 %a7006)                              ; call prim__61
-  %cmp9187 = icmp eq i64 %a7007, 15                                                  ; false?
-  br i1 %cmp9187, label %else9189, label %then9188                                   ; if
+define void @lam8418(i64 %env8419, i64 %_957103, i64 %W61$cc) {
+  %envptr9167 = inttoptr i64 %env8419 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9168 = getelementptr inbounds i64, i64* %envptr9167, i64 3                  ; &envptr9167[3]
+  %cont7102 = load i64, i64* %envptr9168, align 8                                    ; load; *envptr9168
+  %envptr9169 = inttoptr i64 %env8419 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9170 = getelementptr inbounds i64, i64* %envptr9169, i64 2                  ; &envptr9169[2]
+  %Kzb$lst = load i64, i64* %envptr9170, align 8                                     ; load; *envptr9170
+  %envptr9171 = inttoptr i64 %env8419 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9172 = getelementptr inbounds i64, i64* %envptr9171, i64 1                  ; &envptr9171[1]
+  %jBC$n = load i64, i64* %envptr9172, align 8                                       ; load; *envptr9172
+  %arg7482 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7006 = call i64 @prim_vector_45ref(i64 %jBC$n, i64 %arg7482)                     ; call prim_vector_45ref
+  %arg7485 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7007 = call i64 @prim__61(i64 %arg7485, i64 %a7006)                              ; call prim__61
+  %cmp9173 = icmp eq i64 %a7007, 15                                                  ; false?
+  br i1 %cmp9173, label %else9175, label %then9174                                   ; if
 
-then9188:
-  %arg7488 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7106 = call i64 @prim_vector_45ref(i64 %XOH$lst, i64 %arg7488)             ; call prim_vector_45ref
-  %arg7491 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9190 = inttoptr i64 %cont7104 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9190)                                         ; assert function application
-  %i0ptr9191 = getelementptr inbounds i64, i64* %cloptr9190, i64 0                   ; &cloptr9190[0]
-  %f9193 = load i64, i64* %i0ptr9191, align 8                                        ; load; *i0ptr9191
-  %fptr9192 = inttoptr i64 %f9193 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9192(i64 %cont7104, i64 %arg7491, i64 %retprim7106) ; tail call
+then9174:
+  %arg7486 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7104 = call i64 @prim_vector_45ref(i64 %Kzb$lst, i64 %arg7486)             ; call prim_vector_45ref
+  %arg7489 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9176 = inttoptr i64 %cont7102 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9176)                                         ; assert function application
+  %i0ptr9177 = getelementptr inbounds i64, i64* %cloptr9176, i64 0                   ; &cloptr9176[0]
+  %f9179 = load i64, i64* %i0ptr9177, align 8                                        ; load; *i0ptr9177
+  %fptr9178 = inttoptr i64 %f9179 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9178(i64 %cont7102, i64 %arg7489, i64 %retprim7104) ; tail call
   ret void
 
-else9189:
-  %arg7493 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7008 = call i64 @prim_vector_45ref(i64 %XOH$lst, i64 %arg7493)                   ; call prim_vector_45ref
+else9175:
+  %arg7491 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7008 = call i64 @prim_vector_45ref(i64 %Kzb$lst, i64 %arg7491)                   ; call prim_vector_45ref
   %a7009 = call i64 @prim_cdr(i64 %a7008)                                            ; call prim_cdr
-  %arg7497 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7110 = call i64 @prim_vector_45set_33(i64 %XOH$lst, i64 %arg7497, i64 %a7009); call prim_vector_45set_33
-  %cloptr9194 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9196 = getelementptr inbounds i64, i64* %cloptr9194, i64 1                    ; &eptr9196[1]
-  %eptr9197 = getelementptr inbounds i64, i64* %cloptr9194, i64 2                    ; &eptr9197[2]
-  %eptr9198 = getelementptr inbounds i64, i64* %cloptr9194, i64 3                    ; &eptr9198[3]
-  store i64 %FkA$n, i64* %eptr9196                                                   ; *eptr9196 = %FkA$n
-  store i64 %cont7104, i64* %eptr9197                                                ; *eptr9197 = %cont7104
-  store i64 %OQa$cc, i64* %eptr9198                                                  ; *eptr9198 = %OQa$cc
-  %eptr9195 = getelementptr inbounds i64, i64* %cloptr9194, i64 0                    ; &cloptr9194[0]
-  %f9199 = ptrtoint void(i64,i64,i64)* @lam8426 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9199, i64* %eptr9195                                                   ; store fptr
-  %arg7501 = ptrtoint i64* %cloptr9194 to i64                                        ; closure cast; i64* -> i64
-  %arg7500 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9200 = inttoptr i64 %arg7501 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9200)                                         ; assert function application
-  %i0ptr9201 = getelementptr inbounds i64, i64* %cloptr9200, i64 0                   ; &cloptr9200[0]
-  %f9203 = load i64, i64* %i0ptr9201, align 8                                        ; load; *i0ptr9201
-  %fptr9202 = inttoptr i64 %f9203 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9202(i64 %arg7501, i64 %arg7500, i64 %retprim7110)  ; tail call
+  %arg7495 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7108 = call i64 @prim_vector_45set_33(i64 %Kzb$lst, i64 %arg7495, i64 %a7009); call prim_vector_45set_33
+  %cloptr9180 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9182 = getelementptr inbounds i64, i64* %cloptr9180, i64 1                    ; &eptr9182[1]
+  %eptr9183 = getelementptr inbounds i64, i64* %cloptr9180, i64 2                    ; &eptr9183[2]
+  %eptr9184 = getelementptr inbounds i64, i64* %cloptr9180, i64 3                    ; &eptr9184[3]
+  store i64 %jBC$n, i64* %eptr9182                                                   ; *eptr9182 = %jBC$n
+  store i64 %cont7102, i64* %eptr9183                                                ; *eptr9183 = %cont7102
+  store i64 %W61$cc, i64* %eptr9184                                                  ; *eptr9184 = %W61$cc
+  %eptr9181 = getelementptr inbounds i64, i64* %cloptr9180, i64 0                    ; &cloptr9180[0]
+  %f9185 = ptrtoint void(i64,i64,i64)* @lam8412 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9185, i64* %eptr9181                                                   ; store fptr
+  %arg7499 = ptrtoint i64* %cloptr9180 to i64                                        ; closure cast; i64* -> i64
+  %arg7498 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9186 = inttoptr i64 %arg7499 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9186)                                         ; assert function application
+  %i0ptr9187 = getelementptr inbounds i64, i64* %cloptr9186, i64 0                   ; &cloptr9186[0]
+  %f9189 = load i64, i64* %i0ptr9187, align 8                                        ; load; *i0ptr9187
+  %fptr9188 = inttoptr i64 %f9189 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9188(i64 %arg7499, i64 %arg7498, i64 %retprim7108)  ; tail call
   ret void
 }
 
 
-define void @lam8426(i64 %env8427, i64 %_957107, i64 %F7S$_950) {
-  %envptr9204 = inttoptr i64 %env8427 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9205 = getelementptr inbounds i64, i64* %envptr9204, i64 3                  ; &envptr9204[3]
-  %OQa$cc = load i64, i64* %envptr9205, align 8                                      ; load; *envptr9205
-  %envptr9206 = inttoptr i64 %env8427 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9207 = getelementptr inbounds i64, i64* %envptr9206, i64 2                  ; &envptr9206[2]
-  %cont7104 = load i64, i64* %envptr9207, align 8                                    ; load; *envptr9207
-  %envptr9208 = inttoptr i64 %env8427 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9209 = getelementptr inbounds i64, i64* %envptr9208, i64 1                  ; &envptr9208[1]
-  %FkA$n = load i64, i64* %envptr9209, align 8                                       ; load; *envptr9209
-  %arg7502 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7010 = call i64 @prim_vector_45ref(i64 %FkA$n, i64 %arg7502)                     ; call prim_vector_45ref
-  %arg7504 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %a7011 = call i64 @prim__45(i64 %a7010, i64 %arg7504)                              ; call prim__45
-  %arg7507 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7109 = call i64 @prim_vector_45set_33(i64 %FkA$n, i64 %arg7507, i64 %a7011); call prim_vector_45set_33
-  %cloptr9210 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9212 = getelementptr inbounds i64, i64* %cloptr9210, i64 1                    ; &eptr9212[1]
-  %eptr9213 = getelementptr inbounds i64, i64* %cloptr9210, i64 2                    ; &eptr9213[2]
-  store i64 %cont7104, i64* %eptr9212                                                ; *eptr9212 = %cont7104
-  store i64 %OQa$cc, i64* %eptr9213                                                  ; *eptr9213 = %OQa$cc
-  %eptr9211 = getelementptr inbounds i64, i64* %cloptr9210, i64 0                    ; &cloptr9210[0]
-  %f9214 = ptrtoint void(i64,i64,i64)* @lam8421 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9214, i64* %eptr9211                                                   ; store fptr
-  %arg7511 = ptrtoint i64* %cloptr9210 to i64                                        ; closure cast; i64* -> i64
-  %arg7510 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9215 = inttoptr i64 %arg7511 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9215)                                         ; assert function application
-  %i0ptr9216 = getelementptr inbounds i64, i64* %cloptr9215, i64 0                   ; &cloptr9215[0]
-  %f9218 = load i64, i64* %i0ptr9216, align 8                                        ; load; *i0ptr9216
-  %fptr9217 = inttoptr i64 %f9218 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9217(i64 %arg7511, i64 %arg7510, i64 %retprim7109)  ; tail call
+define void @lam8412(i64 %env8413, i64 %_957105, i64 %O41$_950) {
+  %envptr9190 = inttoptr i64 %env8413 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9191 = getelementptr inbounds i64, i64* %envptr9190, i64 3                  ; &envptr9190[3]
+  %W61$cc = load i64, i64* %envptr9191, align 8                                      ; load; *envptr9191
+  %envptr9192 = inttoptr i64 %env8413 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9193 = getelementptr inbounds i64, i64* %envptr9192, i64 2                  ; &envptr9192[2]
+  %cont7102 = load i64, i64* %envptr9193, align 8                                    ; load; *envptr9193
+  %envptr9194 = inttoptr i64 %env8413 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9195 = getelementptr inbounds i64, i64* %envptr9194, i64 1                  ; &envptr9194[1]
+  %jBC$n = load i64, i64* %envptr9195, align 8                                       ; load; *envptr9195
+  %arg7500 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7010 = call i64 @prim_vector_45ref(i64 %jBC$n, i64 %arg7500)                     ; call prim_vector_45ref
+  %arg7502 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %a7011 = call i64 @prim__45(i64 %a7010, i64 %arg7502)                              ; call prim__45
+  %arg7505 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7107 = call i64 @prim_vector_45set_33(i64 %jBC$n, i64 %arg7505, i64 %a7011); call prim_vector_45set_33
+  %cloptr9196 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9198 = getelementptr inbounds i64, i64* %cloptr9196, i64 1                    ; &eptr9198[1]
+  %eptr9199 = getelementptr inbounds i64, i64* %cloptr9196, i64 2                    ; &eptr9199[2]
+  store i64 %cont7102, i64* %eptr9198                                                ; *eptr9198 = %cont7102
+  store i64 %W61$cc, i64* %eptr9199                                                  ; *eptr9199 = %W61$cc
+  %eptr9197 = getelementptr inbounds i64, i64* %cloptr9196, i64 0                    ; &cloptr9196[0]
+  %f9200 = ptrtoint void(i64,i64,i64)* @lam8407 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9200, i64* %eptr9197                                                   ; store fptr
+  %arg7509 = ptrtoint i64* %cloptr9196 to i64                                        ; closure cast; i64* -> i64
+  %arg7508 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9201 = inttoptr i64 %arg7509 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9201)                                         ; assert function application
+  %i0ptr9202 = getelementptr inbounds i64, i64* %cloptr9201, i64 0                   ; &cloptr9201[0]
+  %f9204 = load i64, i64* %i0ptr9202, align 8                                        ; load; *i0ptr9202
+  %fptr9203 = inttoptr i64 %f9204 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9203(i64 %arg7509, i64 %arg7508, i64 %retprim7107)  ; tail call
   ret void
 }
 
 
-define void @lam8421(i64 %env8422, i64 %_957108, i64 %aac$_951) {
-  %envptr9219 = inttoptr i64 %env8422 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9220 = getelementptr inbounds i64, i64* %envptr9219, i64 2                  ; &envptr9219[2]
-  %OQa$cc = load i64, i64* %envptr9220, align 8                                      ; load; *envptr9220
-  %envptr9221 = inttoptr i64 %env8422 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9222 = getelementptr inbounds i64, i64* %envptr9221, i64 1                  ; &envptr9221[1]
-  %cont7104 = load i64, i64* %envptr9222, align 8                                    ; load; *envptr9222
-  %cloptr9223 = inttoptr i64 %OQa$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9223)                                         ; assert function application
-  %i0ptr9224 = getelementptr inbounds i64, i64* %cloptr9223, i64 0                   ; &cloptr9223[0]
-  %f9226 = load i64, i64* %i0ptr9224, align 8                                        ; load; *i0ptr9224
-  %fptr9225 = inttoptr i64 %f9226 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9225(i64 %OQa$cc, i64 %cont7104, i64 %OQa$cc)       ; tail call
+define void @lam8407(i64 %env8408, i64 %_957106, i64 %gte$_951) {
+  %envptr9205 = inttoptr i64 %env8408 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9206 = getelementptr inbounds i64, i64* %envptr9205, i64 2                  ; &envptr9205[2]
+  %W61$cc = load i64, i64* %envptr9206, align 8                                      ; load; *envptr9206
+  %envptr9207 = inttoptr i64 %env8408 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9208 = getelementptr inbounds i64, i64* %envptr9207, i64 1                  ; &envptr9207[1]
+  %cont7102 = load i64, i64* %envptr9208, align 8                                    ; load; *envptr9208
+  %cloptr9209 = inttoptr i64 %W61$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9209)                                         ; assert function application
+  %i0ptr9210 = getelementptr inbounds i64, i64* %cloptr9209, i64 0                   ; &cloptr9209[0]
+  %f9212 = load i64, i64* %i0ptr9210, align 8                                        ; load; *i0ptr9210
+  %fptr9211 = inttoptr i64 %f9212 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9211(i64 %W61$cc, i64 %cont7102, i64 %W61$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8415(i64 %env8416, i64 %cont7112, i64 %nDr$v, i64 %Jbf$lst) {
-  %arg7516 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %c04$lst = call i64 @prim_make_45vector(i64 %arg7516, i64 %Jbf$lst)                ; call prim_make_45vector
-  %cloptr9227 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9228 = getelementptr inbounds i64, i64* %cloptr9227, i64 0                    ; &cloptr9227[0]
-  %f9229 = ptrtoint void(i64,i64,i64)* @lam8412 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9229, i64* %eptr9228                                                   ; store fptr
-  %arg7519 = ptrtoint i64* %cloptr9227 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9230 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9232 = getelementptr inbounds i64, i64* %cloptr9230, i64 1                    ; &eptr9232[1]
-  %eptr9233 = getelementptr inbounds i64, i64* %cloptr9230, i64 2                    ; &eptr9233[2]
-  %eptr9234 = getelementptr inbounds i64, i64* %cloptr9230, i64 3                    ; &eptr9234[3]
-  store i64 %cont7112, i64* %eptr9232                                                ; *eptr9232 = %cont7112
-  store i64 %nDr$v, i64* %eptr9233                                                   ; *eptr9233 = %nDr$v
-  store i64 %c04$lst, i64* %eptr9234                                                 ; *eptr9234 = %c04$lst
-  %eptr9231 = getelementptr inbounds i64, i64* %cloptr9230, i64 0                    ; &cloptr9230[0]
-  %f9235 = ptrtoint void(i64,i64,i64)* @lam8410 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9235, i64* %eptr9231                                                   ; store fptr
-  %arg7518 = ptrtoint i64* %cloptr9230 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9236 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9238 = getelementptr inbounds i64, i64* %cloptr9236, i64 1                    ; &eptr9238[1]
-  %eptr9239 = getelementptr inbounds i64, i64* %cloptr9236, i64 2                    ; &eptr9239[2]
-  %eptr9240 = getelementptr inbounds i64, i64* %cloptr9236, i64 3                    ; &eptr9240[3]
-  store i64 %cont7112, i64* %eptr9238                                                ; *eptr9238 = %cont7112
-  store i64 %nDr$v, i64* %eptr9239                                                   ; *eptr9239 = %nDr$v
-  store i64 %c04$lst, i64* %eptr9240                                                 ; *eptr9240 = %c04$lst
-  %eptr9237 = getelementptr inbounds i64, i64* %cloptr9236, i64 0                    ; &cloptr9236[0]
-  %f9241 = ptrtoint void(i64,i64,i64)* @lam8397 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9241, i64* %eptr9237                                                   ; store fptr
-  %arg7517 = ptrtoint i64* %cloptr9236 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9242 = inttoptr i64 %arg7519 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9242)                                         ; assert function application
-  %i0ptr9243 = getelementptr inbounds i64, i64* %cloptr9242, i64 0                   ; &cloptr9242[0]
-  %f9245 = load i64, i64* %i0ptr9243, align 8                                        ; load; *i0ptr9243
-  %fptr9244 = inttoptr i64 %f9245 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9244(i64 %arg7519, i64 %arg7518, i64 %arg7517)      ; tail call
+define void @lam8401(i64 %env8402, i64 %cont7110, i64 %tuH$v, i64 %aCa$lst) {
+  %arg7514 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %cjM$lst = call i64 @prim_make_45vector(i64 %arg7514, i64 %aCa$lst)                ; call prim_make_45vector
+  %cloptr9213 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9214 = getelementptr inbounds i64, i64* %cloptr9213, i64 0                    ; &cloptr9213[0]
+  %f9215 = ptrtoint void(i64,i64,i64)* @lam8398 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9215, i64* %eptr9214                                                   ; store fptr
+  %arg7517 = ptrtoint i64* %cloptr9213 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9216 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9218 = getelementptr inbounds i64, i64* %cloptr9216, i64 1                    ; &eptr9218[1]
+  %eptr9219 = getelementptr inbounds i64, i64* %cloptr9216, i64 2                    ; &eptr9219[2]
+  %eptr9220 = getelementptr inbounds i64, i64* %cloptr9216, i64 3                    ; &eptr9220[3]
+  store i64 %cont7110, i64* %eptr9218                                                ; *eptr9218 = %cont7110
+  store i64 %tuH$v, i64* %eptr9219                                                   ; *eptr9219 = %tuH$v
+  store i64 %cjM$lst, i64* %eptr9220                                                 ; *eptr9220 = %cjM$lst
+  %eptr9217 = getelementptr inbounds i64, i64* %cloptr9216, i64 0                    ; &cloptr9216[0]
+  %f9221 = ptrtoint void(i64,i64,i64)* @lam8396 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9221, i64* %eptr9217                                                   ; store fptr
+  %arg7516 = ptrtoint i64* %cloptr9216 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9222 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9224 = getelementptr inbounds i64, i64* %cloptr9222, i64 1                    ; &eptr9224[1]
+  %eptr9225 = getelementptr inbounds i64, i64* %cloptr9222, i64 2                    ; &eptr9225[2]
+  %eptr9226 = getelementptr inbounds i64, i64* %cloptr9222, i64 3                    ; &eptr9226[3]
+  store i64 %cont7110, i64* %eptr9224                                                ; *eptr9224 = %cont7110
+  store i64 %tuH$v, i64* %eptr9225                                                   ; *eptr9225 = %tuH$v
+  store i64 %cjM$lst, i64* %eptr9226                                                 ; *eptr9226 = %cjM$lst
+  %eptr9223 = getelementptr inbounds i64, i64* %cloptr9222, i64 0                    ; &cloptr9222[0]
+  %f9227 = ptrtoint void(i64,i64,i64)* @lam8383 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9227, i64* %eptr9223                                                   ; store fptr
+  %arg7515 = ptrtoint i64* %cloptr9222 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9228 = inttoptr i64 %arg7517 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9228)                                         ; assert function application
+  %i0ptr9229 = getelementptr inbounds i64, i64* %cloptr9228, i64 0                   ; &cloptr9228[0]
+  %f9231 = load i64, i64* %i0ptr9229, align 8                                        ; load; *i0ptr9229
+  %fptr9230 = inttoptr i64 %f9231 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9230(i64 %arg7517, i64 %arg7516, i64 %arg7515)      ; tail call
   ret void
 }
 
 
-define void @lam8412(i64 %env8413, i64 %cont7117, i64 %UE3$u) {
-  %cloptr9246 = inttoptr i64 %UE3$u to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9246)                                         ; assert function application
-  %i0ptr9247 = getelementptr inbounds i64, i64* %cloptr9246, i64 0                   ; &cloptr9246[0]
-  %f9249 = load i64, i64* %i0ptr9247, align 8                                        ; load; *i0ptr9247
-  %fptr9248 = inttoptr i64 %f9249 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9248(i64 %UE3$u, i64 %cont7117, i64 %UE3$u)         ; tail call
+define void @lam8398(i64 %env8399, i64 %cont7115, i64 %Pkh$u) {
+  %cloptr9232 = inttoptr i64 %Pkh$u to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9232)                                         ; assert function application
+  %i0ptr9233 = getelementptr inbounds i64, i64* %cloptr9232, i64 0                   ; &cloptr9232[0]
+  %f9235 = load i64, i64* %i0ptr9233, align 8                                        ; load; *i0ptr9233
+  %fptr9234 = inttoptr i64 %f9235 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9234(i64 %Pkh$u, i64 %cont7115, i64 %Pkh$u)         ; tail call
   ret void
 }
 
 
-define void @lam8410(i64 %env8411, i64 %_957113, i64 %evd$cc) {
-  %envptr9250 = inttoptr i64 %env8411 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9251 = getelementptr inbounds i64, i64* %envptr9250, i64 3                  ; &envptr9250[3]
-  %c04$lst = load i64, i64* %envptr9251, align 8                                     ; load; *envptr9251
-  %envptr9252 = inttoptr i64 %env8411 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9253 = getelementptr inbounds i64, i64* %envptr9252, i64 2                  ; &envptr9252[2]
-  %nDr$v = load i64, i64* %envptr9253, align 8                                       ; load; *envptr9253
-  %envptr9254 = inttoptr i64 %env8411 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9255 = getelementptr inbounds i64, i64* %envptr9254, i64 1                  ; &envptr9254[1]
-  %cont7112 = load i64, i64* %envptr9255, align 8                                    ; load; *envptr9255
-  %arg7523 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7012 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7523)                   ; call prim_vector_45ref
+define void @lam8396(i64 %env8397, i64 %_957111, i64 %jmn$cc) {
+  %envptr9236 = inttoptr i64 %env8397 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9237 = getelementptr inbounds i64, i64* %envptr9236, i64 3                  ; &envptr9236[3]
+  %cjM$lst = load i64, i64* %envptr9237, align 8                                     ; load; *envptr9237
+  %envptr9238 = inttoptr i64 %env8397 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9239 = getelementptr inbounds i64, i64* %envptr9238, i64 2                  ; &envptr9238[2]
+  %tuH$v = load i64, i64* %envptr9239, align 8                                       ; load; *envptr9239
+  %envptr9240 = inttoptr i64 %env8397 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9241 = getelementptr inbounds i64, i64* %envptr9240, i64 1                  ; &envptr9240[1]
+  %cont7110 = load i64, i64* %envptr9241, align 8                                    ; load; *envptr9241
+  %arg7521 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7012 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7521)                   ; call prim_vector_45ref
   %a7013 = call i64 @prim_null_63(i64 %a7012)                                        ; call prim_null_63
-  %cmp9256 = icmp eq i64 %a7013, 15                                                  ; false?
-  br i1 %cmp9256, label %else9258, label %then9257                                   ; if
+  %cmp9242 = icmp eq i64 %a7013, 15                                                  ; false?
+  br i1 %cmp9242, label %else9244, label %then9243                                   ; if
 
-then9257:
-  %arg7527 = add i64 0, 0                                                            ; quoted ()
-  %arg7526 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr9259 = inttoptr i64 %cont7112 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9259)                                         ; assert function application
-  %i0ptr9260 = getelementptr inbounds i64, i64* %cloptr9259, i64 0                   ; &cloptr9259[0]
-  %f9262 = load i64, i64* %i0ptr9260, align 8                                        ; load; *i0ptr9260
-  %fptr9261 = inttoptr i64 %f9262 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9261(i64 %cont7112, i64 %arg7527, i64 %arg7526)     ; tail call
+then9243:
+  %arg7525 = add i64 0, 0                                                            ; quoted ()
+  %arg7524 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr9245 = inttoptr i64 %cont7110 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9245)                                         ; assert function application
+  %i0ptr9246 = getelementptr inbounds i64, i64* %cloptr9245, i64 0                   ; &cloptr9245[0]
+  %f9248 = load i64, i64* %i0ptr9246, align 8                                        ; load; *i0ptr9246
+  %fptr9247 = inttoptr i64 %f9248 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9247(i64 %cont7110, i64 %arg7525, i64 %arg7524)     ; tail call
   ret void
 
-else9258:
-  %arg7529 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7014 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7529)                   ; call prim_vector_45ref
+else9244:
+  %arg7527 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7014 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7527)                   ; call prim_vector_45ref
   %a7015 = call i64 @prim_car(i64 %a7014)                                            ; call prim_car
-  %a7016 = call i64 @prim_eqv_63(i64 %a7015, i64 %nDr$v)                             ; call prim_eqv_63
-  %cmp9263 = icmp eq i64 %a7016, 15                                                  ; false?
-  br i1 %cmp9263, label %else9265, label %then9264                                   ; if
+  %a7016 = call i64 @prim_eqv_63(i64 %a7015, i64 %tuH$v)                             ; call prim_eqv_63
+  %cmp9249 = icmp eq i64 %a7016, 15                                                  ; false?
+  br i1 %cmp9249, label %else9251, label %then9250                                   ; if
 
-then9264:
-  %arg7534 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7114 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7534)             ; call prim_vector_45ref
-  %arg7537 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9266 = inttoptr i64 %cont7112 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9266)                                         ; assert function application
-  %i0ptr9267 = getelementptr inbounds i64, i64* %cloptr9266, i64 0                   ; &cloptr9266[0]
-  %f9269 = load i64, i64* %i0ptr9267, align 8                                        ; load; *i0ptr9267
-  %fptr9268 = inttoptr i64 %f9269 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9268(i64 %cont7112, i64 %arg7537, i64 %retprim7114) ; tail call
+then9250:
+  %arg7532 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7112 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7532)             ; call prim_vector_45ref
+  %arg7535 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9252 = inttoptr i64 %cont7110 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9252)                                         ; assert function application
+  %i0ptr9253 = getelementptr inbounds i64, i64* %cloptr9252, i64 0                   ; &cloptr9252[0]
+  %f9255 = load i64, i64* %i0ptr9253, align 8                                        ; load; *i0ptr9253
+  %fptr9254 = inttoptr i64 %f9255 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9254(i64 %cont7110, i64 %arg7535, i64 %retprim7112) ; tail call
   ret void
 
-else9265:
-  %arg7539 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7017 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7539)                   ; call prim_vector_45ref
+else9251:
+  %arg7537 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7017 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7537)                   ; call prim_vector_45ref
   %a7018 = call i64 @prim_cdr(i64 %a7017)                                            ; call prim_cdr
-  %arg7543 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7116 = call i64 @prim_vector_45set_33(i64 %c04$lst, i64 %arg7543, i64 %a7018); call prim_vector_45set_33
-  %cloptr9270 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9272 = getelementptr inbounds i64, i64* %cloptr9270, i64 1                    ; &eptr9272[1]
-  %eptr9273 = getelementptr inbounds i64, i64* %cloptr9270, i64 2                    ; &eptr9273[2]
-  store i64 %cont7112, i64* %eptr9272                                                ; *eptr9272 = %cont7112
-  store i64 %evd$cc, i64* %eptr9273                                                  ; *eptr9273 = %evd$cc
-  %eptr9271 = getelementptr inbounds i64, i64* %cloptr9270, i64 0                    ; &cloptr9270[0]
-  %f9274 = ptrtoint void(i64,i64,i64)* @lam8404 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9274, i64* %eptr9271                                                   ; store fptr
-  %arg7547 = ptrtoint i64* %cloptr9270 to i64                                        ; closure cast; i64* -> i64
-  %arg7546 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9275 = inttoptr i64 %arg7547 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9275)                                         ; assert function application
-  %i0ptr9276 = getelementptr inbounds i64, i64* %cloptr9275, i64 0                   ; &cloptr9275[0]
-  %f9278 = load i64, i64* %i0ptr9276, align 8                                        ; load; *i0ptr9276
-  %fptr9277 = inttoptr i64 %f9278 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9277(i64 %arg7547, i64 %arg7546, i64 %retprim7116)  ; tail call
+  %arg7541 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7114 = call i64 @prim_vector_45set_33(i64 %cjM$lst, i64 %arg7541, i64 %a7018); call prim_vector_45set_33
+  %cloptr9256 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9258 = getelementptr inbounds i64, i64* %cloptr9256, i64 1                    ; &eptr9258[1]
+  %eptr9259 = getelementptr inbounds i64, i64* %cloptr9256, i64 2                    ; &eptr9259[2]
+  store i64 %cont7110, i64* %eptr9258                                                ; *eptr9258 = %cont7110
+  store i64 %jmn$cc, i64* %eptr9259                                                  ; *eptr9259 = %jmn$cc
+  %eptr9257 = getelementptr inbounds i64, i64* %cloptr9256, i64 0                    ; &cloptr9256[0]
+  %f9260 = ptrtoint void(i64,i64,i64)* @lam8390 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9260, i64* %eptr9257                                                   ; store fptr
+  %arg7545 = ptrtoint i64* %cloptr9256 to i64                                        ; closure cast; i64* -> i64
+  %arg7544 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9261 = inttoptr i64 %arg7545 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9261)                                         ; assert function application
+  %i0ptr9262 = getelementptr inbounds i64, i64* %cloptr9261, i64 0                   ; &cloptr9261[0]
+  %f9264 = load i64, i64* %i0ptr9262, align 8                                        ; load; *i0ptr9262
+  %fptr9263 = inttoptr i64 %f9264 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9263(i64 %arg7545, i64 %arg7544, i64 %retprim7114)  ; tail call
   ret void
 }
 
 
-define void @lam8404(i64 %env8405, i64 %_957115, i64 %y2w$_950) {
-  %envptr9279 = inttoptr i64 %env8405 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9280 = getelementptr inbounds i64, i64* %envptr9279, i64 2                  ; &envptr9279[2]
-  %evd$cc = load i64, i64* %envptr9280, align 8                                      ; load; *envptr9280
-  %envptr9281 = inttoptr i64 %env8405 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9282 = getelementptr inbounds i64, i64* %envptr9281, i64 1                  ; &envptr9281[1]
-  %cont7112 = load i64, i64* %envptr9282, align 8                                    ; load; *envptr9282
-  %cloptr9283 = inttoptr i64 %evd$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9283)                                         ; assert function application
-  %i0ptr9284 = getelementptr inbounds i64, i64* %cloptr9283, i64 0                   ; &cloptr9283[0]
-  %f9286 = load i64, i64* %i0ptr9284, align 8                                        ; load; *i0ptr9284
-  %fptr9285 = inttoptr i64 %f9286 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9285(i64 %evd$cc, i64 %cont7112, i64 %evd$cc)       ; tail call
+define void @lam8390(i64 %env8391, i64 %_957113, i64 %dbX$_950) {
+  %envptr9265 = inttoptr i64 %env8391 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9266 = getelementptr inbounds i64, i64* %envptr9265, i64 2                  ; &envptr9265[2]
+  %jmn$cc = load i64, i64* %envptr9266, align 8                                      ; load; *envptr9266
+  %envptr9267 = inttoptr i64 %env8391 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9268 = getelementptr inbounds i64, i64* %envptr9267, i64 1                  ; &envptr9267[1]
+  %cont7110 = load i64, i64* %envptr9268, align 8                                    ; load; *envptr9268
+  %cloptr9269 = inttoptr i64 %jmn$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9269)                                         ; assert function application
+  %i0ptr9270 = getelementptr inbounds i64, i64* %cloptr9269, i64 0                   ; &cloptr9269[0]
+  %f9272 = load i64, i64* %i0ptr9270, align 8                                        ; load; *i0ptr9270
+  %fptr9271 = inttoptr i64 %f9272 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9271(i64 %jmn$cc, i64 %cont7110, i64 %jmn$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8397(i64 %env8398, i64 %_957113, i64 %evd$cc) {
-  %envptr9287 = inttoptr i64 %env8398 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9288 = getelementptr inbounds i64, i64* %envptr9287, i64 3                  ; &envptr9287[3]
-  %c04$lst = load i64, i64* %envptr9288, align 8                                     ; load; *envptr9288
-  %envptr9289 = inttoptr i64 %env8398 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9290 = getelementptr inbounds i64, i64* %envptr9289, i64 2                  ; &envptr9289[2]
-  %nDr$v = load i64, i64* %envptr9290, align 8                                       ; load; *envptr9290
-  %envptr9291 = inttoptr i64 %env8398 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9292 = getelementptr inbounds i64, i64* %envptr9291, i64 1                  ; &envptr9291[1]
-  %cont7112 = load i64, i64* %envptr9292, align 8                                    ; load; *envptr9292
-  %arg7551 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7012 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7551)                   ; call prim_vector_45ref
+define void @lam8383(i64 %env8384, i64 %_957111, i64 %jmn$cc) {
+  %envptr9273 = inttoptr i64 %env8384 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9274 = getelementptr inbounds i64, i64* %envptr9273, i64 3                  ; &envptr9273[3]
+  %cjM$lst = load i64, i64* %envptr9274, align 8                                     ; load; *envptr9274
+  %envptr9275 = inttoptr i64 %env8384 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9276 = getelementptr inbounds i64, i64* %envptr9275, i64 2                  ; &envptr9275[2]
+  %tuH$v = load i64, i64* %envptr9276, align 8                                       ; load; *envptr9276
+  %envptr9277 = inttoptr i64 %env8384 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9278 = getelementptr inbounds i64, i64* %envptr9277, i64 1                  ; &envptr9277[1]
+  %cont7110 = load i64, i64* %envptr9278, align 8                                    ; load; *envptr9278
+  %arg7549 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7012 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7549)                   ; call prim_vector_45ref
   %a7013 = call i64 @prim_null_63(i64 %a7012)                                        ; call prim_null_63
-  %cmp9293 = icmp eq i64 %a7013, 15                                                  ; false?
-  br i1 %cmp9293, label %else9295, label %then9294                                   ; if
+  %cmp9279 = icmp eq i64 %a7013, 15                                                  ; false?
+  br i1 %cmp9279, label %else9281, label %then9280                                   ; if
 
-then9294:
-  %arg7555 = add i64 0, 0                                                            ; quoted ()
-  %arg7554 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr9296 = inttoptr i64 %cont7112 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9296)                                         ; assert function application
-  %i0ptr9297 = getelementptr inbounds i64, i64* %cloptr9296, i64 0                   ; &cloptr9296[0]
-  %f9299 = load i64, i64* %i0ptr9297, align 8                                        ; load; *i0ptr9297
-  %fptr9298 = inttoptr i64 %f9299 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9298(i64 %cont7112, i64 %arg7555, i64 %arg7554)     ; tail call
+then9280:
+  %arg7553 = add i64 0, 0                                                            ; quoted ()
+  %arg7552 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr9282 = inttoptr i64 %cont7110 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9282)                                         ; assert function application
+  %i0ptr9283 = getelementptr inbounds i64, i64* %cloptr9282, i64 0                   ; &cloptr9282[0]
+  %f9285 = load i64, i64* %i0ptr9283, align 8                                        ; load; *i0ptr9283
+  %fptr9284 = inttoptr i64 %f9285 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9284(i64 %cont7110, i64 %arg7553, i64 %arg7552)     ; tail call
   ret void
 
-else9295:
-  %arg7557 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7014 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7557)                   ; call prim_vector_45ref
+else9281:
+  %arg7555 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7014 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7555)                   ; call prim_vector_45ref
   %a7015 = call i64 @prim_car(i64 %a7014)                                            ; call prim_car
-  %a7016 = call i64 @prim_eqv_63(i64 %a7015, i64 %nDr$v)                             ; call prim_eqv_63
-  %cmp9300 = icmp eq i64 %a7016, 15                                                  ; false?
-  br i1 %cmp9300, label %else9302, label %then9301                                   ; if
+  %a7016 = call i64 @prim_eqv_63(i64 %a7015, i64 %tuH$v)                             ; call prim_eqv_63
+  %cmp9286 = icmp eq i64 %a7016, 15                                                  ; false?
+  br i1 %cmp9286, label %else9288, label %then9287                                   ; if
 
-then9301:
-  %arg7562 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7114 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7562)             ; call prim_vector_45ref
-  %arg7565 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9303 = inttoptr i64 %cont7112 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9303)                                         ; assert function application
-  %i0ptr9304 = getelementptr inbounds i64, i64* %cloptr9303, i64 0                   ; &cloptr9303[0]
-  %f9306 = load i64, i64* %i0ptr9304, align 8                                        ; load; *i0ptr9304
-  %fptr9305 = inttoptr i64 %f9306 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9305(i64 %cont7112, i64 %arg7565, i64 %retprim7114) ; tail call
+then9287:
+  %arg7560 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7112 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7560)             ; call prim_vector_45ref
+  %arg7563 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9289 = inttoptr i64 %cont7110 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9289)                                         ; assert function application
+  %i0ptr9290 = getelementptr inbounds i64, i64* %cloptr9289, i64 0                   ; &cloptr9289[0]
+  %f9292 = load i64, i64* %i0ptr9290, align 8                                        ; load; *i0ptr9290
+  %fptr9291 = inttoptr i64 %f9292 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9291(i64 %cont7110, i64 %arg7563, i64 %retprim7112) ; tail call
   ret void
 
-else9302:
-  %arg7567 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7017 = call i64 @prim_vector_45ref(i64 %c04$lst, i64 %arg7567)                   ; call prim_vector_45ref
+else9288:
+  %arg7565 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7017 = call i64 @prim_vector_45ref(i64 %cjM$lst, i64 %arg7565)                   ; call prim_vector_45ref
   %a7018 = call i64 @prim_cdr(i64 %a7017)                                            ; call prim_cdr
-  %arg7571 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7116 = call i64 @prim_vector_45set_33(i64 %c04$lst, i64 %arg7571, i64 %a7018); call prim_vector_45set_33
-  %cloptr9307 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9309 = getelementptr inbounds i64, i64* %cloptr9307, i64 1                    ; &eptr9309[1]
-  %eptr9310 = getelementptr inbounds i64, i64* %cloptr9307, i64 2                    ; &eptr9310[2]
-  store i64 %cont7112, i64* %eptr9309                                                ; *eptr9309 = %cont7112
-  store i64 %evd$cc, i64* %eptr9310                                                  ; *eptr9310 = %evd$cc
-  %eptr9308 = getelementptr inbounds i64, i64* %cloptr9307, i64 0                    ; &cloptr9307[0]
-  %f9311 = ptrtoint void(i64,i64,i64)* @lam8391 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9311, i64* %eptr9308                                                   ; store fptr
-  %arg7575 = ptrtoint i64* %cloptr9307 to i64                                        ; closure cast; i64* -> i64
-  %arg7574 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9312 = inttoptr i64 %arg7575 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9312)                                         ; assert function application
-  %i0ptr9313 = getelementptr inbounds i64, i64* %cloptr9312, i64 0                   ; &cloptr9312[0]
-  %f9315 = load i64, i64* %i0ptr9313, align 8                                        ; load; *i0ptr9313
-  %fptr9314 = inttoptr i64 %f9315 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9314(i64 %arg7575, i64 %arg7574, i64 %retprim7116)  ; tail call
+  %arg7569 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7114 = call i64 @prim_vector_45set_33(i64 %cjM$lst, i64 %arg7569, i64 %a7018); call prim_vector_45set_33
+  %cloptr9293 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9295 = getelementptr inbounds i64, i64* %cloptr9293, i64 1                    ; &eptr9295[1]
+  %eptr9296 = getelementptr inbounds i64, i64* %cloptr9293, i64 2                    ; &eptr9296[2]
+  store i64 %cont7110, i64* %eptr9295                                                ; *eptr9295 = %cont7110
+  store i64 %jmn$cc, i64* %eptr9296                                                  ; *eptr9296 = %jmn$cc
+  %eptr9294 = getelementptr inbounds i64, i64* %cloptr9293, i64 0                    ; &cloptr9293[0]
+  %f9297 = ptrtoint void(i64,i64,i64)* @lam8377 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9297, i64* %eptr9294                                                   ; store fptr
+  %arg7573 = ptrtoint i64* %cloptr9293 to i64                                        ; closure cast; i64* -> i64
+  %arg7572 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9298 = inttoptr i64 %arg7573 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9298)                                         ; assert function application
+  %i0ptr9299 = getelementptr inbounds i64, i64* %cloptr9298, i64 0                   ; &cloptr9298[0]
+  %f9301 = load i64, i64* %i0ptr9299, align 8                                        ; load; *i0ptr9299
+  %fptr9300 = inttoptr i64 %f9301 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9300(i64 %arg7573, i64 %arg7572, i64 %retprim7114)  ; tail call
   ret void
 }
 
 
-define void @lam8391(i64 %env8392, i64 %_957115, i64 %y2w$_950) {
-  %envptr9316 = inttoptr i64 %env8392 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9317 = getelementptr inbounds i64, i64* %envptr9316, i64 2                  ; &envptr9316[2]
-  %evd$cc = load i64, i64* %envptr9317, align 8                                      ; load; *envptr9317
-  %envptr9318 = inttoptr i64 %env8392 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9319 = getelementptr inbounds i64, i64* %envptr9318, i64 1                  ; &envptr9318[1]
-  %cont7112 = load i64, i64* %envptr9319, align 8                                    ; load; *envptr9319
-  %cloptr9320 = inttoptr i64 %evd$cc to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9320)                                         ; assert function application
-  %i0ptr9321 = getelementptr inbounds i64, i64* %cloptr9320, i64 0                   ; &cloptr9320[0]
-  %f9323 = load i64, i64* %i0ptr9321, align 8                                        ; load; *i0ptr9321
-  %fptr9322 = inttoptr i64 %f9323 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9322(i64 %evd$cc, i64 %cont7112, i64 %evd$cc)       ; tail call
+define void @lam8377(i64 %env8378, i64 %_957113, i64 %dbX$_950) {
+  %envptr9302 = inttoptr i64 %env8378 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9303 = getelementptr inbounds i64, i64* %envptr9302, i64 2                  ; &envptr9302[2]
+  %jmn$cc = load i64, i64* %envptr9303, align 8                                      ; load; *envptr9303
+  %envptr9304 = inttoptr i64 %env8378 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9305 = getelementptr inbounds i64, i64* %envptr9304, i64 1                  ; &envptr9304[1]
+  %cont7110 = load i64, i64* %envptr9305, align 8                                    ; load; *envptr9305
+  %cloptr9306 = inttoptr i64 %jmn$cc to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9306)                                         ; assert function application
+  %i0ptr9307 = getelementptr inbounds i64, i64* %cloptr9306, i64 0                   ; &cloptr9306[0]
+  %f9309 = load i64, i64* %i0ptr9307, align 8                                        ; load; *i0ptr9307
+  %fptr9308 = inttoptr i64 %f9309 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9308(i64 %jmn$cc, i64 %cont7110, i64 %jmn$cc)       ; tail call
   ret void
 }
 
 
-define void @lam8384(i64 %env8385, i64 %T41$args7119) {
-  %envptr9324 = inttoptr i64 %env8385 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9325 = getelementptr inbounds i64, i64* %envptr9324, i64 1                  ; &envptr9324[1]
-  %fVq$_37foldl1 = load i64, i64* %envptr9325, align 8                               ; load; *envptr9325
-  %cont7118 = call i64 @prim_car(i64 %T41$args7119)                                  ; call prim_car
-  %T41$args = call i64 @prim_cdr(i64 %T41$args7119)                                  ; call prim_cdr
-  %a7019 = call i64 @prim_null_63(i64 %T41$args)                                     ; call prim_null_63
-  %cmp9326 = icmp eq i64 %a7019, 15                                                  ; false?
-  br i1 %cmp9326, label %else9328, label %then9327                                   ; if
+define void @lam8370(i64 %env8371, i64 %t9h$args7117) {
+  %envptr9310 = inttoptr i64 %env8371 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9311 = getelementptr inbounds i64, i64* %envptr9310, i64 1                  ; &envptr9310[1]
+  %LnC$_37foldl1 = load i64, i64* %envptr9311, align 8                               ; load; *envptr9311
+  %cont7116 = call i64 @prim_car(i64 %t9h$args7117)                                  ; call prim_car
+  %t9h$args = call i64 @prim_cdr(i64 %t9h$args7117)                                  ; call prim_cdr
+  %a7019 = call i64 @prim_null_63(i64 %t9h$args)                                     ; call prim_null_63
+  %cmp9312 = icmp eq i64 %a7019, 15                                                  ; false?
+  br i1 %cmp9312, label %else9314, label %then9313                                   ; if
 
-then9327:
-  %arg7583 = add i64 0, 0                                                            ; quoted ()
-  %arg7582 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %cloptr9329 = inttoptr i64 %cont7118 to i64*                                       ; closure/env cast; i64 -> i64*
+then9313:
+  %arg7581 = add i64 0, 0                                                            ; quoted ()
+  %arg7580 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %cloptr9315 = inttoptr i64 %cont7116 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9315)                                         ; assert function application
+  %i0ptr9316 = getelementptr inbounds i64, i64* %cloptr9315, i64 0                   ; &cloptr9315[0]
+  %f9318 = load i64, i64* %i0ptr9316, align 8                                        ; load; *i0ptr9316
+  %fptr9317 = inttoptr i64 %f9318 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9317(i64 %cont7116, i64 %arg7581, i64 %arg7580)     ; tail call
+  ret void
+
+else9314:
+  %a7020 = call i64 @prim_cdr(i64 %t9h$args)                                         ; call prim_cdr
+  %a7021 = call i64 @prim_null_63(i64 %a7020)                                        ; call prim_null_63
+  %cmp9319 = icmp eq i64 %a7021, 15                                                  ; false?
+  br i1 %cmp9319, label %else9321, label %then9320                                   ; if
+
+then9320:
+  %retprim7118 = call i64 @prim_car(i64 %t9h$args)                                   ; call prim_car
+  %arg7587 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9322 = inttoptr i64 %cont7116 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9322)                                         ; assert function application
+  %i0ptr9323 = getelementptr inbounds i64, i64* %cloptr9322, i64 0                   ; &cloptr9322[0]
+  %f9325 = load i64, i64* %i0ptr9323, align 8                                        ; load; *i0ptr9323
+  %fptr9324 = inttoptr i64 %f9325 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9324(i64 %cont7116, i64 %arg7587, i64 %retprim7118) ; tail call
+  ret void
+
+else9321:
+  %a7022 = call i64 @prim_car(i64 %t9h$args)                                         ; call prim_car
+  %a7023 = call i64 @prim_cdr(i64 %t9h$args)                                         ; call prim_cdr
+  %cloptr9326 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9327 = getelementptr inbounds i64, i64* %cloptr9326, i64 0                    ; &cloptr9326[0]
+  %f9328 = ptrtoint void(i64,i64,i64,i64)* @lam8368 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f9328, i64* %eptr9327                                                   ; store fptr
+  %arg7593 = ptrtoint i64* %cloptr9326 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9329 = inttoptr i64 %LnC$_37foldl1 to i64*                                  ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr9329)                                         ; assert function application
   %i0ptr9330 = getelementptr inbounds i64, i64* %cloptr9329, i64 0                   ; &cloptr9329[0]
   %f9332 = load i64, i64* %i0ptr9330, align 8                                        ; load; *i0ptr9330
-  %fptr9331 = inttoptr i64 %f9332 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9331(i64 %cont7118, i64 %arg7583, i64 %arg7582)     ; tail call
-  ret void
-
-else9328:
-  %a7020 = call i64 @prim_cdr(i64 %T41$args)                                         ; call prim_cdr
-  %a7021 = call i64 @prim_null_63(i64 %a7020)                                        ; call prim_null_63
-  %cmp9333 = icmp eq i64 %a7021, 15                                                  ; false?
-  br i1 %cmp9333, label %else9335, label %then9334                                   ; if
-
-then9334:
-  %retprim7120 = call i64 @prim_car(i64 %T41$args)                                   ; call prim_car
-  %arg7589 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9336 = inttoptr i64 %cont7118 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9336)                                         ; assert function application
-  %i0ptr9337 = getelementptr inbounds i64, i64* %cloptr9336, i64 0                   ; &cloptr9336[0]
-  %f9339 = load i64, i64* %i0ptr9337, align 8                                        ; load; *i0ptr9337
-  %fptr9338 = inttoptr i64 %f9339 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9338(i64 %cont7118, i64 %arg7589, i64 %retprim7120) ; tail call
-  ret void
-
-else9335:
-  %a7022 = call i64 @prim_car(i64 %T41$args)                                         ; call prim_car
-  %a7023 = call i64 @prim_cdr(i64 %T41$args)                                         ; call prim_cdr
-  %cloptr9340 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9341 = getelementptr inbounds i64, i64* %cloptr9340, i64 0                    ; &cloptr9340[0]
-  %f9342 = ptrtoint void(i64,i64,i64,i64)* @lam8382 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f9342, i64* %eptr9341                                                   ; store fptr
-  %arg7595 = ptrtoint i64* %cloptr9340 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9343 = inttoptr i64 %fVq$_37foldl1 to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9343)                                         ; assert function application
-  %i0ptr9344 = getelementptr inbounds i64, i64* %cloptr9343, i64 0                   ; &cloptr9343[0]
-  %f9346 = load i64, i64* %i0ptr9344, align 8                                        ; load; *i0ptr9344
-  %fptr9345 = inttoptr i64 %f9346 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9345(i64 %fVq$_37foldl1, i64 %cont7118, i64 %arg7595, i64 %a7022, i64 %a7023); tail call
+  %fptr9331 = inttoptr i64 %f9332 to void (i64,i64,i64,i64,i64)*                     ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9331(i64 %LnC$_37foldl1, i64 %cont7116, i64 %arg7593, i64 %a7022, i64 %a7023); tail call
   ret void
 }
 
 
-define void @lam8382(i64 %env8383, i64 %cont7121, i64 %WPB$n, i64 %YZ1$v) {
-  %retprim7122 = call i64 @prim__47(i64 %YZ1$v, i64 %WPB$n)                          ; call prim__47
-  %arg7601 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9347 = inttoptr i64 %cont7121 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9347)                                         ; assert function application
-  %i0ptr9348 = getelementptr inbounds i64, i64* %cloptr9347, i64 0                   ; &cloptr9347[0]
-  %f9350 = load i64, i64* %i0ptr9348, align 8                                        ; load; *i0ptr9348
-  %fptr9349 = inttoptr i64 %f9350 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9349(i64 %cont7121, i64 %arg7601, i64 %retprim7122) ; tail call
+define void @lam8368(i64 %env8369, i64 %cont7119, i64 %XS7$n, i64 %ITi$v) {
+  %retprim7120 = call i64 @prim__47(i64 %ITi$v, i64 %XS7$n)                          ; call prim__47
+  %arg7599 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9333 = inttoptr i64 %cont7119 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9333)                                         ; assert function application
+  %i0ptr9334 = getelementptr inbounds i64, i64* %cloptr9333, i64 0                   ; &cloptr9333[0]
+  %f9336 = load i64, i64* %i0ptr9334, align 8                                        ; load; *i0ptr9334
+  %fptr9335 = inttoptr i64 %f9336 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9335(i64 %cont7119, i64 %arg7599, i64 %retprim7120) ; tail call
   ret void
 }
 
 
-define void @lam8376(i64 %env8377, i64 %cont7123, i64 %Gfo$x) {
-  %retprim7124 = call i64 @prim_car(i64 %Gfo$x)                                      ; call prim_car
-  %arg7605 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9351 = inttoptr i64 %cont7123 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9351)                                         ; assert function application
-  %i0ptr9352 = getelementptr inbounds i64, i64* %cloptr9351, i64 0                   ; &cloptr9351[0]
-  %f9354 = load i64, i64* %i0ptr9352, align 8                                        ; load; *i0ptr9352
-  %fptr9353 = inttoptr i64 %f9354 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9353(i64 %cont7123, i64 %arg7605, i64 %retprim7124) ; tail call
+define void @lam8362(i64 %env8363, i64 %cont7121, i64 %Zs1$x) {
+  %retprim7122 = call i64 @prim_car(i64 %Zs1$x)                                      ; call prim_car
+  %arg7603 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9337 = inttoptr i64 %cont7121 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9337)                                         ; assert function application
+  %i0ptr9338 = getelementptr inbounds i64, i64* %cloptr9337, i64 0                   ; &cloptr9337[0]
+  %f9340 = load i64, i64* %i0ptr9338, align 8                                        ; load; *i0ptr9338
+  %fptr9339 = inttoptr i64 %f9340 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9339(i64 %cont7121, i64 %arg7603, i64 %retprim7122) ; tail call
   ret void
 }
 
 
-define void @lam8373(i64 %env8374, i64 %cont7125, i64 %dPh$x) {
-  %a7024 = call i64 @prim_cdr(i64 %dPh$x)                                            ; call prim_cdr
-  %retprim7126 = call i64 @prim_car(i64 %a7024)                                      ; call prim_car
-  %arg7610 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9355 = inttoptr i64 %cont7125 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9355)                                         ; assert function application
-  %i0ptr9356 = getelementptr inbounds i64, i64* %cloptr9355, i64 0                   ; &cloptr9355[0]
-  %f9358 = load i64, i64* %i0ptr9356, align 8                                        ; load; *i0ptr9356
-  %fptr9357 = inttoptr i64 %f9358 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9357(i64 %cont7125, i64 %arg7610, i64 %retprim7126) ; tail call
+define void @lam8359(i64 %env8360, i64 %cont7123, i64 %oZR$x) {
+  %a7024 = call i64 @prim_cdr(i64 %oZR$x)                                            ; call prim_cdr
+  %retprim7124 = call i64 @prim_car(i64 %a7024)                                      ; call prim_car
+  %arg7608 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9341 = inttoptr i64 %cont7123 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9341)                                         ; assert function application
+  %i0ptr9342 = getelementptr inbounds i64, i64* %cloptr9341, i64 0                   ; &cloptr9341[0]
+  %f9344 = load i64, i64* %i0ptr9342, align 8                                        ; load; *i0ptr9342
+  %fptr9343 = inttoptr i64 %f9344 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9343(i64 %cont7123, i64 %arg7608, i64 %retprim7124) ; tail call
   ret void
 }
 
 
-define void @lam8370(i64 %env8371, i64 %cont7127, i64 %OWa$x) {
-  %a7025 = call i64 @prim_cdr(i64 %OWa$x)                                            ; call prim_cdr
+define void @lam8356(i64 %env8357, i64 %cont7125, i64 %LNT$x) {
+  %a7025 = call i64 @prim_cdr(i64 %LNT$x)                                            ; call prim_cdr
   %a7026 = call i64 @prim_cdr(i64 %a7025)                                            ; call prim_cdr
-  %retprim7128 = call i64 @prim_car(i64 %a7026)                                      ; call prim_car
-  %arg7616 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9359 = inttoptr i64 %cont7127 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9359)                                         ; assert function application
-  %i0ptr9360 = getelementptr inbounds i64, i64* %cloptr9359, i64 0                   ; &cloptr9359[0]
-  %f9362 = load i64, i64* %i0ptr9360, align 8                                        ; load; *i0ptr9360
-  %fptr9361 = inttoptr i64 %f9362 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9361(i64 %cont7127, i64 %arg7616, i64 %retprim7128) ; tail call
+  %retprim7126 = call i64 @prim_car(i64 %a7026)                                      ; call prim_car
+  %arg7614 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9345 = inttoptr i64 %cont7125 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9345)                                         ; assert function application
+  %i0ptr9346 = getelementptr inbounds i64, i64* %cloptr9345, i64 0                   ; &cloptr9345[0]
+  %f9348 = load i64, i64* %i0ptr9346, align 8                                        ; load; *i0ptr9346
+  %fptr9347 = inttoptr i64 %f9348 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9347(i64 %cont7125, i64 %arg7614, i64 %retprim7126) ; tail call
   ret void
 }
 
 
-define void @lam8367(i64 %env8368, i64 %cont7129, i64 %hLY$x) {
-  %a7027 = call i64 @prim_cdr(i64 %hLY$x)                                            ; call prim_cdr
+define void @lam8353(i64 %env8354, i64 %cont7127, i64 %GrC$x) {
+  %a7027 = call i64 @prim_cdr(i64 %GrC$x)                                            ; call prim_cdr
   %a7028 = call i64 @prim_cdr(i64 %a7027)                                            ; call prim_cdr
   %a7029 = call i64 @prim_cdr(i64 %a7028)                                            ; call prim_cdr
-  %retprim7130 = call i64 @prim_car(i64 %a7029)                                      ; call prim_car
-  %arg7623 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9363 = inttoptr i64 %cont7129 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9363)                                         ; assert function application
-  %i0ptr9364 = getelementptr inbounds i64, i64* %cloptr9363, i64 0                   ; &cloptr9363[0]
-  %f9366 = load i64, i64* %i0ptr9364, align 8                                        ; load; *i0ptr9364
-  %fptr9365 = inttoptr i64 %f9366 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9365(i64 %cont7129, i64 %arg7623, i64 %retprim7130) ; tail call
+  %retprim7128 = call i64 @prim_car(i64 %a7029)                                      ; call prim_car
+  %arg7621 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9349 = inttoptr i64 %cont7127 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9349)                                         ; assert function application
+  %i0ptr9350 = getelementptr inbounds i64, i64* %cloptr9349, i64 0                   ; &cloptr9349[0]
+  %f9352 = load i64, i64* %i0ptr9350, align 8                                        ; load; *i0ptr9350
+  %fptr9351 = inttoptr i64 %f9352 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9351(i64 %cont7127, i64 %arg7621, i64 %retprim7128) ; tail call
   ret void
 }
 
 
-define void @lam8364(i64 %env8365, i64 %cont7131, i64 %JXG$p) {
-  %a7030 = call i64 @prim_cons_63(i64 %JXG$p)                                        ; call prim_cons_63
-  %cmp9367 = icmp eq i64 %a7030, 15                                                  ; false?
-  br i1 %cmp9367, label %else9369, label %then9368                                   ; if
+define void @lam8350(i64 %env8351, i64 %cont7129, i64 %gsv$p) {
+  %a7030 = call i64 @prim_cons_63(i64 %gsv$p)                                        ; call prim_cons_63
+  %cmp9353 = icmp eq i64 %a7030, 15                                                  ; false?
+  br i1 %cmp9353, label %else9355, label %then9354                                   ; if
 
-then9368:
-  %a7031 = call i64 @prim_car(i64 %JXG$p)                                            ; call prim_car
-  %arg7627 = call i64 @const_init_symbol(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @sym9370, i32 0, i32 0)); quoted string
-  %retprim7132 = call i64 @prim_eq_63(i64 %a7031, i64 %arg7627)                      ; call prim_eq_63
-  %arg7630 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9371 = inttoptr i64 %cont7131 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9371)                                         ; assert function application
-  %i0ptr9372 = getelementptr inbounds i64, i64* %cloptr9371, i64 0                   ; &cloptr9371[0]
-  %f9374 = load i64, i64* %i0ptr9372, align 8                                        ; load; *i0ptr9372
-  %fptr9373 = inttoptr i64 %f9374 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9373(i64 %cont7131, i64 %arg7630, i64 %retprim7132) ; tail call
+then9354:
+  %a7031 = call i64 @prim_car(i64 %gsv$p)                                            ; call prim_car
+  %arg7625 = call i64 @const_init_symbol(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @sym9356, i32 0, i32 0)); quoted string
+  %retprim7130 = call i64 @prim_eq_63(i64 %a7031, i64 %arg7625)                      ; call prim_eq_63
+  %arg7628 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9357 = inttoptr i64 %cont7129 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9357)                                         ; assert function application
+  %i0ptr9358 = getelementptr inbounds i64, i64* %cloptr9357, i64 0                   ; &cloptr9357[0]
+  %f9360 = load i64, i64* %i0ptr9358, align 8                                        ; load; *i0ptr9358
+  %fptr9359 = inttoptr i64 %f9360 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9359(i64 %cont7129, i64 %arg7628, i64 %retprim7130) ; tail call
   ret void
 
-else9369:
-  %arg7633 = add i64 0, 0                                                            ; quoted ()
-  %arg7632 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr9375 = inttoptr i64 %cont7131 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9375)                                         ; assert function application
-  %i0ptr9376 = getelementptr inbounds i64, i64* %cloptr9375, i64 0                   ; &cloptr9375[0]
-  %f9378 = load i64, i64* %i0ptr9376, align 8                                        ; load; *i0ptr9376
-  %fptr9377 = inttoptr i64 %f9378 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9377(i64 %cont7131, i64 %arg7633, i64 %arg7632)     ; tail call
-  ret void
-}
-
-
-define void @lam8358(i64 %env8359, i64 %tkR$lst7177) {
-  %cont7176 = call i64 @prim_car(i64 %tkR$lst7177)                                   ; call prim_car
-  %tkR$lst = call i64 @prim_cdr(i64 %tkR$lst7177)                                    ; call prim_cdr
-  %arg7640 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9379 = inttoptr i64 %cont7176 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9379)                                         ; assert function application
-  %i0ptr9380 = getelementptr inbounds i64, i64* %cloptr9379, i64 0                   ; &cloptr9379[0]
-  %f9382 = load i64, i64* %i0ptr9380, align 8                                        ; load; *i0ptr9380
-  %fptr9381 = inttoptr i64 %f9382 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9381(i64 %cont7176, i64 %arg7640, i64 %tkR$lst)     ; tail call
+else9355:
+  %arg7631 = add i64 0, 0                                                            ; quoted ()
+  %arg7630 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr9361 = inttoptr i64 %cont7129 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9361)                                         ; assert function application
+  %i0ptr9362 = getelementptr inbounds i64, i64* %cloptr9361, i64 0                   ; &cloptr9361[0]
+  %f9364 = load i64, i64* %i0ptr9362, align 8                                        ; load; *i0ptr9362
+  %fptr9363 = inttoptr i64 %f9364 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9363(i64 %cont7129, i64 %arg7631, i64 %arg7630)     ; tail call
   ret void
 }
 
 
-define void @lam8355(i64 %env8356, i64 %_957133, i64 %cXD$_37raise_45handler) {
-  %envptr9383 = inttoptr i64 %env8356 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9384 = getelementptr inbounds i64, i64* %envptr9383, i64 3                  ; &envptr9383[3]
-  %SfN$_37drop = load i64, i64* %envptr9384, align 8                                 ; load; *envptr9384
-  %envptr9385 = inttoptr i64 %env8356 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9386 = getelementptr inbounds i64, i64* %envptr9385, i64 2                  ; &envptr9385[2]
-  %OTq$_37_62 = load i64, i64* %envptr9386, align 8                                  ; load; *envptr9386
-  %envptr9387 = inttoptr i64 %env8356 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9388 = getelementptr inbounds i64, i64* %envptr9387, i64 1                  ; &envptr9387[1]
-  %Va3$_37length = load i64, i64* %envptr9388, align 8                               ; load; *envptr9388
-  %cloptr9389 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9390 = getelementptr inbounds i64, i64* %cloptr9389, i64 0                    ; &cloptr9389[0]
-  %f9391 = ptrtoint void(i64,i64)* @lam8353 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f9391, i64* %eptr9390                                                   ; store fptr
-  %arg7643 = ptrtoint i64* %cloptr9389 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9392 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9394 = getelementptr inbounds i64, i64* %cloptr9392, i64 1                    ; &eptr9394[1]
-  %eptr9395 = getelementptr inbounds i64, i64* %cloptr9392, i64 2                    ; &eptr9395[2]
-  %eptr9396 = getelementptr inbounds i64, i64* %cloptr9392, i64 3                    ; &eptr9396[3]
-  store i64 %Va3$_37length, i64* %eptr9394                                           ; *eptr9394 = %Va3$_37length
-  store i64 %OTq$_37_62, i64* %eptr9395                                              ; *eptr9395 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9396                                             ; *eptr9396 = %SfN$_37drop
-  %eptr9393 = getelementptr inbounds i64, i64* %cloptr9392, i64 0                    ; &cloptr9392[0]
-  %f9397 = ptrtoint void(i64,i64,i64)* @lam8350 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9397, i64* %eptr9393                                                   ; store fptr
-  %arg7642 = ptrtoint i64* %cloptr9392 to i64                                        ; closure cast; i64* -> i64
-  %rva8101 = add i64 0, 0                                                            ; quoted ()
-  %rva8100 = call i64 @prim_cons(i64 %arg7642, i64 %rva8101)                         ; call prim_cons
-  %cloptr9398 = inttoptr i64 %arg7643 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9398)                                         ; assert function application
-  %i0ptr9399 = getelementptr inbounds i64, i64* %cloptr9398, i64 0                   ; &cloptr9398[0]
-  %f9401 = load i64, i64* %i0ptr9399, align 8                                        ; load; *i0ptr9399
-  %fptr9400 = inttoptr i64 %f9401 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9400(i64 %arg7643, i64 %rva8100)                    ; tail call
+define void @lam8344(i64 %env8345, i64 %xy4$lst7175) {
+  %cont7174 = call i64 @prim_car(i64 %xy4$lst7175)                                   ; call prim_car
+  %xy4$lst = call i64 @prim_cdr(i64 %xy4$lst7175)                                    ; call prim_cdr
+  %arg7638 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9365 = inttoptr i64 %cont7174 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9365)                                         ; assert function application
+  %i0ptr9366 = getelementptr inbounds i64, i64* %cloptr9365, i64 0                   ; &cloptr9365[0]
+  %f9368 = load i64, i64* %i0ptr9366, align 8                                        ; load; *i0ptr9366
+  %fptr9367 = inttoptr i64 %f9368 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9367(i64 %cont7174, i64 %arg7638, i64 %xy4$lst)     ; tail call
   ret void
 }
 
 
-define void @lam8353(i64 %env8354, i64 %oLN$lst7175) {
-  %cont7174 = call i64 @prim_car(i64 %oLN$lst7175)                                   ; call prim_car
-  %oLN$lst = call i64 @prim_cdr(i64 %oLN$lst7175)                                    ; call prim_cdr
-  %arg7647 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9402 = inttoptr i64 %cont7174 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9402)                                         ; assert function application
-  %i0ptr9403 = getelementptr inbounds i64, i64* %cloptr9402, i64 0                   ; &cloptr9402[0]
-  %f9405 = load i64, i64* %i0ptr9403, align 8                                        ; load; *i0ptr9403
-  %fptr9404 = inttoptr i64 %f9405 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9404(i64 %cont7174, i64 %arg7647, i64 %oLN$lst)     ; tail call
+define void @lam8341(i64 %env8342, i64 %_957131, i64 %pUV$_37raise_45handler) {
+  %envptr9369 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9370 = getelementptr inbounds i64, i64* %envptr9369, i64 3                  ; &envptr9369[3]
+  %JBG$_37drop = load i64, i64* %envptr9370, align 8                                 ; load; *envptr9370
+  %envptr9371 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9372 = getelementptr inbounds i64, i64* %envptr9371, i64 2                  ; &envptr9371[2]
+  %hIh$_37_62 = load i64, i64* %envptr9372, align 8                                  ; load; *envptr9372
+  %envptr9373 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9374 = getelementptr inbounds i64, i64* %envptr9373, i64 1                  ; &envptr9373[1]
+  %QFP$_37length = load i64, i64* %envptr9374, align 8                               ; load; *envptr9374
+  %cloptr9375 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9376 = getelementptr inbounds i64, i64* %cloptr9375, i64 0                    ; &cloptr9375[0]
+  %f9377 = ptrtoint void(i64,i64)* @lam8339 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f9377, i64* %eptr9376                                                   ; store fptr
+  %arg7641 = ptrtoint i64* %cloptr9375 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9378 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9380 = getelementptr inbounds i64, i64* %cloptr9378, i64 1                    ; &eptr9380[1]
+  %eptr9381 = getelementptr inbounds i64, i64* %cloptr9378, i64 2                    ; &eptr9381[2]
+  %eptr9382 = getelementptr inbounds i64, i64* %cloptr9378, i64 3                    ; &eptr9382[3]
+  store i64 %QFP$_37length, i64* %eptr9380                                           ; *eptr9380 = %QFP$_37length
+  store i64 %hIh$_37_62, i64* %eptr9381                                              ; *eptr9381 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9382                                             ; *eptr9382 = %JBG$_37drop
+  %eptr9379 = getelementptr inbounds i64, i64* %cloptr9378, i64 0                    ; &cloptr9378[0]
+  %f9383 = ptrtoint void(i64,i64,i64)* @lam8336 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9383, i64* %eptr9379                                                   ; store fptr
+  %arg7640 = ptrtoint i64* %cloptr9378 to i64                                        ; closure cast; i64* -> i64
+  %rva8092 = add i64 0, 0                                                            ; quoted ()
+  %rva8091 = call i64 @prim_cons(i64 %arg7640, i64 %rva8092)                         ; call prim_cons
+  %cloptr9384 = inttoptr i64 %arg7641 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9384)                                         ; assert function application
+  %i0ptr9385 = getelementptr inbounds i64, i64* %cloptr9384, i64 0                   ; &cloptr9384[0]
+  %f9387 = load i64, i64* %i0ptr9385, align 8                                        ; load; *i0ptr9385
+  %fptr9386 = inttoptr i64 %f9387 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9386(i64 %arg7641, i64 %rva8091)                    ; tail call
   ret void
 }
 
 
-define void @lam8350(i64 %env8351, i64 %_957172, i64 %a7032) {
-  %envptr9406 = inttoptr i64 %env8351 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9407 = getelementptr inbounds i64, i64* %envptr9406, i64 3                  ; &envptr9406[3]
-  %SfN$_37drop = load i64, i64* %envptr9407, align 8                                 ; load; *envptr9407
-  %envptr9408 = inttoptr i64 %env8351 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9409 = getelementptr inbounds i64, i64* %envptr9408, i64 2                  ; &envptr9408[2]
-  %OTq$_37_62 = load i64, i64* %envptr9409, align 8                                  ; load; *envptr9409
-  %envptr9410 = inttoptr i64 %env8351 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9411 = getelementptr inbounds i64, i64* %envptr9410, i64 1                  ; &envptr9410[1]
-  %Va3$_37length = load i64, i64* %envptr9411, align 8                               ; load; *envptr9411
-  %arg7650 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %retprim7173 = call i64 @prim_make_45vector(i64 %arg7650, i64 %a7032)              ; call prim_make_45vector
-  %cloptr9412 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9414 = getelementptr inbounds i64, i64* %cloptr9412, i64 1                    ; &eptr9414[1]
-  %eptr9415 = getelementptr inbounds i64, i64* %cloptr9412, i64 2                    ; &eptr9415[2]
-  %eptr9416 = getelementptr inbounds i64, i64* %cloptr9412, i64 3                    ; &eptr9416[3]
-  store i64 %Va3$_37length, i64* %eptr9414                                           ; *eptr9414 = %Va3$_37length
-  store i64 %OTq$_37_62, i64* %eptr9415                                              ; *eptr9415 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9416                                             ; *eptr9416 = %SfN$_37drop
-  %eptr9413 = getelementptr inbounds i64, i64* %cloptr9412, i64 0                    ; &cloptr9412[0]
-  %f9417 = ptrtoint void(i64,i64,i64)* @lam8347 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9417, i64* %eptr9413                                                   ; store fptr
-  %arg7653 = ptrtoint i64* %cloptr9412 to i64                                        ; closure cast; i64* -> i64
-  %arg7652 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9418 = inttoptr i64 %arg7653 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9418)                                         ; assert function application
-  %i0ptr9419 = getelementptr inbounds i64, i64* %cloptr9418, i64 0                   ; &cloptr9418[0]
-  %f9421 = load i64, i64* %i0ptr9419, align 8                                        ; load; *i0ptr9419
-  %fptr9420 = inttoptr i64 %f9421 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9420(i64 %arg7653, i64 %arg7652, i64 %retprim7173)  ; tail call
+define void @lam8339(i64 %env8340, i64 %RXF$lst7173) {
+  %cont7172 = call i64 @prim_car(i64 %RXF$lst7173)                                   ; call prim_car
+  %RXF$lst = call i64 @prim_cdr(i64 %RXF$lst7173)                                    ; call prim_cdr
+  %arg7645 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9388 = inttoptr i64 %cont7172 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9388)                                         ; assert function application
+  %i0ptr9389 = getelementptr inbounds i64, i64* %cloptr9388, i64 0                   ; &cloptr9388[0]
+  %f9391 = load i64, i64* %i0ptr9389, align 8                                        ; load; *i0ptr9389
+  %fptr9390 = inttoptr i64 %f9391 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9390(i64 %cont7172, i64 %arg7645, i64 %RXF$lst)     ; tail call
   ret void
 }
 
 
-define void @lam8347(i64 %env8348, i64 %_957134, i64 %ZUv$_37wind_45stack) {
-  %envptr9422 = inttoptr i64 %env8348 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9423 = getelementptr inbounds i64, i64* %envptr9422, i64 3                  ; &envptr9422[3]
-  %SfN$_37drop = load i64, i64* %envptr9423, align 8                                 ; load; *envptr9423
-  %envptr9424 = inttoptr i64 %env8348 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9425 = getelementptr inbounds i64, i64* %envptr9424, i64 2                  ; &envptr9424[2]
-  %OTq$_37_62 = load i64, i64* %envptr9425, align 8                                  ; load; *envptr9425
-  %envptr9426 = inttoptr i64 %env8348 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9427 = getelementptr inbounds i64, i64* %envptr9426, i64 1                  ; &envptr9426[1]
-  %Va3$_37length = load i64, i64* %envptr9427, align 8                               ; load; *envptr9427
-  %cloptr9428 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9430 = getelementptr inbounds i64, i64* %cloptr9428, i64 1                    ; &eptr9430[1]
-  %eptr9431 = getelementptr inbounds i64, i64* %cloptr9428, i64 2                    ; &eptr9431[2]
-  %eptr9432 = getelementptr inbounds i64, i64* %cloptr9428, i64 3                    ; &eptr9432[3]
-  store i64 %Va3$_37length, i64* %eptr9430                                           ; *eptr9430 = %Va3$_37length
-  store i64 %OTq$_37_62, i64* %eptr9431                                              ; *eptr9431 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9432                                             ; *eptr9432 = %SfN$_37drop
-  %eptr9429 = getelementptr inbounds i64, i64* %cloptr9428, i64 0                    ; &cloptr9428[0]
-  %f9433 = ptrtoint void(i64,i64,i64,i64)* @lam8345 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f9433, i64* %eptr9429                                                   ; store fptr
-  %KuX$_37common_45tail = ptrtoint i64* %cloptr9428 to i64                           ; closure cast; i64* -> i64
-  %cloptr9434 = call i64* @alloc(i64 24)                                             ; malloc
-  %eptr9436 = getelementptr inbounds i64, i64* %cloptr9434, i64 1                    ; &eptr9436[1]
-  %eptr9437 = getelementptr inbounds i64, i64* %cloptr9434, i64 2                    ; &eptr9437[2]
-  store i64 %KuX$_37common_45tail, i64* %eptr9436                                    ; *eptr9436 = %KuX$_37common_45tail
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9437                                     ; *eptr9437 = %ZUv$_37wind_45stack
-  %eptr9435 = getelementptr inbounds i64, i64* %cloptr9434, i64 0                    ; &cloptr9434[0]
-  %f9438 = ptrtoint void(i64,i64,i64)* @lam8303 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9438, i64* %eptr9435                                                   ; store fptr
-  %yUV$_37do_45wind = ptrtoint i64* %cloptr9434 to i64                               ; closure cast; i64* -> i64
-  %arg7840 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %arg7839 = call i64 @const_init_int(i64 2)                                         ; quoted int
-  %arg7838 = call i64 @const_init_int(i64 3)                                         ; quoted int
-  call i64 @too_many_args()                                                          ; too many args for cdr
+define void @lam8336(i64 %env8337, i64 %_957170, i64 %a7032) {
+  %envptr9392 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9393 = getelementptr inbounds i64, i64* %envptr9392, i64 3                  ; &envptr9392[3]
+  %JBG$_37drop = load i64, i64* %envptr9393, align 8                                 ; load; *envptr9393
+  %envptr9394 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9395 = getelementptr inbounds i64, i64* %envptr9394, i64 2                  ; &envptr9394[2]
+  %hIh$_37_62 = load i64, i64* %envptr9395, align 8                                  ; load; *envptr9395
+  %envptr9396 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9397 = getelementptr inbounds i64, i64* %envptr9396, i64 1                  ; &envptr9396[1]
+  %QFP$_37length = load i64, i64* %envptr9397, align 8                               ; load; *envptr9397
+  %arg7648 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %retprim7171 = call i64 @prim_make_45vector(i64 %arg7648, i64 %a7032)              ; call prim_make_45vector
+  %cloptr9398 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9400 = getelementptr inbounds i64, i64* %cloptr9398, i64 1                    ; &eptr9400[1]
+  %eptr9401 = getelementptr inbounds i64, i64* %cloptr9398, i64 2                    ; &eptr9401[2]
+  %eptr9402 = getelementptr inbounds i64, i64* %cloptr9398, i64 3                    ; &eptr9402[3]
+  store i64 %QFP$_37length, i64* %eptr9400                                           ; *eptr9400 = %QFP$_37length
+  store i64 %hIh$_37_62, i64* %eptr9401                                              ; *eptr9401 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9402                                             ; *eptr9402 = %JBG$_37drop
+  %eptr9399 = getelementptr inbounds i64, i64* %cloptr9398, i64 0                    ; &cloptr9398[0]
+  %f9403 = ptrtoint void(i64,i64,i64)* @lam8333 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9403, i64* %eptr9399                                                   ; store fptr
+  %arg7651 = ptrtoint i64* %cloptr9398 to i64                                        ; closure cast; i64* -> i64
+  %arg7650 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9404 = inttoptr i64 %arg7651 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9404)                                         ; assert function application
+  %i0ptr9405 = getelementptr inbounds i64, i64* %cloptr9404, i64 0                   ; &cloptr9404[0]
+  %f9407 = load i64, i64* %i0ptr9405, align 8                                        ; load; *i0ptr9405
+  %fptr9406 = inttoptr i64 %f9407 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9406(i64 %arg7651, i64 %arg7650, i64 %retprim7171)  ; tail call
+  ret void
+}
+
+
+define void @lam8333(i64 %env8334, i64 %_957132, i64 %HPX$_37wind_45stack) {
+  %envptr9408 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9409 = getelementptr inbounds i64, i64* %envptr9408, i64 3                  ; &envptr9408[3]
+  %JBG$_37drop = load i64, i64* %envptr9409, align 8                                 ; load; *envptr9409
+  %envptr9410 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9411 = getelementptr inbounds i64, i64* %envptr9410, i64 2                  ; &envptr9410[2]
+  %hIh$_37_62 = load i64, i64* %envptr9411, align 8                                  ; load; *envptr9411
+  %envptr9412 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9413 = getelementptr inbounds i64, i64* %envptr9412, i64 1                  ; &envptr9412[1]
+  %QFP$_37length = load i64, i64* %envptr9413, align 8                               ; load; *envptr9413
+  %cloptr9414 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9416 = getelementptr inbounds i64, i64* %cloptr9414, i64 1                    ; &eptr9416[1]
+  %eptr9417 = getelementptr inbounds i64, i64* %cloptr9414, i64 2                    ; &eptr9417[2]
+  %eptr9418 = getelementptr inbounds i64, i64* %cloptr9414, i64 3                    ; &eptr9418[3]
+  store i64 %QFP$_37length, i64* %eptr9416                                           ; *eptr9416 = %QFP$_37length
+  store i64 %hIh$_37_62, i64* %eptr9417                                              ; *eptr9417 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9418                                             ; *eptr9418 = %JBG$_37drop
+  %eptr9415 = getelementptr inbounds i64, i64* %cloptr9414, i64 0                    ; &cloptr9414[0]
+  %f9419 = ptrtoint void(i64,i64,i64,i64)* @lam8331 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f9419, i64* %eptr9415                                                   ; store fptr
+  %VbZ$_37common_45tail = ptrtoint i64* %cloptr9414 to i64                           ; closure cast; i64* -> i64
+  %cloptr9420 = call i64* @alloc(i64 24)                                             ; malloc
+  %eptr9422 = getelementptr inbounds i64, i64* %cloptr9420, i64 1                    ; &eptr9422[1]
+  %eptr9423 = getelementptr inbounds i64, i64* %cloptr9420, i64 2                    ; &eptr9423[2]
+  store i64 %VbZ$_37common_45tail, i64* %eptr9422                                    ; *eptr9422 = %VbZ$_37common_45tail
+  store i64 %HPX$_37wind_45stack, i64* %eptr9423                                     ; *eptr9423 = %HPX$_37wind_45stack
+  %eptr9421 = getelementptr inbounds i64, i64* %cloptr9420, i64 0                    ; &cloptr9420[0]
+  %f9424 = ptrtoint void(i64,i64,i64)* @lam8289 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9424, i64* %eptr9421                                                   ; store fptr
+  %dPl$_37do_45wind = ptrtoint i64* %cloptr9420 to i64                               ; closure cast; i64* -> i64
+  %arg7836 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  call i64 @too_many_args()                                                          ; arity mismatch <
   ret void                                                                           ; 
 }
 
 
-define void @lam8345(i64 %env8346, i64 %cont7135, i64 %Ym6$x, i64 %fL3$y) {
-  %envptr9439 = inttoptr i64 %env8346 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9440 = getelementptr inbounds i64, i64* %envptr9439, i64 3                  ; &envptr9439[3]
-  %SfN$_37drop = load i64, i64* %envptr9440, align 8                                 ; load; *envptr9440
-  %envptr9441 = inttoptr i64 %env8346 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9442 = getelementptr inbounds i64, i64* %envptr9441, i64 2                  ; &envptr9441[2]
-  %OTq$_37_62 = load i64, i64* %envptr9442, align 8                                  ; load; *envptr9442
-  %envptr9443 = inttoptr i64 %env8346 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9444 = getelementptr inbounds i64, i64* %envptr9443, i64 1                  ; &envptr9443[1]
-  %Va3$_37length = load i64, i64* %envptr9444, align 8                               ; load; *envptr9444
-  %cloptr9445 = call i64* @alloc(i64 56)                                             ; malloc
-  %eptr9447 = getelementptr inbounds i64, i64* %cloptr9445, i64 1                    ; &eptr9447[1]
-  %eptr9448 = getelementptr inbounds i64, i64* %cloptr9445, i64 2                    ; &eptr9448[2]
-  %eptr9449 = getelementptr inbounds i64, i64* %cloptr9445, i64 3                    ; &eptr9449[3]
-  %eptr9450 = getelementptr inbounds i64, i64* %cloptr9445, i64 4                    ; &eptr9450[4]
-  %eptr9451 = getelementptr inbounds i64, i64* %cloptr9445, i64 5                    ; &eptr9451[5]
-  %eptr9452 = getelementptr inbounds i64, i64* %cloptr9445, i64 6                    ; &eptr9452[6]
-  store i64 %Va3$_37length, i64* %eptr9447                                           ; *eptr9447 = %Va3$_37length
-  store i64 %OTq$_37_62, i64* %eptr9448                                              ; *eptr9448 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9449                                             ; *eptr9449 = %SfN$_37drop
-  store i64 %cont7135, i64* %eptr9450                                                ; *eptr9450 = %cont7135
-  store i64 %fL3$y, i64* %eptr9451                                                   ; *eptr9451 = %fL3$y
-  store i64 %Ym6$x, i64* %eptr9452                                                   ; *eptr9452 = %Ym6$x
-  %eptr9446 = getelementptr inbounds i64, i64* %cloptr9445, i64 0                    ; &cloptr9445[0]
-  %f9453 = ptrtoint void(i64,i64,i64)* @lam8343 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9453, i64* %eptr9446                                                   ; store fptr
-  %arg7655 = ptrtoint i64* %cloptr9445 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9454 = inttoptr i64 %Va3$_37length to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9454)                                         ; assert function application
-  %i0ptr9455 = getelementptr inbounds i64, i64* %cloptr9454, i64 0                   ; &cloptr9454[0]
-  %f9457 = load i64, i64* %i0ptr9455, align 8                                        ; load; *i0ptr9455
-  %fptr9456 = inttoptr i64 %f9457 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9456(i64 %Va3$_37length, i64 %arg7655, i64 %Ym6$x)  ; tail call
+define void @lam8331(i64 %env8332, i64 %cont7133, i64 %Sea$x, i64 %nKW$y) {
+  %envptr9425 = inttoptr i64 %env8332 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9426 = getelementptr inbounds i64, i64* %envptr9425, i64 3                  ; &envptr9425[3]
+  %JBG$_37drop = load i64, i64* %envptr9426, align 8                                 ; load; *envptr9426
+  %envptr9427 = inttoptr i64 %env8332 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9428 = getelementptr inbounds i64, i64* %envptr9427, i64 2                  ; &envptr9427[2]
+  %hIh$_37_62 = load i64, i64* %envptr9428, align 8                                  ; load; *envptr9428
+  %envptr9429 = inttoptr i64 %env8332 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9430 = getelementptr inbounds i64, i64* %envptr9429, i64 1                  ; &envptr9429[1]
+  %QFP$_37length = load i64, i64* %envptr9430, align 8                               ; load; *envptr9430
+  %cloptr9431 = call i64* @alloc(i64 56)                                             ; malloc
+  %eptr9433 = getelementptr inbounds i64, i64* %cloptr9431, i64 1                    ; &eptr9433[1]
+  %eptr9434 = getelementptr inbounds i64, i64* %cloptr9431, i64 2                    ; &eptr9434[2]
+  %eptr9435 = getelementptr inbounds i64, i64* %cloptr9431, i64 3                    ; &eptr9435[3]
+  %eptr9436 = getelementptr inbounds i64, i64* %cloptr9431, i64 4                    ; &eptr9436[4]
+  %eptr9437 = getelementptr inbounds i64, i64* %cloptr9431, i64 5                    ; &eptr9437[5]
+  %eptr9438 = getelementptr inbounds i64, i64* %cloptr9431, i64 6                    ; &eptr9438[6]
+  store i64 %QFP$_37length, i64* %eptr9433                                           ; *eptr9433 = %QFP$_37length
+  store i64 %hIh$_37_62, i64* %eptr9434                                              ; *eptr9434 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9435                                             ; *eptr9435 = %JBG$_37drop
+  store i64 %cont7133, i64* %eptr9436                                                ; *eptr9436 = %cont7133
+  store i64 %nKW$y, i64* %eptr9437                                                   ; *eptr9437 = %nKW$y
+  store i64 %Sea$x, i64* %eptr9438                                                   ; *eptr9438 = %Sea$x
+  %eptr9432 = getelementptr inbounds i64, i64* %cloptr9431, i64 0                    ; &cloptr9431[0]
+  %f9439 = ptrtoint void(i64,i64,i64)* @lam8329 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9439, i64* %eptr9432                                                   ; store fptr
+  %arg7653 = ptrtoint i64* %cloptr9431 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9440 = inttoptr i64 %QFP$_37length to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9440)                                         ; assert function application
+  %i0ptr9441 = getelementptr inbounds i64, i64* %cloptr9440, i64 0                   ; &cloptr9440[0]
+  %f9443 = load i64, i64* %i0ptr9441, align 8                                        ; load; *i0ptr9441
+  %fptr9442 = inttoptr i64 %f9443 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9442(i64 %QFP$_37length, i64 %arg7653, i64 %Sea$x)  ; tail call
   ret void
 }
 
 
-define void @lam8343(i64 %env8344, i64 %_957136, i64 %JR8$lx) {
-  %envptr9458 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9459 = getelementptr inbounds i64, i64* %envptr9458, i64 6                  ; &envptr9458[6]
-  %Ym6$x = load i64, i64* %envptr9459, align 8                                       ; load; *envptr9459
-  %envptr9460 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9461 = getelementptr inbounds i64, i64* %envptr9460, i64 5                  ; &envptr9460[5]
-  %fL3$y = load i64, i64* %envptr9461, align 8                                       ; load; *envptr9461
-  %envptr9462 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9463 = getelementptr inbounds i64, i64* %envptr9462, i64 4                  ; &envptr9462[4]
-  %cont7135 = load i64, i64* %envptr9463, align 8                                    ; load; *envptr9463
-  %envptr9464 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9465 = getelementptr inbounds i64, i64* %envptr9464, i64 3                  ; &envptr9464[3]
-  %SfN$_37drop = load i64, i64* %envptr9465, align 8                                 ; load; *envptr9465
-  %envptr9466 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9467 = getelementptr inbounds i64, i64* %envptr9466, i64 2                  ; &envptr9466[2]
-  %OTq$_37_62 = load i64, i64* %envptr9467, align 8                                  ; load; *envptr9467
-  %envptr9468 = inttoptr i64 %env8344 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9469 = getelementptr inbounds i64, i64* %envptr9468, i64 1                  ; &envptr9468[1]
-  %Va3$_37length = load i64, i64* %envptr9469, align 8                               ; load; *envptr9469
-  %cloptr9470 = call i64* @alloc(i64 56)                                             ; malloc
-  %eptr9472 = getelementptr inbounds i64, i64* %cloptr9470, i64 1                    ; &eptr9472[1]
-  %eptr9473 = getelementptr inbounds i64, i64* %cloptr9470, i64 2                    ; &eptr9473[2]
-  %eptr9474 = getelementptr inbounds i64, i64* %cloptr9470, i64 3                    ; &eptr9474[3]
-  %eptr9475 = getelementptr inbounds i64, i64* %cloptr9470, i64 4                    ; &eptr9475[4]
-  %eptr9476 = getelementptr inbounds i64, i64* %cloptr9470, i64 5                    ; &eptr9476[5]
-  %eptr9477 = getelementptr inbounds i64, i64* %cloptr9470, i64 6                    ; &eptr9477[6]
-  store i64 %OTq$_37_62, i64* %eptr9472                                              ; *eptr9472 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9473                                             ; *eptr9473 = %SfN$_37drop
-  store i64 %JR8$lx, i64* %eptr9474                                                  ; *eptr9474 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9475                                                ; *eptr9475 = %cont7135
-  store i64 %fL3$y, i64* %eptr9476                                                   ; *eptr9476 = %fL3$y
-  store i64 %Ym6$x, i64* %eptr9477                                                   ; *eptr9477 = %Ym6$x
-  %eptr9471 = getelementptr inbounds i64, i64* %cloptr9470, i64 0                    ; &cloptr9470[0]
-  %f9478 = ptrtoint void(i64,i64,i64)* @lam8341 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9478, i64* %eptr9471                                                   ; store fptr
-  %arg7658 = ptrtoint i64* %cloptr9470 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9479 = inttoptr i64 %Va3$_37length to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9479)                                         ; assert function application
-  %i0ptr9480 = getelementptr inbounds i64, i64* %cloptr9479, i64 0                   ; &cloptr9479[0]
-  %f9482 = load i64, i64* %i0ptr9480, align 8                                        ; load; *i0ptr9480
-  %fptr9481 = inttoptr i64 %f9482 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9481(i64 %Va3$_37length, i64 %arg7658, i64 %fL3$y)  ; tail call
+define void @lam8329(i64 %env8330, i64 %_957134, i64 %a1J$lx) {
+  %envptr9444 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9445 = getelementptr inbounds i64, i64* %envptr9444, i64 6                  ; &envptr9444[6]
+  %Sea$x = load i64, i64* %envptr9445, align 8                                       ; load; *envptr9445
+  %envptr9446 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9447 = getelementptr inbounds i64, i64* %envptr9446, i64 5                  ; &envptr9446[5]
+  %nKW$y = load i64, i64* %envptr9447, align 8                                       ; load; *envptr9447
+  %envptr9448 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9449 = getelementptr inbounds i64, i64* %envptr9448, i64 4                  ; &envptr9448[4]
+  %cont7133 = load i64, i64* %envptr9449, align 8                                    ; load; *envptr9449
+  %envptr9450 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9451 = getelementptr inbounds i64, i64* %envptr9450, i64 3                  ; &envptr9450[3]
+  %JBG$_37drop = load i64, i64* %envptr9451, align 8                                 ; load; *envptr9451
+  %envptr9452 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9453 = getelementptr inbounds i64, i64* %envptr9452, i64 2                  ; &envptr9452[2]
+  %hIh$_37_62 = load i64, i64* %envptr9453, align 8                                  ; load; *envptr9453
+  %envptr9454 = inttoptr i64 %env8330 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9455 = getelementptr inbounds i64, i64* %envptr9454, i64 1                  ; &envptr9454[1]
+  %QFP$_37length = load i64, i64* %envptr9455, align 8                               ; load; *envptr9455
+  %cloptr9456 = call i64* @alloc(i64 56)                                             ; malloc
+  %eptr9458 = getelementptr inbounds i64, i64* %cloptr9456, i64 1                    ; &eptr9458[1]
+  %eptr9459 = getelementptr inbounds i64, i64* %cloptr9456, i64 2                    ; &eptr9459[2]
+  %eptr9460 = getelementptr inbounds i64, i64* %cloptr9456, i64 3                    ; &eptr9460[3]
+  %eptr9461 = getelementptr inbounds i64, i64* %cloptr9456, i64 4                    ; &eptr9461[4]
+  %eptr9462 = getelementptr inbounds i64, i64* %cloptr9456, i64 5                    ; &eptr9462[5]
+  %eptr9463 = getelementptr inbounds i64, i64* %cloptr9456, i64 6                    ; &eptr9463[6]
+  store i64 %hIh$_37_62, i64* %eptr9458                                              ; *eptr9458 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9459                                             ; *eptr9459 = %JBG$_37drop
+  store i64 %a1J$lx, i64* %eptr9460                                                  ; *eptr9460 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9461                                                ; *eptr9461 = %cont7133
+  store i64 %nKW$y, i64* %eptr9462                                                   ; *eptr9462 = %nKW$y
+  store i64 %Sea$x, i64* %eptr9463                                                   ; *eptr9463 = %Sea$x
+  %eptr9457 = getelementptr inbounds i64, i64* %cloptr9456, i64 0                    ; &cloptr9456[0]
+  %f9464 = ptrtoint void(i64,i64,i64)* @lam8327 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9464, i64* %eptr9457                                                   ; store fptr
+  %arg7656 = ptrtoint i64* %cloptr9456 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9465 = inttoptr i64 %QFP$_37length to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9465)                                         ; assert function application
+  %i0ptr9466 = getelementptr inbounds i64, i64* %cloptr9465, i64 0                   ; &cloptr9465[0]
+  %f9468 = load i64, i64* %i0ptr9466, align 8                                        ; load; *i0ptr9466
+  %fptr9467 = inttoptr i64 %f9468 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9467(i64 %QFP$_37length, i64 %arg7656, i64 %nKW$y)  ; tail call
   ret void
 }
 
 
-define void @lam8341(i64 %env8342, i64 %_957137, i64 %ias$ly) {
-  %envptr9483 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9484 = getelementptr inbounds i64, i64* %envptr9483, i64 6                  ; &envptr9483[6]
-  %Ym6$x = load i64, i64* %envptr9484, align 8                                       ; load; *envptr9484
-  %envptr9485 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9486 = getelementptr inbounds i64, i64* %envptr9485, i64 5                  ; &envptr9485[5]
-  %fL3$y = load i64, i64* %envptr9486, align 8                                       ; load; *envptr9486
-  %envptr9487 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9488 = getelementptr inbounds i64, i64* %envptr9487, i64 4                  ; &envptr9487[4]
-  %cont7135 = load i64, i64* %envptr9488, align 8                                    ; load; *envptr9488
-  %envptr9489 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9490 = getelementptr inbounds i64, i64* %envptr9489, i64 3                  ; &envptr9489[3]
-  %JR8$lx = load i64, i64* %envptr9490, align 8                                      ; load; *envptr9490
-  %envptr9491 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9492 = getelementptr inbounds i64, i64* %envptr9491, i64 2                  ; &envptr9491[2]
-  %SfN$_37drop = load i64, i64* %envptr9492, align 8                                 ; load; *envptr9492
-  %envptr9493 = inttoptr i64 %env8342 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9494 = getelementptr inbounds i64, i64* %envptr9493, i64 1                  ; &envptr9493[1]
-  %OTq$_37_62 = load i64, i64* %envptr9494, align 8                                  ; load; *envptr9494
-  %cloptr9495 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9496 = getelementptr inbounds i64, i64* %cloptr9495, i64 0                    ; &cloptr9495[0]
-  %f9497 = ptrtoint void(i64,i64)* @lam8339 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f9497, i64* %eptr9496                                                   ; store fptr
-  %arg7661 = ptrtoint i64* %cloptr9495 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9498 = call i64* @alloc(i64 64)                                             ; malloc
-  %eptr9500 = getelementptr inbounds i64, i64* %cloptr9498, i64 1                    ; &eptr9500[1]
-  %eptr9501 = getelementptr inbounds i64, i64* %cloptr9498, i64 2                    ; &eptr9501[2]
-  %eptr9502 = getelementptr inbounds i64, i64* %cloptr9498, i64 3                    ; &eptr9502[3]
-  %eptr9503 = getelementptr inbounds i64, i64* %cloptr9498, i64 4                    ; &eptr9503[4]
-  %eptr9504 = getelementptr inbounds i64, i64* %cloptr9498, i64 5                    ; &eptr9504[5]
-  %eptr9505 = getelementptr inbounds i64, i64* %cloptr9498, i64 6                    ; &eptr9505[6]
-  %eptr9506 = getelementptr inbounds i64, i64* %cloptr9498, i64 7                    ; &eptr9506[7]
-  store i64 %OTq$_37_62, i64* %eptr9500                                              ; *eptr9500 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9501                                             ; *eptr9501 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9502                                                  ; *eptr9502 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9503                                                  ; *eptr9503 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9504                                                ; *eptr9504 = %cont7135
-  store i64 %fL3$y, i64* %eptr9505                                                   ; *eptr9505 = %fL3$y
-  store i64 %Ym6$x, i64* %eptr9506                                                   ; *eptr9506 = %Ym6$x
-  %eptr9499 = getelementptr inbounds i64, i64* %cloptr9498, i64 0                    ; &cloptr9498[0]
-  %f9507 = ptrtoint void(i64,i64,i64)* @lam8336 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9507, i64* %eptr9499                                                   ; store fptr
-  %arg7660 = ptrtoint i64* %cloptr9498 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9508 = inttoptr i64 %arg7661 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9508)                                         ; assert function application
-  %i0ptr9509 = getelementptr inbounds i64, i64* %cloptr9508, i64 0                   ; &cloptr9508[0]
-  %f9511 = load i64, i64* %i0ptr9509, align 8                                        ; load; *i0ptr9509
-  %fptr9510 = inttoptr i64 %f9511 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9510(i64 %arg7661, i64 %arg7660)                    ; tail call
+define void @lam8327(i64 %env8328, i64 %_957135, i64 %gaD$ly) {
+  %envptr9469 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9470 = getelementptr inbounds i64, i64* %envptr9469, i64 6                  ; &envptr9469[6]
+  %Sea$x = load i64, i64* %envptr9470, align 8                                       ; load; *envptr9470
+  %envptr9471 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9472 = getelementptr inbounds i64, i64* %envptr9471, i64 5                  ; &envptr9471[5]
+  %nKW$y = load i64, i64* %envptr9472, align 8                                       ; load; *envptr9472
+  %envptr9473 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9474 = getelementptr inbounds i64, i64* %envptr9473, i64 4                  ; &envptr9473[4]
+  %cont7133 = load i64, i64* %envptr9474, align 8                                    ; load; *envptr9474
+  %envptr9475 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9476 = getelementptr inbounds i64, i64* %envptr9475, i64 3                  ; &envptr9475[3]
+  %a1J$lx = load i64, i64* %envptr9476, align 8                                      ; load; *envptr9476
+  %envptr9477 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9478 = getelementptr inbounds i64, i64* %envptr9477, i64 2                  ; &envptr9477[2]
+  %JBG$_37drop = load i64, i64* %envptr9478, align 8                                 ; load; *envptr9478
+  %envptr9479 = inttoptr i64 %env8328 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9480 = getelementptr inbounds i64, i64* %envptr9479, i64 1                  ; &envptr9479[1]
+  %hIh$_37_62 = load i64, i64* %envptr9480, align 8                                  ; load; *envptr9480
+  %cloptr9481 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9482 = getelementptr inbounds i64, i64* %cloptr9481, i64 0                    ; &cloptr9481[0]
+  %f9483 = ptrtoint void(i64,i64)* @lam8325 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f9483, i64* %eptr9482                                                   ; store fptr
+  %arg7659 = ptrtoint i64* %cloptr9481 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9484 = call i64* @alloc(i64 64)                                             ; malloc
+  %eptr9486 = getelementptr inbounds i64, i64* %cloptr9484, i64 1                    ; &eptr9486[1]
+  %eptr9487 = getelementptr inbounds i64, i64* %cloptr9484, i64 2                    ; &eptr9487[2]
+  %eptr9488 = getelementptr inbounds i64, i64* %cloptr9484, i64 3                    ; &eptr9488[3]
+  %eptr9489 = getelementptr inbounds i64, i64* %cloptr9484, i64 4                    ; &eptr9489[4]
+  %eptr9490 = getelementptr inbounds i64, i64* %cloptr9484, i64 5                    ; &eptr9490[5]
+  %eptr9491 = getelementptr inbounds i64, i64* %cloptr9484, i64 6                    ; &eptr9491[6]
+  %eptr9492 = getelementptr inbounds i64, i64* %cloptr9484, i64 7                    ; &eptr9492[7]
+  store i64 %hIh$_37_62, i64* %eptr9486                                              ; *eptr9486 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9487                                             ; *eptr9487 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9488                                                  ; *eptr9488 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9489                                                  ; *eptr9489 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9490                                                ; *eptr9490 = %cont7133
+  store i64 %nKW$y, i64* %eptr9491                                                   ; *eptr9491 = %nKW$y
+  store i64 %Sea$x, i64* %eptr9492                                                   ; *eptr9492 = %Sea$x
+  %eptr9485 = getelementptr inbounds i64, i64* %cloptr9484, i64 0                    ; &cloptr9484[0]
+  %f9493 = ptrtoint void(i64,i64,i64)* @lam8322 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9493, i64* %eptr9485                                                   ; store fptr
+  %arg7658 = ptrtoint i64* %cloptr9484 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9494 = inttoptr i64 %arg7659 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9494)                                         ; assert function application
+  %i0ptr9495 = getelementptr inbounds i64, i64* %cloptr9494, i64 0                   ; &cloptr9494[0]
+  %f9497 = load i64, i64* %i0ptr9495, align 8                                        ; load; *i0ptr9495
+  %fptr9496 = inttoptr i64 %f9497 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9496(i64 %arg7659, i64 %arg7658)                    ; tail call
   ret void
 }
 
 
-define void @lam8339(i64 %env8340, i64 %jpM$lst7147) {
-  %cont7146 = call i64 @prim_car(i64 %jpM$lst7147)                                   ; call prim_car
-  %jpM$lst = call i64 @prim_cdr(i64 %jpM$lst7147)                                    ; call prim_cdr
-  %arg7665 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9512 = inttoptr i64 %cont7146 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9512)                                         ; assert function application
-  %i0ptr9513 = getelementptr inbounds i64, i64* %cloptr9512, i64 0                   ; &cloptr9512[0]
-  %f9515 = load i64, i64* %i0ptr9513, align 8                                        ; load; *i0ptr9513
-  %fptr9514 = inttoptr i64 %f9515 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9514(i64 %cont7146, i64 %arg7665, i64 %jpM$lst)     ; tail call
+define void @lam8325(i64 %env8326, i64 %nxo$lst7145) {
+  %cont7144 = call i64 @prim_car(i64 %nxo$lst7145)                                   ; call prim_car
+  %nxo$lst = call i64 @prim_cdr(i64 %nxo$lst7145)                                    ; call prim_cdr
+  %arg7663 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9498 = inttoptr i64 %cont7144 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9498)                                         ; assert function application
+  %i0ptr9499 = getelementptr inbounds i64, i64* %cloptr9498, i64 0                   ; &cloptr9498[0]
+  %f9501 = load i64, i64* %i0ptr9499, align 8                                        ; load; *i0ptr9499
+  %fptr9500 = inttoptr i64 %f9501 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9500(i64 %cont7144, i64 %arg7663, i64 %nxo$lst)     ; tail call
   ret void
 }
 
 
-define void @lam8336(i64 %env8337, i64 %_957144, i64 %a7033) {
-  %envptr9516 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9517 = getelementptr inbounds i64, i64* %envptr9516, i64 7                  ; &envptr9516[7]
-  %Ym6$x = load i64, i64* %envptr9517, align 8                                       ; load; *envptr9517
-  %envptr9518 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9519 = getelementptr inbounds i64, i64* %envptr9518, i64 6                  ; &envptr9518[6]
-  %fL3$y = load i64, i64* %envptr9519, align 8                                       ; load; *envptr9519
-  %envptr9520 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9521 = getelementptr inbounds i64, i64* %envptr9520, i64 5                  ; &envptr9520[5]
-  %cont7135 = load i64, i64* %envptr9521, align 8                                    ; load; *envptr9521
-  %envptr9522 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9523 = getelementptr inbounds i64, i64* %envptr9522, i64 4                  ; &envptr9522[4]
-  %JR8$lx = load i64, i64* %envptr9523, align 8                                      ; load; *envptr9523
-  %envptr9524 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9525 = getelementptr inbounds i64, i64* %envptr9524, i64 3                  ; &envptr9524[3]
-  %ias$ly = load i64, i64* %envptr9525, align 8                                      ; load; *envptr9525
-  %envptr9526 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9527 = getelementptr inbounds i64, i64* %envptr9526, i64 2                  ; &envptr9526[2]
-  %SfN$_37drop = load i64, i64* %envptr9527, align 8                                 ; load; *envptr9527
-  %envptr9528 = inttoptr i64 %env8337 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9529 = getelementptr inbounds i64, i64* %envptr9528, i64 1                  ; &envptr9528[1]
-  %OTq$_37_62 = load i64, i64* %envptr9529, align 8                                  ; load; *envptr9529
-  %arg7668 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %retprim7145 = call i64 @prim_make_45vector(i64 %arg7668, i64 %a7033)              ; call prim_make_45vector
-  %cloptr9530 = call i64* @alloc(i64 64)                                             ; malloc
-  %eptr9532 = getelementptr inbounds i64, i64* %cloptr9530, i64 1                    ; &eptr9532[1]
-  %eptr9533 = getelementptr inbounds i64, i64* %cloptr9530, i64 2                    ; &eptr9533[2]
-  %eptr9534 = getelementptr inbounds i64, i64* %cloptr9530, i64 3                    ; &eptr9534[3]
-  %eptr9535 = getelementptr inbounds i64, i64* %cloptr9530, i64 4                    ; &eptr9535[4]
-  %eptr9536 = getelementptr inbounds i64, i64* %cloptr9530, i64 5                    ; &eptr9536[5]
-  %eptr9537 = getelementptr inbounds i64, i64* %cloptr9530, i64 6                    ; &eptr9537[6]
-  %eptr9538 = getelementptr inbounds i64, i64* %cloptr9530, i64 7                    ; &eptr9538[7]
-  store i64 %OTq$_37_62, i64* %eptr9532                                              ; *eptr9532 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9533                                             ; *eptr9533 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9534                                                  ; *eptr9534 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9535                                                  ; *eptr9535 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9536                                                ; *eptr9536 = %cont7135
-  store i64 %fL3$y, i64* %eptr9537                                                   ; *eptr9537 = %fL3$y
-  store i64 %Ym6$x, i64* %eptr9538                                                   ; *eptr9538 = %Ym6$x
-  %eptr9531 = getelementptr inbounds i64, i64* %cloptr9530, i64 0                    ; &cloptr9530[0]
-  %f9539 = ptrtoint void(i64,i64,i64)* @lam8333 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9539, i64* %eptr9531                                                   ; store fptr
-  %arg7671 = ptrtoint i64* %cloptr9530 to i64                                        ; closure cast; i64* -> i64
-  %arg7670 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9540 = inttoptr i64 %arg7671 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9540)                                         ; assert function application
-  %i0ptr9541 = getelementptr inbounds i64, i64* %cloptr9540, i64 0                   ; &cloptr9540[0]
-  %f9543 = load i64, i64* %i0ptr9541, align 8                                        ; load; *i0ptr9541
-  %fptr9542 = inttoptr i64 %f9543 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9542(i64 %arg7671, i64 %arg7670, i64 %retprim7145)  ; tail call
+define void @lam8322(i64 %env8323, i64 %_957142, i64 %a7033) {
+  %envptr9502 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9503 = getelementptr inbounds i64, i64* %envptr9502, i64 7                  ; &envptr9502[7]
+  %Sea$x = load i64, i64* %envptr9503, align 8                                       ; load; *envptr9503
+  %envptr9504 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9505 = getelementptr inbounds i64, i64* %envptr9504, i64 6                  ; &envptr9504[6]
+  %nKW$y = load i64, i64* %envptr9505, align 8                                       ; load; *envptr9505
+  %envptr9506 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9507 = getelementptr inbounds i64, i64* %envptr9506, i64 5                  ; &envptr9506[5]
+  %cont7133 = load i64, i64* %envptr9507, align 8                                    ; load; *envptr9507
+  %envptr9508 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9509 = getelementptr inbounds i64, i64* %envptr9508, i64 4                  ; &envptr9508[4]
+  %a1J$lx = load i64, i64* %envptr9509, align 8                                      ; load; *envptr9509
+  %envptr9510 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9511 = getelementptr inbounds i64, i64* %envptr9510, i64 3                  ; &envptr9510[3]
+  %gaD$ly = load i64, i64* %envptr9511, align 8                                      ; load; *envptr9511
+  %envptr9512 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9513 = getelementptr inbounds i64, i64* %envptr9512, i64 2                  ; &envptr9512[2]
+  %JBG$_37drop = load i64, i64* %envptr9513, align 8                                 ; load; *envptr9513
+  %envptr9514 = inttoptr i64 %env8323 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9515 = getelementptr inbounds i64, i64* %envptr9514, i64 1                  ; &envptr9514[1]
+  %hIh$_37_62 = load i64, i64* %envptr9515, align 8                                  ; load; *envptr9515
+  %arg7666 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %retprim7143 = call i64 @prim_make_45vector(i64 %arg7666, i64 %a7033)              ; call prim_make_45vector
+  %cloptr9516 = call i64* @alloc(i64 64)                                             ; malloc
+  %eptr9518 = getelementptr inbounds i64, i64* %cloptr9516, i64 1                    ; &eptr9518[1]
+  %eptr9519 = getelementptr inbounds i64, i64* %cloptr9516, i64 2                    ; &eptr9519[2]
+  %eptr9520 = getelementptr inbounds i64, i64* %cloptr9516, i64 3                    ; &eptr9520[3]
+  %eptr9521 = getelementptr inbounds i64, i64* %cloptr9516, i64 4                    ; &eptr9521[4]
+  %eptr9522 = getelementptr inbounds i64, i64* %cloptr9516, i64 5                    ; &eptr9522[5]
+  %eptr9523 = getelementptr inbounds i64, i64* %cloptr9516, i64 6                    ; &eptr9523[6]
+  %eptr9524 = getelementptr inbounds i64, i64* %cloptr9516, i64 7                    ; &eptr9524[7]
+  store i64 %hIh$_37_62, i64* %eptr9518                                              ; *eptr9518 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9519                                             ; *eptr9519 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9520                                                  ; *eptr9520 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9521                                                  ; *eptr9521 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9522                                                ; *eptr9522 = %cont7133
+  store i64 %nKW$y, i64* %eptr9523                                                   ; *eptr9523 = %nKW$y
+  store i64 %Sea$x, i64* %eptr9524                                                   ; *eptr9524 = %Sea$x
+  %eptr9517 = getelementptr inbounds i64, i64* %cloptr9516, i64 0                    ; &cloptr9516[0]
+  %f9525 = ptrtoint void(i64,i64,i64)* @lam8319 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9525, i64* %eptr9517                                                   ; store fptr
+  %arg7669 = ptrtoint i64* %cloptr9516 to i64                                        ; closure cast; i64* -> i64
+  %arg7668 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9526 = inttoptr i64 %arg7669 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9526)                                         ; assert function application
+  %i0ptr9527 = getelementptr inbounds i64, i64* %cloptr9526, i64 0                   ; &cloptr9526[0]
+  %f9529 = load i64, i64* %i0ptr9527, align 8                                        ; load; *i0ptr9527
+  %fptr9528 = inttoptr i64 %f9529 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9528(i64 %arg7669, i64 %arg7668, i64 %retprim7143)  ; tail call
   ret void
 }
 
 
-define void @lam8333(i64 %env8334, i64 %_957138, i64 %o59$loop) {
-  %envptr9544 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9545 = getelementptr inbounds i64, i64* %envptr9544, i64 7                  ; &envptr9544[7]
-  %Ym6$x = load i64, i64* %envptr9545, align 8                                       ; load; *envptr9545
-  %envptr9546 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9547 = getelementptr inbounds i64, i64* %envptr9546, i64 6                  ; &envptr9546[6]
-  %fL3$y = load i64, i64* %envptr9547, align 8                                       ; load; *envptr9547
-  %envptr9548 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9549 = getelementptr inbounds i64, i64* %envptr9548, i64 5                  ; &envptr9548[5]
-  %cont7135 = load i64, i64* %envptr9549, align 8                                    ; load; *envptr9549
-  %envptr9550 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9551 = getelementptr inbounds i64, i64* %envptr9550, i64 4                  ; &envptr9550[4]
-  %JR8$lx = load i64, i64* %envptr9551, align 8                                      ; load; *envptr9551
-  %envptr9552 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9553 = getelementptr inbounds i64, i64* %envptr9552, i64 3                  ; &envptr9552[3]
-  %ias$ly = load i64, i64* %envptr9553, align 8                                      ; load; *envptr9553
-  %envptr9554 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9555 = getelementptr inbounds i64, i64* %envptr9554, i64 2                  ; &envptr9554[2]
-  %SfN$_37drop = load i64, i64* %envptr9555, align 8                                 ; load; *envptr9555
-  %envptr9556 = inttoptr i64 %env8334 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9557 = getelementptr inbounds i64, i64* %envptr9556, i64 1                  ; &envptr9556[1]
-  %OTq$_37_62 = load i64, i64* %envptr9557, align 8                                  ; load; *envptr9557
-  %arg7673 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %cloptr9558 = call i64* @alloc(i64 16)                                             ; malloc
-  %eptr9560 = getelementptr inbounds i64, i64* %cloptr9558, i64 1                    ; &eptr9560[1]
-  store i64 %o59$loop, i64* %eptr9560                                                ; *eptr9560 = %o59$loop
-  %eptr9559 = getelementptr inbounds i64, i64* %cloptr9558, i64 0                    ; &cloptr9558[0]
-  %f9561 = ptrtoint void(i64,i64,i64,i64)* @lam8330 to i64                           ; fptr cast; i64(...)* -> i64
-  store i64 %f9561, i64* %eptr9559                                                   ; store fptr
-  %arg7672 = ptrtoint i64* %cloptr9558 to i64                                        ; closure cast; i64* -> i64
-  %Xox$_956937 = call i64 @prim_vector_45set_33(i64 %o59$loop, i64 %arg7673, i64 %arg7672); call prim_vector_45set_33
-  %arg7688 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7038 = call i64 @prim_vector_45ref(i64 %o59$loop, i64 %arg7688)                  ; call prim_vector_45ref
-  %cloptr9562 = call i64* @alloc(i64 72)                                             ; malloc
-  %eptr9564 = getelementptr inbounds i64, i64* %cloptr9562, i64 1                    ; &eptr9564[1]
-  %eptr9565 = getelementptr inbounds i64, i64* %cloptr9562, i64 2                    ; &eptr9565[2]
-  %eptr9566 = getelementptr inbounds i64, i64* %cloptr9562, i64 3                    ; &eptr9566[3]
-  %eptr9567 = getelementptr inbounds i64, i64* %cloptr9562, i64 4                    ; &eptr9567[4]
-  %eptr9568 = getelementptr inbounds i64, i64* %cloptr9562, i64 5                    ; &eptr9568[5]
-  %eptr9569 = getelementptr inbounds i64, i64* %cloptr9562, i64 6                    ; &eptr9569[6]
-  %eptr9570 = getelementptr inbounds i64, i64* %cloptr9562, i64 7                    ; &eptr9570[7]
-  %eptr9571 = getelementptr inbounds i64, i64* %cloptr9562, i64 8                    ; &eptr9571[8]
-  store i64 %a7038, i64* %eptr9564                                                   ; *eptr9564 = %a7038
-  store i64 %OTq$_37_62, i64* %eptr9565                                              ; *eptr9565 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9566                                             ; *eptr9566 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9567                                                  ; *eptr9567 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9568                                                  ; *eptr9568 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9569                                                ; *eptr9569 = %cont7135
-  store i64 %fL3$y, i64* %eptr9570                                                   ; *eptr9570 = %fL3$y
-  store i64 %Ym6$x, i64* %eptr9571                                                   ; *eptr9571 = %Ym6$x
-  %eptr9563 = getelementptr inbounds i64, i64* %cloptr9562, i64 0                    ; &cloptr9562[0]
-  %f9572 = ptrtoint void(i64,i64,i64)* @lam8325 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9572, i64* %eptr9563                                                   ; store fptr
-  %arg7692 = ptrtoint i64* %cloptr9562 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9573 = inttoptr i64 %OTq$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9573)                                         ; assert function application
-  %i0ptr9574 = getelementptr inbounds i64, i64* %cloptr9573, i64 0                   ; &cloptr9573[0]
-  %f9576 = load i64, i64* %i0ptr9574, align 8                                        ; load; *i0ptr9574
-  %fptr9575 = inttoptr i64 %f9576 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9575(i64 %OTq$_37_62, i64 %arg7692, i64 %JR8$lx, i64 %ias$ly); tail call
+define void @lam8319(i64 %env8320, i64 %_957136, i64 %aQC$loop) {
+  %envptr9530 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9531 = getelementptr inbounds i64, i64* %envptr9530, i64 7                  ; &envptr9530[7]
+  %Sea$x = load i64, i64* %envptr9531, align 8                                       ; load; *envptr9531
+  %envptr9532 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9533 = getelementptr inbounds i64, i64* %envptr9532, i64 6                  ; &envptr9532[6]
+  %nKW$y = load i64, i64* %envptr9533, align 8                                       ; load; *envptr9533
+  %envptr9534 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9535 = getelementptr inbounds i64, i64* %envptr9534, i64 5                  ; &envptr9534[5]
+  %cont7133 = load i64, i64* %envptr9535, align 8                                    ; load; *envptr9535
+  %envptr9536 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9537 = getelementptr inbounds i64, i64* %envptr9536, i64 4                  ; &envptr9536[4]
+  %a1J$lx = load i64, i64* %envptr9537, align 8                                      ; load; *envptr9537
+  %envptr9538 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9539 = getelementptr inbounds i64, i64* %envptr9538, i64 3                  ; &envptr9538[3]
+  %gaD$ly = load i64, i64* %envptr9539, align 8                                      ; load; *envptr9539
+  %envptr9540 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9541 = getelementptr inbounds i64, i64* %envptr9540, i64 2                  ; &envptr9540[2]
+  %JBG$_37drop = load i64, i64* %envptr9541, align 8                                 ; load; *envptr9541
+  %envptr9542 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9543 = getelementptr inbounds i64, i64* %envptr9542, i64 1                  ; &envptr9542[1]
+  %hIh$_37_62 = load i64, i64* %envptr9543, align 8                                  ; load; *envptr9543
+  %arg7671 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %cloptr9544 = call i64* @alloc(i64 16)                                             ; malloc
+  %eptr9546 = getelementptr inbounds i64, i64* %cloptr9544, i64 1                    ; &eptr9546[1]
+  store i64 %aQC$loop, i64* %eptr9546                                                ; *eptr9546 = %aQC$loop
+  %eptr9545 = getelementptr inbounds i64, i64* %cloptr9544, i64 0                    ; &cloptr9544[0]
+  %f9547 = ptrtoint void(i64,i64,i64,i64)* @lam8316 to i64                           ; fptr cast; i64(...)* -> i64
+  store i64 %f9547, i64* %eptr9545                                                   ; store fptr
+  %arg7670 = ptrtoint i64* %cloptr9544 to i64                                        ; closure cast; i64* -> i64
+  %BwJ$_956937 = call i64 @prim_vector_45set_33(i64 %aQC$loop, i64 %arg7671, i64 %arg7670); call prim_vector_45set_33
+  %arg7686 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7038 = call i64 @prim_vector_45ref(i64 %aQC$loop, i64 %arg7686)                  ; call prim_vector_45ref
+  %cloptr9548 = call i64* @alloc(i64 72)                                             ; malloc
+  %eptr9550 = getelementptr inbounds i64, i64* %cloptr9548, i64 1                    ; &eptr9550[1]
+  %eptr9551 = getelementptr inbounds i64, i64* %cloptr9548, i64 2                    ; &eptr9551[2]
+  %eptr9552 = getelementptr inbounds i64, i64* %cloptr9548, i64 3                    ; &eptr9552[3]
+  %eptr9553 = getelementptr inbounds i64, i64* %cloptr9548, i64 4                    ; &eptr9553[4]
+  %eptr9554 = getelementptr inbounds i64, i64* %cloptr9548, i64 5                    ; &eptr9554[5]
+  %eptr9555 = getelementptr inbounds i64, i64* %cloptr9548, i64 6                    ; &eptr9555[6]
+  %eptr9556 = getelementptr inbounds i64, i64* %cloptr9548, i64 7                    ; &eptr9556[7]
+  %eptr9557 = getelementptr inbounds i64, i64* %cloptr9548, i64 8                    ; &eptr9557[8]
+  store i64 %a7038, i64* %eptr9550                                                   ; *eptr9550 = %a7038
+  store i64 %hIh$_37_62, i64* %eptr9551                                              ; *eptr9551 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9552                                             ; *eptr9552 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9553                                                  ; *eptr9553 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9554                                                  ; *eptr9554 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9555                                                ; *eptr9555 = %cont7133
+  store i64 %nKW$y, i64* %eptr9556                                                   ; *eptr9556 = %nKW$y
+  store i64 %Sea$x, i64* %eptr9557                                                   ; *eptr9557 = %Sea$x
+  %eptr9549 = getelementptr inbounds i64, i64* %cloptr9548, i64 0                    ; &cloptr9548[0]
+  %f9558 = ptrtoint void(i64,i64,i64)* @lam8311 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9558, i64* %eptr9549                                                   ; store fptr
+  %arg7690 = ptrtoint i64* %cloptr9548 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9559 = inttoptr i64 %hIh$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9559)                                         ; assert function application
+  %i0ptr9560 = getelementptr inbounds i64, i64* %cloptr9559, i64 0                   ; &cloptr9559[0]
+  %f9562 = load i64, i64* %i0ptr9560, align 8                                        ; load; *i0ptr9560
+  %fptr9561 = inttoptr i64 %f9562 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9561(i64 %hIh$_37_62, i64 %arg7690, i64 %a1J$lx, i64 %gaD$ly); tail call
   ret void
 }
 
 
-define void @lam8330(i64 %env8331, i64 %cont7139, i64 %j47$x, i64 %IAH$y) {
-  %envptr9577 = inttoptr i64 %env8331 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9578 = getelementptr inbounds i64, i64* %envptr9577, i64 1                  ; &envptr9577[1]
-  %o59$loop = load i64, i64* %envptr9578, align 8                                    ; load; *envptr9578
-  %a7034 = call i64 @prim_eq_63(i64 %j47$x, i64 %IAH$y)                              ; call prim_eq_63
-  %cmp9579 = icmp eq i64 %a7034, 15                                                  ; false?
-  br i1 %cmp9579, label %else9581, label %then9580                                   ; if
+define void @lam8316(i64 %env8317, i64 %cont7137, i64 %k96$x, i64 %QPF$y) {
+  %envptr9563 = inttoptr i64 %env8317 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9564 = getelementptr inbounds i64, i64* %envptr9563, i64 1                  ; &envptr9563[1]
+  %aQC$loop = load i64, i64* %envptr9564, align 8                                    ; load; *envptr9564
+  %a7034 = call i64 @prim_eq_63(i64 %k96$x, i64 %QPF$y)                              ; call prim_eq_63
+  %cmp9565 = icmp eq i64 %a7034, 15                                                  ; false?
+  br i1 %cmp9565, label %else9567, label %then9566                                   ; if
 
-then9580:
-  %arg7678 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9582 = inttoptr i64 %cont7139 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9582)                                         ; assert function application
-  %i0ptr9583 = getelementptr inbounds i64, i64* %cloptr9582, i64 0                   ; &cloptr9582[0]
-  %f9585 = load i64, i64* %i0ptr9583, align 8                                        ; load; *i0ptr9583
-  %fptr9584 = inttoptr i64 %f9585 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9584(i64 %cont7139, i64 %arg7678, i64 %j47$x)       ; tail call
+then9566:
+  %arg7676 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9568 = inttoptr i64 %cont7137 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9568)                                         ; assert function application
+  %i0ptr9569 = getelementptr inbounds i64, i64* %cloptr9568, i64 0                   ; &cloptr9568[0]
+  %f9571 = load i64, i64* %i0ptr9569, align 8                                        ; load; *i0ptr9569
+  %fptr9570 = inttoptr i64 %f9571 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9570(i64 %cont7137, i64 %arg7676, i64 %k96$x)       ; tail call
   ret void
 
-else9581:
-  %arg7680 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7035 = call i64 @prim_vector_45ref(i64 %o59$loop, i64 %arg7680)                  ; call prim_vector_45ref
-  %a7036 = call i64 @prim_cdr(i64 %j47$x)                                            ; call prim_cdr
-  %a7037 = call i64 @prim_cdr(i64 %IAH$y)                                            ; call prim_cdr
-  %cloptr9586 = inttoptr i64 %a7035 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9586)                                         ; assert function application
-  %i0ptr9587 = getelementptr inbounds i64, i64* %cloptr9586, i64 0                   ; &cloptr9586[0]
-  %f9589 = load i64, i64* %i0ptr9587, align 8                                        ; load; *i0ptr9587
-  %fptr9588 = inttoptr i64 %f9589 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9588(i64 %a7035, i64 %cont7139, i64 %a7036, i64 %a7037); tail call
+else9567:
+  %arg7678 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7035 = call i64 @prim_vector_45ref(i64 %aQC$loop, i64 %arg7678)                  ; call prim_vector_45ref
+  %a7036 = call i64 @prim_cdr(i64 %k96$x)                                            ; call prim_cdr
+  %a7037 = call i64 @prim_cdr(i64 %QPF$y)                                            ; call prim_cdr
+  %cloptr9572 = inttoptr i64 %a7035 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9572)                                         ; assert function application
+  %i0ptr9573 = getelementptr inbounds i64, i64* %cloptr9572, i64 0                   ; &cloptr9572[0]
+  %f9575 = load i64, i64* %i0ptr9573, align 8                                        ; load; *i0ptr9573
+  %fptr9574 = inttoptr i64 %f9575 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9574(i64 %a7035, i64 %cont7137, i64 %a7036, i64 %a7037); tail call
   ret void
 }
 
 
-define void @lam8325(i64 %env8326, i64 %_957140, i64 %a7039) {
-  %envptr9590 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9591 = getelementptr inbounds i64, i64* %envptr9590, i64 8                  ; &envptr9590[8]
-  %Ym6$x = load i64, i64* %envptr9591, align 8                                       ; load; *envptr9591
-  %envptr9592 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9593 = getelementptr inbounds i64, i64* %envptr9592, i64 7                  ; &envptr9592[7]
-  %fL3$y = load i64, i64* %envptr9593, align 8                                       ; load; *envptr9593
-  %envptr9594 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9595 = getelementptr inbounds i64, i64* %envptr9594, i64 6                  ; &envptr9594[6]
-  %cont7135 = load i64, i64* %envptr9595, align 8                                    ; load; *envptr9595
-  %envptr9596 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9597 = getelementptr inbounds i64, i64* %envptr9596, i64 5                  ; &envptr9596[5]
-  %JR8$lx = load i64, i64* %envptr9597, align 8                                      ; load; *envptr9597
-  %envptr9598 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9599 = getelementptr inbounds i64, i64* %envptr9598, i64 4                  ; &envptr9598[4]
-  %ias$ly = load i64, i64* %envptr9599, align 8                                      ; load; *envptr9599
-  %envptr9600 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9601 = getelementptr inbounds i64, i64* %envptr9600, i64 3                  ; &envptr9600[3]
-  %SfN$_37drop = load i64, i64* %envptr9601, align 8                                 ; load; *envptr9601
-  %envptr9602 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9603 = getelementptr inbounds i64, i64* %envptr9602, i64 2                  ; &envptr9602[2]
-  %OTq$_37_62 = load i64, i64* %envptr9603, align 8                                  ; load; *envptr9603
-  %envptr9604 = inttoptr i64 %env8326 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9605 = getelementptr inbounds i64, i64* %envptr9604, i64 1                  ; &envptr9604[1]
-  %a7038 = load i64, i64* %envptr9605, align 8                                       ; load; *envptr9605
-  %cmp9606 = icmp eq i64 %a7039, 15                                                  ; false?
-  br i1 %cmp9606, label %else9608, label %then9607                                   ; if
+define void @lam8311(i64 %env8312, i64 %_957138, i64 %a7039) {
+  %envptr9576 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9577 = getelementptr inbounds i64, i64* %envptr9576, i64 8                  ; &envptr9576[8]
+  %Sea$x = load i64, i64* %envptr9577, align 8                                       ; load; *envptr9577
+  %envptr9578 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9579 = getelementptr inbounds i64, i64* %envptr9578, i64 7                  ; &envptr9578[7]
+  %nKW$y = load i64, i64* %envptr9579, align 8                                       ; load; *envptr9579
+  %envptr9580 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9581 = getelementptr inbounds i64, i64* %envptr9580, i64 6                  ; &envptr9580[6]
+  %cont7133 = load i64, i64* %envptr9581, align 8                                    ; load; *envptr9581
+  %envptr9582 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9583 = getelementptr inbounds i64, i64* %envptr9582, i64 5                  ; &envptr9582[5]
+  %a1J$lx = load i64, i64* %envptr9583, align 8                                      ; load; *envptr9583
+  %envptr9584 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9585 = getelementptr inbounds i64, i64* %envptr9584, i64 4                  ; &envptr9584[4]
+  %gaD$ly = load i64, i64* %envptr9585, align 8                                      ; load; *envptr9585
+  %envptr9586 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9587 = getelementptr inbounds i64, i64* %envptr9586, i64 3                  ; &envptr9586[3]
+  %JBG$_37drop = load i64, i64* %envptr9587, align 8                                 ; load; *envptr9587
+  %envptr9588 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9589 = getelementptr inbounds i64, i64* %envptr9588, i64 2                  ; &envptr9588[2]
+  %hIh$_37_62 = load i64, i64* %envptr9589, align 8                                  ; load; *envptr9589
+  %envptr9590 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9591 = getelementptr inbounds i64, i64* %envptr9590, i64 1                  ; &envptr9590[1]
+  %a7038 = load i64, i64* %envptr9591, align 8                                       ; load; *envptr9591
+  %cmp9592 = icmp eq i64 %a7039, 15                                                  ; false?
+  br i1 %cmp9592, label %else9594, label %then9593                                   ; if
 
-then9607:
-  %a7040 = call i64 @prim__45(i64 %JR8$lx, i64 %ias$ly)                              ; call prim__45
+then9593:
+  %a7040 = call i64 @prim__45(i64 %a1J$lx, i64 %gaD$ly)                              ; call prim__45
+  %cloptr9595 = call i64* @alloc(i64 64)                                             ; malloc
+  %eptr9597 = getelementptr inbounds i64, i64* %cloptr9595, i64 1                    ; &eptr9597[1]
+  %eptr9598 = getelementptr inbounds i64, i64* %cloptr9595, i64 2                    ; &eptr9598[2]
+  %eptr9599 = getelementptr inbounds i64, i64* %cloptr9595, i64 3                    ; &eptr9599[3]
+  %eptr9600 = getelementptr inbounds i64, i64* %cloptr9595, i64 4                    ; &eptr9600[4]
+  %eptr9601 = getelementptr inbounds i64, i64* %cloptr9595, i64 5                    ; &eptr9601[5]
+  %eptr9602 = getelementptr inbounds i64, i64* %cloptr9595, i64 6                    ; &eptr9602[6]
+  %eptr9603 = getelementptr inbounds i64, i64* %cloptr9595, i64 7                    ; &eptr9603[7]
+  store i64 %a7038, i64* %eptr9597                                                   ; *eptr9597 = %a7038
+  store i64 %hIh$_37_62, i64* %eptr9598                                              ; *eptr9598 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9599                                             ; *eptr9599 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9600                                                  ; *eptr9600 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9601                                                  ; *eptr9601 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9602                                                ; *eptr9602 = %cont7133
+  store i64 %nKW$y, i64* %eptr9603                                                   ; *eptr9603 = %nKW$y
+  %eptr9596 = getelementptr inbounds i64, i64* %cloptr9595, i64 0                    ; &cloptr9595[0]
+  %f9604 = ptrtoint void(i64,i64,i64)* @lam8299 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9604, i64* %eptr9596                                                   ; store fptr
+  %arg7696 = ptrtoint i64* %cloptr9595 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9605 = inttoptr i64 %JBG$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9605)                                         ; assert function application
+  %i0ptr9606 = getelementptr inbounds i64, i64* %cloptr9605, i64 0                   ; &cloptr9605[0]
+  %f9608 = load i64, i64* %i0ptr9606, align 8                                        ; load; *i0ptr9606
+  %fptr9607 = inttoptr i64 %f9608 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9607(i64 %JBG$_37drop, i64 %arg7696, i64 %Sea$x, i64 %a7040); tail call
+  ret void
+
+else9594:
   %cloptr9609 = call i64* @alloc(i64 64)                                             ; malloc
   %eptr9611 = getelementptr inbounds i64, i64* %cloptr9609, i64 1                    ; &eptr9611[1]
   %eptr9612 = getelementptr inbounds i64, i64* %cloptr9609, i64 2                    ; &eptr9612[2]
@@ -4601,2439 +4627,2411 @@ then9607:
   %eptr9616 = getelementptr inbounds i64, i64* %cloptr9609, i64 6                    ; &eptr9616[6]
   %eptr9617 = getelementptr inbounds i64, i64* %cloptr9609, i64 7                    ; &eptr9617[7]
   store i64 %a7038, i64* %eptr9611                                                   ; *eptr9611 = %a7038
-  store i64 %OTq$_37_62, i64* %eptr9612                                              ; *eptr9612 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9613                                             ; *eptr9613 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9614                                                  ; *eptr9614 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9615                                                  ; *eptr9615 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9616                                                ; *eptr9616 = %cont7135
-  store i64 %fL3$y, i64* %eptr9617                                                   ; *eptr9617 = %fL3$y
+  store i64 %hIh$_37_62, i64* %eptr9612                                              ; *eptr9612 = %hIh$_37_62
+  store i64 %JBG$_37drop, i64* %eptr9613                                             ; *eptr9613 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9614                                                  ; *eptr9614 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9615                                                  ; *eptr9615 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9616                                                ; *eptr9616 = %cont7133
+  store i64 %nKW$y, i64* %eptr9617                                                   ; *eptr9617 = %nKW$y
   %eptr9610 = getelementptr inbounds i64, i64* %cloptr9609, i64 0                    ; &cloptr9609[0]
-  %f9618 = ptrtoint void(i64,i64,i64)* @lam8313 to i64                               ; fptr cast; i64(...)* -> i64
+  %f9618 = ptrtoint void(i64,i64,i64)* @lam8309 to i64                               ; fptr cast; i64(...)* -> i64
   store i64 %f9618, i64* %eptr9610                                                   ; store fptr
-  %arg7698 = ptrtoint i64* %cloptr9609 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9619 = inttoptr i64 %SfN$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
+  %arg7721 = ptrtoint i64* %cloptr9609 to i64                                        ; closure cast; i64* -> i64
+  %arg7720 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9619 = inttoptr i64 %arg7721 to i64*                                        ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr9619)                                         ; assert function application
   %i0ptr9620 = getelementptr inbounds i64, i64* %cloptr9619, i64 0                   ; &cloptr9619[0]
   %f9622 = load i64, i64* %i0ptr9620, align 8                                        ; load; *i0ptr9620
-  %fptr9621 = inttoptr i64 %f9622 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9621(i64 %SfN$_37drop, i64 %arg7698, i64 %Ym6$x, i64 %a7040); tail call
-  ret void
-
-else9608:
-  %cloptr9623 = call i64* @alloc(i64 64)                                             ; malloc
-  %eptr9625 = getelementptr inbounds i64, i64* %cloptr9623, i64 1                    ; &eptr9625[1]
-  %eptr9626 = getelementptr inbounds i64, i64* %cloptr9623, i64 2                    ; &eptr9626[2]
-  %eptr9627 = getelementptr inbounds i64, i64* %cloptr9623, i64 3                    ; &eptr9627[3]
-  %eptr9628 = getelementptr inbounds i64, i64* %cloptr9623, i64 4                    ; &eptr9628[4]
-  %eptr9629 = getelementptr inbounds i64, i64* %cloptr9623, i64 5                    ; &eptr9629[5]
-  %eptr9630 = getelementptr inbounds i64, i64* %cloptr9623, i64 6                    ; &eptr9630[6]
-  %eptr9631 = getelementptr inbounds i64, i64* %cloptr9623, i64 7                    ; &eptr9631[7]
-  store i64 %a7038, i64* %eptr9625                                                   ; *eptr9625 = %a7038
-  store i64 %OTq$_37_62, i64* %eptr9626                                              ; *eptr9626 = %OTq$_37_62
-  store i64 %SfN$_37drop, i64* %eptr9627                                             ; *eptr9627 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9628                                                  ; *eptr9628 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9629                                                  ; *eptr9629 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9630                                                ; *eptr9630 = %cont7135
-  store i64 %fL3$y, i64* %eptr9631                                                   ; *eptr9631 = %fL3$y
-  %eptr9624 = getelementptr inbounds i64, i64* %cloptr9623, i64 0                    ; &cloptr9623[0]
-  %f9632 = ptrtoint void(i64,i64,i64)* @lam8323 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9632, i64* %eptr9624                                                   ; store fptr
-  %arg7723 = ptrtoint i64* %cloptr9623 to i64                                        ; closure cast; i64* -> i64
-  %arg7722 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9633 = inttoptr i64 %arg7723 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9633)                                         ; assert function application
-  %i0ptr9634 = getelementptr inbounds i64, i64* %cloptr9633, i64 0                   ; &cloptr9633[0]
-  %f9636 = load i64, i64* %i0ptr9634, align 8                                        ; load; *i0ptr9634
-  %fptr9635 = inttoptr i64 %f9636 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9635(i64 %arg7723, i64 %arg7722, i64 %Ym6$x)        ; tail call
+  %fptr9621 = inttoptr i64 %f9622 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9621(i64 %arg7721, i64 %arg7720, i64 %Sea$x)        ; tail call
   ret void
 }
 
 
-define void @lam8323(i64 %env8324, i64 %_957141, i64 %a7041) {
-  %envptr9637 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9638 = getelementptr inbounds i64, i64* %envptr9637, i64 7                  ; &envptr9637[7]
-  %fL3$y = load i64, i64* %envptr9638, align 8                                       ; load; *envptr9638
-  %envptr9639 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9640 = getelementptr inbounds i64, i64* %envptr9639, i64 6                  ; &envptr9639[6]
-  %cont7135 = load i64, i64* %envptr9640, align 8                                    ; load; *envptr9640
-  %envptr9641 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9642 = getelementptr inbounds i64, i64* %envptr9641, i64 5                  ; &envptr9641[5]
-  %JR8$lx = load i64, i64* %envptr9642, align 8                                      ; load; *envptr9642
-  %envptr9643 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9644 = getelementptr inbounds i64, i64* %envptr9643, i64 4                  ; &envptr9643[4]
-  %ias$ly = load i64, i64* %envptr9644, align 8                                      ; load; *envptr9644
-  %envptr9645 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9646 = getelementptr inbounds i64, i64* %envptr9645, i64 3                  ; &envptr9645[3]
-  %SfN$_37drop = load i64, i64* %envptr9646, align 8                                 ; load; *envptr9646
-  %envptr9647 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9648 = getelementptr inbounds i64, i64* %envptr9647, i64 2                  ; &envptr9647[2]
-  %OTq$_37_62 = load i64, i64* %envptr9648, align 8                                  ; load; *envptr9648
-  %envptr9649 = inttoptr i64 %env8324 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9650 = getelementptr inbounds i64, i64* %envptr9649, i64 1                  ; &envptr9649[1]
-  %a7038 = load i64, i64* %envptr9650, align 8                                       ; load; *envptr9650
-  %cloptr9651 = call i64* @alloc(i64 64)                                             ; malloc
-  %eptr9653 = getelementptr inbounds i64, i64* %cloptr9651, i64 1                    ; &eptr9653[1]
-  %eptr9654 = getelementptr inbounds i64, i64* %cloptr9651, i64 2                    ; &eptr9654[2]
-  %eptr9655 = getelementptr inbounds i64, i64* %cloptr9651, i64 3                    ; &eptr9655[3]
-  %eptr9656 = getelementptr inbounds i64, i64* %cloptr9651, i64 4                    ; &eptr9656[4]
-  %eptr9657 = getelementptr inbounds i64, i64* %cloptr9651, i64 5                    ; &eptr9657[5]
-  %eptr9658 = getelementptr inbounds i64, i64* %cloptr9651, i64 6                    ; &eptr9658[6]
-  %eptr9659 = getelementptr inbounds i64, i64* %cloptr9651, i64 7                    ; &eptr9659[7]
-  store i64 %a7041, i64* %eptr9653                                                   ; *eptr9653 = %a7041
-  store i64 %a7038, i64* %eptr9654                                                   ; *eptr9654 = %a7038
-  store i64 %SfN$_37drop, i64* %eptr9655                                             ; *eptr9655 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9656                                                  ; *eptr9656 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9657                                                  ; *eptr9657 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9658                                                ; *eptr9658 = %cont7135
-  store i64 %fL3$y, i64* %eptr9659                                                   ; *eptr9659 = %fL3$y
-  %eptr9652 = getelementptr inbounds i64, i64* %cloptr9651, i64 0                    ; &cloptr9651[0]
-  %f9660 = ptrtoint void(i64,i64,i64)* @lam8321 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9660, i64* %eptr9652                                                   ; store fptr
-  %arg7726 = ptrtoint i64* %cloptr9651 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9661 = inttoptr i64 %OTq$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9661)                                         ; assert function application
-  %i0ptr9662 = getelementptr inbounds i64, i64* %cloptr9661, i64 0                   ; &cloptr9661[0]
-  %f9664 = load i64, i64* %i0ptr9662, align 8                                        ; load; *i0ptr9662
-  %fptr9663 = inttoptr i64 %f9664 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9663(i64 %OTq$_37_62, i64 %arg7726, i64 %ias$ly, i64 %JR8$lx); tail call
+define void @lam8309(i64 %env8310, i64 %_957139, i64 %a7041) {
+  %envptr9623 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9624 = getelementptr inbounds i64, i64* %envptr9623, i64 7                  ; &envptr9623[7]
+  %nKW$y = load i64, i64* %envptr9624, align 8                                       ; load; *envptr9624
+  %envptr9625 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9626 = getelementptr inbounds i64, i64* %envptr9625, i64 6                  ; &envptr9625[6]
+  %cont7133 = load i64, i64* %envptr9626, align 8                                    ; load; *envptr9626
+  %envptr9627 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9628 = getelementptr inbounds i64, i64* %envptr9627, i64 5                  ; &envptr9627[5]
+  %a1J$lx = load i64, i64* %envptr9628, align 8                                      ; load; *envptr9628
+  %envptr9629 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9630 = getelementptr inbounds i64, i64* %envptr9629, i64 4                  ; &envptr9629[4]
+  %gaD$ly = load i64, i64* %envptr9630, align 8                                      ; load; *envptr9630
+  %envptr9631 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9632 = getelementptr inbounds i64, i64* %envptr9631, i64 3                  ; &envptr9631[3]
+  %JBG$_37drop = load i64, i64* %envptr9632, align 8                                 ; load; *envptr9632
+  %envptr9633 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9634 = getelementptr inbounds i64, i64* %envptr9633, i64 2                  ; &envptr9633[2]
+  %hIh$_37_62 = load i64, i64* %envptr9634, align 8                                  ; load; *envptr9634
+  %envptr9635 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9636 = getelementptr inbounds i64, i64* %envptr9635, i64 1                  ; &envptr9635[1]
+  %a7038 = load i64, i64* %envptr9636, align 8                                       ; load; *envptr9636
+  %cloptr9637 = call i64* @alloc(i64 64)                                             ; malloc
+  %eptr9639 = getelementptr inbounds i64, i64* %cloptr9637, i64 1                    ; &eptr9639[1]
+  %eptr9640 = getelementptr inbounds i64, i64* %cloptr9637, i64 2                    ; &eptr9640[2]
+  %eptr9641 = getelementptr inbounds i64, i64* %cloptr9637, i64 3                    ; &eptr9641[3]
+  %eptr9642 = getelementptr inbounds i64, i64* %cloptr9637, i64 4                    ; &eptr9642[4]
+  %eptr9643 = getelementptr inbounds i64, i64* %cloptr9637, i64 5                    ; &eptr9643[5]
+  %eptr9644 = getelementptr inbounds i64, i64* %cloptr9637, i64 6                    ; &eptr9644[6]
+  %eptr9645 = getelementptr inbounds i64, i64* %cloptr9637, i64 7                    ; &eptr9645[7]
+  store i64 %a7041, i64* %eptr9639                                                   ; *eptr9639 = %a7041
+  store i64 %a7038, i64* %eptr9640                                                   ; *eptr9640 = %a7038
+  store i64 %JBG$_37drop, i64* %eptr9641                                             ; *eptr9641 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9642                                                  ; *eptr9642 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9643                                                  ; *eptr9643 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9644                                                ; *eptr9644 = %cont7133
+  store i64 %nKW$y, i64* %eptr9645                                                   ; *eptr9645 = %nKW$y
+  %eptr9638 = getelementptr inbounds i64, i64* %cloptr9637, i64 0                    ; &cloptr9637[0]
+  %f9646 = ptrtoint void(i64,i64,i64)* @lam8307 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9646, i64* %eptr9638                                                   ; store fptr
+  %arg7724 = ptrtoint i64* %cloptr9637 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9647 = inttoptr i64 %hIh$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9647)                                         ; assert function application
+  %i0ptr9648 = getelementptr inbounds i64, i64* %cloptr9647, i64 0                   ; &cloptr9647[0]
+  %f9650 = load i64, i64* %i0ptr9648, align 8                                        ; load; *i0ptr9648
+  %fptr9649 = inttoptr i64 %f9650 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9649(i64 %hIh$_37_62, i64 %arg7724, i64 %gaD$ly, i64 %a1J$lx); tail call
   ret void
 }
 
 
-define void @lam8321(i64 %env8322, i64 %_957142, i64 %a7042) {
-  %envptr9665 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9666 = getelementptr inbounds i64, i64* %envptr9665, i64 7                  ; &envptr9665[7]
-  %fL3$y = load i64, i64* %envptr9666, align 8                                       ; load; *envptr9666
-  %envptr9667 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9668 = getelementptr inbounds i64, i64* %envptr9667, i64 6                  ; &envptr9667[6]
-  %cont7135 = load i64, i64* %envptr9668, align 8                                    ; load; *envptr9668
-  %envptr9669 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9670 = getelementptr inbounds i64, i64* %envptr9669, i64 5                  ; &envptr9669[5]
-  %JR8$lx = load i64, i64* %envptr9670, align 8                                      ; load; *envptr9670
-  %envptr9671 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9672 = getelementptr inbounds i64, i64* %envptr9671, i64 4                  ; &envptr9671[4]
-  %ias$ly = load i64, i64* %envptr9672, align 8                                      ; load; *envptr9672
-  %envptr9673 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9674 = getelementptr inbounds i64, i64* %envptr9673, i64 3                  ; &envptr9673[3]
-  %SfN$_37drop = load i64, i64* %envptr9674, align 8                                 ; load; *envptr9674
-  %envptr9675 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9676 = getelementptr inbounds i64, i64* %envptr9675, i64 2                  ; &envptr9675[2]
-  %a7038 = load i64, i64* %envptr9676, align 8                                       ; load; *envptr9676
-  %envptr9677 = inttoptr i64 %env8322 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9678 = getelementptr inbounds i64, i64* %envptr9677, i64 1                  ; &envptr9677[1]
-  %a7041 = load i64, i64* %envptr9678, align 8                                       ; load; *envptr9678
-  %cmp9679 = icmp eq i64 %a7042, 15                                                  ; false?
-  br i1 %cmp9679, label %else9681, label %then9680                                   ; if
+define void @lam8307(i64 %env8308, i64 %_957140, i64 %a7042) {
+  %envptr9651 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9652 = getelementptr inbounds i64, i64* %envptr9651, i64 7                  ; &envptr9651[7]
+  %nKW$y = load i64, i64* %envptr9652, align 8                                       ; load; *envptr9652
+  %envptr9653 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9654 = getelementptr inbounds i64, i64* %envptr9653, i64 6                  ; &envptr9653[6]
+  %cont7133 = load i64, i64* %envptr9654, align 8                                    ; load; *envptr9654
+  %envptr9655 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9656 = getelementptr inbounds i64, i64* %envptr9655, i64 5                  ; &envptr9655[5]
+  %a1J$lx = load i64, i64* %envptr9656, align 8                                      ; load; *envptr9656
+  %envptr9657 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9658 = getelementptr inbounds i64, i64* %envptr9657, i64 4                  ; &envptr9657[4]
+  %gaD$ly = load i64, i64* %envptr9658, align 8                                      ; load; *envptr9658
+  %envptr9659 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9660 = getelementptr inbounds i64, i64* %envptr9659, i64 3                  ; &envptr9659[3]
+  %JBG$_37drop = load i64, i64* %envptr9660, align 8                                 ; load; *envptr9660
+  %envptr9661 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9662 = getelementptr inbounds i64, i64* %envptr9661, i64 2                  ; &envptr9661[2]
+  %a7038 = load i64, i64* %envptr9662, align 8                                       ; load; *envptr9662
+  %envptr9663 = inttoptr i64 %env8308 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9664 = getelementptr inbounds i64, i64* %envptr9663, i64 1                  ; &envptr9663[1]
+  %a7041 = load i64, i64* %envptr9664, align 8                                       ; load; *envptr9664
+  %cmp9665 = icmp eq i64 %a7042, 15                                                  ; false?
+  br i1 %cmp9665, label %else9667, label %then9666                                   ; if
 
-then9680:
-  %a7043 = call i64 @prim__45(i64 %ias$ly, i64 %JR8$lx)                              ; call prim__45
-  %cloptr9682 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9684 = getelementptr inbounds i64, i64* %cloptr9682, i64 1                    ; &eptr9684[1]
-  %eptr9685 = getelementptr inbounds i64, i64* %cloptr9682, i64 2                    ; &eptr9685[2]
-  %eptr9686 = getelementptr inbounds i64, i64* %cloptr9682, i64 3                    ; &eptr9686[3]
-  store i64 %a7041, i64* %eptr9684                                                   ; *eptr9684 = %a7041
-  store i64 %a7038, i64* %eptr9685                                                   ; *eptr9685 = %a7038
-  store i64 %cont7135, i64* %eptr9686                                                ; *eptr9686 = %cont7135
-  %eptr9683 = getelementptr inbounds i64, i64* %cloptr9682, i64 0                    ; &cloptr9682[0]
-  %f9687 = ptrtoint void(i64,i64,i64)* @lam8316 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9687, i64* %eptr9683                                                   ; store fptr
-  %arg7732 = ptrtoint i64* %cloptr9682 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9688 = inttoptr i64 %SfN$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9688)                                         ; assert function application
-  %i0ptr9689 = getelementptr inbounds i64, i64* %cloptr9688, i64 0                   ; &cloptr9688[0]
-  %f9691 = load i64, i64* %i0ptr9689, align 8                                        ; load; *i0ptr9689
-  %fptr9690 = inttoptr i64 %f9691 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9690(i64 %SfN$_37drop, i64 %arg7732, i64 %fL3$y, i64 %a7043); tail call
+then9666:
+  %a7043 = call i64 @prim__45(i64 %gaD$ly, i64 %a1J$lx)                              ; call prim__45
+  %cloptr9668 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9670 = getelementptr inbounds i64, i64* %cloptr9668, i64 1                    ; &eptr9670[1]
+  %eptr9671 = getelementptr inbounds i64, i64* %cloptr9668, i64 2                    ; &eptr9671[2]
+  %eptr9672 = getelementptr inbounds i64, i64* %cloptr9668, i64 3                    ; &eptr9672[3]
+  store i64 %a7041, i64* %eptr9670                                                   ; *eptr9670 = %a7041
+  store i64 %a7038, i64* %eptr9671                                                   ; *eptr9671 = %a7038
+  store i64 %cont7133, i64* %eptr9672                                                ; *eptr9672 = %cont7133
+  %eptr9669 = getelementptr inbounds i64, i64* %cloptr9668, i64 0                    ; &cloptr9668[0]
+  %f9673 = ptrtoint void(i64,i64,i64)* @lam8302 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9673, i64* %eptr9669                                                   ; store fptr
+  %arg7730 = ptrtoint i64* %cloptr9668 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9674 = inttoptr i64 %JBG$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9674)                                         ; assert function application
+  %i0ptr9675 = getelementptr inbounds i64, i64* %cloptr9674, i64 0                   ; &cloptr9674[0]
+  %f9677 = load i64, i64* %i0ptr9675, align 8                                        ; load; *i0ptr9675
+  %fptr9676 = inttoptr i64 %f9677 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9676(i64 %JBG$_37drop, i64 %arg7730, i64 %nKW$y, i64 %a7043); tail call
   ret void
 
-else9681:
-  %cloptr9692 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9694 = getelementptr inbounds i64, i64* %cloptr9692, i64 1                    ; &eptr9694[1]
-  %eptr9695 = getelementptr inbounds i64, i64* %cloptr9692, i64 2                    ; &eptr9695[2]
-  %eptr9696 = getelementptr inbounds i64, i64* %cloptr9692, i64 3                    ; &eptr9696[3]
-  store i64 %a7041, i64* %eptr9694                                                   ; *eptr9694 = %a7041
-  store i64 %a7038, i64* %eptr9695                                                   ; *eptr9695 = %a7038
-  store i64 %cont7135, i64* %eptr9696                                                ; *eptr9696 = %cont7135
-  %eptr9693 = getelementptr inbounds i64, i64* %cloptr9692, i64 0                    ; &cloptr9692[0]
-  %f9697 = ptrtoint void(i64,i64,i64)* @lam8319 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9697, i64* %eptr9693                                                   ; store fptr
-  %arg7740 = ptrtoint i64* %cloptr9692 to i64                                        ; closure cast; i64* -> i64
-  %arg7739 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9698 = inttoptr i64 %arg7740 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9698)                                         ; assert function application
-  %i0ptr9699 = getelementptr inbounds i64, i64* %cloptr9698, i64 0                   ; &cloptr9698[0]
-  %f9701 = load i64, i64* %i0ptr9699, align 8                                        ; load; *i0ptr9699
-  %fptr9700 = inttoptr i64 %f9701 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9700(i64 %arg7740, i64 %arg7739, i64 %fL3$y)        ; tail call
-  ret void
-}
-
-
-define void @lam8319(i64 %env8320, i64 %_957143, i64 %a7044) {
-  %envptr9702 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9703 = getelementptr inbounds i64, i64* %envptr9702, i64 3                  ; &envptr9702[3]
-  %cont7135 = load i64, i64* %envptr9703, align 8                                    ; load; *envptr9703
-  %envptr9704 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9705 = getelementptr inbounds i64, i64* %envptr9704, i64 2                  ; &envptr9704[2]
-  %a7038 = load i64, i64* %envptr9705, align 8                                       ; load; *envptr9705
-  %envptr9706 = inttoptr i64 %env8320 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9707 = getelementptr inbounds i64, i64* %envptr9706, i64 1                  ; &envptr9706[1]
-  %a7041 = load i64, i64* %envptr9707, align 8                                       ; load; *envptr9707
-  %cloptr9708 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9708)                                         ; assert function application
-  %i0ptr9709 = getelementptr inbounds i64, i64* %cloptr9708, i64 0                   ; &cloptr9708[0]
-  %f9711 = load i64, i64* %i0ptr9709, align 8                                        ; load; *i0ptr9709
-  %fptr9710 = inttoptr i64 %f9711 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9710(i64 %a7038, i64 %cont7135, i64 %a7041, i64 %a7044); tail call
+else9667:
+  %cloptr9678 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9680 = getelementptr inbounds i64, i64* %cloptr9678, i64 1                    ; &eptr9680[1]
+  %eptr9681 = getelementptr inbounds i64, i64* %cloptr9678, i64 2                    ; &eptr9681[2]
+  %eptr9682 = getelementptr inbounds i64, i64* %cloptr9678, i64 3                    ; &eptr9682[3]
+  store i64 %a7041, i64* %eptr9680                                                   ; *eptr9680 = %a7041
+  store i64 %a7038, i64* %eptr9681                                                   ; *eptr9681 = %a7038
+  store i64 %cont7133, i64* %eptr9682                                                ; *eptr9682 = %cont7133
+  %eptr9679 = getelementptr inbounds i64, i64* %cloptr9678, i64 0                    ; &cloptr9678[0]
+  %f9683 = ptrtoint void(i64,i64,i64)* @lam8305 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9683, i64* %eptr9679                                                   ; store fptr
+  %arg7738 = ptrtoint i64* %cloptr9678 to i64                                        ; closure cast; i64* -> i64
+  %arg7737 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9684 = inttoptr i64 %arg7738 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9684)                                         ; assert function application
+  %i0ptr9685 = getelementptr inbounds i64, i64* %cloptr9684, i64 0                   ; &cloptr9684[0]
+  %f9687 = load i64, i64* %i0ptr9685, align 8                                        ; load; *i0ptr9685
+  %fptr9686 = inttoptr i64 %f9687 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9686(i64 %arg7738, i64 %arg7737, i64 %nKW$y)        ; tail call
   ret void
 }
 
 
-define void @lam8316(i64 %env8317, i64 %_957143, i64 %a7044) {
-  %envptr9712 = inttoptr i64 %env8317 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9713 = getelementptr inbounds i64, i64* %envptr9712, i64 3                  ; &envptr9712[3]
-  %cont7135 = load i64, i64* %envptr9713, align 8                                    ; load; *envptr9713
-  %envptr9714 = inttoptr i64 %env8317 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9715 = getelementptr inbounds i64, i64* %envptr9714, i64 2                  ; &envptr9714[2]
-  %a7038 = load i64, i64* %envptr9715, align 8                                       ; load; *envptr9715
-  %envptr9716 = inttoptr i64 %env8317 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9717 = getelementptr inbounds i64, i64* %envptr9716, i64 1                  ; &envptr9716[1]
-  %a7041 = load i64, i64* %envptr9717, align 8                                       ; load; *envptr9717
-  %cloptr9718 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9718)                                         ; assert function application
-  %i0ptr9719 = getelementptr inbounds i64, i64* %cloptr9718, i64 0                   ; &cloptr9718[0]
-  %f9721 = load i64, i64* %i0ptr9719, align 8                                        ; load; *i0ptr9719
-  %fptr9720 = inttoptr i64 %f9721 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9720(i64 %a7038, i64 %cont7135, i64 %a7041, i64 %a7044); tail call
+define void @lam8305(i64 %env8306, i64 %_957141, i64 %a7044) {
+  %envptr9688 = inttoptr i64 %env8306 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9689 = getelementptr inbounds i64, i64* %envptr9688, i64 3                  ; &envptr9688[3]
+  %cont7133 = load i64, i64* %envptr9689, align 8                                    ; load; *envptr9689
+  %envptr9690 = inttoptr i64 %env8306 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9691 = getelementptr inbounds i64, i64* %envptr9690, i64 2                  ; &envptr9690[2]
+  %a7038 = load i64, i64* %envptr9691, align 8                                       ; load; *envptr9691
+  %envptr9692 = inttoptr i64 %env8306 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9693 = getelementptr inbounds i64, i64* %envptr9692, i64 1                  ; &envptr9692[1]
+  %a7041 = load i64, i64* %envptr9693, align 8                                       ; load; *envptr9693
+  %cloptr9694 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9694)                                         ; assert function application
+  %i0ptr9695 = getelementptr inbounds i64, i64* %cloptr9694, i64 0                   ; &cloptr9694[0]
+  %f9697 = load i64, i64* %i0ptr9695, align 8                                        ; load; *i0ptr9695
+  %fptr9696 = inttoptr i64 %f9697 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9696(i64 %a7038, i64 %cont7133, i64 %a7041, i64 %a7044); tail call
   ret void
 }
 
 
-define void @lam8313(i64 %env8314, i64 %_957141, i64 %a7041) {
-  %envptr9722 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9723 = getelementptr inbounds i64, i64* %envptr9722, i64 7                  ; &envptr9722[7]
-  %fL3$y = load i64, i64* %envptr9723, align 8                                       ; load; *envptr9723
-  %envptr9724 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9725 = getelementptr inbounds i64, i64* %envptr9724, i64 6                  ; &envptr9724[6]
-  %cont7135 = load i64, i64* %envptr9725, align 8                                    ; load; *envptr9725
-  %envptr9726 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9727 = getelementptr inbounds i64, i64* %envptr9726, i64 5                  ; &envptr9726[5]
-  %JR8$lx = load i64, i64* %envptr9727, align 8                                      ; load; *envptr9727
-  %envptr9728 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9729 = getelementptr inbounds i64, i64* %envptr9728, i64 4                  ; &envptr9728[4]
-  %ias$ly = load i64, i64* %envptr9729, align 8                                      ; load; *envptr9729
-  %envptr9730 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9731 = getelementptr inbounds i64, i64* %envptr9730, i64 3                  ; &envptr9730[3]
-  %SfN$_37drop = load i64, i64* %envptr9731, align 8                                 ; load; *envptr9731
-  %envptr9732 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9733 = getelementptr inbounds i64, i64* %envptr9732, i64 2                  ; &envptr9732[2]
-  %OTq$_37_62 = load i64, i64* %envptr9733, align 8                                  ; load; *envptr9733
-  %envptr9734 = inttoptr i64 %env8314 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9735 = getelementptr inbounds i64, i64* %envptr9734, i64 1                  ; &envptr9734[1]
-  %a7038 = load i64, i64* %envptr9735, align 8                                       ; load; *envptr9735
-  %cloptr9736 = call i64* @alloc(i64 64)                                             ; malloc
-  %eptr9738 = getelementptr inbounds i64, i64* %cloptr9736, i64 1                    ; &eptr9738[1]
-  %eptr9739 = getelementptr inbounds i64, i64* %cloptr9736, i64 2                    ; &eptr9739[2]
-  %eptr9740 = getelementptr inbounds i64, i64* %cloptr9736, i64 3                    ; &eptr9740[3]
-  %eptr9741 = getelementptr inbounds i64, i64* %cloptr9736, i64 4                    ; &eptr9741[4]
-  %eptr9742 = getelementptr inbounds i64, i64* %cloptr9736, i64 5                    ; &eptr9742[5]
-  %eptr9743 = getelementptr inbounds i64, i64* %cloptr9736, i64 6                    ; &eptr9743[6]
-  %eptr9744 = getelementptr inbounds i64, i64* %cloptr9736, i64 7                    ; &eptr9744[7]
-  store i64 %a7041, i64* %eptr9738                                                   ; *eptr9738 = %a7041
-  store i64 %a7038, i64* %eptr9739                                                   ; *eptr9739 = %a7038
-  store i64 %SfN$_37drop, i64* %eptr9740                                             ; *eptr9740 = %SfN$_37drop
-  store i64 %ias$ly, i64* %eptr9741                                                  ; *eptr9741 = %ias$ly
-  store i64 %JR8$lx, i64* %eptr9742                                                  ; *eptr9742 = %JR8$lx
-  store i64 %cont7135, i64* %eptr9743                                                ; *eptr9743 = %cont7135
-  store i64 %fL3$y, i64* %eptr9744                                                   ; *eptr9744 = %fL3$y
-  %eptr9737 = getelementptr inbounds i64, i64* %cloptr9736, i64 0                    ; &cloptr9736[0]
-  %f9745 = ptrtoint void(i64,i64,i64)* @lam8311 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9745, i64* %eptr9737                                                   ; store fptr
-  %arg7702 = ptrtoint i64* %cloptr9736 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9746 = inttoptr i64 %OTq$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9746)                                         ; assert function application
-  %i0ptr9747 = getelementptr inbounds i64, i64* %cloptr9746, i64 0                   ; &cloptr9746[0]
-  %f9749 = load i64, i64* %i0ptr9747, align 8                                        ; load; *i0ptr9747
-  %fptr9748 = inttoptr i64 %f9749 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9748(i64 %OTq$_37_62, i64 %arg7702, i64 %ias$ly, i64 %JR8$lx); tail call
+define void @lam8302(i64 %env8303, i64 %_957141, i64 %a7044) {
+  %envptr9698 = inttoptr i64 %env8303 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9699 = getelementptr inbounds i64, i64* %envptr9698, i64 3                  ; &envptr9698[3]
+  %cont7133 = load i64, i64* %envptr9699, align 8                                    ; load; *envptr9699
+  %envptr9700 = inttoptr i64 %env8303 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9701 = getelementptr inbounds i64, i64* %envptr9700, i64 2                  ; &envptr9700[2]
+  %a7038 = load i64, i64* %envptr9701, align 8                                       ; load; *envptr9701
+  %envptr9702 = inttoptr i64 %env8303 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9703 = getelementptr inbounds i64, i64* %envptr9702, i64 1                  ; &envptr9702[1]
+  %a7041 = load i64, i64* %envptr9703, align 8                                       ; load; *envptr9703
+  %cloptr9704 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9704)                                         ; assert function application
+  %i0ptr9705 = getelementptr inbounds i64, i64* %cloptr9704, i64 0                   ; &cloptr9704[0]
+  %f9707 = load i64, i64* %i0ptr9705, align 8                                        ; load; *i0ptr9705
+  %fptr9706 = inttoptr i64 %f9707 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9706(i64 %a7038, i64 %cont7133, i64 %a7041, i64 %a7044); tail call
   ret void
 }
 
 
-define void @lam8311(i64 %env8312, i64 %_957142, i64 %a7042) {
-  %envptr9750 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9751 = getelementptr inbounds i64, i64* %envptr9750, i64 7                  ; &envptr9750[7]
-  %fL3$y = load i64, i64* %envptr9751, align 8                                       ; load; *envptr9751
-  %envptr9752 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9753 = getelementptr inbounds i64, i64* %envptr9752, i64 6                  ; &envptr9752[6]
-  %cont7135 = load i64, i64* %envptr9753, align 8                                    ; load; *envptr9753
-  %envptr9754 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9755 = getelementptr inbounds i64, i64* %envptr9754, i64 5                  ; &envptr9754[5]
-  %JR8$lx = load i64, i64* %envptr9755, align 8                                      ; load; *envptr9755
-  %envptr9756 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9757 = getelementptr inbounds i64, i64* %envptr9756, i64 4                  ; &envptr9756[4]
-  %ias$ly = load i64, i64* %envptr9757, align 8                                      ; load; *envptr9757
-  %envptr9758 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9759 = getelementptr inbounds i64, i64* %envptr9758, i64 3                  ; &envptr9758[3]
-  %SfN$_37drop = load i64, i64* %envptr9759, align 8                                 ; load; *envptr9759
-  %envptr9760 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9761 = getelementptr inbounds i64, i64* %envptr9760, i64 2                  ; &envptr9760[2]
-  %a7038 = load i64, i64* %envptr9761, align 8                                       ; load; *envptr9761
-  %envptr9762 = inttoptr i64 %env8312 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9763 = getelementptr inbounds i64, i64* %envptr9762, i64 1                  ; &envptr9762[1]
-  %a7041 = load i64, i64* %envptr9763, align 8                                       ; load; *envptr9763
-  %cmp9764 = icmp eq i64 %a7042, 15                                                  ; false?
-  br i1 %cmp9764, label %else9766, label %then9765                                   ; if
-
-then9765:
-  %a7043 = call i64 @prim__45(i64 %ias$ly, i64 %JR8$lx)                              ; call prim__45
-  %cloptr9767 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9769 = getelementptr inbounds i64, i64* %cloptr9767, i64 1                    ; &eptr9769[1]
-  %eptr9770 = getelementptr inbounds i64, i64* %cloptr9767, i64 2                    ; &eptr9770[2]
-  %eptr9771 = getelementptr inbounds i64, i64* %cloptr9767, i64 3                    ; &eptr9771[3]
-  store i64 %a7041, i64* %eptr9769                                                   ; *eptr9769 = %a7041
-  store i64 %a7038, i64* %eptr9770                                                   ; *eptr9770 = %a7038
-  store i64 %cont7135, i64* %eptr9771                                                ; *eptr9771 = %cont7135
-  %eptr9768 = getelementptr inbounds i64, i64* %cloptr9767, i64 0                    ; &cloptr9767[0]
-  %f9772 = ptrtoint void(i64,i64,i64)* @lam8306 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9772, i64* %eptr9768                                                   ; store fptr
-  %arg7708 = ptrtoint i64* %cloptr9767 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9773 = inttoptr i64 %SfN$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9773)                                         ; assert function application
-  %i0ptr9774 = getelementptr inbounds i64, i64* %cloptr9773, i64 0                   ; &cloptr9773[0]
-  %f9776 = load i64, i64* %i0ptr9774, align 8                                        ; load; *i0ptr9774
-  %fptr9775 = inttoptr i64 %f9776 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9775(i64 %SfN$_37drop, i64 %arg7708, i64 %fL3$y, i64 %a7043); tail call
-  ret void
-
-else9766:
-  %cloptr9777 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9779 = getelementptr inbounds i64, i64* %cloptr9777, i64 1                    ; &eptr9779[1]
-  %eptr9780 = getelementptr inbounds i64, i64* %cloptr9777, i64 2                    ; &eptr9780[2]
-  %eptr9781 = getelementptr inbounds i64, i64* %cloptr9777, i64 3                    ; &eptr9781[3]
-  store i64 %a7041, i64* %eptr9779                                                   ; *eptr9779 = %a7041
-  store i64 %a7038, i64* %eptr9780                                                   ; *eptr9780 = %a7038
-  store i64 %cont7135, i64* %eptr9781                                                ; *eptr9781 = %cont7135
-  %eptr9778 = getelementptr inbounds i64, i64* %cloptr9777, i64 0                    ; &cloptr9777[0]
-  %f9782 = ptrtoint void(i64,i64,i64)* @lam8309 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9782, i64* %eptr9778                                                   ; store fptr
-  %arg7716 = ptrtoint i64* %cloptr9777 to i64                                        ; closure cast; i64* -> i64
-  %arg7715 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9783 = inttoptr i64 %arg7716 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9783)                                         ; assert function application
-  %i0ptr9784 = getelementptr inbounds i64, i64* %cloptr9783, i64 0                   ; &cloptr9783[0]
-  %f9786 = load i64, i64* %i0ptr9784, align 8                                        ; load; *i0ptr9784
-  %fptr9785 = inttoptr i64 %f9786 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9785(i64 %arg7716, i64 %arg7715, i64 %fL3$y)        ; tail call
+define void @lam8299(i64 %env8300, i64 %_957139, i64 %a7041) {
+  %envptr9708 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9709 = getelementptr inbounds i64, i64* %envptr9708, i64 7                  ; &envptr9708[7]
+  %nKW$y = load i64, i64* %envptr9709, align 8                                       ; load; *envptr9709
+  %envptr9710 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9711 = getelementptr inbounds i64, i64* %envptr9710, i64 6                  ; &envptr9710[6]
+  %cont7133 = load i64, i64* %envptr9711, align 8                                    ; load; *envptr9711
+  %envptr9712 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9713 = getelementptr inbounds i64, i64* %envptr9712, i64 5                  ; &envptr9712[5]
+  %a1J$lx = load i64, i64* %envptr9713, align 8                                      ; load; *envptr9713
+  %envptr9714 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9715 = getelementptr inbounds i64, i64* %envptr9714, i64 4                  ; &envptr9714[4]
+  %gaD$ly = load i64, i64* %envptr9715, align 8                                      ; load; *envptr9715
+  %envptr9716 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9717 = getelementptr inbounds i64, i64* %envptr9716, i64 3                  ; &envptr9716[3]
+  %JBG$_37drop = load i64, i64* %envptr9717, align 8                                 ; load; *envptr9717
+  %envptr9718 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9719 = getelementptr inbounds i64, i64* %envptr9718, i64 2                  ; &envptr9718[2]
+  %hIh$_37_62 = load i64, i64* %envptr9719, align 8                                  ; load; *envptr9719
+  %envptr9720 = inttoptr i64 %env8300 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9721 = getelementptr inbounds i64, i64* %envptr9720, i64 1                  ; &envptr9720[1]
+  %a7038 = load i64, i64* %envptr9721, align 8                                       ; load; *envptr9721
+  %cloptr9722 = call i64* @alloc(i64 64)                                             ; malloc
+  %eptr9724 = getelementptr inbounds i64, i64* %cloptr9722, i64 1                    ; &eptr9724[1]
+  %eptr9725 = getelementptr inbounds i64, i64* %cloptr9722, i64 2                    ; &eptr9725[2]
+  %eptr9726 = getelementptr inbounds i64, i64* %cloptr9722, i64 3                    ; &eptr9726[3]
+  %eptr9727 = getelementptr inbounds i64, i64* %cloptr9722, i64 4                    ; &eptr9727[4]
+  %eptr9728 = getelementptr inbounds i64, i64* %cloptr9722, i64 5                    ; &eptr9728[5]
+  %eptr9729 = getelementptr inbounds i64, i64* %cloptr9722, i64 6                    ; &eptr9729[6]
+  %eptr9730 = getelementptr inbounds i64, i64* %cloptr9722, i64 7                    ; &eptr9730[7]
+  store i64 %a7041, i64* %eptr9724                                                   ; *eptr9724 = %a7041
+  store i64 %a7038, i64* %eptr9725                                                   ; *eptr9725 = %a7038
+  store i64 %JBG$_37drop, i64* %eptr9726                                             ; *eptr9726 = %JBG$_37drop
+  store i64 %gaD$ly, i64* %eptr9727                                                  ; *eptr9727 = %gaD$ly
+  store i64 %a1J$lx, i64* %eptr9728                                                  ; *eptr9728 = %a1J$lx
+  store i64 %cont7133, i64* %eptr9729                                                ; *eptr9729 = %cont7133
+  store i64 %nKW$y, i64* %eptr9730                                                   ; *eptr9730 = %nKW$y
+  %eptr9723 = getelementptr inbounds i64, i64* %cloptr9722, i64 0                    ; &cloptr9722[0]
+  %f9731 = ptrtoint void(i64,i64,i64)* @lam8297 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9731, i64* %eptr9723                                                   ; store fptr
+  %arg7700 = ptrtoint i64* %cloptr9722 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9732 = inttoptr i64 %hIh$_37_62 to i64*                                     ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9732)                                         ; assert function application
+  %i0ptr9733 = getelementptr inbounds i64, i64* %cloptr9732, i64 0                   ; &cloptr9732[0]
+  %f9735 = load i64, i64* %i0ptr9733, align 8                                        ; load; *i0ptr9733
+  %fptr9734 = inttoptr i64 %f9735 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9734(i64 %hIh$_37_62, i64 %arg7700, i64 %gaD$ly, i64 %a1J$lx); tail call
   ret void
 }
 
 
-define void @lam8309(i64 %env8310, i64 %_957143, i64 %a7044) {
-  %envptr9787 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9788 = getelementptr inbounds i64, i64* %envptr9787, i64 3                  ; &envptr9787[3]
-  %cont7135 = load i64, i64* %envptr9788, align 8                                    ; load; *envptr9788
-  %envptr9789 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9790 = getelementptr inbounds i64, i64* %envptr9789, i64 2                  ; &envptr9789[2]
-  %a7038 = load i64, i64* %envptr9790, align 8                                       ; load; *envptr9790
-  %envptr9791 = inttoptr i64 %env8310 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9792 = getelementptr inbounds i64, i64* %envptr9791, i64 1                  ; &envptr9791[1]
-  %a7041 = load i64, i64* %envptr9792, align 8                                       ; load; *envptr9792
-  %cloptr9793 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9793)                                         ; assert function application
-  %i0ptr9794 = getelementptr inbounds i64, i64* %cloptr9793, i64 0                   ; &cloptr9793[0]
-  %f9796 = load i64, i64* %i0ptr9794, align 8                                        ; load; *i0ptr9794
-  %fptr9795 = inttoptr i64 %f9796 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9795(i64 %a7038, i64 %cont7135, i64 %a7041, i64 %a7044); tail call
+define void @lam8297(i64 %env8298, i64 %_957140, i64 %a7042) {
+  %envptr9736 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9737 = getelementptr inbounds i64, i64* %envptr9736, i64 7                  ; &envptr9736[7]
+  %nKW$y = load i64, i64* %envptr9737, align 8                                       ; load; *envptr9737
+  %envptr9738 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9739 = getelementptr inbounds i64, i64* %envptr9738, i64 6                  ; &envptr9738[6]
+  %cont7133 = load i64, i64* %envptr9739, align 8                                    ; load; *envptr9739
+  %envptr9740 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9741 = getelementptr inbounds i64, i64* %envptr9740, i64 5                  ; &envptr9740[5]
+  %a1J$lx = load i64, i64* %envptr9741, align 8                                      ; load; *envptr9741
+  %envptr9742 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9743 = getelementptr inbounds i64, i64* %envptr9742, i64 4                  ; &envptr9742[4]
+  %gaD$ly = load i64, i64* %envptr9743, align 8                                      ; load; *envptr9743
+  %envptr9744 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9745 = getelementptr inbounds i64, i64* %envptr9744, i64 3                  ; &envptr9744[3]
+  %JBG$_37drop = load i64, i64* %envptr9745, align 8                                 ; load; *envptr9745
+  %envptr9746 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9747 = getelementptr inbounds i64, i64* %envptr9746, i64 2                  ; &envptr9746[2]
+  %a7038 = load i64, i64* %envptr9747, align 8                                       ; load; *envptr9747
+  %envptr9748 = inttoptr i64 %env8298 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9749 = getelementptr inbounds i64, i64* %envptr9748, i64 1                  ; &envptr9748[1]
+  %a7041 = load i64, i64* %envptr9749, align 8                                       ; load; *envptr9749
+  %cmp9750 = icmp eq i64 %a7042, 15                                                  ; false?
+  br i1 %cmp9750, label %else9752, label %then9751                                   ; if
+
+then9751:
+  %a7043 = call i64 @prim__45(i64 %gaD$ly, i64 %a1J$lx)                              ; call prim__45
+  %cloptr9753 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9755 = getelementptr inbounds i64, i64* %cloptr9753, i64 1                    ; &eptr9755[1]
+  %eptr9756 = getelementptr inbounds i64, i64* %cloptr9753, i64 2                    ; &eptr9756[2]
+  %eptr9757 = getelementptr inbounds i64, i64* %cloptr9753, i64 3                    ; &eptr9757[3]
+  store i64 %a7041, i64* %eptr9755                                                   ; *eptr9755 = %a7041
+  store i64 %a7038, i64* %eptr9756                                                   ; *eptr9756 = %a7038
+  store i64 %cont7133, i64* %eptr9757                                                ; *eptr9757 = %cont7133
+  %eptr9754 = getelementptr inbounds i64, i64* %cloptr9753, i64 0                    ; &cloptr9753[0]
+  %f9758 = ptrtoint void(i64,i64,i64)* @lam8292 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9758, i64* %eptr9754                                                   ; store fptr
+  %arg7706 = ptrtoint i64* %cloptr9753 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9759 = inttoptr i64 %JBG$_37drop to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9759)                                         ; assert function application
+  %i0ptr9760 = getelementptr inbounds i64, i64* %cloptr9759, i64 0                   ; &cloptr9759[0]
+  %f9762 = load i64, i64* %i0ptr9760, align 8                                        ; load; *i0ptr9760
+  %fptr9761 = inttoptr i64 %f9762 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9761(i64 %JBG$_37drop, i64 %arg7706, i64 %nKW$y, i64 %a7043); tail call
+  ret void
+
+else9752:
+  %cloptr9763 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9765 = getelementptr inbounds i64, i64* %cloptr9763, i64 1                    ; &eptr9765[1]
+  %eptr9766 = getelementptr inbounds i64, i64* %cloptr9763, i64 2                    ; &eptr9766[2]
+  %eptr9767 = getelementptr inbounds i64, i64* %cloptr9763, i64 3                    ; &eptr9767[3]
+  store i64 %a7041, i64* %eptr9765                                                   ; *eptr9765 = %a7041
+  store i64 %a7038, i64* %eptr9766                                                   ; *eptr9766 = %a7038
+  store i64 %cont7133, i64* %eptr9767                                                ; *eptr9767 = %cont7133
+  %eptr9764 = getelementptr inbounds i64, i64* %cloptr9763, i64 0                    ; &cloptr9763[0]
+  %f9768 = ptrtoint void(i64,i64,i64)* @lam8295 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9768, i64* %eptr9764                                                   ; store fptr
+  %arg7714 = ptrtoint i64* %cloptr9763 to i64                                        ; closure cast; i64* -> i64
+  %arg7713 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9769 = inttoptr i64 %arg7714 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9769)                                         ; assert function application
+  %i0ptr9770 = getelementptr inbounds i64, i64* %cloptr9769, i64 0                   ; &cloptr9769[0]
+  %f9772 = load i64, i64* %i0ptr9770, align 8                                        ; load; *i0ptr9770
+  %fptr9771 = inttoptr i64 %f9772 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9771(i64 %arg7714, i64 %arg7713, i64 %nKW$y)        ; tail call
   ret void
 }
 
 
-define void @lam8306(i64 %env8307, i64 %_957143, i64 %a7044) {
-  %envptr9797 = inttoptr i64 %env8307 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9798 = getelementptr inbounds i64, i64* %envptr9797, i64 3                  ; &envptr9797[3]
-  %cont7135 = load i64, i64* %envptr9798, align 8                                    ; load; *envptr9798
-  %envptr9799 = inttoptr i64 %env8307 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9800 = getelementptr inbounds i64, i64* %envptr9799, i64 2                  ; &envptr9799[2]
-  %a7038 = load i64, i64* %envptr9800, align 8                                       ; load; *envptr9800
-  %envptr9801 = inttoptr i64 %env8307 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9802 = getelementptr inbounds i64, i64* %envptr9801, i64 1                  ; &envptr9801[1]
-  %a7041 = load i64, i64* %envptr9802, align 8                                       ; load; *envptr9802
-  %cloptr9803 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
+define void @lam8295(i64 %env8296, i64 %_957141, i64 %a7044) {
+  %envptr9773 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9774 = getelementptr inbounds i64, i64* %envptr9773, i64 3                  ; &envptr9773[3]
+  %cont7133 = load i64, i64* %envptr9774, align 8                                    ; load; *envptr9774
+  %envptr9775 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9776 = getelementptr inbounds i64, i64* %envptr9775, i64 2                  ; &envptr9775[2]
+  %a7038 = load i64, i64* %envptr9776, align 8                                       ; load; *envptr9776
+  %envptr9777 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9778 = getelementptr inbounds i64, i64* %envptr9777, i64 1                  ; &envptr9777[1]
+  %a7041 = load i64, i64* %envptr9778, align 8                                       ; load; *envptr9778
+  %cloptr9779 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9779)                                         ; assert function application
+  %i0ptr9780 = getelementptr inbounds i64, i64* %cloptr9779, i64 0                   ; &cloptr9779[0]
+  %f9782 = load i64, i64* %i0ptr9780, align 8                                        ; load; *i0ptr9780
+  %fptr9781 = inttoptr i64 %f9782 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9781(i64 %a7038, i64 %cont7133, i64 %a7041, i64 %a7044); tail call
+  ret void
+}
+
+
+define void @lam8292(i64 %env8293, i64 %_957141, i64 %a7044) {
+  %envptr9783 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9784 = getelementptr inbounds i64, i64* %envptr9783, i64 3                  ; &envptr9783[3]
+  %cont7133 = load i64, i64* %envptr9784, align 8                                    ; load; *envptr9784
+  %envptr9785 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9786 = getelementptr inbounds i64, i64* %envptr9785, i64 2                  ; &envptr9785[2]
+  %a7038 = load i64, i64* %envptr9786, align 8                                       ; load; *envptr9786
+  %envptr9787 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9788 = getelementptr inbounds i64, i64* %envptr9787, i64 1                  ; &envptr9787[1]
+  %a7041 = load i64, i64* %envptr9788, align 8                                       ; load; *envptr9788
+  %cloptr9789 = inttoptr i64 %a7038 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9789)                                         ; assert function application
+  %i0ptr9790 = getelementptr inbounds i64, i64* %cloptr9789, i64 0                   ; &cloptr9789[0]
+  %f9792 = load i64, i64* %i0ptr9790, align 8                                        ; load; *i0ptr9790
+  %fptr9791 = inttoptr i64 %f9792 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9791(i64 %a7038, i64 %cont7133, i64 %a7041, i64 %a7044); tail call
+  ret void
+}
+
+
+define void @lam8289(i64 %env8290, i64 %cont7146, i64 %C6G$new) {
+  %envptr9793 = inttoptr i64 %env8290 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9794 = getelementptr inbounds i64, i64* %envptr9793, i64 2                  ; &envptr9793[2]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9794, align 8                         ; load; *envptr9794
+  %envptr9795 = inttoptr i64 %env8290 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9796 = getelementptr inbounds i64, i64* %envptr9795, i64 1                  ; &envptr9795[1]
+  %VbZ$_37common_45tail = load i64, i64* %envptr9796, align 8                        ; load; *envptr9796
+  %arg7743 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7045 = call i64 @prim_vector_45ref(i64 %HPX$_37wind_45stack, i64 %arg7743)       ; call prim_vector_45ref
+  %cloptr9797 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9799 = getelementptr inbounds i64, i64* %cloptr9797, i64 1                    ; &eptr9799[1]
+  %eptr9800 = getelementptr inbounds i64, i64* %cloptr9797, i64 2                    ; &eptr9800[2]
+  %eptr9801 = getelementptr inbounds i64, i64* %cloptr9797, i64 3                    ; &eptr9801[3]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9799                                     ; *eptr9799 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9800                                                ; *eptr9800 = %cont7146
+  store i64 %C6G$new, i64* %eptr9801                                                 ; *eptr9801 = %C6G$new
+  %eptr9798 = getelementptr inbounds i64, i64* %cloptr9797, i64 0                    ; &cloptr9797[0]
+  %f9802 = ptrtoint void(i64,i64,i64)* @lam8286 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9802, i64* %eptr9798                                                   ; store fptr
+  %arg7747 = ptrtoint i64* %cloptr9797 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9803 = inttoptr i64 %VbZ$_37common_45tail to i64*                           ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr9803)                                         ; assert function application
   %i0ptr9804 = getelementptr inbounds i64, i64* %cloptr9803, i64 0                   ; &cloptr9803[0]
   %f9806 = load i64, i64* %i0ptr9804, align 8                                        ; load; *i0ptr9804
   %fptr9805 = inttoptr i64 %f9806 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9805(i64 %a7038, i64 %cont7135, i64 %a7041, i64 %a7044); tail call
+  musttail call fastcc void %fptr9805(i64 %VbZ$_37common_45tail, i64 %arg7747, i64 %C6G$new, i64 %a7045); tail call
   ret void
 }
 
 
-define void @lam8303(i64 %env8304, i64 %cont7148, i64 %igq$new) {
-  %envptr9807 = inttoptr i64 %env8304 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9808 = getelementptr inbounds i64, i64* %envptr9807, i64 2                  ; &envptr9807[2]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9808, align 8                         ; load; *envptr9808
-  %envptr9809 = inttoptr i64 %env8304 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9810 = getelementptr inbounds i64, i64* %envptr9809, i64 1                  ; &envptr9809[1]
-  %KuX$_37common_45tail = load i64, i64* %envptr9810, align 8                        ; load; *envptr9810
-  %arg7745 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7045 = call i64 @prim_vector_45ref(i64 %ZUv$_37wind_45stack, i64 %arg7745)       ; call prim_vector_45ref
-  %cloptr9811 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9813 = getelementptr inbounds i64, i64* %cloptr9811, i64 1                    ; &eptr9813[1]
-  %eptr9814 = getelementptr inbounds i64, i64* %cloptr9811, i64 2                    ; &eptr9814[2]
-  %eptr9815 = getelementptr inbounds i64, i64* %cloptr9811, i64 3                    ; &eptr9815[3]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9813                                     ; *eptr9813 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9814                                                ; *eptr9814 = %cont7148
-  store i64 %igq$new, i64* %eptr9815                                                 ; *eptr9815 = %igq$new
-  %eptr9812 = getelementptr inbounds i64, i64* %cloptr9811, i64 0                    ; &cloptr9811[0]
-  %f9816 = ptrtoint void(i64,i64,i64)* @lam8300 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9816, i64* %eptr9812                                                   ; store fptr
-  %arg7749 = ptrtoint i64* %cloptr9811 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9817 = inttoptr i64 %KuX$_37common_45tail to i64*                           ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9817)                                         ; assert function application
-  %i0ptr9818 = getelementptr inbounds i64, i64* %cloptr9817, i64 0                   ; &cloptr9817[0]
-  %f9820 = load i64, i64* %i0ptr9818, align 8                                        ; load; *i0ptr9818
-  %fptr9819 = inttoptr i64 %f9820 to void (i64,i64,i64,i64)*                         ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9819(i64 %KuX$_37common_45tail, i64 %arg7749, i64 %igq$new, i64 %a7045); tail call
+define void @lam8286(i64 %env8287, i64 %_957147, i64 %Kgl$tail) {
+  %envptr9807 = inttoptr i64 %env8287 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9808 = getelementptr inbounds i64, i64* %envptr9807, i64 3                  ; &envptr9807[3]
+  %C6G$new = load i64, i64* %envptr9808, align 8                                     ; load; *envptr9808
+  %envptr9809 = inttoptr i64 %env8287 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9810 = getelementptr inbounds i64, i64* %envptr9809, i64 2                  ; &envptr9809[2]
+  %cont7146 = load i64, i64* %envptr9810, align 8                                    ; load; *envptr9810
+  %envptr9811 = inttoptr i64 %env8287 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9812 = getelementptr inbounds i64, i64* %envptr9811, i64 1                  ; &envptr9811[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9812, align 8                         ; load; *envptr9812
+  %cloptr9813 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9814 = getelementptr inbounds i64, i64* %cloptr9813, i64 0                    ; &cloptr9813[0]
+  %f9815 = ptrtoint void(i64,i64)* @lam8284 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f9815, i64* %eptr9814                                                   ; store fptr
+  %arg7750 = ptrtoint i64* %cloptr9813 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9816 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr9818 = getelementptr inbounds i64, i64* %cloptr9816, i64 1                    ; &eptr9818[1]
+  %eptr9819 = getelementptr inbounds i64, i64* %cloptr9816, i64 2                    ; &eptr9819[2]
+  %eptr9820 = getelementptr inbounds i64, i64* %cloptr9816, i64 3                    ; &eptr9820[3]
+  %eptr9821 = getelementptr inbounds i64, i64* %cloptr9816, i64 4                    ; &eptr9821[4]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9818                                     ; *eptr9818 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9819                                                ; *eptr9819 = %cont7146
+  store i64 %Kgl$tail, i64* %eptr9820                                                ; *eptr9820 = %Kgl$tail
+  store i64 %C6G$new, i64* %eptr9821                                                 ; *eptr9821 = %C6G$new
+  %eptr9817 = getelementptr inbounds i64, i64* %cloptr9816, i64 0                    ; &cloptr9816[0]
+  %f9822 = ptrtoint void(i64,i64,i64)* @lam8281 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9822, i64* %eptr9817                                                   ; store fptr
+  %arg7749 = ptrtoint i64* %cloptr9816 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9823 = inttoptr i64 %arg7750 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9823)                                         ; assert function application
+  %i0ptr9824 = getelementptr inbounds i64, i64* %cloptr9823, i64 0                   ; &cloptr9823[0]
+  %f9826 = load i64, i64* %i0ptr9824, align 8                                        ; load; *i0ptr9824
+  %fptr9825 = inttoptr i64 %f9826 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9825(i64 %arg7750, i64 %arg7749)                    ; tail call
   ret void
 }
 
 
-define void @lam8300(i64 %env8301, i64 %_957149, i64 %Gbr$tail) {
-  %envptr9821 = inttoptr i64 %env8301 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9822 = getelementptr inbounds i64, i64* %envptr9821, i64 3                  ; &envptr9821[3]
-  %igq$new = load i64, i64* %envptr9822, align 8                                     ; load; *envptr9822
-  %envptr9823 = inttoptr i64 %env8301 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9824 = getelementptr inbounds i64, i64* %envptr9823, i64 2                  ; &envptr9823[2]
-  %cont7148 = load i64, i64* %envptr9824, align 8                                    ; load; *envptr9824
-  %envptr9825 = inttoptr i64 %env8301 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9826 = getelementptr inbounds i64, i64* %envptr9825, i64 1                  ; &envptr9825[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9826, align 8                         ; load; *envptr9826
-  %cloptr9827 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9828 = getelementptr inbounds i64, i64* %cloptr9827, i64 0                    ; &cloptr9827[0]
-  %f9829 = ptrtoint void(i64,i64)* @lam8298 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f9829, i64* %eptr9828                                                   ; store fptr
-  %arg7752 = ptrtoint i64* %cloptr9827 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9830 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr9832 = getelementptr inbounds i64, i64* %cloptr9830, i64 1                    ; &eptr9832[1]
-  %eptr9833 = getelementptr inbounds i64, i64* %cloptr9830, i64 2                    ; &eptr9833[2]
-  %eptr9834 = getelementptr inbounds i64, i64* %cloptr9830, i64 3                    ; &eptr9834[3]
-  %eptr9835 = getelementptr inbounds i64, i64* %cloptr9830, i64 4                    ; &eptr9835[4]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9832                                     ; *eptr9832 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9833                                                ; *eptr9833 = %cont7148
-  store i64 %Gbr$tail, i64* %eptr9834                                                ; *eptr9834 = %Gbr$tail
-  store i64 %igq$new, i64* %eptr9835                                                 ; *eptr9835 = %igq$new
-  %eptr9831 = getelementptr inbounds i64, i64* %cloptr9830, i64 0                    ; &cloptr9830[0]
-  %f9836 = ptrtoint void(i64,i64,i64)* @lam8295 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9836, i64* %eptr9831                                                   ; store fptr
-  %arg7751 = ptrtoint i64* %cloptr9830 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9837 = inttoptr i64 %arg7752 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9837)                                         ; assert function application
-  %i0ptr9838 = getelementptr inbounds i64, i64* %cloptr9837, i64 0                   ; &cloptr9837[0]
-  %f9840 = load i64, i64* %i0ptr9838, align 8                                        ; load; *i0ptr9838
-  %fptr9839 = inttoptr i64 %f9840 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9839(i64 %arg7752, i64 %arg7751)                    ; tail call
+define void @lam8284(i64 %env8285, i64 %jeY$lst7168) {
+  %cont7167 = call i64 @prim_car(i64 %jeY$lst7168)                                   ; call prim_car
+  %jeY$lst = call i64 @prim_cdr(i64 %jeY$lst7168)                                    ; call prim_cdr
+  %arg7754 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9827 = inttoptr i64 %cont7167 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9827)                                         ; assert function application
+  %i0ptr9828 = getelementptr inbounds i64, i64* %cloptr9827, i64 0                   ; &cloptr9827[0]
+  %f9830 = load i64, i64* %i0ptr9828, align 8                                        ; load; *i0ptr9828
+  %fptr9829 = inttoptr i64 %f9830 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9829(i64 %cont7167, i64 %arg7754, i64 %jeY$lst)     ; tail call
   ret void
 }
 
 
-define void @lam8298(i64 %env8299, i64 %hGV$lst7170) {
-  %cont7169 = call i64 @prim_car(i64 %hGV$lst7170)                                   ; call prim_car
-  %hGV$lst = call i64 @prim_cdr(i64 %hGV$lst7170)                                    ; call prim_cdr
-  %arg7756 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9841 = inttoptr i64 %cont7169 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9841)                                         ; assert function application
-  %i0ptr9842 = getelementptr inbounds i64, i64* %cloptr9841, i64 0                   ; &cloptr9841[0]
-  %f9844 = load i64, i64* %i0ptr9842, align 8                                        ; load; *i0ptr9842
-  %fptr9843 = inttoptr i64 %f9844 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9843(i64 %cont7169, i64 %arg7756, i64 %hGV$lst)     ; tail call
+define void @lam8281(i64 %env8282, i64 %_957165, i64 %a7046) {
+  %envptr9831 = inttoptr i64 %env8282 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9832 = getelementptr inbounds i64, i64* %envptr9831, i64 4                  ; &envptr9831[4]
+  %C6G$new = load i64, i64* %envptr9832, align 8                                     ; load; *envptr9832
+  %envptr9833 = inttoptr i64 %env8282 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9834 = getelementptr inbounds i64, i64* %envptr9833, i64 3                  ; &envptr9833[3]
+  %Kgl$tail = load i64, i64* %envptr9834, align 8                                    ; load; *envptr9834
+  %envptr9835 = inttoptr i64 %env8282 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9836 = getelementptr inbounds i64, i64* %envptr9835, i64 2                  ; &envptr9835[2]
+  %cont7146 = load i64, i64* %envptr9836, align 8                                    ; load; *envptr9836
+  %envptr9837 = inttoptr i64 %env8282 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9838 = getelementptr inbounds i64, i64* %envptr9837, i64 1                  ; &envptr9837[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9838, align 8                         ; load; *envptr9838
+  %arg7757 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %retprim7166 = call i64 @prim_make_45vector(i64 %arg7757, i64 %a7046)              ; call prim_make_45vector
+  %cloptr9839 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr9841 = getelementptr inbounds i64, i64* %cloptr9839, i64 1                    ; &eptr9841[1]
+  %eptr9842 = getelementptr inbounds i64, i64* %cloptr9839, i64 2                    ; &eptr9842[2]
+  %eptr9843 = getelementptr inbounds i64, i64* %cloptr9839, i64 3                    ; &eptr9843[3]
+  %eptr9844 = getelementptr inbounds i64, i64* %cloptr9839, i64 4                    ; &eptr9844[4]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9841                                     ; *eptr9841 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9842                                                ; *eptr9842 = %cont7146
+  store i64 %Kgl$tail, i64* %eptr9843                                                ; *eptr9843 = %Kgl$tail
+  store i64 %C6G$new, i64* %eptr9844                                                 ; *eptr9844 = %C6G$new
+  %eptr9840 = getelementptr inbounds i64, i64* %cloptr9839, i64 0                    ; &cloptr9839[0]
+  %f9845 = ptrtoint void(i64,i64,i64)* @lam8278 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9845, i64* %eptr9840                                                   ; store fptr
+  %arg7760 = ptrtoint i64* %cloptr9839 to i64                                        ; closure cast; i64* -> i64
+  %arg7759 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9846 = inttoptr i64 %arg7760 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9846)                                         ; assert function application
+  %i0ptr9847 = getelementptr inbounds i64, i64* %cloptr9846, i64 0                   ; &cloptr9846[0]
+  %f9849 = load i64, i64* %i0ptr9847, align 8                                        ; load; *i0ptr9847
+  %fptr9848 = inttoptr i64 %f9849 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9848(i64 %arg7760, i64 %arg7759, i64 %retprim7166)  ; tail call
   ret void
 }
 
 
-define void @lam8295(i64 %env8296, i64 %_957167, i64 %a7046) {
-  %envptr9845 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9846 = getelementptr inbounds i64, i64* %envptr9845, i64 4                  ; &envptr9845[4]
-  %igq$new = load i64, i64* %envptr9846, align 8                                     ; load; *envptr9846
-  %envptr9847 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9848 = getelementptr inbounds i64, i64* %envptr9847, i64 3                  ; &envptr9847[3]
-  %Gbr$tail = load i64, i64* %envptr9848, align 8                                    ; load; *envptr9848
-  %envptr9849 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9850 = getelementptr inbounds i64, i64* %envptr9849, i64 2                  ; &envptr9849[2]
-  %cont7148 = load i64, i64* %envptr9850, align 8                                    ; load; *envptr9850
-  %envptr9851 = inttoptr i64 %env8296 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9852 = getelementptr inbounds i64, i64* %envptr9851, i64 1                  ; &envptr9851[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9852, align 8                         ; load; *envptr9852
-  %arg7759 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %retprim7168 = call i64 @prim_make_45vector(i64 %arg7759, i64 %a7046)              ; call prim_make_45vector
-  %cloptr9853 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr9855 = getelementptr inbounds i64, i64* %cloptr9853, i64 1                    ; &eptr9855[1]
-  %eptr9856 = getelementptr inbounds i64, i64* %cloptr9853, i64 2                    ; &eptr9856[2]
-  %eptr9857 = getelementptr inbounds i64, i64* %cloptr9853, i64 3                    ; &eptr9857[3]
-  %eptr9858 = getelementptr inbounds i64, i64* %cloptr9853, i64 4                    ; &eptr9858[4]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9855                                     ; *eptr9855 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9856                                                ; *eptr9856 = %cont7148
-  store i64 %Gbr$tail, i64* %eptr9857                                                ; *eptr9857 = %Gbr$tail
-  store i64 %igq$new, i64* %eptr9858                                                 ; *eptr9858 = %igq$new
-  %eptr9854 = getelementptr inbounds i64, i64* %cloptr9853, i64 0                    ; &cloptr9853[0]
-  %f9859 = ptrtoint void(i64,i64,i64)* @lam8292 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9859, i64* %eptr9854                                                   ; store fptr
-  %arg7762 = ptrtoint i64* %cloptr9853 to i64                                        ; closure cast; i64* -> i64
-  %arg7761 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9860 = inttoptr i64 %arg7762 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9860)                                         ; assert function application
-  %i0ptr9861 = getelementptr inbounds i64, i64* %cloptr9860, i64 0                   ; &cloptr9860[0]
-  %f9863 = load i64, i64* %i0ptr9861, align 8                                        ; load; *i0ptr9861
-  %fptr9862 = inttoptr i64 %f9863 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9862(i64 %arg7762, i64 %arg7761, i64 %retprim7168)  ; tail call
-  ret void
-}
-
-
-define void @lam8292(i64 %env8293, i64 %_957161, i64 %lIr$f) {
-  %envptr9864 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9865 = getelementptr inbounds i64, i64* %envptr9864, i64 4                  ; &envptr9864[4]
-  %igq$new = load i64, i64* %envptr9865, align 8                                     ; load; *envptr9865
-  %envptr9866 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9867 = getelementptr inbounds i64, i64* %envptr9866, i64 3                  ; &envptr9866[3]
-  %Gbr$tail = load i64, i64* %envptr9867, align 8                                    ; load; *envptr9867
-  %envptr9868 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9869 = getelementptr inbounds i64, i64* %envptr9868, i64 2                  ; &envptr9868[2]
-  %cont7148 = load i64, i64* %envptr9869, align 8                                    ; load; *envptr9869
-  %envptr9870 = inttoptr i64 %env8293 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9871 = getelementptr inbounds i64, i64* %envptr9870, i64 1                  ; &envptr9870[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9871, align 8                         ; load; *envptr9871
-  %arg7764 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %cloptr9872 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9874 = getelementptr inbounds i64, i64* %cloptr9872, i64 1                    ; &eptr9874[1]
-  %eptr9875 = getelementptr inbounds i64, i64* %cloptr9872, i64 2                    ; &eptr9875[2]
-  %eptr9876 = getelementptr inbounds i64, i64* %cloptr9872, i64 3                    ; &eptr9876[3]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9874                                     ; *eptr9874 = %ZUv$_37wind_45stack
-  store i64 %Gbr$tail, i64* %eptr9875                                                ; *eptr9875 = %Gbr$tail
-  store i64 %lIr$f, i64* %eptr9876                                                   ; *eptr9876 = %lIr$f
-  %eptr9873 = getelementptr inbounds i64, i64* %cloptr9872, i64 0                    ; &cloptr9872[0]
-  %f9877 = ptrtoint void(i64,i64,i64)* @lam8289 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9877, i64* %eptr9873                                                   ; store fptr
-  %arg7763 = ptrtoint i64* %cloptr9872 to i64                                        ; closure cast; i64* -> i64
-  %glO$_956939 = call i64 @prim_vector_45set_33(i64 %lIr$f, i64 %arg7764, i64 %arg7763); call prim_vector_45set_33
+define void @lam8278(i64 %env8279, i64 %_957159, i64 %LmO$f) {
+  %envptr9850 = inttoptr i64 %env8279 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9851 = getelementptr inbounds i64, i64* %envptr9850, i64 4                  ; &envptr9850[4]
+  %C6G$new = load i64, i64* %envptr9851, align 8                                     ; load; *envptr9851
+  %envptr9852 = inttoptr i64 %env8279 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9853 = getelementptr inbounds i64, i64* %envptr9852, i64 3                  ; &envptr9852[3]
+  %Kgl$tail = load i64, i64* %envptr9853, align 8                                    ; load; *envptr9853
+  %envptr9854 = inttoptr i64 %env8279 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9855 = getelementptr inbounds i64, i64* %envptr9854, i64 2                  ; &envptr9854[2]
+  %cont7146 = load i64, i64* %envptr9855, align 8                                    ; load; *envptr9855
+  %envptr9856 = inttoptr i64 %env8279 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9857 = getelementptr inbounds i64, i64* %envptr9856, i64 1                  ; &envptr9856[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9857, align 8                         ; load; *envptr9857
+  %arg7762 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %cloptr9858 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9860 = getelementptr inbounds i64, i64* %cloptr9858, i64 1                    ; &eptr9860[1]
+  %eptr9861 = getelementptr inbounds i64, i64* %cloptr9858, i64 2                    ; &eptr9861[2]
+  %eptr9862 = getelementptr inbounds i64, i64* %cloptr9858, i64 3                    ; &eptr9862[3]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9860                                     ; *eptr9860 = %HPX$_37wind_45stack
+  store i64 %Kgl$tail, i64* %eptr9861                                                ; *eptr9861 = %Kgl$tail
+  store i64 %LmO$f, i64* %eptr9862                                                   ; *eptr9862 = %LmO$f
+  %eptr9859 = getelementptr inbounds i64, i64* %cloptr9858, i64 0                    ; &cloptr9858[0]
+  %f9863 = ptrtoint void(i64,i64,i64)* @lam8275 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9863, i64* %eptr9859                                                   ; store fptr
+  %arg7761 = ptrtoint i64* %cloptr9858 to i64                                        ; closure cast; i64* -> i64
+  %mKC$_956939 = call i64 @prim_vector_45set_33(i64 %LmO$f, i64 %arg7762, i64 %arg7761); call prim_vector_45set_33
+  %arg7787 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7054 = call i64 @prim_vector_45ref(i64 %LmO$f, i64 %arg7787)                     ; call prim_vector_45ref
   %arg7789 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7054 = call i64 @prim_vector_45ref(i64 %lIr$f, i64 %arg7789)                     ; call prim_vector_45ref
-  %arg7791 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7055 = call i64 @prim_vector_45ref(i64 %ZUv$_37wind_45stack, i64 %arg7791)       ; call prim_vector_45ref
-  %cloptr9878 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr9880 = getelementptr inbounds i64, i64* %cloptr9878, i64 1                    ; &eptr9880[1]
-  %eptr9881 = getelementptr inbounds i64, i64* %cloptr9878, i64 2                    ; &eptr9881[2]
-  %eptr9882 = getelementptr inbounds i64, i64* %cloptr9878, i64 3                    ; &eptr9882[3]
-  %eptr9883 = getelementptr inbounds i64, i64* %cloptr9878, i64 4                    ; &eptr9883[4]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9880                                     ; *eptr9880 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9881                                                ; *eptr9881 = %cont7148
-  store i64 %Gbr$tail, i64* %eptr9882                                                ; *eptr9882 = %Gbr$tail
-  store i64 %igq$new, i64* %eptr9883                                                 ; *eptr9883 = %igq$new
-  %eptr9879 = getelementptr inbounds i64, i64* %cloptr9878, i64 0                    ; &cloptr9878[0]
-  %f9884 = ptrtoint void(i64,i64,i64)* @lam8277 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9884, i64* %eptr9879                                                   ; store fptr
-  %arg7794 = ptrtoint i64* %cloptr9878 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9885 = inttoptr i64 %a7054 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9885)                                         ; assert function application
-  %i0ptr9886 = getelementptr inbounds i64, i64* %cloptr9885, i64 0                   ; &cloptr9885[0]
-  %f9888 = load i64, i64* %i0ptr9886, align 8                                        ; load; *i0ptr9886
-  %fptr9887 = inttoptr i64 %f9888 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9887(i64 %a7054, i64 %arg7794, i64 %a7055)          ; tail call
+  %a7055 = call i64 @prim_vector_45ref(i64 %HPX$_37wind_45stack, i64 %arg7789)       ; call prim_vector_45ref
+  %cloptr9864 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr9866 = getelementptr inbounds i64, i64* %cloptr9864, i64 1                    ; &eptr9866[1]
+  %eptr9867 = getelementptr inbounds i64, i64* %cloptr9864, i64 2                    ; &eptr9867[2]
+  %eptr9868 = getelementptr inbounds i64, i64* %cloptr9864, i64 3                    ; &eptr9868[3]
+  %eptr9869 = getelementptr inbounds i64, i64* %cloptr9864, i64 4                    ; &eptr9869[4]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9866                                     ; *eptr9866 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9867                                                ; *eptr9867 = %cont7146
+  store i64 %Kgl$tail, i64* %eptr9868                                                ; *eptr9868 = %Kgl$tail
+  store i64 %C6G$new, i64* %eptr9869                                                 ; *eptr9869 = %C6G$new
+  %eptr9865 = getelementptr inbounds i64, i64* %cloptr9864, i64 0                    ; &cloptr9864[0]
+  %f9870 = ptrtoint void(i64,i64,i64)* @lam8263 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9870, i64* %eptr9865                                                   ; store fptr
+  %arg7792 = ptrtoint i64* %cloptr9864 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9871 = inttoptr i64 %a7054 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9871)                                         ; assert function application
+  %i0ptr9872 = getelementptr inbounds i64, i64* %cloptr9871, i64 0                   ; &cloptr9871[0]
+  %f9874 = load i64, i64* %i0ptr9872, align 8                                        ; load; *i0ptr9872
+  %fptr9873 = inttoptr i64 %f9874 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9873(i64 %a7054, i64 %arg7792, i64 %a7055)          ; tail call
   ret void
 }
 
 
-define void @lam8289(i64 %env8290, i64 %cont7162, i64 %dMh$l) {
-  %envptr9889 = inttoptr i64 %env8290 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9890 = getelementptr inbounds i64, i64* %envptr9889, i64 3                  ; &envptr9889[3]
-  %lIr$f = load i64, i64* %envptr9890, align 8                                       ; load; *envptr9890
-  %envptr9891 = inttoptr i64 %env8290 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9892 = getelementptr inbounds i64, i64* %envptr9891, i64 2                  ; &envptr9891[2]
-  %Gbr$tail = load i64, i64* %envptr9892, align 8                                    ; load; *envptr9892
-  %envptr9893 = inttoptr i64 %env8290 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9894 = getelementptr inbounds i64, i64* %envptr9893, i64 1                  ; &envptr9893[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9894, align 8                         ; load; *envptr9894
-  %a7047 = call i64 @prim_eq_63(i64 %dMh$l, i64 %Gbr$tail)                           ; call prim_eq_63
+define void @lam8275(i64 %env8276, i64 %cont7160, i64 %NAd$l) {
+  %envptr9875 = inttoptr i64 %env8276 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9876 = getelementptr inbounds i64, i64* %envptr9875, i64 3                  ; &envptr9875[3]
+  %LmO$f = load i64, i64* %envptr9876, align 8                                       ; load; *envptr9876
+  %envptr9877 = inttoptr i64 %env8276 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9878 = getelementptr inbounds i64, i64* %envptr9877, i64 2                  ; &envptr9877[2]
+  %Kgl$tail = load i64, i64* %envptr9878, align 8                                    ; load; *envptr9878
+  %envptr9879 = inttoptr i64 %env8276 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9880 = getelementptr inbounds i64, i64* %envptr9879, i64 1                  ; &envptr9879[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9880, align 8                         ; load; *envptr9880
+  %a7047 = call i64 @prim_eq_63(i64 %NAd$l, i64 %Kgl$tail)                           ; call prim_eq_63
   %a7048 = call i64 @prim_not(i64 %a7047)                                            ; call prim_not
-  %cmp9895 = icmp eq i64 %a7048, 15                                                  ; false?
-  br i1 %cmp9895, label %else9897, label %then9896                                   ; if
+  %cmp9881 = icmp eq i64 %a7048, 15                                                  ; false?
+  br i1 %cmp9881, label %else9883, label %then9882                                   ; if
 
-then9896:
-  %a7049 = call i64 @prim_cdr(i64 %dMh$l)                                            ; call prim_cdr
-  %arg7771 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7165 = call i64 @prim_vector_45set_33(i64 %ZUv$_37wind_45stack, i64 %arg7771, i64 %a7049); call prim_vector_45set_33
-  %cloptr9898 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9900 = getelementptr inbounds i64, i64* %cloptr9898, i64 1                    ; &eptr9900[1]
-  %eptr9901 = getelementptr inbounds i64, i64* %cloptr9898, i64 2                    ; &eptr9901[2]
-  %eptr9902 = getelementptr inbounds i64, i64* %cloptr9898, i64 3                    ; &eptr9902[3]
-  store i64 %cont7162, i64* %eptr9900                                                ; *eptr9900 = %cont7162
-  store i64 %lIr$f, i64* %eptr9901                                                   ; *eptr9901 = %lIr$f
-  store i64 %dMh$l, i64* %eptr9902                                                   ; *eptr9902 = %dMh$l
-  %eptr9899 = getelementptr inbounds i64, i64* %cloptr9898, i64 0                    ; &cloptr9898[0]
-  %f9903 = ptrtoint void(i64,i64,i64)* @lam8285 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9903, i64* %eptr9899                                                   ; store fptr
-  %arg7775 = ptrtoint i64* %cloptr9898 to i64                                        ; closure cast; i64* -> i64
-  %arg7774 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9904 = inttoptr i64 %arg7775 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9904)                                         ; assert function application
-  %i0ptr9905 = getelementptr inbounds i64, i64* %cloptr9904, i64 0                   ; &cloptr9904[0]
-  %f9907 = load i64, i64* %i0ptr9905, align 8                                        ; load; *i0ptr9905
-  %fptr9906 = inttoptr i64 %f9907 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9906(i64 %arg7775, i64 %arg7774, i64 %retprim7165)  ; tail call
+then9882:
+  %a7049 = call i64 @prim_cdr(i64 %NAd$l)                                            ; call prim_cdr
+  %arg7769 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7163 = call i64 @prim_vector_45set_33(i64 %HPX$_37wind_45stack, i64 %arg7769, i64 %a7049); call prim_vector_45set_33
+  %cloptr9884 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9886 = getelementptr inbounds i64, i64* %cloptr9884, i64 1                    ; &eptr9886[1]
+  %eptr9887 = getelementptr inbounds i64, i64* %cloptr9884, i64 2                    ; &eptr9887[2]
+  %eptr9888 = getelementptr inbounds i64, i64* %cloptr9884, i64 3                    ; &eptr9888[3]
+  store i64 %LmO$f, i64* %eptr9886                                                   ; *eptr9886 = %LmO$f
+  store i64 %cont7160, i64* %eptr9887                                                ; *eptr9887 = %cont7160
+  store i64 %NAd$l, i64* %eptr9888                                                   ; *eptr9888 = %NAd$l
+  %eptr9885 = getelementptr inbounds i64, i64* %cloptr9884, i64 0                    ; &cloptr9884[0]
+  %f9889 = ptrtoint void(i64,i64,i64)* @lam8271 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9889, i64* %eptr9885                                                   ; store fptr
+  %arg7773 = ptrtoint i64* %cloptr9884 to i64                                        ; closure cast; i64* -> i64
+  %arg7772 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9890 = inttoptr i64 %arg7773 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9890)                                         ; assert function application
+  %i0ptr9891 = getelementptr inbounds i64, i64* %cloptr9890, i64 0                   ; &cloptr9890[0]
+  %f9893 = load i64, i64* %i0ptr9891, align 8                                        ; load; *i0ptr9891
+  %fptr9892 = inttoptr i64 %f9893 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9892(i64 %arg7773, i64 %arg7772, i64 %retprim7163)  ; tail call
   ret void
 
-else9897:
-  %retprim7166 = call i64 @prim_void()                                               ; call prim_void
-  %arg7787 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9908 = inttoptr i64 %cont7162 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9908)                                         ; assert function application
-  %i0ptr9909 = getelementptr inbounds i64, i64* %cloptr9908, i64 0                   ; &cloptr9908[0]
-  %f9911 = load i64, i64* %i0ptr9909, align 8                                        ; load; *i0ptr9909
-  %fptr9910 = inttoptr i64 %f9911 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9910(i64 %cont7162, i64 %arg7787, i64 %retprim7166) ; tail call
+else9883:
+  %retprim7164 = call i64 @prim_void()                                               ; call prim_void
+  %arg7785 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9894 = inttoptr i64 %cont7160 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9894)                                         ; assert function application
+  %i0ptr9895 = getelementptr inbounds i64, i64* %cloptr9894, i64 0                   ; &cloptr9894[0]
+  %f9897 = load i64, i64* %i0ptr9895, align 8                                        ; load; *i0ptr9895
+  %fptr9896 = inttoptr i64 %f9897 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9896(i64 %cont7160, i64 %arg7785, i64 %retprim7164) ; tail call
   ret void
 }
 
 
-define void @lam8285(i64 %env8286, i64 %_957163, i64 %xo8$_956940) {
-  %envptr9912 = inttoptr i64 %env8286 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9913 = getelementptr inbounds i64, i64* %envptr9912, i64 3                  ; &envptr9912[3]
-  %dMh$l = load i64, i64* %envptr9913, align 8                                       ; load; *envptr9913
-  %envptr9914 = inttoptr i64 %env8286 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9915 = getelementptr inbounds i64, i64* %envptr9914, i64 2                  ; &envptr9914[2]
-  %lIr$f = load i64, i64* %envptr9915, align 8                                       ; load; *envptr9915
-  %envptr9916 = inttoptr i64 %env8286 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9917 = getelementptr inbounds i64, i64* %envptr9916, i64 1                  ; &envptr9916[1]
-  %cont7162 = load i64, i64* %envptr9917, align 8                                    ; load; *envptr9917
-  %a7050 = call i64 @prim_car(i64 %dMh$l)                                            ; call prim_car
+define void @lam8271(i64 %env8272, i64 %_957161, i64 %f7v$_956940) {
+  %envptr9898 = inttoptr i64 %env8272 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9899 = getelementptr inbounds i64, i64* %envptr9898, i64 3                  ; &envptr9898[3]
+  %NAd$l = load i64, i64* %envptr9899, align 8                                       ; load; *envptr9899
+  %envptr9900 = inttoptr i64 %env8272 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9901 = getelementptr inbounds i64, i64* %envptr9900, i64 2                  ; &envptr9900[2]
+  %cont7160 = load i64, i64* %envptr9901, align 8                                    ; load; *envptr9901
+  %envptr9902 = inttoptr i64 %env8272 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9903 = getelementptr inbounds i64, i64* %envptr9902, i64 1                  ; &envptr9902[1]
+  %LmO$f = load i64, i64* %envptr9903, align 8                                       ; load; *envptr9903
+  %a7050 = call i64 @prim_car(i64 %NAd$l)                                            ; call prim_car
   %a7051 = call i64 @prim_cdr(i64 %a7050)                                            ; call prim_cdr
-  %cloptr9918 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9920 = getelementptr inbounds i64, i64* %cloptr9918, i64 1                    ; &eptr9920[1]
-  %eptr9921 = getelementptr inbounds i64, i64* %cloptr9918, i64 2                    ; &eptr9921[2]
-  %eptr9922 = getelementptr inbounds i64, i64* %cloptr9918, i64 3                    ; &eptr9922[3]
-  store i64 %cont7162, i64* %eptr9920                                                ; *eptr9920 = %cont7162
-  store i64 %lIr$f, i64* %eptr9921                                                   ; *eptr9921 = %lIr$f
-  store i64 %dMh$l, i64* %eptr9922                                                   ; *eptr9922 = %dMh$l
-  %eptr9919 = getelementptr inbounds i64, i64* %cloptr9918, i64 0                    ; &cloptr9918[0]
-  %f9923 = ptrtoint void(i64,i64,i64)* @lam8283 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9923, i64* %eptr9919                                                   ; store fptr
-  %arg7778 = ptrtoint i64* %cloptr9918 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9924 = inttoptr i64 %a7051 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9924)                                         ; assert function application
-  %i0ptr9925 = getelementptr inbounds i64, i64* %cloptr9924, i64 0                   ; &cloptr9924[0]
-  %f9927 = load i64, i64* %i0ptr9925, align 8                                        ; load; *i0ptr9925
-  %fptr9926 = inttoptr i64 %f9927 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9926(i64 %a7051, i64 %arg7778)                      ; tail call
+  %cloptr9904 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9906 = getelementptr inbounds i64, i64* %cloptr9904, i64 1                    ; &eptr9906[1]
+  %eptr9907 = getelementptr inbounds i64, i64* %cloptr9904, i64 2                    ; &eptr9907[2]
+  %eptr9908 = getelementptr inbounds i64, i64* %cloptr9904, i64 3                    ; &eptr9908[3]
+  store i64 %LmO$f, i64* %eptr9906                                                   ; *eptr9906 = %LmO$f
+  store i64 %cont7160, i64* %eptr9907                                                ; *eptr9907 = %cont7160
+  store i64 %NAd$l, i64* %eptr9908                                                   ; *eptr9908 = %NAd$l
+  %eptr9905 = getelementptr inbounds i64, i64* %cloptr9904, i64 0                    ; &cloptr9904[0]
+  %f9909 = ptrtoint void(i64,i64,i64)* @lam8269 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9909, i64* %eptr9905                                                   ; store fptr
+  %arg7776 = ptrtoint i64* %cloptr9904 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9910 = inttoptr i64 %a7051 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9910)                                         ; assert function application
+  %i0ptr9911 = getelementptr inbounds i64, i64* %cloptr9910, i64 0                   ; &cloptr9910[0]
+  %f9913 = load i64, i64* %i0ptr9911, align 8                                        ; load; *i0ptr9911
+  %fptr9912 = inttoptr i64 %f9913 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9912(i64 %a7051, i64 %arg7776)                      ; tail call
   ret void
 }
 
 
-define void @lam8283(i64 %env8284, i64 %_957164, i64 %vXo$_956941) {
-  %envptr9928 = inttoptr i64 %env8284 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9929 = getelementptr inbounds i64, i64* %envptr9928, i64 3                  ; &envptr9928[3]
-  %dMh$l = load i64, i64* %envptr9929, align 8                                       ; load; *envptr9929
-  %envptr9930 = inttoptr i64 %env8284 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9931 = getelementptr inbounds i64, i64* %envptr9930, i64 2                  ; &envptr9930[2]
-  %lIr$f = load i64, i64* %envptr9931, align 8                                       ; load; *envptr9931
-  %envptr9932 = inttoptr i64 %env8284 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9933 = getelementptr inbounds i64, i64* %envptr9932, i64 1                  ; &envptr9932[1]
-  %cont7162 = load i64, i64* %envptr9933, align 8                                    ; load; *envptr9933
-  %arg7780 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7052 = call i64 @prim_vector_45ref(i64 %lIr$f, i64 %arg7780)                     ; call prim_vector_45ref
-  %a7053 = call i64 @prim_cdr(i64 %dMh$l)                                            ; call prim_cdr
-  %cloptr9934 = inttoptr i64 %a7052 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9934)                                         ; assert function application
-  %i0ptr9935 = getelementptr inbounds i64, i64* %cloptr9934, i64 0                   ; &cloptr9934[0]
-  %f9937 = load i64, i64* %i0ptr9935, align 8                                        ; load; *i0ptr9935
-  %fptr9936 = inttoptr i64 %f9937 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9936(i64 %a7052, i64 %cont7162, i64 %a7053)         ; tail call
+define void @lam8269(i64 %env8270, i64 %_957162, i64 %eCF$_956941) {
+  %envptr9914 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9915 = getelementptr inbounds i64, i64* %envptr9914, i64 3                  ; &envptr9914[3]
+  %NAd$l = load i64, i64* %envptr9915, align 8                                       ; load; *envptr9915
+  %envptr9916 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9917 = getelementptr inbounds i64, i64* %envptr9916, i64 2                  ; &envptr9916[2]
+  %cont7160 = load i64, i64* %envptr9917, align 8                                    ; load; *envptr9917
+  %envptr9918 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9919 = getelementptr inbounds i64, i64* %envptr9918, i64 1                  ; &envptr9918[1]
+  %LmO$f = load i64, i64* %envptr9919, align 8                                       ; load; *envptr9919
+  %arg7778 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7052 = call i64 @prim_vector_45ref(i64 %LmO$f, i64 %arg7778)                     ; call prim_vector_45ref
+  %a7053 = call i64 @prim_cdr(i64 %NAd$l)                                            ; call prim_cdr
+  %cloptr9920 = inttoptr i64 %a7052 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9920)                                         ; assert function application
+  %i0ptr9921 = getelementptr inbounds i64, i64* %cloptr9920, i64 0                   ; &cloptr9920[0]
+  %f9923 = load i64, i64* %i0ptr9921, align 8                                        ; load; *i0ptr9921
+  %fptr9922 = inttoptr i64 %f9923 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9922(i64 %a7052, i64 %cont7160, i64 %a7053)         ; tail call
   ret void
 }
 
 
-define void @lam8277(i64 %env8278, i64 %_957150, i64 %ae5$_956938) {
-  %envptr9938 = inttoptr i64 %env8278 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9939 = getelementptr inbounds i64, i64* %envptr9938, i64 4                  ; &envptr9938[4]
-  %igq$new = load i64, i64* %envptr9939, align 8                                     ; load; *envptr9939
-  %envptr9940 = inttoptr i64 %env8278 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9941 = getelementptr inbounds i64, i64* %envptr9940, i64 3                  ; &envptr9940[3]
-  %Gbr$tail = load i64, i64* %envptr9941, align 8                                    ; load; *envptr9941
-  %envptr9942 = inttoptr i64 %env8278 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9943 = getelementptr inbounds i64, i64* %envptr9942, i64 2                  ; &envptr9942[2]
-  %cont7148 = load i64, i64* %envptr9943, align 8                                    ; load; *envptr9943
-  %envptr9944 = inttoptr i64 %env8278 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9945 = getelementptr inbounds i64, i64* %envptr9944, i64 1                  ; &envptr9944[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9945, align 8                         ; load; *envptr9945
-  %cloptr9946 = call i64* @alloc(i64 8)                                              ; malloc
-  %eptr9947 = getelementptr inbounds i64, i64* %cloptr9946, i64 0                    ; &cloptr9946[0]
-  %f9948 = ptrtoint void(i64,i64)* @lam8275 to i64                                   ; fptr cast; i64(...)* -> i64
-  store i64 %f9948, i64* %eptr9947                                                   ; store fptr
-  %arg7797 = ptrtoint i64* %cloptr9946 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9949 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr9951 = getelementptr inbounds i64, i64* %cloptr9949, i64 1                    ; &eptr9951[1]
-  %eptr9952 = getelementptr inbounds i64, i64* %cloptr9949, i64 2                    ; &eptr9952[2]
-  %eptr9953 = getelementptr inbounds i64, i64* %cloptr9949, i64 3                    ; &eptr9953[3]
-  %eptr9954 = getelementptr inbounds i64, i64* %cloptr9949, i64 4                    ; &eptr9954[4]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9951                                     ; *eptr9951 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9952                                                ; *eptr9952 = %cont7148
-  store i64 %Gbr$tail, i64* %eptr9953                                                ; *eptr9953 = %Gbr$tail
-  store i64 %igq$new, i64* %eptr9954                                                 ; *eptr9954 = %igq$new
-  %eptr9950 = getelementptr inbounds i64, i64* %cloptr9949, i64 0                    ; &cloptr9949[0]
-  %f9955 = ptrtoint void(i64,i64,i64)* @lam8272 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9955, i64* %eptr9950                                                   ; store fptr
-  %arg7796 = ptrtoint i64* %cloptr9949 to i64                                        ; closure cast; i64* -> i64
-  %cloptr9956 = inttoptr i64 %arg7797 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9956)                                         ; assert function application
-  %i0ptr9957 = getelementptr inbounds i64, i64* %cloptr9956, i64 0                   ; &cloptr9956[0]
-  %f9959 = load i64, i64* %i0ptr9957, align 8                                        ; load; *i0ptr9957
-  %fptr9958 = inttoptr i64 %f9959 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9958(i64 %arg7797, i64 %arg7796)                    ; tail call
+define void @lam8263(i64 %env8264, i64 %_957148, i64 %e8v$_956938) {
+  %envptr9924 = inttoptr i64 %env8264 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9925 = getelementptr inbounds i64, i64* %envptr9924, i64 4                  ; &envptr9924[4]
+  %C6G$new = load i64, i64* %envptr9925, align 8                                     ; load; *envptr9925
+  %envptr9926 = inttoptr i64 %env8264 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9927 = getelementptr inbounds i64, i64* %envptr9926, i64 3                  ; &envptr9926[3]
+  %Kgl$tail = load i64, i64* %envptr9927, align 8                                    ; load; *envptr9927
+  %envptr9928 = inttoptr i64 %env8264 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9929 = getelementptr inbounds i64, i64* %envptr9928, i64 2                  ; &envptr9928[2]
+  %cont7146 = load i64, i64* %envptr9929, align 8                                    ; load; *envptr9929
+  %envptr9930 = inttoptr i64 %env8264 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9931 = getelementptr inbounds i64, i64* %envptr9930, i64 1                  ; &envptr9930[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9931, align 8                         ; load; *envptr9931
+  %cloptr9932 = call i64* @alloc(i64 8)                                              ; malloc
+  %eptr9933 = getelementptr inbounds i64, i64* %cloptr9932, i64 0                    ; &cloptr9932[0]
+  %f9934 = ptrtoint void(i64,i64)* @lam8261 to i64                                   ; fptr cast; i64(...)* -> i64
+  store i64 %f9934, i64* %eptr9933                                                   ; store fptr
+  %arg7795 = ptrtoint i64* %cloptr9932 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9935 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr9937 = getelementptr inbounds i64, i64* %cloptr9935, i64 1                    ; &eptr9937[1]
+  %eptr9938 = getelementptr inbounds i64, i64* %cloptr9935, i64 2                    ; &eptr9938[2]
+  %eptr9939 = getelementptr inbounds i64, i64* %cloptr9935, i64 3                    ; &eptr9939[3]
+  %eptr9940 = getelementptr inbounds i64, i64* %cloptr9935, i64 4                    ; &eptr9940[4]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9937                                     ; *eptr9937 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9938                                                ; *eptr9938 = %cont7146
+  store i64 %Kgl$tail, i64* %eptr9939                                                ; *eptr9939 = %Kgl$tail
+  store i64 %C6G$new, i64* %eptr9940                                                 ; *eptr9940 = %C6G$new
+  %eptr9936 = getelementptr inbounds i64, i64* %cloptr9935, i64 0                    ; &cloptr9935[0]
+  %f9941 = ptrtoint void(i64,i64,i64)* @lam8258 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9941, i64* %eptr9936                                                   ; store fptr
+  %arg7794 = ptrtoint i64* %cloptr9935 to i64                                        ; closure cast; i64* -> i64
+  %cloptr9942 = inttoptr i64 %arg7795 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9942)                                         ; assert function application
+  %i0ptr9943 = getelementptr inbounds i64, i64* %cloptr9942, i64 0                   ; &cloptr9942[0]
+  %f9945 = load i64, i64* %i0ptr9943, align 8                                        ; load; *i0ptr9943
+  %fptr9944 = inttoptr i64 %f9945 to void (i64,i64)*                                 ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9944(i64 %arg7795, i64 %arg7794)                    ; tail call
   ret void
 }
 
 
-define void @lam8275(i64 %env8276, i64 %PMY$lst7160) {
-  %cont7159 = call i64 @prim_car(i64 %PMY$lst7160)                                   ; call prim_car
-  %PMY$lst = call i64 @prim_cdr(i64 %PMY$lst7160)                                    ; call prim_cdr
-  %arg7801 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9960 = inttoptr i64 %cont7159 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9960)                                         ; assert function application
-  %i0ptr9961 = getelementptr inbounds i64, i64* %cloptr9960, i64 0                   ; &cloptr9960[0]
-  %f9963 = load i64, i64* %i0ptr9961, align 8                                        ; load; *i0ptr9961
-  %fptr9962 = inttoptr i64 %f9963 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9962(i64 %cont7159, i64 %arg7801, i64 %PMY$lst)     ; tail call
+define void @lam8261(i64 %env8262, i64 %ATa$lst7158) {
+  %cont7157 = call i64 @prim_car(i64 %ATa$lst7158)                                   ; call prim_car
+  %ATa$lst = call i64 @prim_cdr(i64 %ATa$lst7158)                                    ; call prim_cdr
+  %arg7799 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9946 = inttoptr i64 %cont7157 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9946)                                         ; assert function application
+  %i0ptr9947 = getelementptr inbounds i64, i64* %cloptr9946, i64 0                   ; &cloptr9946[0]
+  %f9949 = load i64, i64* %i0ptr9947, align 8                                        ; load; *i0ptr9947
+  %fptr9948 = inttoptr i64 %f9949 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9948(i64 %cont7157, i64 %arg7799, i64 %ATa$lst)     ; tail call
   ret void
 }
 
 
-define void @lam8272(i64 %env8273, i64 %_957157, i64 %a7056) {
-  %envptr9964 = inttoptr i64 %env8273 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9965 = getelementptr inbounds i64, i64* %envptr9964, i64 4                  ; &envptr9964[4]
-  %igq$new = load i64, i64* %envptr9965, align 8                                     ; load; *envptr9965
-  %envptr9966 = inttoptr i64 %env8273 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9967 = getelementptr inbounds i64, i64* %envptr9966, i64 3                  ; &envptr9966[3]
-  %Gbr$tail = load i64, i64* %envptr9967, align 8                                    ; load; *envptr9967
-  %envptr9968 = inttoptr i64 %env8273 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9969 = getelementptr inbounds i64, i64* %envptr9968, i64 2                  ; &envptr9968[2]
-  %cont7148 = load i64, i64* %envptr9969, align 8                                    ; load; *envptr9969
-  %envptr9970 = inttoptr i64 %env8273 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9971 = getelementptr inbounds i64, i64* %envptr9970, i64 1                  ; &envptr9970[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9971, align 8                         ; load; *envptr9971
-  %arg7804 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %retprim7158 = call i64 @prim_make_45vector(i64 %arg7804, i64 %a7056)              ; call prim_make_45vector
-  %cloptr9972 = call i64* @alloc(i64 40)                                             ; malloc
-  %eptr9974 = getelementptr inbounds i64, i64* %cloptr9972, i64 1                    ; &eptr9974[1]
-  %eptr9975 = getelementptr inbounds i64, i64* %cloptr9972, i64 2                    ; &eptr9975[2]
-  %eptr9976 = getelementptr inbounds i64, i64* %cloptr9972, i64 3                    ; &eptr9976[3]
-  %eptr9977 = getelementptr inbounds i64, i64* %cloptr9972, i64 4                    ; &eptr9977[4]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9974                                     ; *eptr9974 = %ZUv$_37wind_45stack
-  store i64 %cont7148, i64* %eptr9975                                                ; *eptr9975 = %cont7148
-  store i64 %Gbr$tail, i64* %eptr9976                                                ; *eptr9976 = %Gbr$tail
-  store i64 %igq$new, i64* %eptr9977                                                 ; *eptr9977 = %igq$new
-  %eptr9973 = getelementptr inbounds i64, i64* %cloptr9972, i64 0                    ; &cloptr9972[0]
-  %f9978 = ptrtoint void(i64,i64,i64)* @lam8269 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9978, i64* %eptr9973                                                   ; store fptr
-  %arg7807 = ptrtoint i64* %cloptr9972 to i64                                        ; closure cast; i64* -> i64
-  %arg7806 = add i64 0, 0                                                            ; quoted ()
-  %cloptr9979 = inttoptr i64 %arg7807 to i64*                                        ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9979)                                         ; assert function application
-  %i0ptr9980 = getelementptr inbounds i64, i64* %cloptr9979, i64 0                   ; &cloptr9979[0]
-  %f9982 = load i64, i64* %i0ptr9980, align 8                                        ; load; *i0ptr9980
-  %fptr9981 = inttoptr i64 %f9982 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9981(i64 %arg7807, i64 %arg7806, i64 %retprim7158)  ; tail call
+define void @lam8258(i64 %env8259, i64 %_957155, i64 %a7056) {
+  %envptr9950 = inttoptr i64 %env8259 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9951 = getelementptr inbounds i64, i64* %envptr9950, i64 4                  ; &envptr9950[4]
+  %C6G$new = load i64, i64* %envptr9951, align 8                                     ; load; *envptr9951
+  %envptr9952 = inttoptr i64 %env8259 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9953 = getelementptr inbounds i64, i64* %envptr9952, i64 3                  ; &envptr9952[3]
+  %Kgl$tail = load i64, i64* %envptr9953, align 8                                    ; load; *envptr9953
+  %envptr9954 = inttoptr i64 %env8259 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9955 = getelementptr inbounds i64, i64* %envptr9954, i64 2                  ; &envptr9954[2]
+  %cont7146 = load i64, i64* %envptr9955, align 8                                    ; load; *envptr9955
+  %envptr9956 = inttoptr i64 %env8259 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9957 = getelementptr inbounds i64, i64* %envptr9956, i64 1                  ; &envptr9956[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9957, align 8                         ; load; *envptr9957
+  %arg7802 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %retprim7156 = call i64 @prim_make_45vector(i64 %arg7802, i64 %a7056)              ; call prim_make_45vector
+  %cloptr9958 = call i64* @alloc(i64 40)                                             ; malloc
+  %eptr9960 = getelementptr inbounds i64, i64* %cloptr9958, i64 1                    ; &eptr9960[1]
+  %eptr9961 = getelementptr inbounds i64, i64* %cloptr9958, i64 2                    ; &eptr9961[2]
+  %eptr9962 = getelementptr inbounds i64, i64* %cloptr9958, i64 3                    ; &eptr9962[3]
+  %eptr9963 = getelementptr inbounds i64, i64* %cloptr9958, i64 4                    ; &eptr9963[4]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9960                                     ; *eptr9960 = %HPX$_37wind_45stack
+  store i64 %cont7146, i64* %eptr9961                                                ; *eptr9961 = %cont7146
+  store i64 %Kgl$tail, i64* %eptr9962                                                ; *eptr9962 = %Kgl$tail
+  store i64 %C6G$new, i64* %eptr9963                                                 ; *eptr9963 = %C6G$new
+  %eptr9959 = getelementptr inbounds i64, i64* %cloptr9958, i64 0                    ; &cloptr9958[0]
+  %f9964 = ptrtoint void(i64,i64,i64)* @lam8255 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9964, i64* %eptr9959                                                   ; store fptr
+  %arg7805 = ptrtoint i64* %cloptr9958 to i64                                        ; closure cast; i64* -> i64
+  %arg7804 = add i64 0, 0                                                            ; quoted ()
+  %cloptr9965 = inttoptr i64 %arg7805 to i64*                                        ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9965)                                         ; assert function application
+  %i0ptr9966 = getelementptr inbounds i64, i64* %cloptr9965, i64 0                   ; &cloptr9965[0]
+  %f9968 = load i64, i64* %i0ptr9966, align 8                                        ; load; *i0ptr9966
+  %fptr9967 = inttoptr i64 %f9968 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9967(i64 %arg7805, i64 %arg7804, i64 %retprim7156)  ; tail call
   ret void
 }
 
 
-define void @lam8269(i64 %env8270, i64 %_957151, i64 %xda$f) {
-  %envptr9983 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9984 = getelementptr inbounds i64, i64* %envptr9983, i64 4                  ; &envptr9983[4]
-  %igq$new = load i64, i64* %envptr9984, align 8                                     ; load; *envptr9984
-  %envptr9985 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9986 = getelementptr inbounds i64, i64* %envptr9985, i64 3                  ; &envptr9985[3]
-  %Gbr$tail = load i64, i64* %envptr9986, align 8                                    ; load; *envptr9986
-  %envptr9987 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9988 = getelementptr inbounds i64, i64* %envptr9987, i64 2                  ; &envptr9987[2]
-  %cont7148 = load i64, i64* %envptr9988, align 8                                    ; load; *envptr9988
-  %envptr9989 = inttoptr i64 %env8270 to i64*                                        ; closure/env cast; i64 -> i64*
-  %envptr9990 = getelementptr inbounds i64, i64* %envptr9989, i64 1                  ; &envptr9989[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr9990, align 8                         ; load; *envptr9990
-  %arg7809 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %cloptr9991 = call i64* @alloc(i64 32)                                             ; malloc
-  %eptr9993 = getelementptr inbounds i64, i64* %cloptr9991, i64 1                    ; &eptr9993[1]
-  %eptr9994 = getelementptr inbounds i64, i64* %cloptr9991, i64 2                    ; &eptr9994[2]
-  %eptr9995 = getelementptr inbounds i64, i64* %cloptr9991, i64 3                    ; &eptr9995[3]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr9993                                     ; *eptr9993 = %ZUv$_37wind_45stack
-  store i64 %xda$f, i64* %eptr9994                                                   ; *eptr9994 = %xda$f
-  store i64 %Gbr$tail, i64* %eptr9995                                                ; *eptr9995 = %Gbr$tail
-  %eptr9992 = getelementptr inbounds i64, i64* %cloptr9991, i64 0                    ; &cloptr9991[0]
-  %f9996 = ptrtoint void(i64,i64,i64)* @lam8266 to i64                               ; fptr cast; i64(...)* -> i64
-  store i64 %f9996, i64* %eptr9992                                                   ; store fptr
-  %arg7808 = ptrtoint i64* %cloptr9991 to i64                                        ; closure cast; i64* -> i64
-  %GD5$_956942 = call i64 @prim_vector_45set_33(i64 %xda$f, i64 %arg7809, i64 %arg7808); call prim_vector_45set_33
-  %arg7833 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7063 = call i64 @prim_vector_45ref(i64 %xda$f, i64 %arg7833)                     ; call prim_vector_45ref
-  %cloptr9997 = inttoptr i64 %a7063 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr9997)                                         ; assert function application
-  %i0ptr9998 = getelementptr inbounds i64, i64* %cloptr9997, i64 0                   ; &cloptr9997[0]
-  %f10000 = load i64, i64* %i0ptr9998, align 8                                       ; load; *i0ptr9998
-  %fptr9999 = inttoptr i64 %f10000 to void (i64,i64,i64)*                            ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr9999(i64 %a7063, i64 %cont7148, i64 %igq$new)       ; tail call
+define void @lam8255(i64 %env8256, i64 %_957149, i64 %Q8r$f) {
+  %envptr9969 = inttoptr i64 %env8256 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9970 = getelementptr inbounds i64, i64* %envptr9969, i64 4                  ; &envptr9969[4]
+  %C6G$new = load i64, i64* %envptr9970, align 8                                     ; load; *envptr9970
+  %envptr9971 = inttoptr i64 %env8256 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9972 = getelementptr inbounds i64, i64* %envptr9971, i64 3                  ; &envptr9971[3]
+  %Kgl$tail = load i64, i64* %envptr9972, align 8                                    ; load; *envptr9972
+  %envptr9973 = inttoptr i64 %env8256 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9974 = getelementptr inbounds i64, i64* %envptr9973, i64 2                  ; &envptr9973[2]
+  %cont7146 = load i64, i64* %envptr9974, align 8                                    ; load; *envptr9974
+  %envptr9975 = inttoptr i64 %env8256 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9976 = getelementptr inbounds i64, i64* %envptr9975, i64 1                  ; &envptr9975[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9976, align 8                         ; load; *envptr9976
+  %arg7807 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %cloptr9977 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9979 = getelementptr inbounds i64, i64* %cloptr9977, i64 1                    ; &eptr9979[1]
+  %eptr9980 = getelementptr inbounds i64, i64* %cloptr9977, i64 2                    ; &eptr9980[2]
+  %eptr9981 = getelementptr inbounds i64, i64* %cloptr9977, i64 3                    ; &eptr9981[3]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9979                                     ; *eptr9979 = %HPX$_37wind_45stack
+  store i64 %Q8r$f, i64* %eptr9980                                                   ; *eptr9980 = %Q8r$f
+  store i64 %Kgl$tail, i64* %eptr9981                                                ; *eptr9981 = %Kgl$tail
+  %eptr9978 = getelementptr inbounds i64, i64* %cloptr9977, i64 0                    ; &cloptr9977[0]
+  %f9982 = ptrtoint void(i64,i64,i64)* @lam8252 to i64                               ; fptr cast; i64(...)* -> i64
+  store i64 %f9982, i64* %eptr9978                                                   ; store fptr
+  %arg7806 = ptrtoint i64* %cloptr9977 to i64                                        ; closure cast; i64* -> i64
+  %VND$_956942 = call i64 @prim_vector_45set_33(i64 %Q8r$f, i64 %arg7807, i64 %arg7806); call prim_vector_45set_33
+  %arg7831 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7063 = call i64 @prim_vector_45ref(i64 %Q8r$f, i64 %arg7831)                     ; call prim_vector_45ref
+  %cloptr9983 = inttoptr i64 %a7063 to i64*                                          ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr9983)                                         ; assert function application
+  %i0ptr9984 = getelementptr inbounds i64, i64* %cloptr9983, i64 0                   ; &cloptr9983[0]
+  %f9986 = load i64, i64* %i0ptr9984, align 8                                        ; load; *i0ptr9984
+  %fptr9985 = inttoptr i64 %f9986 to void (i64,i64,i64)*                             ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr9985(i64 %a7063, i64 %cont7146, i64 %C6G$new)       ; tail call
   ret void
 }
 
 
-define void @lam8266(i64 %env8267, i64 %cont7152, i64 %tHG$l) {
-  %envptr10001 = inttoptr i64 %env8267 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10002 = getelementptr inbounds i64, i64* %envptr10001, i64 3                ; &envptr10001[3]
-  %Gbr$tail = load i64, i64* %envptr10002, align 8                                   ; load; *envptr10002
-  %envptr10003 = inttoptr i64 %env8267 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10004 = getelementptr inbounds i64, i64* %envptr10003, i64 2                ; &envptr10003[2]
-  %xda$f = load i64, i64* %envptr10004, align 8                                      ; load; *envptr10004
-  %envptr10005 = inttoptr i64 %env8267 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10006 = getelementptr inbounds i64, i64* %envptr10005, i64 1                ; &envptr10005[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr10006, align 8                        ; load; *envptr10006
-  %a7057 = call i64 @prim_eq_63(i64 %tHG$l, i64 %Gbr$tail)                           ; call prim_eq_63
+define void @lam8252(i64 %env8253, i64 %cont7150, i64 %phs$l) {
+  %envptr9987 = inttoptr i64 %env8253 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9988 = getelementptr inbounds i64, i64* %envptr9987, i64 3                  ; &envptr9987[3]
+  %Kgl$tail = load i64, i64* %envptr9988, align 8                                    ; load; *envptr9988
+  %envptr9989 = inttoptr i64 %env8253 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9990 = getelementptr inbounds i64, i64* %envptr9989, i64 2                  ; &envptr9989[2]
+  %Q8r$f = load i64, i64* %envptr9990, align 8                                       ; load; *envptr9990
+  %envptr9991 = inttoptr i64 %env8253 to i64*                                        ; closure/env cast; i64 -> i64*
+  %envptr9992 = getelementptr inbounds i64, i64* %envptr9991, i64 1                  ; &envptr9991[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr9992, align 8                         ; load; *envptr9992
+  %a7057 = call i64 @prim_eq_63(i64 %phs$l, i64 %Kgl$tail)                           ; call prim_eq_63
   %a7058 = call i64 @prim_not(i64 %a7057)                                            ; call prim_not
-  %cmp10007 = icmp eq i64 %a7058, 15                                                 ; false?
-  br i1 %cmp10007, label %else10009, label %then10008                                ; if
+  %cmp9993 = icmp eq i64 %a7058, 15                                                  ; false?
+  br i1 %cmp9993, label %else9995, label %then9994                                   ; if
 
-then10008:
-  %arg7814 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a7059 = call i64 @prim_vector_45ref(i64 %xda$f, i64 %arg7814)                     ; call prim_vector_45ref
-  %a7060 = call i64 @prim_cdr(i64 %tHG$l)                                            ; call prim_cdr
-  %cloptr10010 = call i64* @alloc(i64 32)                                            ; malloc
-  %eptr10012 = getelementptr inbounds i64, i64* %cloptr10010, i64 1                  ; &eptr10012[1]
-  %eptr10013 = getelementptr inbounds i64, i64* %cloptr10010, i64 2                  ; &eptr10013[2]
-  %eptr10014 = getelementptr inbounds i64, i64* %cloptr10010, i64 3                  ; &eptr10014[3]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr10012                                    ; *eptr10012 = %ZUv$_37wind_45stack
-  store i64 %tHG$l, i64* %eptr10013                                                  ; *eptr10013 = %tHG$l
-  store i64 %cont7152, i64* %eptr10014                                               ; *eptr10014 = %cont7152
-  %eptr10011 = getelementptr inbounds i64, i64* %cloptr10010, i64 0                  ; &cloptr10010[0]
-  %f10015 = ptrtoint void(i64,i64,i64)* @lam8262 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10015, i64* %eptr10011                                                 ; store fptr
-  %arg7818 = ptrtoint i64* %cloptr10010 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10016 = inttoptr i64 %a7059 to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10016)                                        ; assert function application
-  %i0ptr10017 = getelementptr inbounds i64, i64* %cloptr10016, i64 0                 ; &cloptr10016[0]
-  %f10019 = load i64, i64* %i0ptr10017, align 8                                      ; load; *i0ptr10017
-  %fptr10018 = inttoptr i64 %f10019 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10018(i64 %a7059, i64 %arg7818, i64 %a7060)         ; tail call
+then9994:
+  %arg7812 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a7059 = call i64 @prim_vector_45ref(i64 %Q8r$f, i64 %arg7812)                     ; call prim_vector_45ref
+  %a7060 = call i64 @prim_cdr(i64 %phs$l)                                            ; call prim_cdr
+  %cloptr9996 = call i64* @alloc(i64 32)                                             ; malloc
+  %eptr9998 = getelementptr inbounds i64, i64* %cloptr9996, i64 1                    ; &eptr9998[1]
+  %eptr9999 = getelementptr inbounds i64, i64* %cloptr9996, i64 2                    ; &eptr9999[2]
+  %eptr10000 = getelementptr inbounds i64, i64* %cloptr9996, i64 3                   ; &eptr10000[3]
+  store i64 %HPX$_37wind_45stack, i64* %eptr9998                                     ; *eptr9998 = %HPX$_37wind_45stack
+  store i64 %phs$l, i64* %eptr9999                                                   ; *eptr9999 = %phs$l
+  store i64 %cont7150, i64* %eptr10000                                               ; *eptr10000 = %cont7150
+  %eptr9997 = getelementptr inbounds i64, i64* %cloptr9996, i64 0                    ; &cloptr9996[0]
+  %f10001 = ptrtoint void(i64,i64,i64)* @lam8248 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10001, i64* %eptr9997                                                  ; store fptr
+  %arg7816 = ptrtoint i64* %cloptr9996 to i64                                        ; closure cast; i64* -> i64
+  %cloptr10002 = inttoptr i64 %a7059 to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10002)                                        ; assert function application
+  %i0ptr10003 = getelementptr inbounds i64, i64* %cloptr10002, i64 0                 ; &cloptr10002[0]
+  %f10005 = load i64, i64* %i0ptr10003, align 8                                      ; load; *i0ptr10003
+  %fptr10004 = inttoptr i64 %f10005 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10004(i64 %a7059, i64 %arg7816, i64 %a7060)         ; tail call
   ret void
 
-else10009:
-  %retprim7156 = call i64 @prim_void()                                               ; call prim_void
-  %arg7831 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10020 = inttoptr i64 %cont7152 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10020)                                        ; assert function application
-  %i0ptr10021 = getelementptr inbounds i64, i64* %cloptr10020, i64 0                 ; &cloptr10020[0]
-  %f10023 = load i64, i64* %i0ptr10021, align 8                                      ; load; *i0ptr10021
-  %fptr10022 = inttoptr i64 %f10023 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10022(i64 %cont7152, i64 %arg7831, i64 %retprim7156); tail call
+else9995:
+  %retprim7154 = call i64 @prim_void()                                               ; call prim_void
+  %arg7829 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10006 = inttoptr i64 %cont7150 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10006)                                        ; assert function application
+  %i0ptr10007 = getelementptr inbounds i64, i64* %cloptr10006, i64 0                 ; &cloptr10006[0]
+  %f10009 = load i64, i64* %i0ptr10007, align 8                                      ; load; *i0ptr10007
+  %fptr10008 = inttoptr i64 %f10009 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10008(i64 %cont7150, i64 %arg7829, i64 %retprim7154); tail call
   ret void
 }
 
 
-define void @lam8262(i64 %env8263, i64 %_957153, i64 %KEc$_956943) {
-  %envptr10024 = inttoptr i64 %env8263 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10025 = getelementptr inbounds i64, i64* %envptr10024, i64 3                ; &envptr10024[3]
-  %cont7152 = load i64, i64* %envptr10025, align 8                                   ; load; *envptr10025
-  %envptr10026 = inttoptr i64 %env8263 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10027 = getelementptr inbounds i64, i64* %envptr10026, i64 2                ; &envptr10026[2]
-  %tHG$l = load i64, i64* %envptr10027, align 8                                      ; load; *envptr10027
-  %envptr10028 = inttoptr i64 %env8263 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10029 = getelementptr inbounds i64, i64* %envptr10028, i64 1                ; &envptr10028[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr10029, align 8                        ; load; *envptr10029
-  %a7061 = call i64 @prim_car(i64 %tHG$l)                                            ; call prim_car
+define void @lam8248(i64 %env8249, i64 %_957151, i64 %U66$_956943) {
+  %envptr10010 = inttoptr i64 %env8249 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10011 = getelementptr inbounds i64, i64* %envptr10010, i64 3                ; &envptr10010[3]
+  %cont7150 = load i64, i64* %envptr10011, align 8                                   ; load; *envptr10011
+  %envptr10012 = inttoptr i64 %env8249 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10013 = getelementptr inbounds i64, i64* %envptr10012, i64 2                ; &envptr10012[2]
+  %phs$l = load i64, i64* %envptr10013, align 8                                      ; load; *envptr10013
+  %envptr10014 = inttoptr i64 %env8249 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10015 = getelementptr inbounds i64, i64* %envptr10014, i64 1                ; &envptr10014[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr10015, align 8                        ; load; *envptr10015
+  %a7061 = call i64 @prim_car(i64 %phs$l)                                            ; call prim_car
   %a7062 = call i64 @prim_car(i64 %a7061)                                            ; call prim_car
-  %cloptr10030 = call i64* @alloc(i64 32)                                            ; malloc
-  %eptr10032 = getelementptr inbounds i64, i64* %cloptr10030, i64 1                  ; &eptr10032[1]
-  %eptr10033 = getelementptr inbounds i64, i64* %cloptr10030, i64 2                  ; &eptr10033[2]
-  %eptr10034 = getelementptr inbounds i64, i64* %cloptr10030, i64 3                  ; &eptr10034[3]
-  store i64 %ZUv$_37wind_45stack, i64* %eptr10032                                    ; *eptr10032 = %ZUv$_37wind_45stack
-  store i64 %tHG$l, i64* %eptr10033                                                  ; *eptr10033 = %tHG$l
-  store i64 %cont7152, i64* %eptr10034                                               ; *eptr10034 = %cont7152
-  %eptr10031 = getelementptr inbounds i64, i64* %cloptr10030, i64 0                  ; &cloptr10030[0]
-  %f10035 = ptrtoint void(i64,i64,i64)* @lam8260 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10035, i64* %eptr10031                                                 ; store fptr
-  %arg7822 = ptrtoint i64* %cloptr10030 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10036 = inttoptr i64 %a7062 to i64*                                         ; closure/env cast; i64 -> i64*
+  %cloptr10016 = call i64* @alloc(i64 32)                                            ; malloc
+  %eptr10018 = getelementptr inbounds i64, i64* %cloptr10016, i64 1                  ; &eptr10018[1]
+  %eptr10019 = getelementptr inbounds i64, i64* %cloptr10016, i64 2                  ; &eptr10019[2]
+  %eptr10020 = getelementptr inbounds i64, i64* %cloptr10016, i64 3                  ; &eptr10020[3]
+  store i64 %HPX$_37wind_45stack, i64* %eptr10018                                    ; *eptr10018 = %HPX$_37wind_45stack
+  store i64 %phs$l, i64* %eptr10019                                                  ; *eptr10019 = %phs$l
+  store i64 %cont7150, i64* %eptr10020                                               ; *eptr10020 = %cont7150
+  %eptr10017 = getelementptr inbounds i64, i64* %cloptr10016, i64 0                  ; &cloptr10016[0]
+  %f10021 = ptrtoint void(i64,i64,i64)* @lam8246 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10021, i64* %eptr10017                                                 ; store fptr
+  %arg7820 = ptrtoint i64* %cloptr10016 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10022 = inttoptr i64 %a7062 to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10022)                                        ; assert function application
+  %i0ptr10023 = getelementptr inbounds i64, i64* %cloptr10022, i64 0                 ; &cloptr10022[0]
+  %f10025 = load i64, i64* %i0ptr10023, align 8                                      ; load; *i0ptr10023
+  %fptr10024 = inttoptr i64 %f10025 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10024(i64 %a7062, i64 %arg7820)                     ; tail call
+  ret void
+}
+
+
+define void @lam8246(i64 %env8247, i64 %_957152, i64 %oJm$_956944) {
+  %envptr10026 = inttoptr i64 %env8247 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10027 = getelementptr inbounds i64, i64* %envptr10026, i64 3                ; &envptr10026[3]
+  %cont7150 = load i64, i64* %envptr10027, align 8                                   ; load; *envptr10027
+  %envptr10028 = inttoptr i64 %env8247 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10029 = getelementptr inbounds i64, i64* %envptr10028, i64 2                ; &envptr10028[2]
+  %phs$l = load i64, i64* %envptr10029, align 8                                      ; load; *envptr10029
+  %envptr10030 = inttoptr i64 %env8247 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10031 = getelementptr inbounds i64, i64* %envptr10030, i64 1                ; &envptr10030[1]
+  %HPX$_37wind_45stack = load i64, i64* %envptr10031, align 8                        ; load; *envptr10031
+  %arg7823 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %retprim7153 = call i64 @prim_vector_45set_33(i64 %HPX$_37wind_45stack, i64 %arg7823, i64 %phs$l); call prim_vector_45set_33
+  %arg7826 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10032 = inttoptr i64 %cont7150 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10032)                                        ; assert function application
+  %i0ptr10033 = getelementptr inbounds i64, i64* %cloptr10032, i64 0                 ; &cloptr10032[0]
+  %f10035 = load i64, i64* %i0ptr10033, align 8                                      ; load; *i0ptr10033
+  %fptr10034 = inttoptr i64 %f10035 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10034(i64 %cont7150, i64 %arg7826, i64 %retprim7153); tail call
+  ret void
+}
+
+
+define void @lam8238(i64 %env8239, i64 %_950, i64 %x) {
+  %_951 = call i64 @prim_halt(i64 %x)                                                ; call prim_halt
+  %cloptr10036 = inttoptr i64 %_951 to i64*                                          ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr10036)                                        ; assert function application
   %i0ptr10037 = getelementptr inbounds i64, i64* %cloptr10036, i64 0                 ; &cloptr10036[0]
   %f10039 = load i64, i64* %i0ptr10037, align 8                                      ; load; *i0ptr10037
   %fptr10038 = inttoptr i64 %f10039 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10038(i64 %a7062, i64 %arg7822)                     ; tail call
+  musttail call fastcc void %fptr10038(i64 %_951, i64 %_951)                         ; tail call
   ret void
 }
 
 
-define void @lam8260(i64 %env8261, i64 %_957154, i64 %Xxq$_956944) {
-  %envptr10040 = inttoptr i64 %env8261 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8231(i64 %env8232, i64 %cont7180, i64 %jH2$_37foldl) {
+  %envptr10040 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10041 = getelementptr inbounds i64, i64* %envptr10040, i64 3                ; &envptr10040[3]
-  %cont7152 = load i64, i64* %envptr10041, align 8                                   ; load; *envptr10041
-  %envptr10042 = inttoptr i64 %env8261 to i64*                                       ; closure/env cast; i64 -> i64*
+  %tct$_37foldr = load i64, i64* %envptr10041, align 8                               ; load; *envptr10041
+  %envptr10042 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10043 = getelementptr inbounds i64, i64* %envptr10042, i64 2                ; &envptr10042[2]
-  %tHG$l = load i64, i64* %envptr10043, align 8                                      ; load; *envptr10043
-  %envptr10044 = inttoptr i64 %env8261 to i64*                                       ; closure/env cast; i64 -> i64*
+  %XiW$_37map1 = load i64, i64* %envptr10043, align 8                                ; load; *envptr10043
+  %envptr10044 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10045 = getelementptr inbounds i64, i64* %envptr10044, i64 1                ; &envptr10044[1]
-  %ZUv$_37wind_45stack = load i64, i64* %envptr10045, align 8                        ; load; *envptr10045
-  %arg7825 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %retprim7155 = call i64 @prim_vector_45set_33(i64 %ZUv$_37wind_45stack, i64 %arg7825, i64 %tHG$l); call prim_vector_45set_33
-  %arg7828 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10046 = inttoptr i64 %cont7152 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10046)                                        ; assert function application
-  %i0ptr10047 = getelementptr inbounds i64, i64* %cloptr10046, i64 0                 ; &cloptr10046[0]
-  %f10049 = load i64, i64* %i0ptr10047, align 8                                      ; load; *i0ptr10047
-  %fptr10048 = inttoptr i64 %f10049 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10048(i64 %cont7152, i64 %arg7828, i64 %retprim7155); tail call
+  %AmT$_37foldr1 = load i64, i64* %envptr10045, align 8                              ; load; *envptr10045
+  %arg7844 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10046 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10048 = getelementptr inbounds i64, i64* %cloptr10046, i64 1                  ; &eptr10048[1]
+  %eptr10049 = getelementptr inbounds i64, i64* %cloptr10046, i64 2                  ; &eptr10049[2]
+  %eptr10050 = getelementptr inbounds i64, i64* %cloptr10046, i64 3                  ; &eptr10050[3]
+  %eptr10051 = getelementptr inbounds i64, i64* %cloptr10046, i64 4                  ; &eptr10051[4]
+  store i64 %jH2$_37foldl, i64* %eptr10048                                           ; *eptr10048 = %jH2$_37foldl
+  store i64 %AmT$_37foldr1, i64* %eptr10049                                          ; *eptr10049 = %AmT$_37foldr1
+  store i64 %XiW$_37map1, i64* %eptr10050                                            ; *eptr10050 = %XiW$_37map1
+  store i64 %tct$_37foldr, i64* %eptr10051                                           ; *eptr10051 = %tct$_37foldr
+  %eptr10047 = getelementptr inbounds i64, i64* %cloptr10046, i64 0                  ; &cloptr10046[0]
+  %f10052 = ptrtoint void(i64,i64)* @lam8228 to i64                                  ; fptr cast; i64(...)* -> i64
+  store i64 %f10052, i64* %eptr10047                                                 ; store fptr
+  %arg7843 = ptrtoint i64* %cloptr10046 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10053 = inttoptr i64 %cont7180 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10053)                                        ; assert function application
+  %i0ptr10054 = getelementptr inbounds i64, i64* %cloptr10053, i64 0                 ; &cloptr10053[0]
+  %f10056 = load i64, i64* %i0ptr10054, align 8                                      ; load; *i0ptr10054
+  %fptr10055 = inttoptr i64 %f10056 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10055(i64 %cont7180, i64 %arg7844, i64 %arg7843)    ; tail call
   ret void
 }
 
 
-define void @lam8247(i64 %env8248, i64 %_950, i64 %x) {
-  %_951 = call i64 @prim_halt(i64 %x)                                                ; call prim_halt
-  %cloptr10050 = inttoptr i64 %_951 to i64*                                          ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10050)                                        ; assert function application
-  %i0ptr10051 = getelementptr inbounds i64, i64* %cloptr10050, i64 0                 ; &cloptr10050[0]
-  %f10053 = load i64, i64* %i0ptr10051, align 8                                      ; load; *i0ptr10051
-  %fptr10052 = inttoptr i64 %f10053 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10052(i64 %_951, i64 %_951)                         ; tail call
+define void @lam8228(i64 %env8229, i64 %Ltz$args7182) {
+  %envptr10057 = inttoptr i64 %env8229 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10058 = getelementptr inbounds i64, i64* %envptr10057, i64 4                ; &envptr10057[4]
+  %tct$_37foldr = load i64, i64* %envptr10058, align 8                               ; load; *envptr10058
+  %envptr10059 = inttoptr i64 %env8229 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10060 = getelementptr inbounds i64, i64* %envptr10059, i64 3                ; &envptr10059[3]
+  %XiW$_37map1 = load i64, i64* %envptr10060, align 8                                ; load; *envptr10060
+  %envptr10061 = inttoptr i64 %env8229 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10062 = getelementptr inbounds i64, i64* %envptr10061, i64 2                ; &envptr10061[2]
+  %AmT$_37foldr1 = load i64, i64* %envptr10062, align 8                              ; load; *envptr10062
+  %envptr10063 = inttoptr i64 %env8229 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10064 = getelementptr inbounds i64, i64* %envptr10063, i64 1                ; &envptr10063[1]
+  %jH2$_37foldl = load i64, i64* %envptr10064, align 8                               ; load; *envptr10064
+  %cont7181 = call i64 @prim_car(i64 %Ltz$args7182)                                  ; call prim_car
+  %Ltz$args = call i64 @prim_cdr(i64 %Ltz$args7182)                                  ; call prim_cdr
+  %pcY$f = call i64 @prim_car(i64 %Ltz$args)                                         ; call prim_car
+  %a6985 = call i64 @prim_cdr(i64 %Ltz$args)                                         ; call prim_cdr
+  %retprim7201 = call i64 @prim_car(i64 %a6985)                                      ; call prim_car
+  %cloptr10065 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10067 = getelementptr inbounds i64, i64* %cloptr10065, i64 1                  ; &eptr10067[1]
+  %eptr10068 = getelementptr inbounds i64, i64* %cloptr10065, i64 2                  ; &eptr10068[2]
+  %eptr10069 = getelementptr inbounds i64, i64* %cloptr10065, i64 3                  ; &eptr10069[3]
+  %eptr10070 = getelementptr inbounds i64, i64* %cloptr10065, i64 4                  ; &eptr10070[4]
+  %eptr10071 = getelementptr inbounds i64, i64* %cloptr10065, i64 5                  ; &eptr10071[5]
+  %eptr10072 = getelementptr inbounds i64, i64* %cloptr10065, i64 6                  ; &eptr10072[6]
+  %eptr10073 = getelementptr inbounds i64, i64* %cloptr10065, i64 7                  ; &eptr10073[7]
+  store i64 %jH2$_37foldl, i64* %eptr10067                                           ; *eptr10067 = %jH2$_37foldl
+  store i64 %pcY$f, i64* %eptr10068                                                  ; *eptr10068 = %pcY$f
+  store i64 %cont7181, i64* %eptr10069                                               ; *eptr10069 = %cont7181
+  store i64 %AmT$_37foldr1, i64* %eptr10070                                          ; *eptr10070 = %AmT$_37foldr1
+  store i64 %XiW$_37map1, i64* %eptr10071                                            ; *eptr10071 = %XiW$_37map1
+  store i64 %Ltz$args, i64* %eptr10072                                               ; *eptr10072 = %Ltz$args
+  store i64 %tct$_37foldr, i64* %eptr10073                                           ; *eptr10073 = %tct$_37foldr
+  %eptr10066 = getelementptr inbounds i64, i64* %cloptr10065, i64 0                  ; &cloptr10065[0]
+  %f10074 = ptrtoint void(i64,i64,i64)* @lam8226 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10074, i64* %eptr10066                                                 ; store fptr
+  %arg7853 = ptrtoint i64* %cloptr10065 to i64                                       ; closure cast; i64* -> i64
+  %arg7852 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10075 = inttoptr i64 %arg7853 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10075)                                        ; assert function application
+  %i0ptr10076 = getelementptr inbounds i64, i64* %cloptr10075, i64 0                 ; &cloptr10075[0]
+  %f10078 = load i64, i64* %i0ptr10076, align 8                                      ; load; *i0ptr10076
+  %fptr10077 = inttoptr i64 %f10078 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10077(i64 %arg7853, i64 %arg7852, i64 %retprim7201) ; tail call
   ret void
 }
 
 
-define void @lam8240(i64 %env8241, i64 %cont7182, i64 %xPk$_37foldl) {
-  %envptr10054 = inttoptr i64 %env8241 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10055 = getelementptr inbounds i64, i64* %envptr10054, i64 3                ; &envptr10054[3]
-  %Ini$_37foldr = load i64, i64* %envptr10055, align 8                               ; load; *envptr10055
-  %envptr10056 = inttoptr i64 %env8241 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10057 = getelementptr inbounds i64, i64* %envptr10056, i64 2                ; &envptr10056[2]
-  %KqY$_37map1 = load i64, i64* %envptr10057, align 8                                ; load; *envptr10057
-  %envptr10058 = inttoptr i64 %env8241 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10059 = getelementptr inbounds i64, i64* %envptr10058, i64 1                ; &envptr10058[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10059, align 8                              ; load; *envptr10059
-  %arg7853 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10060 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10062 = getelementptr inbounds i64, i64* %cloptr10060, i64 1                  ; &eptr10062[1]
-  %eptr10063 = getelementptr inbounds i64, i64* %cloptr10060, i64 2                  ; &eptr10063[2]
-  %eptr10064 = getelementptr inbounds i64, i64* %cloptr10060, i64 3                  ; &eptr10064[3]
-  %eptr10065 = getelementptr inbounds i64, i64* %cloptr10060, i64 4                  ; &eptr10065[4]
-  store i64 %xPk$_37foldl, i64* %eptr10062                                           ; *eptr10062 = %xPk$_37foldl
-  store i64 %Yrh$_37foldr1, i64* %eptr10063                                          ; *eptr10063 = %Yrh$_37foldr1
-  store i64 %KqY$_37map1, i64* %eptr10064                                            ; *eptr10064 = %KqY$_37map1
-  store i64 %Ini$_37foldr, i64* %eptr10065                                           ; *eptr10065 = %Ini$_37foldr
-  %eptr10061 = getelementptr inbounds i64, i64* %cloptr10060, i64 0                  ; &cloptr10060[0]
-  %f10066 = ptrtoint void(i64,i64)* @lam8237 to i64                                  ; fptr cast; i64(...)* -> i64
-  store i64 %f10066, i64* %eptr10061                                                 ; store fptr
-  %arg7852 = ptrtoint i64* %cloptr10060 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10067 = inttoptr i64 %cont7182 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10067)                                        ; assert function application
-  %i0ptr10068 = getelementptr inbounds i64, i64* %cloptr10067, i64 0                 ; &cloptr10067[0]
-  %f10070 = load i64, i64* %i0ptr10068, align 8                                      ; load; *i0ptr10068
-  %fptr10069 = inttoptr i64 %f10070 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10069(i64 %cont7182, i64 %arg7853, i64 %arg7852)    ; tail call
+define void @lam8226(i64 %env8227, i64 %_957183, i64 %WIf$acc) {
+  %envptr10079 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10080 = getelementptr inbounds i64, i64* %envptr10079, i64 7                ; &envptr10079[7]
+  %tct$_37foldr = load i64, i64* %envptr10080, align 8                               ; load; *envptr10080
+  %envptr10081 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10082 = getelementptr inbounds i64, i64* %envptr10081, i64 6                ; &envptr10081[6]
+  %Ltz$args = load i64, i64* %envptr10082, align 8                                   ; load; *envptr10082
+  %envptr10083 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10084 = getelementptr inbounds i64, i64* %envptr10083, i64 5                ; &envptr10083[5]
+  %XiW$_37map1 = load i64, i64* %envptr10084, align 8                                ; load; *envptr10084
+  %envptr10085 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10086 = getelementptr inbounds i64, i64* %envptr10085, i64 4                ; &envptr10085[4]
+  %AmT$_37foldr1 = load i64, i64* %envptr10086, align 8                              ; load; *envptr10086
+  %envptr10087 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10088 = getelementptr inbounds i64, i64* %envptr10087, i64 3                ; &envptr10087[3]
+  %cont7181 = load i64, i64* %envptr10088, align 8                                   ; load; *envptr10088
+  %envptr10089 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10090 = getelementptr inbounds i64, i64* %envptr10089, i64 2                ; &envptr10089[2]
+  %pcY$f = load i64, i64* %envptr10090, align 8                                      ; load; *envptr10090
+  %envptr10091 = inttoptr i64 %env8227 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10092 = getelementptr inbounds i64, i64* %envptr10091, i64 1                ; &envptr10091[1]
+  %jH2$_37foldl = load i64, i64* %envptr10092, align 8                               ; load; *envptr10092
+  %a6986 = call i64 @prim_cdr(i64 %Ltz$args)                                         ; call prim_cdr
+  %retprim7200 = call i64 @prim_cdr(i64 %a6986)                                      ; call prim_cdr
+  %cloptr10093 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10095 = getelementptr inbounds i64, i64* %cloptr10093, i64 1                  ; &eptr10095[1]
+  %eptr10096 = getelementptr inbounds i64, i64* %cloptr10093, i64 2                  ; &eptr10096[2]
+  %eptr10097 = getelementptr inbounds i64, i64* %cloptr10093, i64 3                  ; &eptr10097[3]
+  %eptr10098 = getelementptr inbounds i64, i64* %cloptr10093, i64 4                  ; &eptr10098[4]
+  %eptr10099 = getelementptr inbounds i64, i64* %cloptr10093, i64 5                  ; &eptr10099[5]
+  %eptr10100 = getelementptr inbounds i64, i64* %cloptr10093, i64 6                  ; &eptr10100[6]
+  %eptr10101 = getelementptr inbounds i64, i64* %cloptr10093, i64 7                  ; &eptr10101[7]
+  store i64 %jH2$_37foldl, i64* %eptr10095                                           ; *eptr10095 = %jH2$_37foldl
+  store i64 %pcY$f, i64* %eptr10096                                                  ; *eptr10096 = %pcY$f
+  store i64 %cont7181, i64* %eptr10097                                               ; *eptr10097 = %cont7181
+  store i64 %AmT$_37foldr1, i64* %eptr10098                                          ; *eptr10098 = %AmT$_37foldr1
+  store i64 %XiW$_37map1, i64* %eptr10099                                            ; *eptr10099 = %XiW$_37map1
+  store i64 %WIf$acc, i64* %eptr10100                                                ; *eptr10100 = %WIf$acc
+  store i64 %tct$_37foldr, i64* %eptr10101                                           ; *eptr10101 = %tct$_37foldr
+  %eptr10094 = getelementptr inbounds i64, i64* %cloptr10093, i64 0                  ; &cloptr10093[0]
+  %f10102 = ptrtoint void(i64,i64,i64)* @lam8224 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10102, i64* %eptr10094                                                 ; store fptr
+  %arg7858 = ptrtoint i64* %cloptr10093 to i64                                       ; closure cast; i64* -> i64
+  %arg7857 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10103 = inttoptr i64 %arg7858 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10103)                                        ; assert function application
+  %i0ptr10104 = getelementptr inbounds i64, i64* %cloptr10103, i64 0                 ; &cloptr10103[0]
+  %f10106 = load i64, i64* %i0ptr10104, align 8                                      ; load; *i0ptr10104
+  %fptr10105 = inttoptr i64 %f10106 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10105(i64 %arg7858, i64 %arg7857, i64 %retprim7200) ; tail call
   ret void
 }
 
 
-define void @lam8237(i64 %env8238, i64 %NlC$args7184) {
-  %envptr10071 = inttoptr i64 %env8238 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10072 = getelementptr inbounds i64, i64* %envptr10071, i64 4                ; &envptr10071[4]
-  %Ini$_37foldr = load i64, i64* %envptr10072, align 8                               ; load; *envptr10072
-  %envptr10073 = inttoptr i64 %env8238 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10074 = getelementptr inbounds i64, i64* %envptr10073, i64 3                ; &envptr10073[3]
-  %KqY$_37map1 = load i64, i64* %envptr10074, align 8                                ; load; *envptr10074
-  %envptr10075 = inttoptr i64 %env8238 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10076 = getelementptr inbounds i64, i64* %envptr10075, i64 2                ; &envptr10075[2]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10076, align 8                              ; load; *envptr10076
-  %envptr10077 = inttoptr i64 %env8238 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10078 = getelementptr inbounds i64, i64* %envptr10077, i64 1                ; &envptr10077[1]
-  %xPk$_37foldl = load i64, i64* %envptr10078, align 8                               ; load; *envptr10078
-  %cont7183 = call i64 @prim_car(i64 %NlC$args7184)                                  ; call prim_car
-  %NlC$args = call i64 @prim_cdr(i64 %NlC$args7184)                                  ; call prim_cdr
-  %ME8$f = call i64 @prim_car(i64 %NlC$args)                                         ; call prim_car
-  %a6985 = call i64 @prim_cdr(i64 %NlC$args)                                         ; call prim_cdr
-  %retprim7203 = call i64 @prim_car(i64 %a6985)                                      ; call prim_car
-  %cloptr10079 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10081 = getelementptr inbounds i64, i64* %cloptr10079, i64 1                  ; &eptr10081[1]
-  %eptr10082 = getelementptr inbounds i64, i64* %cloptr10079, i64 2                  ; &eptr10082[2]
-  %eptr10083 = getelementptr inbounds i64, i64* %cloptr10079, i64 3                  ; &eptr10083[3]
-  %eptr10084 = getelementptr inbounds i64, i64* %cloptr10079, i64 4                  ; &eptr10084[4]
-  %eptr10085 = getelementptr inbounds i64, i64* %cloptr10079, i64 5                  ; &eptr10085[5]
-  %eptr10086 = getelementptr inbounds i64, i64* %cloptr10079, i64 6                  ; &eptr10086[6]
-  %eptr10087 = getelementptr inbounds i64, i64* %cloptr10079, i64 7                  ; &eptr10087[7]
-  store i64 %xPk$_37foldl, i64* %eptr10081                                           ; *eptr10081 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10082                                               ; *eptr10082 = %cont7183
-  store i64 %ME8$f, i64* %eptr10083                                                  ; *eptr10083 = %ME8$f
-  store i64 %Yrh$_37foldr1, i64* %eptr10084                                          ; *eptr10084 = %Yrh$_37foldr1
-  store i64 %KqY$_37map1, i64* %eptr10085                                            ; *eptr10085 = %KqY$_37map1
-  store i64 %NlC$args, i64* %eptr10086                                               ; *eptr10086 = %NlC$args
-  store i64 %Ini$_37foldr, i64* %eptr10087                                           ; *eptr10087 = %Ini$_37foldr
-  %eptr10080 = getelementptr inbounds i64, i64* %cloptr10079, i64 0                  ; &cloptr10079[0]
-  %f10088 = ptrtoint void(i64,i64,i64)* @lam8235 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10088, i64* %eptr10080                                                 ; store fptr
-  %arg7862 = ptrtoint i64* %cloptr10079 to i64                                       ; closure cast; i64* -> i64
-  %arg7861 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10089 = inttoptr i64 %arg7862 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10089)                                        ; assert function application
-  %i0ptr10090 = getelementptr inbounds i64, i64* %cloptr10089, i64 0                 ; &cloptr10089[0]
-  %f10092 = load i64, i64* %i0ptr10090, align 8                                      ; load; *i0ptr10090
-  %fptr10091 = inttoptr i64 %f10092 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10091(i64 %arg7862, i64 %arg7861, i64 %retprim7203) ; tail call
+define void @lam8224(i64 %env8225, i64 %_957184, i64 %jjn$lsts) {
+  %envptr10107 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10108 = getelementptr inbounds i64, i64* %envptr10107, i64 7                ; &envptr10107[7]
+  %tct$_37foldr = load i64, i64* %envptr10108, align 8                               ; load; *envptr10108
+  %envptr10109 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10110 = getelementptr inbounds i64, i64* %envptr10109, i64 6                ; &envptr10109[6]
+  %WIf$acc = load i64, i64* %envptr10110, align 8                                    ; load; *envptr10110
+  %envptr10111 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10112 = getelementptr inbounds i64, i64* %envptr10111, i64 5                ; &envptr10111[5]
+  %XiW$_37map1 = load i64, i64* %envptr10112, align 8                                ; load; *envptr10112
+  %envptr10113 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10114 = getelementptr inbounds i64, i64* %envptr10113, i64 4                ; &envptr10113[4]
+  %AmT$_37foldr1 = load i64, i64* %envptr10114, align 8                              ; load; *envptr10114
+  %envptr10115 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10116 = getelementptr inbounds i64, i64* %envptr10115, i64 3                ; &envptr10115[3]
+  %cont7181 = load i64, i64* %envptr10116, align 8                                   ; load; *envptr10116
+  %envptr10117 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10118 = getelementptr inbounds i64, i64* %envptr10117, i64 2                ; &envptr10117[2]
+  %pcY$f = load i64, i64* %envptr10118, align 8                                      ; load; *envptr10118
+  %envptr10119 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10120 = getelementptr inbounds i64, i64* %envptr10119, i64 1                ; &envptr10119[1]
+  %jH2$_37foldl = load i64, i64* %envptr10120, align 8                               ; load; *envptr10120
+  %cloptr10121 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10123 = getelementptr inbounds i64, i64* %cloptr10121, i64 1                  ; &eptr10123[1]
+  %eptr10124 = getelementptr inbounds i64, i64* %cloptr10121, i64 2                  ; &eptr10124[2]
+  %eptr10125 = getelementptr inbounds i64, i64* %cloptr10121, i64 3                  ; &eptr10125[3]
+  %eptr10126 = getelementptr inbounds i64, i64* %cloptr10121, i64 4                  ; &eptr10126[4]
+  %eptr10127 = getelementptr inbounds i64, i64* %cloptr10121, i64 5                  ; &eptr10127[5]
+  %eptr10128 = getelementptr inbounds i64, i64* %cloptr10121, i64 6                  ; &eptr10128[6]
+  %eptr10129 = getelementptr inbounds i64, i64* %cloptr10121, i64 7                  ; &eptr10129[7]
+  store i64 %jH2$_37foldl, i64* %eptr10123                                           ; *eptr10123 = %jH2$_37foldl
+  store i64 %pcY$f, i64* %eptr10124                                                  ; *eptr10124 = %pcY$f
+  store i64 %cont7181, i64* %eptr10125                                               ; *eptr10125 = %cont7181
+  store i64 %jjn$lsts, i64* %eptr10126                                               ; *eptr10126 = %jjn$lsts
+  store i64 %XiW$_37map1, i64* %eptr10127                                            ; *eptr10127 = %XiW$_37map1
+  store i64 %WIf$acc, i64* %eptr10128                                                ; *eptr10128 = %WIf$acc
+  store i64 %tct$_37foldr, i64* %eptr10129                                           ; *eptr10129 = %tct$_37foldr
+  %eptr10122 = getelementptr inbounds i64, i64* %cloptr10121, i64 0                  ; &cloptr10121[0]
+  %f10130 = ptrtoint void(i64,i64,i64)* @lam8222 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10130, i64* %eptr10122                                                 ; store fptr
+  %arg7862 = ptrtoint i64* %cloptr10121 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10131 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10132 = getelementptr inbounds i64, i64* %cloptr10131, i64 0                  ; &cloptr10131[0]
+  %f10133 = ptrtoint void(i64,i64,i64,i64)* @lam8201 to i64                          ; fptr cast; i64(...)* -> i64
+  store i64 %f10133, i64* %eptr10132                                                 ; store fptr
+  %arg7861 = ptrtoint i64* %cloptr10131 to i64                                       ; closure cast; i64* -> i64
+  %arg7860 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr10134 = inttoptr i64 %AmT$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10134)                                        ; assert function application
+  %i0ptr10135 = getelementptr inbounds i64, i64* %cloptr10134, i64 0                 ; &cloptr10134[0]
+  %f10137 = load i64, i64* %i0ptr10135, align 8                                      ; load; *i0ptr10135
+  %fptr10136 = inttoptr i64 %f10137 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10136(i64 %AmT$_37foldr1, i64 %arg7862, i64 %arg7861, i64 %arg7860, i64 %jjn$lsts); tail call
   ret void
 }
 
 
-define void @lam8235(i64 %env8236, i64 %_957185, i64 %Kr2$acc) {
-  %envptr10093 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10094 = getelementptr inbounds i64, i64* %envptr10093, i64 7                ; &envptr10093[7]
-  %Ini$_37foldr = load i64, i64* %envptr10094, align 8                               ; load; *envptr10094
-  %envptr10095 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10096 = getelementptr inbounds i64, i64* %envptr10095, i64 6                ; &envptr10095[6]
-  %NlC$args = load i64, i64* %envptr10096, align 8                                   ; load; *envptr10096
-  %envptr10097 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10098 = getelementptr inbounds i64, i64* %envptr10097, i64 5                ; &envptr10097[5]
-  %KqY$_37map1 = load i64, i64* %envptr10098, align 8                                ; load; *envptr10098
-  %envptr10099 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10100 = getelementptr inbounds i64, i64* %envptr10099, i64 4                ; &envptr10099[4]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10100, align 8                              ; load; *envptr10100
-  %envptr10101 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10102 = getelementptr inbounds i64, i64* %envptr10101, i64 3                ; &envptr10101[3]
-  %ME8$f = load i64, i64* %envptr10102, align 8                                      ; load; *envptr10102
-  %envptr10103 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10104 = getelementptr inbounds i64, i64* %envptr10103, i64 2                ; &envptr10103[2]
-  %cont7183 = load i64, i64* %envptr10104, align 8                                   ; load; *envptr10104
-  %envptr10105 = inttoptr i64 %env8236 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10106 = getelementptr inbounds i64, i64* %envptr10105, i64 1                ; &envptr10105[1]
-  %xPk$_37foldl = load i64, i64* %envptr10106, align 8                               ; load; *envptr10106
-  %a6986 = call i64 @prim_cdr(i64 %NlC$args)                                         ; call prim_cdr
-  %retprim7202 = call i64 @prim_cdr(i64 %a6986)                                      ; call prim_cdr
-  %cloptr10107 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10109 = getelementptr inbounds i64, i64* %cloptr10107, i64 1                  ; &eptr10109[1]
-  %eptr10110 = getelementptr inbounds i64, i64* %cloptr10107, i64 2                  ; &eptr10110[2]
-  %eptr10111 = getelementptr inbounds i64, i64* %cloptr10107, i64 3                  ; &eptr10111[3]
-  %eptr10112 = getelementptr inbounds i64, i64* %cloptr10107, i64 4                  ; &eptr10112[4]
-  %eptr10113 = getelementptr inbounds i64, i64* %cloptr10107, i64 5                  ; &eptr10113[5]
-  %eptr10114 = getelementptr inbounds i64, i64* %cloptr10107, i64 6                  ; &eptr10114[6]
-  %eptr10115 = getelementptr inbounds i64, i64* %cloptr10107, i64 7                  ; &eptr10115[7]
-  store i64 %xPk$_37foldl, i64* %eptr10109                                           ; *eptr10109 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10110                                               ; *eptr10110 = %cont7183
-  store i64 %ME8$f, i64* %eptr10111                                                  ; *eptr10111 = %ME8$f
-  store i64 %Yrh$_37foldr1, i64* %eptr10112                                          ; *eptr10112 = %Yrh$_37foldr1
-  store i64 %KqY$_37map1, i64* %eptr10113                                            ; *eptr10113 = %KqY$_37map1
-  store i64 %Kr2$acc, i64* %eptr10114                                                ; *eptr10114 = %Kr2$acc
-  store i64 %Ini$_37foldr, i64* %eptr10115                                           ; *eptr10115 = %Ini$_37foldr
-  %eptr10108 = getelementptr inbounds i64, i64* %cloptr10107, i64 0                  ; &cloptr10107[0]
-  %f10116 = ptrtoint void(i64,i64,i64)* @lam8233 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10116, i64* %eptr10108                                                 ; store fptr
-  %arg7867 = ptrtoint i64* %cloptr10107 to i64                                       ; closure cast; i64* -> i64
-  %arg7866 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10117 = inttoptr i64 %arg7867 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10117)                                        ; assert function application
-  %i0ptr10118 = getelementptr inbounds i64, i64* %cloptr10117, i64 0                 ; &cloptr10117[0]
-  %f10120 = load i64, i64* %i0ptr10118, align 8                                      ; load; *i0ptr10118
-  %fptr10119 = inttoptr i64 %f10120 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10119(i64 %arg7867, i64 %arg7866, i64 %retprim7202) ; tail call
+define void @lam8222(i64 %env8223, i64 %_957185, i64 %a6987) {
+  %envptr10138 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10139 = getelementptr inbounds i64, i64* %envptr10138, i64 7                ; &envptr10138[7]
+  %tct$_37foldr = load i64, i64* %envptr10139, align 8                               ; load; *envptr10139
+  %envptr10140 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10141 = getelementptr inbounds i64, i64* %envptr10140, i64 6                ; &envptr10140[6]
+  %WIf$acc = load i64, i64* %envptr10141, align 8                                    ; load; *envptr10141
+  %envptr10142 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10143 = getelementptr inbounds i64, i64* %envptr10142, i64 5                ; &envptr10142[5]
+  %XiW$_37map1 = load i64, i64* %envptr10143, align 8                                ; load; *envptr10143
+  %envptr10144 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10145 = getelementptr inbounds i64, i64* %envptr10144, i64 4                ; &envptr10144[4]
+  %jjn$lsts = load i64, i64* %envptr10145, align 8                                   ; load; *envptr10145
+  %envptr10146 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10147 = getelementptr inbounds i64, i64* %envptr10146, i64 3                ; &envptr10146[3]
+  %cont7181 = load i64, i64* %envptr10147, align 8                                   ; load; *envptr10147
+  %envptr10148 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10149 = getelementptr inbounds i64, i64* %envptr10148, i64 2                ; &envptr10148[2]
+  %pcY$f = load i64, i64* %envptr10149, align 8                                      ; load; *envptr10149
+  %envptr10150 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10151 = getelementptr inbounds i64, i64* %envptr10150, i64 1                ; &envptr10150[1]
+  %jH2$_37foldl = load i64, i64* %envptr10151, align 8                               ; load; *envptr10151
+  %cmp10152 = icmp eq i64 %a6987, 15                                                 ; false?
+  br i1 %cmp10152, label %else10154, label %then10153                                ; if
+
+then10153:
+  %arg7865 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10155 = inttoptr i64 %cont7181 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10155)                                        ; assert function application
+  %i0ptr10156 = getelementptr inbounds i64, i64* %cloptr10155, i64 0                 ; &cloptr10155[0]
+  %f10158 = load i64, i64* %i0ptr10156, align 8                                      ; load; *i0ptr10156
+  %fptr10157 = inttoptr i64 %f10158 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10157(i64 %cont7181, i64 %arg7865, i64 %WIf$acc)    ; tail call
+  ret void
+
+else10154:
+  %cloptr10159 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10161 = getelementptr inbounds i64, i64* %cloptr10159, i64 1                  ; &eptr10161[1]
+  %eptr10162 = getelementptr inbounds i64, i64* %cloptr10159, i64 2                  ; &eptr10162[2]
+  %eptr10163 = getelementptr inbounds i64, i64* %cloptr10159, i64 3                  ; &eptr10163[3]
+  %eptr10164 = getelementptr inbounds i64, i64* %cloptr10159, i64 4                  ; &eptr10164[4]
+  %eptr10165 = getelementptr inbounds i64, i64* %cloptr10159, i64 5                  ; &eptr10165[5]
+  %eptr10166 = getelementptr inbounds i64, i64* %cloptr10159, i64 6                  ; &eptr10166[6]
+  %eptr10167 = getelementptr inbounds i64, i64* %cloptr10159, i64 7                  ; &eptr10167[7]
+  store i64 %jH2$_37foldl, i64* %eptr10161                                           ; *eptr10161 = %jH2$_37foldl
+  store i64 %pcY$f, i64* %eptr10162                                                  ; *eptr10162 = %pcY$f
+  store i64 %cont7181, i64* %eptr10163                                               ; *eptr10163 = %cont7181
+  store i64 %jjn$lsts, i64* %eptr10164                                               ; *eptr10164 = %jjn$lsts
+  store i64 %XiW$_37map1, i64* %eptr10165                                            ; *eptr10165 = %XiW$_37map1
+  store i64 %WIf$acc, i64* %eptr10166                                                ; *eptr10166 = %WIf$acc
+  store i64 %tct$_37foldr, i64* %eptr10167                                           ; *eptr10167 = %tct$_37foldr
+  %eptr10160 = getelementptr inbounds i64, i64* %cloptr10159, i64 0                  ; &cloptr10159[0]
+  %f10168 = ptrtoint void(i64,i64,i64)* @lam8220 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10168, i64* %eptr10160                                                 ; store fptr
+  %arg7869 = ptrtoint i64* %cloptr10159 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10169 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10170 = getelementptr inbounds i64, i64* %cloptr10169, i64 0                  ; &cloptr10169[0]
+  %f10171 = ptrtoint void(i64,i64,i64)* @lam8205 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10171, i64* %eptr10170                                                 ; store fptr
+  %arg7868 = ptrtoint i64* %cloptr10169 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10172 = inttoptr i64 %XiW$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10172)                                        ; assert function application
+  %i0ptr10173 = getelementptr inbounds i64, i64* %cloptr10172, i64 0                 ; &cloptr10172[0]
+  %f10175 = load i64, i64* %i0ptr10173, align 8                                      ; load; *i0ptr10173
+  %fptr10174 = inttoptr i64 %f10175 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10174(i64 %XiW$_37map1, i64 %arg7869, i64 %arg7868, i64 %jjn$lsts); tail call
   ret void
 }
 
 
-define void @lam8233(i64 %env8234, i64 %_957186, i64 %HAy$lsts) {
-  %envptr10121 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10122 = getelementptr inbounds i64, i64* %envptr10121, i64 7                ; &envptr10121[7]
-  %Ini$_37foldr = load i64, i64* %envptr10122, align 8                               ; load; *envptr10122
-  %envptr10123 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10124 = getelementptr inbounds i64, i64* %envptr10123, i64 6                ; &envptr10123[6]
-  %Kr2$acc = load i64, i64* %envptr10124, align 8                                    ; load; *envptr10124
-  %envptr10125 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10126 = getelementptr inbounds i64, i64* %envptr10125, i64 5                ; &envptr10125[5]
-  %KqY$_37map1 = load i64, i64* %envptr10126, align 8                                ; load; *envptr10126
-  %envptr10127 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10128 = getelementptr inbounds i64, i64* %envptr10127, i64 4                ; &envptr10127[4]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10128, align 8                              ; load; *envptr10128
-  %envptr10129 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10130 = getelementptr inbounds i64, i64* %envptr10129, i64 3                ; &envptr10129[3]
-  %ME8$f = load i64, i64* %envptr10130, align 8                                      ; load; *envptr10130
-  %envptr10131 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10132 = getelementptr inbounds i64, i64* %envptr10131, i64 2                ; &envptr10131[2]
-  %cont7183 = load i64, i64* %envptr10132, align 8                                   ; load; *envptr10132
-  %envptr10133 = inttoptr i64 %env8234 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10134 = getelementptr inbounds i64, i64* %envptr10133, i64 1                ; &envptr10133[1]
-  %xPk$_37foldl = load i64, i64* %envptr10134, align 8                               ; load; *envptr10134
-  %cloptr10135 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10137 = getelementptr inbounds i64, i64* %cloptr10135, i64 1                  ; &eptr10137[1]
-  %eptr10138 = getelementptr inbounds i64, i64* %cloptr10135, i64 2                  ; &eptr10138[2]
-  %eptr10139 = getelementptr inbounds i64, i64* %cloptr10135, i64 3                  ; &eptr10139[3]
-  %eptr10140 = getelementptr inbounds i64, i64* %cloptr10135, i64 4                  ; &eptr10140[4]
-  %eptr10141 = getelementptr inbounds i64, i64* %cloptr10135, i64 5                  ; &eptr10141[5]
-  %eptr10142 = getelementptr inbounds i64, i64* %cloptr10135, i64 6                  ; &eptr10142[6]
-  %eptr10143 = getelementptr inbounds i64, i64* %cloptr10135, i64 7                  ; &eptr10143[7]
-  store i64 %xPk$_37foldl, i64* %eptr10137                                           ; *eptr10137 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10138                                               ; *eptr10138 = %cont7183
-  store i64 %ME8$f, i64* %eptr10139                                                  ; *eptr10139 = %ME8$f
-  store i64 %HAy$lsts, i64* %eptr10140                                               ; *eptr10140 = %HAy$lsts
-  store i64 %KqY$_37map1, i64* %eptr10141                                            ; *eptr10141 = %KqY$_37map1
-  store i64 %Kr2$acc, i64* %eptr10142                                                ; *eptr10142 = %Kr2$acc
-  store i64 %Ini$_37foldr, i64* %eptr10143                                           ; *eptr10143 = %Ini$_37foldr
-  %eptr10136 = getelementptr inbounds i64, i64* %cloptr10135, i64 0                  ; &cloptr10135[0]
-  %f10144 = ptrtoint void(i64,i64,i64)* @lam8231 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10144, i64* %eptr10136                                                 ; store fptr
-  %arg7871 = ptrtoint i64* %cloptr10135 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10145 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10146 = getelementptr inbounds i64, i64* %cloptr10145, i64 0                  ; &cloptr10145[0]
-  %f10147 = ptrtoint void(i64,i64,i64,i64)* @lam8210 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10147, i64* %eptr10146                                                 ; store fptr
-  %arg7870 = ptrtoint i64* %cloptr10145 to i64                                       ; closure cast; i64* -> i64
-  %arg7869 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr10148 = inttoptr i64 %Yrh$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10148)                                        ; assert function application
-  %i0ptr10149 = getelementptr inbounds i64, i64* %cloptr10148, i64 0                 ; &cloptr10148[0]
-  %f10151 = load i64, i64* %i0ptr10149, align 8                                      ; load; *i0ptr10149
-  %fptr10150 = inttoptr i64 %f10151 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10150(i64 %Yrh$_37foldr1, i64 %arg7871, i64 %arg7870, i64 %arg7869, i64 %HAy$lsts); tail call
+define void @lam8220(i64 %env8221, i64 %_957186, i64 %Aqs$lsts_43) {
+  %envptr10176 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10177 = getelementptr inbounds i64, i64* %envptr10176, i64 7                ; &envptr10176[7]
+  %tct$_37foldr = load i64, i64* %envptr10177, align 8                               ; load; *envptr10177
+  %envptr10178 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10179 = getelementptr inbounds i64, i64* %envptr10178, i64 6                ; &envptr10178[6]
+  %WIf$acc = load i64, i64* %envptr10179, align 8                                    ; load; *envptr10179
+  %envptr10180 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10181 = getelementptr inbounds i64, i64* %envptr10180, i64 5                ; &envptr10180[5]
+  %XiW$_37map1 = load i64, i64* %envptr10181, align 8                                ; load; *envptr10181
+  %envptr10182 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10183 = getelementptr inbounds i64, i64* %envptr10182, i64 4                ; &envptr10182[4]
+  %jjn$lsts = load i64, i64* %envptr10183, align 8                                   ; load; *envptr10183
+  %envptr10184 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10185 = getelementptr inbounds i64, i64* %envptr10184, i64 3                ; &envptr10184[3]
+  %cont7181 = load i64, i64* %envptr10185, align 8                                   ; load; *envptr10185
+  %envptr10186 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10187 = getelementptr inbounds i64, i64* %envptr10186, i64 2                ; &envptr10186[2]
+  %pcY$f = load i64, i64* %envptr10187, align 8                                      ; load; *envptr10187
+  %envptr10188 = inttoptr i64 %env8221 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10189 = getelementptr inbounds i64, i64* %envptr10188, i64 1                ; &envptr10188[1]
+  %jH2$_37foldl = load i64, i64* %envptr10189, align 8                               ; load; *envptr10189
+  %cloptr10190 = call i64* @alloc(i64 56)                                            ; malloc
+  %eptr10192 = getelementptr inbounds i64, i64* %cloptr10190, i64 1                  ; &eptr10192[1]
+  %eptr10193 = getelementptr inbounds i64, i64* %cloptr10190, i64 2                  ; &eptr10193[2]
+  %eptr10194 = getelementptr inbounds i64, i64* %cloptr10190, i64 3                  ; &eptr10194[3]
+  %eptr10195 = getelementptr inbounds i64, i64* %cloptr10190, i64 4                  ; &eptr10195[4]
+  %eptr10196 = getelementptr inbounds i64, i64* %cloptr10190, i64 5                  ; &eptr10196[5]
+  %eptr10197 = getelementptr inbounds i64, i64* %cloptr10190, i64 6                  ; &eptr10197[6]
+  store i64 %jH2$_37foldl, i64* %eptr10192                                           ; *eptr10192 = %jH2$_37foldl
+  store i64 %Aqs$lsts_43, i64* %eptr10193                                            ; *eptr10193 = %Aqs$lsts_43
+  store i64 %pcY$f, i64* %eptr10194                                                  ; *eptr10194 = %pcY$f
+  store i64 %cont7181, i64* %eptr10195                                               ; *eptr10195 = %cont7181
+  store i64 %WIf$acc, i64* %eptr10196                                                ; *eptr10196 = %WIf$acc
+  store i64 %tct$_37foldr, i64* %eptr10197                                           ; *eptr10197 = %tct$_37foldr
+  %eptr10191 = getelementptr inbounds i64, i64* %cloptr10190, i64 0                  ; &cloptr10190[0]
+  %f10198 = ptrtoint void(i64,i64,i64)* @lam8218 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10198, i64* %eptr10191                                                 ; store fptr
+  %arg7873 = ptrtoint i64* %cloptr10190 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10199 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10200 = getelementptr inbounds i64, i64* %cloptr10199, i64 0                  ; &cloptr10199[0]
+  %f10201 = ptrtoint void(i64,i64,i64)* @lam8208 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10201, i64* %eptr10200                                                 ; store fptr
+  %arg7872 = ptrtoint i64* %cloptr10199 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10202 = inttoptr i64 %XiW$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10202)                                        ; assert function application
+  %i0ptr10203 = getelementptr inbounds i64, i64* %cloptr10202, i64 0                 ; &cloptr10202[0]
+  %f10205 = load i64, i64* %i0ptr10203, align 8                                      ; load; *i0ptr10203
+  %fptr10204 = inttoptr i64 %f10205 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10204(i64 %XiW$_37map1, i64 %arg7873, i64 %arg7872, i64 %jjn$lsts); tail call
   ret void
 }
 
 
-define void @lam8231(i64 %env8232, i64 %_957187, i64 %a6987) {
-  %envptr10152 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10153 = getelementptr inbounds i64, i64* %envptr10152, i64 7                ; &envptr10152[7]
-  %Ini$_37foldr = load i64, i64* %envptr10153, align 8                               ; load; *envptr10153
-  %envptr10154 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10155 = getelementptr inbounds i64, i64* %envptr10154, i64 6                ; &envptr10154[6]
-  %Kr2$acc = load i64, i64* %envptr10155, align 8                                    ; load; *envptr10155
-  %envptr10156 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10157 = getelementptr inbounds i64, i64* %envptr10156, i64 5                ; &envptr10156[5]
-  %KqY$_37map1 = load i64, i64* %envptr10157, align 8                                ; load; *envptr10157
-  %envptr10158 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10159 = getelementptr inbounds i64, i64* %envptr10158, i64 4                ; &envptr10158[4]
-  %HAy$lsts = load i64, i64* %envptr10159, align 8                                   ; load; *envptr10159
-  %envptr10160 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10161 = getelementptr inbounds i64, i64* %envptr10160, i64 3                ; &envptr10160[3]
-  %ME8$f = load i64, i64* %envptr10161, align 8                                      ; load; *envptr10161
-  %envptr10162 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10163 = getelementptr inbounds i64, i64* %envptr10162, i64 2                ; &envptr10162[2]
-  %cont7183 = load i64, i64* %envptr10163, align 8                                   ; load; *envptr10163
-  %envptr10164 = inttoptr i64 %env8232 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10165 = getelementptr inbounds i64, i64* %envptr10164, i64 1                ; &envptr10164[1]
-  %xPk$_37foldl = load i64, i64* %envptr10165, align 8                               ; load; *envptr10165
-  %cmp10166 = icmp eq i64 %a6987, 15                                                 ; false?
-  br i1 %cmp10166, label %else10168, label %then10167                                ; if
-
-then10167:
-  %arg7874 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10169 = inttoptr i64 %cont7183 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10169)                                        ; assert function application
-  %i0ptr10170 = getelementptr inbounds i64, i64* %cloptr10169, i64 0                 ; &cloptr10169[0]
-  %f10172 = load i64, i64* %i0ptr10170, align 8                                      ; load; *i0ptr10170
-  %fptr10171 = inttoptr i64 %f10172 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10171(i64 %cont7183, i64 %arg7874, i64 %Kr2$acc)    ; tail call
-  ret void
-
-else10168:
-  %cloptr10173 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10175 = getelementptr inbounds i64, i64* %cloptr10173, i64 1                  ; &eptr10175[1]
-  %eptr10176 = getelementptr inbounds i64, i64* %cloptr10173, i64 2                  ; &eptr10176[2]
-  %eptr10177 = getelementptr inbounds i64, i64* %cloptr10173, i64 3                  ; &eptr10177[3]
-  %eptr10178 = getelementptr inbounds i64, i64* %cloptr10173, i64 4                  ; &eptr10178[4]
-  %eptr10179 = getelementptr inbounds i64, i64* %cloptr10173, i64 5                  ; &eptr10179[5]
-  %eptr10180 = getelementptr inbounds i64, i64* %cloptr10173, i64 6                  ; &eptr10180[6]
-  %eptr10181 = getelementptr inbounds i64, i64* %cloptr10173, i64 7                  ; &eptr10181[7]
-  store i64 %xPk$_37foldl, i64* %eptr10175                                           ; *eptr10175 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10176                                               ; *eptr10176 = %cont7183
-  store i64 %ME8$f, i64* %eptr10177                                                  ; *eptr10177 = %ME8$f
-  store i64 %HAy$lsts, i64* %eptr10178                                               ; *eptr10178 = %HAy$lsts
-  store i64 %KqY$_37map1, i64* %eptr10179                                            ; *eptr10179 = %KqY$_37map1
-  store i64 %Kr2$acc, i64* %eptr10180                                                ; *eptr10180 = %Kr2$acc
-  store i64 %Ini$_37foldr, i64* %eptr10181                                           ; *eptr10181 = %Ini$_37foldr
-  %eptr10174 = getelementptr inbounds i64, i64* %cloptr10173, i64 0                  ; &cloptr10173[0]
-  %f10182 = ptrtoint void(i64,i64,i64)* @lam8229 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10182, i64* %eptr10174                                                 ; store fptr
-  %arg7878 = ptrtoint i64* %cloptr10173 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10183 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10184 = getelementptr inbounds i64, i64* %cloptr10183, i64 0                  ; &cloptr10183[0]
-  %f10185 = ptrtoint void(i64,i64,i64)* @lam8214 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10185, i64* %eptr10184                                                 ; store fptr
-  %arg7877 = ptrtoint i64* %cloptr10183 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10186 = inttoptr i64 %KqY$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10186)                                        ; assert function application
-  %i0ptr10187 = getelementptr inbounds i64, i64* %cloptr10186, i64 0                 ; &cloptr10186[0]
-  %f10189 = load i64, i64* %i0ptr10187, align 8                                      ; load; *i0ptr10187
-  %fptr10188 = inttoptr i64 %f10189 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10188(i64 %KqY$_37map1, i64 %arg7878, i64 %arg7877, i64 %HAy$lsts); tail call
+define void @lam8218(i64 %env8219, i64 %_957187, i64 %OF6$vs) {
+  %envptr10206 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10207 = getelementptr inbounds i64, i64* %envptr10206, i64 6                ; &envptr10206[6]
+  %tct$_37foldr = load i64, i64* %envptr10207, align 8                               ; load; *envptr10207
+  %envptr10208 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10209 = getelementptr inbounds i64, i64* %envptr10208, i64 5                ; &envptr10208[5]
+  %WIf$acc = load i64, i64* %envptr10209, align 8                                    ; load; *envptr10209
+  %envptr10210 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10211 = getelementptr inbounds i64, i64* %envptr10210, i64 4                ; &envptr10210[4]
+  %cont7181 = load i64, i64* %envptr10211, align 8                                   ; load; *envptr10211
+  %envptr10212 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10213 = getelementptr inbounds i64, i64* %envptr10212, i64 3                ; &envptr10212[3]
+  %pcY$f = load i64, i64* %envptr10213, align 8                                      ; load; *envptr10213
+  %envptr10214 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10215 = getelementptr inbounds i64, i64* %envptr10214, i64 2                ; &envptr10214[2]
+  %Aqs$lsts_43 = load i64, i64* %envptr10215, align 8                                ; load; *envptr10215
+  %envptr10216 = inttoptr i64 %env8219 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10217 = getelementptr inbounds i64, i64* %envptr10216, i64 1                ; &envptr10216[1]
+  %jH2$_37foldl = load i64, i64* %envptr10217, align 8                               ; load; *envptr10217
+  %arg7875 = add i64 0, 0                                                            ; quoted ()
+  %a6988 = call i64 @prim_cons(i64 %WIf$acc, i64 %arg7875)                           ; call prim_cons
+  %cloptr10218 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10220 = getelementptr inbounds i64, i64* %cloptr10218, i64 1                  ; &eptr10220[1]
+  %eptr10221 = getelementptr inbounds i64, i64* %cloptr10218, i64 2                  ; &eptr10221[2]
+  %eptr10222 = getelementptr inbounds i64, i64* %cloptr10218, i64 3                  ; &eptr10222[3]
+  %eptr10223 = getelementptr inbounds i64, i64* %cloptr10218, i64 4                  ; &eptr10223[4]
+  store i64 %jH2$_37foldl, i64* %eptr10220                                           ; *eptr10220 = %jH2$_37foldl
+  store i64 %Aqs$lsts_43, i64* %eptr10221                                            ; *eptr10221 = %Aqs$lsts_43
+  store i64 %pcY$f, i64* %eptr10222                                                  ; *eptr10222 = %pcY$f
+  store i64 %cont7181, i64* %eptr10223                                               ; *eptr10223 = %cont7181
+  %eptr10219 = getelementptr inbounds i64, i64* %cloptr10218, i64 0                  ; &cloptr10218[0]
+  %f10224 = ptrtoint void(i64,i64,i64)* @lam8215 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10224, i64* %eptr10219                                                 ; store fptr
+  %arg7880 = ptrtoint i64* %cloptr10218 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10225 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10226 = getelementptr inbounds i64, i64* %cloptr10225, i64 0                  ; &cloptr10225[0]
+  %f10227 = ptrtoint void(i64,i64,i64,i64)* @lam8211 to i64                          ; fptr cast; i64(...)* -> i64
+  store i64 %f10227, i64* %eptr10226                                                 ; store fptr
+  %arg7879 = ptrtoint i64* %cloptr10225 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10228 = inttoptr i64 %tct$_37foldr to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10228)                                        ; assert function application
+  %i0ptr10229 = getelementptr inbounds i64, i64* %cloptr10228, i64 0                 ; &cloptr10228[0]
+  %f10231 = load i64, i64* %i0ptr10229, align 8                                      ; load; *i0ptr10229
+  %fptr10230 = inttoptr i64 %f10231 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10230(i64 %tct$_37foldr, i64 %arg7880, i64 %arg7879, i64 %a6988, i64 %OF6$vs); tail call
   ret void
 }
 
 
-define void @lam8229(i64 %env8230, i64 %_957188, i64 %KiH$lsts_43) {
-  %envptr10190 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10191 = getelementptr inbounds i64, i64* %envptr10190, i64 7                ; &envptr10190[7]
-  %Ini$_37foldr = load i64, i64* %envptr10191, align 8                               ; load; *envptr10191
-  %envptr10192 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10193 = getelementptr inbounds i64, i64* %envptr10192, i64 6                ; &envptr10192[6]
-  %Kr2$acc = load i64, i64* %envptr10193, align 8                                    ; load; *envptr10193
-  %envptr10194 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10195 = getelementptr inbounds i64, i64* %envptr10194, i64 5                ; &envptr10194[5]
-  %KqY$_37map1 = load i64, i64* %envptr10195, align 8                                ; load; *envptr10195
-  %envptr10196 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10197 = getelementptr inbounds i64, i64* %envptr10196, i64 4                ; &envptr10196[4]
-  %HAy$lsts = load i64, i64* %envptr10197, align 8                                   ; load; *envptr10197
-  %envptr10198 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10199 = getelementptr inbounds i64, i64* %envptr10198, i64 3                ; &envptr10198[3]
-  %ME8$f = load i64, i64* %envptr10199, align 8                                      ; load; *envptr10199
-  %envptr10200 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10201 = getelementptr inbounds i64, i64* %envptr10200, i64 2                ; &envptr10200[2]
-  %cont7183 = load i64, i64* %envptr10201, align 8                                   ; load; *envptr10201
-  %envptr10202 = inttoptr i64 %env8230 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10203 = getelementptr inbounds i64, i64* %envptr10202, i64 1                ; &envptr10202[1]
-  %xPk$_37foldl = load i64, i64* %envptr10203, align 8                               ; load; *envptr10203
-  %cloptr10204 = call i64* @alloc(i64 56)                                            ; malloc
-  %eptr10206 = getelementptr inbounds i64, i64* %cloptr10204, i64 1                  ; &eptr10206[1]
-  %eptr10207 = getelementptr inbounds i64, i64* %cloptr10204, i64 2                  ; &eptr10207[2]
-  %eptr10208 = getelementptr inbounds i64, i64* %cloptr10204, i64 3                  ; &eptr10208[3]
-  %eptr10209 = getelementptr inbounds i64, i64* %cloptr10204, i64 4                  ; &eptr10209[4]
-  %eptr10210 = getelementptr inbounds i64, i64* %cloptr10204, i64 5                  ; &eptr10210[5]
-  %eptr10211 = getelementptr inbounds i64, i64* %cloptr10204, i64 6                  ; &eptr10211[6]
-  store i64 %xPk$_37foldl, i64* %eptr10206                                           ; *eptr10206 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10207                                               ; *eptr10207 = %cont7183
-  store i64 %KiH$lsts_43, i64* %eptr10208                                            ; *eptr10208 = %KiH$lsts_43
-  store i64 %ME8$f, i64* %eptr10209                                                  ; *eptr10209 = %ME8$f
-  store i64 %Kr2$acc, i64* %eptr10210                                                ; *eptr10210 = %Kr2$acc
-  store i64 %Ini$_37foldr, i64* %eptr10211                                           ; *eptr10211 = %Ini$_37foldr
-  %eptr10205 = getelementptr inbounds i64, i64* %cloptr10204, i64 0                  ; &cloptr10204[0]
-  %f10212 = ptrtoint void(i64,i64,i64)* @lam8227 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10212, i64* %eptr10205                                                 ; store fptr
-  %arg7882 = ptrtoint i64* %cloptr10204 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10213 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10214 = getelementptr inbounds i64, i64* %cloptr10213, i64 0                  ; &cloptr10213[0]
-  %f10215 = ptrtoint void(i64,i64,i64)* @lam8217 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10215, i64* %eptr10214                                                 ; store fptr
-  %arg7881 = ptrtoint i64* %cloptr10213 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10216 = inttoptr i64 %KqY$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10216)                                        ; assert function application
-  %i0ptr10217 = getelementptr inbounds i64, i64* %cloptr10216, i64 0                 ; &cloptr10216[0]
-  %f10219 = load i64, i64* %i0ptr10217, align 8                                      ; load; *i0ptr10217
-  %fptr10218 = inttoptr i64 %f10219 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10218(i64 %KqY$_37map1, i64 %arg7882, i64 %arg7881, i64 %HAy$lsts); tail call
+define void @lam8215(i64 %env8216, i64 %_957190, i64 %a6989) {
+  %envptr10232 = inttoptr i64 %env8216 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10233 = getelementptr inbounds i64, i64* %envptr10232, i64 4                ; &envptr10232[4]
+  %cont7181 = load i64, i64* %envptr10233, align 8                                   ; load; *envptr10233
+  %envptr10234 = inttoptr i64 %env8216 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10235 = getelementptr inbounds i64, i64* %envptr10234, i64 3                ; &envptr10234[3]
+  %pcY$f = load i64, i64* %envptr10235, align 8                                      ; load; *envptr10235
+  %envptr10236 = inttoptr i64 %env8216 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10237 = getelementptr inbounds i64, i64* %envptr10236, i64 2                ; &envptr10236[2]
+  %Aqs$lsts_43 = load i64, i64* %envptr10237, align 8                                ; load; *envptr10237
+  %envptr10238 = inttoptr i64 %env8216 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10239 = getelementptr inbounds i64, i64* %envptr10238, i64 1                ; &envptr10238[1]
+  %jH2$_37foldl = load i64, i64* %envptr10239, align 8                               ; load; *envptr10239
+  %cloptr10240 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10242 = getelementptr inbounds i64, i64* %cloptr10240, i64 1                  ; &eptr10242[1]
+  %eptr10243 = getelementptr inbounds i64, i64* %cloptr10240, i64 2                  ; &eptr10243[2]
+  %eptr10244 = getelementptr inbounds i64, i64* %cloptr10240, i64 3                  ; &eptr10244[3]
+  %eptr10245 = getelementptr inbounds i64, i64* %cloptr10240, i64 4                  ; &eptr10245[4]
+  store i64 %jH2$_37foldl, i64* %eptr10242                                           ; *eptr10242 = %jH2$_37foldl
+  store i64 %Aqs$lsts_43, i64* %eptr10243                                            ; *eptr10243 = %Aqs$lsts_43
+  store i64 %pcY$f, i64* %eptr10244                                                  ; *eptr10244 = %pcY$f
+  store i64 %cont7181, i64* %eptr10245                                               ; *eptr10245 = %cont7181
+  %eptr10241 = getelementptr inbounds i64, i64* %cloptr10240, i64 0                  ; &cloptr10240[0]
+  %f10246 = ptrtoint void(i64,i64,i64)* @lam8213 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10246, i64* %eptr10241                                                 ; store fptr
+  %arg7883 = ptrtoint i64* %cloptr10240 to i64                                       ; closure cast; i64* -> i64
+  %cps_45lst7191 = call i64 @prim_cons(i64 %arg7883, i64 %a6989)                     ; call prim_cons
+  %cloptr10247 = inttoptr i64 %pcY$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10247)                                        ; assert function application
+  %i0ptr10248 = getelementptr inbounds i64, i64* %cloptr10247, i64 0                 ; &cloptr10247[0]
+  %f10250 = load i64, i64* %i0ptr10248, align 8                                      ; load; *i0ptr10248
+  %fptr10249 = inttoptr i64 %f10250 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10249(i64 %pcY$f, i64 %cps_45lst7191)               ; tail call
   ret void
 }
 
 
-define void @lam8227(i64 %env8228, i64 %_957189, i64 %VJC$vs) {
-  %envptr10220 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10221 = getelementptr inbounds i64, i64* %envptr10220, i64 6                ; &envptr10220[6]
-  %Ini$_37foldr = load i64, i64* %envptr10221, align 8                               ; load; *envptr10221
-  %envptr10222 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10223 = getelementptr inbounds i64, i64* %envptr10222, i64 5                ; &envptr10222[5]
-  %Kr2$acc = load i64, i64* %envptr10223, align 8                                    ; load; *envptr10223
-  %envptr10224 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10225 = getelementptr inbounds i64, i64* %envptr10224, i64 4                ; &envptr10224[4]
-  %ME8$f = load i64, i64* %envptr10225, align 8                                      ; load; *envptr10225
-  %envptr10226 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10227 = getelementptr inbounds i64, i64* %envptr10226, i64 3                ; &envptr10226[3]
-  %KiH$lsts_43 = load i64, i64* %envptr10227, align 8                                ; load; *envptr10227
-  %envptr10228 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10229 = getelementptr inbounds i64, i64* %envptr10228, i64 2                ; &envptr10228[2]
-  %cont7183 = load i64, i64* %envptr10229, align 8                                   ; load; *envptr10229
-  %envptr10230 = inttoptr i64 %env8228 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10231 = getelementptr inbounds i64, i64* %envptr10230, i64 1                ; &envptr10230[1]
-  %xPk$_37foldl = load i64, i64* %envptr10231, align 8                               ; load; *envptr10231
-  %arg7884 = add i64 0, 0                                                            ; quoted ()
-  %a6988 = call i64 @prim_cons(i64 %Kr2$acc, i64 %arg7884)                           ; call prim_cons
-  %cloptr10232 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10234 = getelementptr inbounds i64, i64* %cloptr10232, i64 1                  ; &eptr10234[1]
-  %eptr10235 = getelementptr inbounds i64, i64* %cloptr10232, i64 2                  ; &eptr10235[2]
-  %eptr10236 = getelementptr inbounds i64, i64* %cloptr10232, i64 3                  ; &eptr10236[3]
-  %eptr10237 = getelementptr inbounds i64, i64* %cloptr10232, i64 4                  ; &eptr10237[4]
-  store i64 %xPk$_37foldl, i64* %eptr10234                                           ; *eptr10234 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10235                                               ; *eptr10235 = %cont7183
-  store i64 %KiH$lsts_43, i64* %eptr10236                                            ; *eptr10236 = %KiH$lsts_43
-  store i64 %ME8$f, i64* %eptr10237                                                  ; *eptr10237 = %ME8$f
-  %eptr10233 = getelementptr inbounds i64, i64* %cloptr10232, i64 0                  ; &cloptr10232[0]
-  %f10238 = ptrtoint void(i64,i64,i64)* @lam8224 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10238, i64* %eptr10233                                                 ; store fptr
-  %arg7889 = ptrtoint i64* %cloptr10232 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10239 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10240 = getelementptr inbounds i64, i64* %cloptr10239, i64 0                  ; &cloptr10239[0]
-  %f10241 = ptrtoint void(i64,i64,i64,i64)* @lam8220 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10241, i64* %eptr10240                                                 ; store fptr
-  %arg7888 = ptrtoint i64* %cloptr10239 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10242 = inttoptr i64 %Ini$_37foldr to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10242)                                        ; assert function application
-  %i0ptr10243 = getelementptr inbounds i64, i64* %cloptr10242, i64 0                 ; &cloptr10242[0]
-  %f10245 = load i64, i64* %i0ptr10243, align 8                                      ; load; *i0ptr10243
-  %fptr10244 = inttoptr i64 %f10245 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10244(i64 %Ini$_37foldr, i64 %arg7889, i64 %arg7888, i64 %a6988, i64 %VJC$vs); tail call
+define void @lam8213(i64 %env8214, i64 %_957188, i64 %NRU$acc_43) {
+  %envptr10251 = inttoptr i64 %env8214 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10252 = getelementptr inbounds i64, i64* %envptr10251, i64 4                ; &envptr10251[4]
+  %cont7181 = load i64, i64* %envptr10252, align 8                                   ; load; *envptr10252
+  %envptr10253 = inttoptr i64 %env8214 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10254 = getelementptr inbounds i64, i64* %envptr10253, i64 3                ; &envptr10253[3]
+  %pcY$f = load i64, i64* %envptr10254, align 8                                      ; load; *envptr10254
+  %envptr10255 = inttoptr i64 %env8214 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10256 = getelementptr inbounds i64, i64* %envptr10255, i64 2                ; &envptr10255[2]
+  %Aqs$lsts_43 = load i64, i64* %envptr10256, align 8                                ; load; *envptr10256
+  %envptr10257 = inttoptr i64 %env8214 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10258 = getelementptr inbounds i64, i64* %envptr10257, i64 1                ; &envptr10257[1]
+  %jH2$_37foldl = load i64, i64* %envptr10258, align 8                               ; load; *envptr10258
+  %a6990 = call i64 @prim_cons(i64 %NRU$acc_43, i64 %Aqs$lsts_43)                    ; call prim_cons
+  %a6991 = call i64 @prim_cons(i64 %pcY$f, i64 %a6990)                               ; call prim_cons
+  %cps_45lst7189 = call i64 @prim_cons(i64 %cont7181, i64 %a6991)                    ; call prim_cons
+  %cloptr10259 = inttoptr i64 %jH2$_37foldl to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10259)                                        ; assert function application
+  %i0ptr10260 = getelementptr inbounds i64, i64* %cloptr10259, i64 0                 ; &cloptr10259[0]
+  %f10262 = load i64, i64* %i0ptr10260, align 8                                      ; load; *i0ptr10260
+  %fptr10261 = inttoptr i64 %f10262 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10261(i64 %jH2$_37foldl, i64 %cps_45lst7189)        ; tail call
   ret void
 }
 
 
-define void @lam8224(i64 %env8225, i64 %_957192, i64 %a6989) {
-  %envptr10246 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10247 = getelementptr inbounds i64, i64* %envptr10246, i64 4                ; &envptr10246[4]
-  %ME8$f = load i64, i64* %envptr10247, align 8                                      ; load; *envptr10247
-  %envptr10248 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10249 = getelementptr inbounds i64, i64* %envptr10248, i64 3                ; &envptr10248[3]
-  %KiH$lsts_43 = load i64, i64* %envptr10249, align 8                                ; load; *envptr10249
-  %envptr10250 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10251 = getelementptr inbounds i64, i64* %envptr10250, i64 2                ; &envptr10250[2]
-  %cont7183 = load i64, i64* %envptr10251, align 8                                   ; load; *envptr10251
-  %envptr10252 = inttoptr i64 %env8225 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10253 = getelementptr inbounds i64, i64* %envptr10252, i64 1                ; &envptr10252[1]
-  %xPk$_37foldl = load i64, i64* %envptr10253, align 8                               ; load; *envptr10253
-  %cloptr10254 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10256 = getelementptr inbounds i64, i64* %cloptr10254, i64 1                  ; &eptr10256[1]
-  %eptr10257 = getelementptr inbounds i64, i64* %cloptr10254, i64 2                  ; &eptr10257[2]
-  %eptr10258 = getelementptr inbounds i64, i64* %cloptr10254, i64 3                  ; &eptr10258[3]
-  %eptr10259 = getelementptr inbounds i64, i64* %cloptr10254, i64 4                  ; &eptr10259[4]
-  store i64 %xPk$_37foldl, i64* %eptr10256                                           ; *eptr10256 = %xPk$_37foldl
-  store i64 %cont7183, i64* %eptr10257                                               ; *eptr10257 = %cont7183
-  store i64 %KiH$lsts_43, i64* %eptr10258                                            ; *eptr10258 = %KiH$lsts_43
-  store i64 %ME8$f, i64* %eptr10259                                                  ; *eptr10259 = %ME8$f
-  %eptr10255 = getelementptr inbounds i64, i64* %cloptr10254, i64 0                  ; &cloptr10254[0]
-  %f10260 = ptrtoint void(i64,i64,i64)* @lam8222 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10260, i64* %eptr10255                                                 ; store fptr
-  %arg7892 = ptrtoint i64* %cloptr10254 to i64                                       ; closure cast; i64* -> i64
-  %cps_45lst7193 = call i64 @prim_cons(i64 %arg7892, i64 %a6989)                     ; call prim_cons
-  %cloptr10261 = inttoptr i64 %ME8$f to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10261)                                        ; assert function application
-  %i0ptr10262 = getelementptr inbounds i64, i64* %cloptr10261, i64 0                 ; &cloptr10261[0]
-  %f10264 = load i64, i64* %i0ptr10262, align 8                                      ; load; *i0ptr10262
-  %fptr10263 = inttoptr i64 %f10264 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10263(i64 %ME8$f, i64 %cps_45lst7193)               ; tail call
+define void @lam8211(i64 %env8212, i64 %cont7192, i64 %sUE$a, i64 %sst$b) {
+  %retprim7193 = call i64 @prim_cons(i64 %sUE$a, i64 %sst$b)                         ; call prim_cons
+  %arg7893 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10263 = inttoptr i64 %cont7192 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10263)                                        ; assert function application
+  %i0ptr10264 = getelementptr inbounds i64, i64* %cloptr10263, i64 0                 ; &cloptr10263[0]
+  %f10266 = load i64, i64* %i0ptr10264, align 8                                      ; load; *i0ptr10264
+  %fptr10265 = inttoptr i64 %f10266 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10265(i64 %cont7192, i64 %arg7893, i64 %retprim7193); tail call
   ret void
 }
 
 
-define void @lam8222(i64 %env8223, i64 %_957190, i64 %WQl$acc_43) {
-  %envptr10265 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10266 = getelementptr inbounds i64, i64* %envptr10265, i64 4                ; &envptr10265[4]
-  %ME8$f = load i64, i64* %envptr10266, align 8                                      ; load; *envptr10266
-  %envptr10267 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10268 = getelementptr inbounds i64, i64* %envptr10267, i64 3                ; &envptr10267[3]
-  %KiH$lsts_43 = load i64, i64* %envptr10268, align 8                                ; load; *envptr10268
-  %envptr10269 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10270 = getelementptr inbounds i64, i64* %envptr10269, i64 2                ; &envptr10269[2]
-  %cont7183 = load i64, i64* %envptr10270, align 8                                   ; load; *envptr10270
-  %envptr10271 = inttoptr i64 %env8223 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10272 = getelementptr inbounds i64, i64* %envptr10271, i64 1                ; &envptr10271[1]
-  %xPk$_37foldl = load i64, i64* %envptr10272, align 8                               ; load; *envptr10272
-  %a6990 = call i64 @prim_cons(i64 %WQl$acc_43, i64 %KiH$lsts_43)                    ; call prim_cons
-  %a6991 = call i64 @prim_cons(i64 %ME8$f, i64 %a6990)                               ; call prim_cons
-  %cps_45lst7191 = call i64 @prim_cons(i64 %cont7183, i64 %a6991)                    ; call prim_cons
-  %cloptr10273 = inttoptr i64 %xPk$_37foldl to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10273)                                        ; assert function application
-  %i0ptr10274 = getelementptr inbounds i64, i64* %cloptr10273, i64 0                 ; &cloptr10273[0]
-  %f10276 = load i64, i64* %i0ptr10274, align 8                                      ; load; *i0ptr10274
-  %fptr10275 = inttoptr i64 %f10276 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10275(i64 %xPk$_37foldl, i64 %cps_45lst7191)        ; tail call
+define void @lam8208(i64 %env8209, i64 %cont7194, i64 %VGh$x) {
+  %retprim7195 = call i64 @prim_car(i64 %VGh$x)                                      ; call prim_car
+  %arg7897 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10267 = inttoptr i64 %cont7194 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10267)                                        ; assert function application
+  %i0ptr10268 = getelementptr inbounds i64, i64* %cloptr10267, i64 0                 ; &cloptr10267[0]
+  %f10270 = load i64, i64* %i0ptr10268, align 8                                      ; load; *i0ptr10268
+  %fptr10269 = inttoptr i64 %f10270 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10269(i64 %cont7194, i64 %arg7897, i64 %retprim7195); tail call
   ret void
 }
 
 
-define void @lam8220(i64 %env8221, i64 %cont7194, i64 %zh5$a, i64 %U8i$b) {
-  %retprim7195 = call i64 @prim_cons(i64 %zh5$a, i64 %U8i$b)                         ; call prim_cons
-  %arg7902 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10277 = inttoptr i64 %cont7194 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10277)                                        ; assert function application
-  %i0ptr10278 = getelementptr inbounds i64, i64* %cloptr10277, i64 0                 ; &cloptr10277[0]
-  %f10280 = load i64, i64* %i0ptr10278, align 8                                      ; load; *i0ptr10278
-  %fptr10279 = inttoptr i64 %f10280 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10279(i64 %cont7194, i64 %arg7902, i64 %retprim7195); tail call
+define void @lam8205(i64 %env8206, i64 %cont7196, i64 %R1f$x) {
+  %retprim7197 = call i64 @prim_cdr(i64 %R1f$x)                                      ; call prim_cdr
+  %arg7901 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10271 = inttoptr i64 %cont7196 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10271)                                        ; assert function application
+  %i0ptr10272 = getelementptr inbounds i64, i64* %cloptr10271, i64 0                 ; &cloptr10271[0]
+  %f10274 = load i64, i64* %i0ptr10272, align 8                                      ; load; *i0ptr10272
+  %fptr10273 = inttoptr i64 %f10274 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10273(i64 %cont7196, i64 %arg7901, i64 %retprim7197); tail call
   ret void
 }
 
 
-define void @lam8217(i64 %env8218, i64 %cont7196, i64 %ilB$x) {
-  %retprim7197 = call i64 @prim_car(i64 %ilB$x)                                      ; call prim_car
-  %arg7906 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10281 = inttoptr i64 %cont7196 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10281)                                        ; assert function application
-  %i0ptr10282 = getelementptr inbounds i64, i64* %cloptr10281, i64 0                 ; &cloptr10281[0]
-  %f10284 = load i64, i64* %i0ptr10282, align 8                                      ; load; *i0ptr10282
-  %fptr10283 = inttoptr i64 %f10284 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10283(i64 %cont7196, i64 %arg7906, i64 %retprim7197); tail call
+define void @lam8201(i64 %env8202, i64 %cont7198, i64 %hmn$lst, i64 %iZw$b) {
+  %cmp10275 = icmp eq i64 %iZw$b, 15                                                 ; false?
+  br i1 %cmp10275, label %else10277, label %then10276                                ; if
+
+then10276:
+  %arg7904 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10278 = inttoptr i64 %cont7198 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10278)                                        ; assert function application
+  %i0ptr10279 = getelementptr inbounds i64, i64* %cloptr10278, i64 0                 ; &cloptr10278[0]
+  %f10281 = load i64, i64* %i0ptr10279, align 8                                      ; load; *i0ptr10279
+  %fptr10280 = inttoptr i64 %f10281 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10280(i64 %cont7198, i64 %arg7904, i64 %iZw$b)      ; tail call
+  ret void
+
+else10277:
+  %retprim7199 = call i64 @prim_null_63(i64 %hmn$lst)                                ; call prim_null_63
+  %arg7908 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10282 = inttoptr i64 %cont7198 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10282)                                        ; assert function application
+  %i0ptr10283 = getelementptr inbounds i64, i64* %cloptr10282, i64 0                 ; &cloptr10282[0]
+  %f10285 = load i64, i64* %i0ptr10283, align 8                                      ; load; *i0ptr10283
+  %fptr10284 = inttoptr i64 %f10285 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10284(i64 %cont7198, i64 %arg7908, i64 %retprim7199); tail call
   ret void
 }
 
 
-define void @lam8214(i64 %env8215, i64 %cont7198, i64 %kaJ$x) {
-  %retprim7199 = call i64 @prim_cdr(i64 %kaJ$x)                                      ; call prim_cdr
-  %arg7910 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10285 = inttoptr i64 %cont7198 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10285)                                        ; assert function application
-  %i0ptr10286 = getelementptr inbounds i64, i64* %cloptr10285, i64 0                 ; &cloptr10285[0]
-  %f10288 = load i64, i64* %i0ptr10286, align 8                                      ; load; *i0ptr10286
-  %fptr10287 = inttoptr i64 %f10288 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10287(i64 %cont7198, i64 %arg7910, i64 %retprim7199); tail call
-  ret void
-}
-
-
-define void @lam8210(i64 %env8211, i64 %cont7200, i64 %SCG$lst, i64 %YXb$b) {
-  %cmp10289 = icmp eq i64 %YXb$b, 15                                                 ; false?
-  br i1 %cmp10289, label %else10291, label %then10290                                ; if
-
-then10290:
-  %arg7913 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10292 = inttoptr i64 %cont7200 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10292)                                        ; assert function application
-  %i0ptr10293 = getelementptr inbounds i64, i64* %cloptr10292, i64 0                 ; &cloptr10292[0]
-  %f10295 = load i64, i64* %i0ptr10293, align 8                                      ; load; *i0ptr10293
-  %fptr10294 = inttoptr i64 %f10295 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10294(i64 %cont7200, i64 %arg7913, i64 %YXb$b)      ; tail call
-  ret void
-
-else10291:
-  %retprim7201 = call i64 @prim_null_63(i64 %SCG$lst)                                ; call prim_null_63
-  %arg7917 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10296 = inttoptr i64 %cont7200 to i64*                                      ; closure/env cast; i64 -> i64*
+define void @lam8194(i64 %env8195, i64 %cont7202, i64 %WFu$_37foldr) {
+  %envptr10286 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10287 = getelementptr inbounds i64, i64* %envptr10286, i64 2                ; &envptr10286[2]
+  %m9D$_37map1 = load i64, i64* %envptr10287, align 8                                ; load; *envptr10287
+  %envptr10288 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10289 = getelementptr inbounds i64, i64* %envptr10288, i64 1                ; &envptr10288[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10289, align 8                              ; load; *envptr10289
+  %arg7911 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10290 = call i64* @alloc(i64 32)                                            ; malloc
+  %eptr10292 = getelementptr inbounds i64, i64* %cloptr10290, i64 1                  ; &eptr10292[1]
+  %eptr10293 = getelementptr inbounds i64, i64* %cloptr10290, i64 2                  ; &eptr10293[2]
+  %eptr10294 = getelementptr inbounds i64, i64* %cloptr10290, i64 3                  ; &eptr10294[3]
+  store i64 %AmT$_37foldr1, i64* %eptr10292                                          ; *eptr10292 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10293                                           ; *eptr10293 = %WFu$_37foldr
+  store i64 %m9D$_37map1, i64* %eptr10294                                            ; *eptr10294 = %m9D$_37map1
+  %eptr10291 = getelementptr inbounds i64, i64* %cloptr10290, i64 0                  ; &cloptr10290[0]
+  %f10295 = ptrtoint void(i64,i64)* @lam8191 to i64                                  ; fptr cast; i64(...)* -> i64
+  store i64 %f10295, i64* %eptr10291                                                 ; store fptr
+  %arg7910 = ptrtoint i64* %cloptr10290 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10296 = inttoptr i64 %cont7202 to i64*                                      ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr10296)                                        ; assert function application
   %i0ptr10297 = getelementptr inbounds i64, i64* %cloptr10296, i64 0                 ; &cloptr10296[0]
   %f10299 = load i64, i64* %i0ptr10297, align 8                                      ; load; *i0ptr10297
   %fptr10298 = inttoptr i64 %f10299 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10298(i64 %cont7200, i64 %arg7917, i64 %retprim7201); tail call
+  musttail call fastcc void %fptr10298(i64 %cont7202, i64 %arg7911, i64 %arg7910)    ; tail call
   ret void
 }
 
 
-define void @lam8203(i64 %env8204, i64 %cont7204, i64 %JzO$_37foldr) {
-  %envptr10300 = inttoptr i64 %env8204 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10301 = getelementptr inbounds i64, i64* %envptr10300, i64 2                ; &envptr10300[2]
-  %YVW$_37map1 = load i64, i64* %envptr10301, align 8                                ; load; *envptr10301
-  %envptr10302 = inttoptr i64 %env8204 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10303 = getelementptr inbounds i64, i64* %envptr10302, i64 1                ; &envptr10302[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10303, align 8                              ; load; *envptr10303
-  %arg7920 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10304 = call i64* @alloc(i64 32)                                            ; malloc
-  %eptr10306 = getelementptr inbounds i64, i64* %cloptr10304, i64 1                  ; &eptr10306[1]
-  %eptr10307 = getelementptr inbounds i64, i64* %cloptr10304, i64 2                  ; &eptr10307[2]
-  %eptr10308 = getelementptr inbounds i64, i64* %cloptr10304, i64 3                  ; &eptr10308[3]
-  store i64 %Yrh$_37foldr1, i64* %eptr10306                                          ; *eptr10306 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10307                                           ; *eptr10307 = %JzO$_37foldr
-  store i64 %YVW$_37map1, i64* %eptr10308                                            ; *eptr10308 = %YVW$_37map1
-  %eptr10305 = getelementptr inbounds i64, i64* %cloptr10304, i64 0                  ; &cloptr10304[0]
-  %f10309 = ptrtoint void(i64,i64)* @lam8200 to i64                                  ; fptr cast; i64(...)* -> i64
-  store i64 %f10309, i64* %eptr10305                                                 ; store fptr
-  %arg7919 = ptrtoint i64* %cloptr10304 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10310 = inttoptr i64 %cont7204 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10310)                                        ; assert function application
-  %i0ptr10311 = getelementptr inbounds i64, i64* %cloptr10310, i64 0                 ; &cloptr10310[0]
-  %f10313 = load i64, i64* %i0ptr10311, align 8                                      ; load; *i0ptr10311
-  %fptr10312 = inttoptr i64 %f10313 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10312(i64 %cont7204, i64 %arg7920, i64 %arg7919)    ; tail call
+define void @lam8191(i64 %env8192, i64 %Pbu$args7204) {
+  %envptr10300 = inttoptr i64 %env8192 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10301 = getelementptr inbounds i64, i64* %envptr10300, i64 3                ; &envptr10300[3]
+  %m9D$_37map1 = load i64, i64* %envptr10301, align 8                                ; load; *envptr10301
+  %envptr10302 = inttoptr i64 %env8192 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10303 = getelementptr inbounds i64, i64* %envptr10302, i64 2                ; &envptr10302[2]
+  %WFu$_37foldr = load i64, i64* %envptr10303, align 8                               ; load; *envptr10303
+  %envptr10304 = inttoptr i64 %env8192 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10305 = getelementptr inbounds i64, i64* %envptr10304, i64 1                ; &envptr10304[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10305, align 8                              ; load; *envptr10305
+  %cont7203 = call i64 @prim_car(i64 %Pbu$args7204)                                  ; call prim_car
+  %Pbu$args = call i64 @prim_cdr(i64 %Pbu$args7204)                                  ; call prim_cdr
+  %Ncm$f = call i64 @prim_car(i64 %Pbu$args)                                         ; call prim_car
+  %a6971 = call i64 @prim_cdr(i64 %Pbu$args)                                         ; call prim_cdr
+  %retprim7223 = call i64 @prim_car(i64 %a6971)                                      ; call prim_car
+  %cloptr10306 = call i64* @alloc(i64 56)                                            ; malloc
+  %eptr10308 = getelementptr inbounds i64, i64* %cloptr10306, i64 1                  ; &eptr10308[1]
+  %eptr10309 = getelementptr inbounds i64, i64* %cloptr10306, i64 2                  ; &eptr10309[2]
+  %eptr10310 = getelementptr inbounds i64, i64* %cloptr10306, i64 3                  ; &eptr10310[3]
+  %eptr10311 = getelementptr inbounds i64, i64* %cloptr10306, i64 4                  ; &eptr10311[4]
+  %eptr10312 = getelementptr inbounds i64, i64* %cloptr10306, i64 5                  ; &eptr10312[5]
+  %eptr10313 = getelementptr inbounds i64, i64* %cloptr10306, i64 6                  ; &eptr10313[6]
+  store i64 %AmT$_37foldr1, i64* %eptr10308                                          ; *eptr10308 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10309                                           ; *eptr10309 = %WFu$_37foldr
+  store i64 %Ncm$f, i64* %eptr10310                                                  ; *eptr10310 = %Ncm$f
+  store i64 %m9D$_37map1, i64* %eptr10311                                            ; *eptr10311 = %m9D$_37map1
+  store i64 %cont7203, i64* %eptr10312                                               ; *eptr10312 = %cont7203
+  store i64 %Pbu$args, i64* %eptr10313                                               ; *eptr10313 = %Pbu$args
+  %eptr10307 = getelementptr inbounds i64, i64* %cloptr10306, i64 0                  ; &cloptr10306[0]
+  %f10314 = ptrtoint void(i64,i64,i64)* @lam8189 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10314, i64* %eptr10307                                                 ; store fptr
+  %arg7920 = ptrtoint i64* %cloptr10306 to i64                                       ; closure cast; i64* -> i64
+  %arg7919 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10315 = inttoptr i64 %arg7920 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10315)                                        ; assert function application
+  %i0ptr10316 = getelementptr inbounds i64, i64* %cloptr10315, i64 0                 ; &cloptr10315[0]
+  %f10318 = load i64, i64* %i0ptr10316, align 8                                      ; load; *i0ptr10316
+  %fptr10317 = inttoptr i64 %f10318 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10317(i64 %arg7920, i64 %arg7919, i64 %retprim7223) ; tail call
   ret void
 }
 
 
-define void @lam8200(i64 %env8201, i64 %V5u$args7206) {
-  %envptr10314 = inttoptr i64 %env8201 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10315 = getelementptr inbounds i64, i64* %envptr10314, i64 3                ; &envptr10314[3]
-  %YVW$_37map1 = load i64, i64* %envptr10315, align 8                                ; load; *envptr10315
-  %envptr10316 = inttoptr i64 %env8201 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10317 = getelementptr inbounds i64, i64* %envptr10316, i64 2                ; &envptr10316[2]
-  %JzO$_37foldr = load i64, i64* %envptr10317, align 8                               ; load; *envptr10317
-  %envptr10318 = inttoptr i64 %env8201 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10319 = getelementptr inbounds i64, i64* %envptr10318, i64 1                ; &envptr10318[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10319, align 8                              ; load; *envptr10319
-  %cont7205 = call i64 @prim_car(i64 %V5u$args7206)                                  ; call prim_car
-  %V5u$args = call i64 @prim_cdr(i64 %V5u$args7206)                                  ; call prim_cdr
-  %iVc$f = call i64 @prim_car(i64 %V5u$args)                                         ; call prim_car
-  %a6971 = call i64 @prim_cdr(i64 %V5u$args)                                         ; call prim_cdr
-  %retprim7225 = call i64 @prim_car(i64 %a6971)                                      ; call prim_car
-  %cloptr10320 = call i64* @alloc(i64 56)                                            ; malloc
-  %eptr10322 = getelementptr inbounds i64, i64* %cloptr10320, i64 1                  ; &eptr10322[1]
-  %eptr10323 = getelementptr inbounds i64, i64* %cloptr10320, i64 2                  ; &eptr10323[2]
-  %eptr10324 = getelementptr inbounds i64, i64* %cloptr10320, i64 3                  ; &eptr10324[3]
-  %eptr10325 = getelementptr inbounds i64, i64* %cloptr10320, i64 4                  ; &eptr10325[4]
-  %eptr10326 = getelementptr inbounds i64, i64* %cloptr10320, i64 5                  ; &eptr10326[5]
-  %eptr10327 = getelementptr inbounds i64, i64* %cloptr10320, i64 6                  ; &eptr10327[6]
-  store i64 %Yrh$_37foldr1, i64* %eptr10322                                          ; *eptr10322 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10323                                           ; *eptr10323 = %JzO$_37foldr
-  store i64 %iVc$f, i64* %eptr10324                                                  ; *eptr10324 = %iVc$f
-  store i64 %cont7205, i64* %eptr10325                                               ; *eptr10325 = %cont7205
-  store i64 %YVW$_37map1, i64* %eptr10326                                            ; *eptr10326 = %YVW$_37map1
-  store i64 %V5u$args, i64* %eptr10327                                               ; *eptr10327 = %V5u$args
-  %eptr10321 = getelementptr inbounds i64, i64* %cloptr10320, i64 0                  ; &cloptr10320[0]
-  %f10328 = ptrtoint void(i64,i64,i64)* @lam8198 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10328, i64* %eptr10321                                                 ; store fptr
-  %arg7929 = ptrtoint i64* %cloptr10320 to i64                                       ; closure cast; i64* -> i64
-  %arg7928 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10329 = inttoptr i64 %arg7929 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10329)                                        ; assert function application
-  %i0ptr10330 = getelementptr inbounds i64, i64* %cloptr10329, i64 0                 ; &cloptr10329[0]
-  %f10332 = load i64, i64* %i0ptr10330, align 8                                      ; load; *i0ptr10330
-  %fptr10331 = inttoptr i64 %f10332 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10331(i64 %arg7929, i64 %arg7928, i64 %retprim7225) ; tail call
+define void @lam8189(i64 %env8190, i64 %_957205, i64 %LXt$acc) {
+  %envptr10319 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10320 = getelementptr inbounds i64, i64* %envptr10319, i64 6                ; &envptr10319[6]
+  %Pbu$args = load i64, i64* %envptr10320, align 8                                   ; load; *envptr10320
+  %envptr10321 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10322 = getelementptr inbounds i64, i64* %envptr10321, i64 5                ; &envptr10321[5]
+  %cont7203 = load i64, i64* %envptr10322, align 8                                   ; load; *envptr10322
+  %envptr10323 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10324 = getelementptr inbounds i64, i64* %envptr10323, i64 4                ; &envptr10323[4]
+  %m9D$_37map1 = load i64, i64* %envptr10324, align 8                                ; load; *envptr10324
+  %envptr10325 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10326 = getelementptr inbounds i64, i64* %envptr10325, i64 3                ; &envptr10325[3]
+  %Ncm$f = load i64, i64* %envptr10326, align 8                                      ; load; *envptr10326
+  %envptr10327 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10328 = getelementptr inbounds i64, i64* %envptr10327, i64 2                ; &envptr10327[2]
+  %WFu$_37foldr = load i64, i64* %envptr10328, align 8                               ; load; *envptr10328
+  %envptr10329 = inttoptr i64 %env8190 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10330 = getelementptr inbounds i64, i64* %envptr10329, i64 1                ; &envptr10329[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10330, align 8                              ; load; *envptr10330
+  %a6972 = call i64 @prim_cdr(i64 %Pbu$args)                                         ; call prim_cdr
+  %retprim7222 = call i64 @prim_cdr(i64 %a6972)                                      ; call prim_cdr
+  %cloptr10331 = call i64* @alloc(i64 56)                                            ; malloc
+  %eptr10333 = getelementptr inbounds i64, i64* %cloptr10331, i64 1                  ; &eptr10333[1]
+  %eptr10334 = getelementptr inbounds i64, i64* %cloptr10331, i64 2                  ; &eptr10334[2]
+  %eptr10335 = getelementptr inbounds i64, i64* %cloptr10331, i64 3                  ; &eptr10335[3]
+  %eptr10336 = getelementptr inbounds i64, i64* %cloptr10331, i64 4                  ; &eptr10336[4]
+  %eptr10337 = getelementptr inbounds i64, i64* %cloptr10331, i64 5                  ; &eptr10337[5]
+  %eptr10338 = getelementptr inbounds i64, i64* %cloptr10331, i64 6                  ; &eptr10338[6]
+  store i64 %AmT$_37foldr1, i64* %eptr10333                                          ; *eptr10333 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10334                                           ; *eptr10334 = %WFu$_37foldr
+  store i64 %Ncm$f, i64* %eptr10335                                                  ; *eptr10335 = %Ncm$f
+  store i64 %m9D$_37map1, i64* %eptr10336                                            ; *eptr10336 = %m9D$_37map1
+  store i64 %LXt$acc, i64* %eptr10337                                                ; *eptr10337 = %LXt$acc
+  store i64 %cont7203, i64* %eptr10338                                               ; *eptr10338 = %cont7203
+  %eptr10332 = getelementptr inbounds i64, i64* %cloptr10331, i64 0                  ; &cloptr10331[0]
+  %f10339 = ptrtoint void(i64,i64,i64)* @lam8187 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10339, i64* %eptr10332                                                 ; store fptr
+  %arg7925 = ptrtoint i64* %cloptr10331 to i64                                       ; closure cast; i64* -> i64
+  %arg7924 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10340 = inttoptr i64 %arg7925 to i64*                                       ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10340)                                        ; assert function application
+  %i0ptr10341 = getelementptr inbounds i64, i64* %cloptr10340, i64 0                 ; &cloptr10340[0]
+  %f10343 = load i64, i64* %i0ptr10341, align 8                                      ; load; *i0ptr10341
+  %fptr10342 = inttoptr i64 %f10343 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10342(i64 %arg7925, i64 %arg7924, i64 %retprim7222) ; tail call
   ret void
 }
 
 
-define void @lam8198(i64 %env8199, i64 %_957207, i64 %bZ7$acc) {
-  %envptr10333 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10334 = getelementptr inbounds i64, i64* %envptr10333, i64 6                ; &envptr10333[6]
-  %V5u$args = load i64, i64* %envptr10334, align 8                                   ; load; *envptr10334
-  %envptr10335 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10336 = getelementptr inbounds i64, i64* %envptr10335, i64 5                ; &envptr10335[5]
-  %YVW$_37map1 = load i64, i64* %envptr10336, align 8                                ; load; *envptr10336
-  %envptr10337 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10338 = getelementptr inbounds i64, i64* %envptr10337, i64 4                ; &envptr10337[4]
-  %cont7205 = load i64, i64* %envptr10338, align 8                                   ; load; *envptr10338
-  %envptr10339 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10340 = getelementptr inbounds i64, i64* %envptr10339, i64 3                ; &envptr10339[3]
-  %iVc$f = load i64, i64* %envptr10340, align 8                                      ; load; *envptr10340
-  %envptr10341 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10342 = getelementptr inbounds i64, i64* %envptr10341, i64 2                ; &envptr10341[2]
-  %JzO$_37foldr = load i64, i64* %envptr10342, align 8                               ; load; *envptr10342
-  %envptr10343 = inttoptr i64 %env8199 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10344 = getelementptr inbounds i64, i64* %envptr10343, i64 1                ; &envptr10343[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10344, align 8                              ; load; *envptr10344
-  %a6972 = call i64 @prim_cdr(i64 %V5u$args)                                         ; call prim_cdr
-  %retprim7224 = call i64 @prim_cdr(i64 %a6972)                                      ; call prim_cdr
-  %cloptr10345 = call i64* @alloc(i64 56)                                            ; malloc
-  %eptr10347 = getelementptr inbounds i64, i64* %cloptr10345, i64 1                  ; &eptr10347[1]
-  %eptr10348 = getelementptr inbounds i64, i64* %cloptr10345, i64 2                  ; &eptr10348[2]
-  %eptr10349 = getelementptr inbounds i64, i64* %cloptr10345, i64 3                  ; &eptr10349[3]
-  %eptr10350 = getelementptr inbounds i64, i64* %cloptr10345, i64 4                  ; &eptr10350[4]
-  %eptr10351 = getelementptr inbounds i64, i64* %cloptr10345, i64 5                  ; &eptr10351[5]
-  %eptr10352 = getelementptr inbounds i64, i64* %cloptr10345, i64 6                  ; &eptr10352[6]
-  store i64 %Yrh$_37foldr1, i64* %eptr10347                                          ; *eptr10347 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10348                                           ; *eptr10348 = %JzO$_37foldr
-  store i64 %iVc$f, i64* %eptr10349                                                  ; *eptr10349 = %iVc$f
-  store i64 %cont7205, i64* %eptr10350                                               ; *eptr10350 = %cont7205
-  store i64 %YVW$_37map1, i64* %eptr10351                                            ; *eptr10351 = %YVW$_37map1
-  store i64 %bZ7$acc, i64* %eptr10352                                                ; *eptr10352 = %bZ7$acc
-  %eptr10346 = getelementptr inbounds i64, i64* %cloptr10345, i64 0                  ; &cloptr10345[0]
-  %f10353 = ptrtoint void(i64,i64,i64)* @lam8196 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10353, i64* %eptr10346                                                 ; store fptr
-  %arg7934 = ptrtoint i64* %cloptr10345 to i64                                       ; closure cast; i64* -> i64
-  %arg7933 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10354 = inttoptr i64 %arg7934 to i64*                                       ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10354)                                        ; assert function application
-  %i0ptr10355 = getelementptr inbounds i64, i64* %cloptr10354, i64 0                 ; &cloptr10354[0]
-  %f10357 = load i64, i64* %i0ptr10355, align 8                                      ; load; *i0ptr10355
-  %fptr10356 = inttoptr i64 %f10357 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10356(i64 %arg7934, i64 %arg7933, i64 %retprim7224) ; tail call
+define void @lam8187(i64 %env8188, i64 %_957206, i64 %z8K$lsts) {
+  %envptr10344 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10345 = getelementptr inbounds i64, i64* %envptr10344, i64 6                ; &envptr10344[6]
+  %cont7203 = load i64, i64* %envptr10345, align 8                                   ; load; *envptr10345
+  %envptr10346 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10347 = getelementptr inbounds i64, i64* %envptr10346, i64 5                ; &envptr10346[5]
+  %LXt$acc = load i64, i64* %envptr10347, align 8                                    ; load; *envptr10347
+  %envptr10348 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10349 = getelementptr inbounds i64, i64* %envptr10348, i64 4                ; &envptr10348[4]
+  %m9D$_37map1 = load i64, i64* %envptr10349, align 8                                ; load; *envptr10349
+  %envptr10350 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10351 = getelementptr inbounds i64, i64* %envptr10350, i64 3                ; &envptr10350[3]
+  %Ncm$f = load i64, i64* %envptr10351, align 8                                      ; load; *envptr10351
+  %envptr10352 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10353 = getelementptr inbounds i64, i64* %envptr10352, i64 2                ; &envptr10352[2]
+  %WFu$_37foldr = load i64, i64* %envptr10353, align 8                               ; load; *envptr10353
+  %envptr10354 = inttoptr i64 %env8188 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10355 = getelementptr inbounds i64, i64* %envptr10354, i64 1                ; &envptr10354[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10355, align 8                              ; load; *envptr10355
+  %cloptr10356 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10358 = getelementptr inbounds i64, i64* %cloptr10356, i64 1                  ; &eptr10358[1]
+  %eptr10359 = getelementptr inbounds i64, i64* %cloptr10356, i64 2                  ; &eptr10359[2]
+  %eptr10360 = getelementptr inbounds i64, i64* %cloptr10356, i64 3                  ; &eptr10360[3]
+  %eptr10361 = getelementptr inbounds i64, i64* %cloptr10356, i64 4                  ; &eptr10361[4]
+  %eptr10362 = getelementptr inbounds i64, i64* %cloptr10356, i64 5                  ; &eptr10362[5]
+  %eptr10363 = getelementptr inbounds i64, i64* %cloptr10356, i64 6                  ; &eptr10363[6]
+  %eptr10364 = getelementptr inbounds i64, i64* %cloptr10356, i64 7                  ; &eptr10364[7]
+  store i64 %AmT$_37foldr1, i64* %eptr10358                                          ; *eptr10358 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10359                                           ; *eptr10359 = %WFu$_37foldr
+  store i64 %Ncm$f, i64* %eptr10360                                                  ; *eptr10360 = %Ncm$f
+  store i64 %z8K$lsts, i64* %eptr10361                                               ; *eptr10361 = %z8K$lsts
+  store i64 %m9D$_37map1, i64* %eptr10362                                            ; *eptr10362 = %m9D$_37map1
+  store i64 %LXt$acc, i64* %eptr10363                                                ; *eptr10363 = %LXt$acc
+  store i64 %cont7203, i64* %eptr10364                                               ; *eptr10364 = %cont7203
+  %eptr10357 = getelementptr inbounds i64, i64* %cloptr10356, i64 0                  ; &cloptr10356[0]
+  %f10365 = ptrtoint void(i64,i64,i64)* @lam8185 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10365, i64* %eptr10357                                                 ; store fptr
+  %arg7929 = ptrtoint i64* %cloptr10356 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10366 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10367 = getelementptr inbounds i64, i64* %cloptr10366, i64 0                  ; &cloptr10366[0]
+  %f10368 = ptrtoint void(i64,i64,i64,i64)* @lam8164 to i64                          ; fptr cast; i64(...)* -> i64
+  store i64 %f10368, i64* %eptr10367                                                 ; store fptr
+  %arg7928 = ptrtoint i64* %cloptr10366 to i64                                       ; closure cast; i64* -> i64
+  %arg7927 = call i64 @const_init_false()                                            ; quoted #f
+  %cloptr10369 = inttoptr i64 %AmT$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10369)                                        ; assert function application
+  %i0ptr10370 = getelementptr inbounds i64, i64* %cloptr10369, i64 0                 ; &cloptr10369[0]
+  %f10372 = load i64, i64* %i0ptr10370, align 8                                      ; load; *i0ptr10370
+  %fptr10371 = inttoptr i64 %f10372 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10371(i64 %AmT$_37foldr1, i64 %arg7929, i64 %arg7928, i64 %arg7927, i64 %z8K$lsts); tail call
   ret void
 }
 
 
-define void @lam8196(i64 %env8197, i64 %_957208, i64 %nZv$lsts) {
-  %envptr10358 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10359 = getelementptr inbounds i64, i64* %envptr10358, i64 6                ; &envptr10358[6]
-  %bZ7$acc = load i64, i64* %envptr10359, align 8                                    ; load; *envptr10359
-  %envptr10360 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10361 = getelementptr inbounds i64, i64* %envptr10360, i64 5                ; &envptr10360[5]
-  %YVW$_37map1 = load i64, i64* %envptr10361, align 8                                ; load; *envptr10361
-  %envptr10362 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10363 = getelementptr inbounds i64, i64* %envptr10362, i64 4                ; &envptr10362[4]
-  %cont7205 = load i64, i64* %envptr10363, align 8                                   ; load; *envptr10363
-  %envptr10364 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10365 = getelementptr inbounds i64, i64* %envptr10364, i64 3                ; &envptr10364[3]
-  %iVc$f = load i64, i64* %envptr10365, align 8                                      ; load; *envptr10365
-  %envptr10366 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10367 = getelementptr inbounds i64, i64* %envptr10366, i64 2                ; &envptr10366[2]
-  %JzO$_37foldr = load i64, i64* %envptr10367, align 8                               ; load; *envptr10367
-  %envptr10368 = inttoptr i64 %env8197 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10369 = getelementptr inbounds i64, i64* %envptr10368, i64 1                ; &envptr10368[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10369, align 8                              ; load; *envptr10369
-  %cloptr10370 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10372 = getelementptr inbounds i64, i64* %cloptr10370, i64 1                  ; &eptr10372[1]
-  %eptr10373 = getelementptr inbounds i64, i64* %cloptr10370, i64 2                  ; &eptr10373[2]
-  %eptr10374 = getelementptr inbounds i64, i64* %cloptr10370, i64 3                  ; &eptr10374[3]
-  %eptr10375 = getelementptr inbounds i64, i64* %cloptr10370, i64 4                  ; &eptr10375[4]
-  %eptr10376 = getelementptr inbounds i64, i64* %cloptr10370, i64 5                  ; &eptr10376[5]
-  %eptr10377 = getelementptr inbounds i64, i64* %cloptr10370, i64 6                  ; &eptr10377[6]
-  %eptr10378 = getelementptr inbounds i64, i64* %cloptr10370, i64 7                  ; &eptr10378[7]
-  store i64 %Yrh$_37foldr1, i64* %eptr10372                                          ; *eptr10372 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10373                                           ; *eptr10373 = %JzO$_37foldr
-  store i64 %iVc$f, i64* %eptr10374                                                  ; *eptr10374 = %iVc$f
-  store i64 %cont7205, i64* %eptr10375                                               ; *eptr10375 = %cont7205
-  store i64 %nZv$lsts, i64* %eptr10376                                               ; *eptr10376 = %nZv$lsts
-  store i64 %YVW$_37map1, i64* %eptr10377                                            ; *eptr10377 = %YVW$_37map1
-  store i64 %bZ7$acc, i64* %eptr10378                                                ; *eptr10378 = %bZ7$acc
-  %eptr10371 = getelementptr inbounds i64, i64* %cloptr10370, i64 0                  ; &cloptr10370[0]
-  %f10379 = ptrtoint void(i64,i64,i64)* @lam8194 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10379, i64* %eptr10371                                                 ; store fptr
-  %arg7938 = ptrtoint i64* %cloptr10370 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10380 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10381 = getelementptr inbounds i64, i64* %cloptr10380, i64 0                  ; &cloptr10380[0]
-  %f10382 = ptrtoint void(i64,i64,i64,i64)* @lam8173 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10382, i64* %eptr10381                                                 ; store fptr
-  %arg7937 = ptrtoint i64* %cloptr10380 to i64                                       ; closure cast; i64* -> i64
-  %arg7936 = call i64 @const_init_false()                                            ; quoted #f
-  %cloptr10383 = inttoptr i64 %Yrh$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10383)                                        ; assert function application
-  %i0ptr10384 = getelementptr inbounds i64, i64* %cloptr10383, i64 0                 ; &cloptr10383[0]
-  %f10386 = load i64, i64* %i0ptr10384, align 8                                      ; load; *i0ptr10384
-  %fptr10385 = inttoptr i64 %f10386 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10385(i64 %Yrh$_37foldr1, i64 %arg7938, i64 %arg7937, i64 %arg7936, i64 %nZv$lsts); tail call
+define void @lam8185(i64 %env8186, i64 %_957207, i64 %a6973) {
+  %envptr10373 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10374 = getelementptr inbounds i64, i64* %envptr10373, i64 7                ; &envptr10373[7]
+  %cont7203 = load i64, i64* %envptr10374, align 8                                   ; load; *envptr10374
+  %envptr10375 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10376 = getelementptr inbounds i64, i64* %envptr10375, i64 6                ; &envptr10375[6]
+  %LXt$acc = load i64, i64* %envptr10376, align 8                                    ; load; *envptr10376
+  %envptr10377 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10378 = getelementptr inbounds i64, i64* %envptr10377, i64 5                ; &envptr10377[5]
+  %m9D$_37map1 = load i64, i64* %envptr10378, align 8                                ; load; *envptr10378
+  %envptr10379 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10380 = getelementptr inbounds i64, i64* %envptr10379, i64 4                ; &envptr10379[4]
+  %z8K$lsts = load i64, i64* %envptr10380, align 8                                   ; load; *envptr10380
+  %envptr10381 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10382 = getelementptr inbounds i64, i64* %envptr10381, i64 3                ; &envptr10381[3]
+  %Ncm$f = load i64, i64* %envptr10382, align 8                                      ; load; *envptr10382
+  %envptr10383 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10384 = getelementptr inbounds i64, i64* %envptr10383, i64 2                ; &envptr10383[2]
+  %WFu$_37foldr = load i64, i64* %envptr10384, align 8                               ; load; *envptr10384
+  %envptr10385 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10386 = getelementptr inbounds i64, i64* %envptr10385, i64 1                ; &envptr10385[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10386, align 8                              ; load; *envptr10386
+  %cmp10387 = icmp eq i64 %a6973, 15                                                 ; false?
+  br i1 %cmp10387, label %else10389, label %then10388                                ; if
+
+then10388:
+  %arg7932 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10390 = inttoptr i64 %cont7203 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10390)                                        ; assert function application
+  %i0ptr10391 = getelementptr inbounds i64, i64* %cloptr10390, i64 0                 ; &cloptr10390[0]
+  %f10393 = load i64, i64* %i0ptr10391, align 8                                      ; load; *i0ptr10391
+  %fptr10392 = inttoptr i64 %f10393 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10392(i64 %cont7203, i64 %arg7932, i64 %LXt$acc)    ; tail call
+  ret void
+
+else10389:
+  %cloptr10394 = call i64* @alloc(i64 64)                                            ; malloc
+  %eptr10396 = getelementptr inbounds i64, i64* %cloptr10394, i64 1                  ; &eptr10396[1]
+  %eptr10397 = getelementptr inbounds i64, i64* %cloptr10394, i64 2                  ; &eptr10397[2]
+  %eptr10398 = getelementptr inbounds i64, i64* %cloptr10394, i64 3                  ; &eptr10398[3]
+  %eptr10399 = getelementptr inbounds i64, i64* %cloptr10394, i64 4                  ; &eptr10399[4]
+  %eptr10400 = getelementptr inbounds i64, i64* %cloptr10394, i64 5                  ; &eptr10400[5]
+  %eptr10401 = getelementptr inbounds i64, i64* %cloptr10394, i64 6                  ; &eptr10401[6]
+  %eptr10402 = getelementptr inbounds i64, i64* %cloptr10394, i64 7                  ; &eptr10402[7]
+  store i64 %AmT$_37foldr1, i64* %eptr10396                                          ; *eptr10396 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10397                                           ; *eptr10397 = %WFu$_37foldr
+  store i64 %Ncm$f, i64* %eptr10398                                                  ; *eptr10398 = %Ncm$f
+  store i64 %z8K$lsts, i64* %eptr10399                                               ; *eptr10399 = %z8K$lsts
+  store i64 %m9D$_37map1, i64* %eptr10400                                            ; *eptr10400 = %m9D$_37map1
+  store i64 %LXt$acc, i64* %eptr10401                                                ; *eptr10401 = %LXt$acc
+  store i64 %cont7203, i64* %eptr10402                                               ; *eptr10402 = %cont7203
+  %eptr10395 = getelementptr inbounds i64, i64* %cloptr10394, i64 0                  ; &cloptr10394[0]
+  %f10403 = ptrtoint void(i64,i64,i64)* @lam8183 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10403, i64* %eptr10395                                                 ; store fptr
+  %arg7936 = ptrtoint i64* %cloptr10394 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10404 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10405 = getelementptr inbounds i64, i64* %cloptr10404, i64 0                  ; &cloptr10404[0]
+  %f10406 = ptrtoint void(i64,i64,i64)* @lam8168 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10406, i64* %eptr10405                                                 ; store fptr
+  %arg7935 = ptrtoint i64* %cloptr10404 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10407 = inttoptr i64 %m9D$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10407)                                        ; assert function application
+  %i0ptr10408 = getelementptr inbounds i64, i64* %cloptr10407, i64 0                 ; &cloptr10407[0]
+  %f10410 = load i64, i64* %i0ptr10408, align 8                                      ; load; *i0ptr10408
+  %fptr10409 = inttoptr i64 %f10410 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10409(i64 %m9D$_37map1, i64 %arg7936, i64 %arg7935, i64 %z8K$lsts); tail call
   ret void
 }
 
 
-define void @lam8194(i64 %env8195, i64 %_957209, i64 %a6973) {
-  %envptr10387 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10388 = getelementptr inbounds i64, i64* %envptr10387, i64 7                ; &envptr10387[7]
-  %bZ7$acc = load i64, i64* %envptr10388, align 8                                    ; load; *envptr10388
-  %envptr10389 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10390 = getelementptr inbounds i64, i64* %envptr10389, i64 6                ; &envptr10389[6]
-  %YVW$_37map1 = load i64, i64* %envptr10390, align 8                                ; load; *envptr10390
-  %envptr10391 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10392 = getelementptr inbounds i64, i64* %envptr10391, i64 5                ; &envptr10391[5]
-  %nZv$lsts = load i64, i64* %envptr10392, align 8                                   ; load; *envptr10392
-  %envptr10393 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10394 = getelementptr inbounds i64, i64* %envptr10393, i64 4                ; &envptr10393[4]
-  %cont7205 = load i64, i64* %envptr10394, align 8                                   ; load; *envptr10394
-  %envptr10395 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10396 = getelementptr inbounds i64, i64* %envptr10395, i64 3                ; &envptr10395[3]
-  %iVc$f = load i64, i64* %envptr10396, align 8                                      ; load; *envptr10396
-  %envptr10397 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10398 = getelementptr inbounds i64, i64* %envptr10397, i64 2                ; &envptr10397[2]
-  %JzO$_37foldr = load i64, i64* %envptr10398, align 8                               ; load; *envptr10398
-  %envptr10399 = inttoptr i64 %env8195 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10400 = getelementptr inbounds i64, i64* %envptr10399, i64 1                ; &envptr10399[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10400, align 8                              ; load; *envptr10400
-  %cmp10401 = icmp eq i64 %a6973, 15                                                 ; false?
-  br i1 %cmp10401, label %else10403, label %then10402                                ; if
-
-then10402:
-  %arg7941 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10404 = inttoptr i64 %cont7205 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10404)                                        ; assert function application
-  %i0ptr10405 = getelementptr inbounds i64, i64* %cloptr10404, i64 0                 ; &cloptr10404[0]
-  %f10407 = load i64, i64* %i0ptr10405, align 8                                      ; load; *i0ptr10405
-  %fptr10406 = inttoptr i64 %f10407 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10406(i64 %cont7205, i64 %arg7941, i64 %bZ7$acc)    ; tail call
-  ret void
-
-else10403:
-  %cloptr10408 = call i64* @alloc(i64 64)                                            ; malloc
-  %eptr10410 = getelementptr inbounds i64, i64* %cloptr10408, i64 1                  ; &eptr10410[1]
-  %eptr10411 = getelementptr inbounds i64, i64* %cloptr10408, i64 2                  ; &eptr10411[2]
-  %eptr10412 = getelementptr inbounds i64, i64* %cloptr10408, i64 3                  ; &eptr10412[3]
-  %eptr10413 = getelementptr inbounds i64, i64* %cloptr10408, i64 4                  ; &eptr10413[4]
-  %eptr10414 = getelementptr inbounds i64, i64* %cloptr10408, i64 5                  ; &eptr10414[5]
-  %eptr10415 = getelementptr inbounds i64, i64* %cloptr10408, i64 6                  ; &eptr10415[6]
-  %eptr10416 = getelementptr inbounds i64, i64* %cloptr10408, i64 7                  ; &eptr10416[7]
-  store i64 %Yrh$_37foldr1, i64* %eptr10410                                          ; *eptr10410 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10411                                           ; *eptr10411 = %JzO$_37foldr
-  store i64 %iVc$f, i64* %eptr10412                                                  ; *eptr10412 = %iVc$f
-  store i64 %cont7205, i64* %eptr10413                                               ; *eptr10413 = %cont7205
-  store i64 %nZv$lsts, i64* %eptr10414                                               ; *eptr10414 = %nZv$lsts
-  store i64 %YVW$_37map1, i64* %eptr10415                                            ; *eptr10415 = %YVW$_37map1
-  store i64 %bZ7$acc, i64* %eptr10416                                                ; *eptr10416 = %bZ7$acc
-  %eptr10409 = getelementptr inbounds i64, i64* %cloptr10408, i64 0                  ; &cloptr10408[0]
-  %f10417 = ptrtoint void(i64,i64,i64)* @lam8192 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10417, i64* %eptr10409                                                 ; store fptr
-  %arg7945 = ptrtoint i64* %cloptr10408 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10418 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10419 = getelementptr inbounds i64, i64* %cloptr10418, i64 0                  ; &cloptr10418[0]
-  %f10420 = ptrtoint void(i64,i64,i64)* @lam8177 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10420, i64* %eptr10419                                                 ; store fptr
-  %arg7944 = ptrtoint i64* %cloptr10418 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10421 = inttoptr i64 %YVW$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10421)                                        ; assert function application
-  %i0ptr10422 = getelementptr inbounds i64, i64* %cloptr10421, i64 0                 ; &cloptr10421[0]
-  %f10424 = load i64, i64* %i0ptr10422, align 8                                      ; load; *i0ptr10422
-  %fptr10423 = inttoptr i64 %f10424 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10423(i64 %YVW$_37map1, i64 %arg7945, i64 %arg7944, i64 %nZv$lsts); tail call
+define void @lam8183(i64 %env8184, i64 %_957208, i64 %BhU$lsts_43) {
+  %envptr10411 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10412 = getelementptr inbounds i64, i64* %envptr10411, i64 7                ; &envptr10411[7]
+  %cont7203 = load i64, i64* %envptr10412, align 8                                   ; load; *envptr10412
+  %envptr10413 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10414 = getelementptr inbounds i64, i64* %envptr10413, i64 6                ; &envptr10413[6]
+  %LXt$acc = load i64, i64* %envptr10414, align 8                                    ; load; *envptr10414
+  %envptr10415 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10416 = getelementptr inbounds i64, i64* %envptr10415, i64 5                ; &envptr10415[5]
+  %m9D$_37map1 = load i64, i64* %envptr10416, align 8                                ; load; *envptr10416
+  %envptr10417 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10418 = getelementptr inbounds i64, i64* %envptr10417, i64 4                ; &envptr10417[4]
+  %z8K$lsts = load i64, i64* %envptr10418, align 8                                   ; load; *envptr10418
+  %envptr10419 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10420 = getelementptr inbounds i64, i64* %envptr10419, i64 3                ; &envptr10419[3]
+  %Ncm$f = load i64, i64* %envptr10420, align 8                                      ; load; *envptr10420
+  %envptr10421 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10422 = getelementptr inbounds i64, i64* %envptr10421, i64 2                ; &envptr10421[2]
+  %WFu$_37foldr = load i64, i64* %envptr10422, align 8                               ; load; *envptr10422
+  %envptr10423 = inttoptr i64 %env8184 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10424 = getelementptr inbounds i64, i64* %envptr10423, i64 1                ; &envptr10423[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10424, align 8                              ; load; *envptr10424
+  %cloptr10425 = call i64* @alloc(i64 56)                                            ; malloc
+  %eptr10427 = getelementptr inbounds i64, i64* %cloptr10425, i64 1                  ; &eptr10427[1]
+  %eptr10428 = getelementptr inbounds i64, i64* %cloptr10425, i64 2                  ; &eptr10428[2]
+  %eptr10429 = getelementptr inbounds i64, i64* %cloptr10425, i64 3                  ; &eptr10429[3]
+  %eptr10430 = getelementptr inbounds i64, i64* %cloptr10425, i64 4                  ; &eptr10430[4]
+  %eptr10431 = getelementptr inbounds i64, i64* %cloptr10425, i64 5                  ; &eptr10431[5]
+  %eptr10432 = getelementptr inbounds i64, i64* %cloptr10425, i64 6                  ; &eptr10432[6]
+  store i64 %AmT$_37foldr1, i64* %eptr10427                                          ; *eptr10427 = %AmT$_37foldr1
+  store i64 %WFu$_37foldr, i64* %eptr10428                                           ; *eptr10428 = %WFu$_37foldr
+  store i64 %Ncm$f, i64* %eptr10429                                                  ; *eptr10429 = %Ncm$f
+  store i64 %BhU$lsts_43, i64* %eptr10430                                            ; *eptr10430 = %BhU$lsts_43
+  store i64 %LXt$acc, i64* %eptr10431                                                ; *eptr10431 = %LXt$acc
+  store i64 %cont7203, i64* %eptr10432                                               ; *eptr10432 = %cont7203
+  %eptr10426 = getelementptr inbounds i64, i64* %cloptr10425, i64 0                  ; &cloptr10425[0]
+  %f10433 = ptrtoint void(i64,i64,i64)* @lam8181 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10433, i64* %eptr10426                                                 ; store fptr
+  %arg7940 = ptrtoint i64* %cloptr10425 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10434 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10435 = getelementptr inbounds i64, i64* %cloptr10434, i64 0                  ; &cloptr10434[0]
+  %f10436 = ptrtoint void(i64,i64,i64)* @lam8171 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10436, i64* %eptr10435                                                 ; store fptr
+  %arg7939 = ptrtoint i64* %cloptr10434 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10437 = inttoptr i64 %m9D$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10437)                                        ; assert function application
+  %i0ptr10438 = getelementptr inbounds i64, i64* %cloptr10437, i64 0                 ; &cloptr10437[0]
+  %f10440 = load i64, i64* %i0ptr10438, align 8                                      ; load; *i0ptr10438
+  %fptr10439 = inttoptr i64 %f10440 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10439(i64 %m9D$_37map1, i64 %arg7940, i64 %arg7939, i64 %z8K$lsts); tail call
   ret void
 }
 
 
-define void @lam8192(i64 %env8193, i64 %_957210, i64 %tAm$lsts_43) {
-  %envptr10425 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10426 = getelementptr inbounds i64, i64* %envptr10425, i64 7                ; &envptr10425[7]
-  %bZ7$acc = load i64, i64* %envptr10426, align 8                                    ; load; *envptr10426
-  %envptr10427 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10428 = getelementptr inbounds i64, i64* %envptr10427, i64 6                ; &envptr10427[6]
-  %YVW$_37map1 = load i64, i64* %envptr10428, align 8                                ; load; *envptr10428
-  %envptr10429 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10430 = getelementptr inbounds i64, i64* %envptr10429, i64 5                ; &envptr10429[5]
-  %nZv$lsts = load i64, i64* %envptr10430, align 8                                   ; load; *envptr10430
-  %envptr10431 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10432 = getelementptr inbounds i64, i64* %envptr10431, i64 4                ; &envptr10431[4]
-  %cont7205 = load i64, i64* %envptr10432, align 8                                   ; load; *envptr10432
-  %envptr10433 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10434 = getelementptr inbounds i64, i64* %envptr10433, i64 3                ; &envptr10433[3]
-  %iVc$f = load i64, i64* %envptr10434, align 8                                      ; load; *envptr10434
-  %envptr10435 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10436 = getelementptr inbounds i64, i64* %envptr10435, i64 2                ; &envptr10435[2]
-  %JzO$_37foldr = load i64, i64* %envptr10436, align 8                               ; load; *envptr10436
-  %envptr10437 = inttoptr i64 %env8193 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10438 = getelementptr inbounds i64, i64* %envptr10437, i64 1                ; &envptr10437[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10438, align 8                              ; load; *envptr10438
-  %cloptr10439 = call i64* @alloc(i64 56)                                            ; malloc
-  %eptr10441 = getelementptr inbounds i64, i64* %cloptr10439, i64 1                  ; &eptr10441[1]
-  %eptr10442 = getelementptr inbounds i64, i64* %cloptr10439, i64 2                  ; &eptr10442[2]
-  %eptr10443 = getelementptr inbounds i64, i64* %cloptr10439, i64 3                  ; &eptr10443[3]
-  %eptr10444 = getelementptr inbounds i64, i64* %cloptr10439, i64 4                  ; &eptr10444[4]
-  %eptr10445 = getelementptr inbounds i64, i64* %cloptr10439, i64 5                  ; &eptr10445[5]
-  %eptr10446 = getelementptr inbounds i64, i64* %cloptr10439, i64 6                  ; &eptr10446[6]
-  store i64 %Yrh$_37foldr1, i64* %eptr10441                                          ; *eptr10441 = %Yrh$_37foldr1
-  store i64 %JzO$_37foldr, i64* %eptr10442                                           ; *eptr10442 = %JzO$_37foldr
-  store i64 %iVc$f, i64* %eptr10443                                                  ; *eptr10443 = %iVc$f
-  store i64 %tAm$lsts_43, i64* %eptr10444                                            ; *eptr10444 = %tAm$lsts_43
-  store i64 %cont7205, i64* %eptr10445                                               ; *eptr10445 = %cont7205
-  store i64 %bZ7$acc, i64* %eptr10446                                                ; *eptr10446 = %bZ7$acc
-  %eptr10440 = getelementptr inbounds i64, i64* %cloptr10439, i64 0                  ; &cloptr10439[0]
-  %f10447 = ptrtoint void(i64,i64,i64)* @lam8190 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10447, i64* %eptr10440                                                 ; store fptr
-  %arg7949 = ptrtoint i64* %cloptr10439 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10448 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10449 = getelementptr inbounds i64, i64* %cloptr10448, i64 0                  ; &cloptr10448[0]
-  %f10450 = ptrtoint void(i64,i64,i64)* @lam8180 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10450, i64* %eptr10449                                                 ; store fptr
-  %arg7948 = ptrtoint i64* %cloptr10448 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10451 = inttoptr i64 %YVW$_37map1 to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10451)                                        ; assert function application
-  %i0ptr10452 = getelementptr inbounds i64, i64* %cloptr10451, i64 0                 ; &cloptr10451[0]
-  %f10454 = load i64, i64* %i0ptr10452, align 8                                      ; load; *i0ptr10452
-  %fptr10453 = inttoptr i64 %f10454 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10453(i64 %YVW$_37map1, i64 %arg7949, i64 %arg7948, i64 %nZv$lsts); tail call
+define void @lam8181(i64 %env8182, i64 %_957209, i64 %fSk$vs) {
+  %envptr10441 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10442 = getelementptr inbounds i64, i64* %envptr10441, i64 6                ; &envptr10441[6]
+  %cont7203 = load i64, i64* %envptr10442, align 8                                   ; load; *envptr10442
+  %envptr10443 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10444 = getelementptr inbounds i64, i64* %envptr10443, i64 5                ; &envptr10443[5]
+  %LXt$acc = load i64, i64* %envptr10444, align 8                                    ; load; *envptr10444
+  %envptr10445 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10446 = getelementptr inbounds i64, i64* %envptr10445, i64 4                ; &envptr10445[4]
+  %BhU$lsts_43 = load i64, i64* %envptr10446, align 8                                ; load; *envptr10446
+  %envptr10447 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10448 = getelementptr inbounds i64, i64* %envptr10447, i64 3                ; &envptr10447[3]
+  %Ncm$f = load i64, i64* %envptr10448, align 8                                      ; load; *envptr10448
+  %envptr10449 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10450 = getelementptr inbounds i64, i64* %envptr10449, i64 2                ; &envptr10449[2]
+  %WFu$_37foldr = load i64, i64* %envptr10450, align 8                               ; load; *envptr10450
+  %envptr10451 = inttoptr i64 %env8182 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10452 = getelementptr inbounds i64, i64* %envptr10451, i64 1                ; &envptr10451[1]
+  %AmT$_37foldr1 = load i64, i64* %envptr10452, align 8                              ; load; *envptr10452
+  %a6974 = call i64 @prim_cons(i64 %LXt$acc, i64 %BhU$lsts_43)                       ; call prim_cons
+  %a6975 = call i64 @prim_cons(i64 %Ncm$f, i64 %a6974)                               ; call prim_cons
+  %cloptr10453 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10455 = getelementptr inbounds i64, i64* %cloptr10453, i64 1                  ; &eptr10455[1]
+  %eptr10456 = getelementptr inbounds i64, i64* %cloptr10453, i64 2                  ; &eptr10456[2]
+  %eptr10457 = getelementptr inbounds i64, i64* %cloptr10453, i64 3                  ; &eptr10457[3]
+  %eptr10458 = getelementptr inbounds i64, i64* %cloptr10453, i64 4                  ; &eptr10458[4]
+  store i64 %fSk$vs, i64* %eptr10455                                                 ; *eptr10455 = %fSk$vs
+  store i64 %AmT$_37foldr1, i64* %eptr10456                                          ; *eptr10456 = %AmT$_37foldr1
+  store i64 %Ncm$f, i64* %eptr10457                                                  ; *eptr10457 = %Ncm$f
+  store i64 %cont7203, i64* %eptr10458                                               ; *eptr10458 = %cont7203
+  %eptr10454 = getelementptr inbounds i64, i64* %cloptr10453, i64 0                  ; &cloptr10453[0]
+  %f10459 = ptrtoint void(i64,i64,i64)* @lam8179 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10459, i64* %eptr10454                                                 ; store fptr
+  %arg7947 = ptrtoint i64* %cloptr10453 to i64                                       ; closure cast; i64* -> i64
+  %cps_45lst7215 = call i64 @prim_cons(i64 %arg7947, i64 %a6975)                     ; call prim_cons
+  %cloptr10460 = inttoptr i64 %WFu$_37foldr to i64*                                  ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10460)                                        ; assert function application
+  %i0ptr10461 = getelementptr inbounds i64, i64* %cloptr10460, i64 0                 ; &cloptr10460[0]
+  %f10463 = load i64, i64* %i0ptr10461, align 8                                      ; load; *i0ptr10461
+  %fptr10462 = inttoptr i64 %f10463 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10462(i64 %WFu$_37foldr, i64 %cps_45lst7215)        ; tail call
   ret void
 }
 
 
-define void @lam8190(i64 %env8191, i64 %_957211, i64 %OEl$vs) {
-  %envptr10455 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10456 = getelementptr inbounds i64, i64* %envptr10455, i64 6                ; &envptr10455[6]
-  %bZ7$acc = load i64, i64* %envptr10456, align 8                                    ; load; *envptr10456
-  %envptr10457 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10458 = getelementptr inbounds i64, i64* %envptr10457, i64 5                ; &envptr10457[5]
-  %cont7205 = load i64, i64* %envptr10458, align 8                                   ; load; *envptr10458
-  %envptr10459 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10460 = getelementptr inbounds i64, i64* %envptr10459, i64 4                ; &envptr10459[4]
-  %tAm$lsts_43 = load i64, i64* %envptr10460, align 8                                ; load; *envptr10460
-  %envptr10461 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10462 = getelementptr inbounds i64, i64* %envptr10461, i64 3                ; &envptr10461[3]
-  %iVc$f = load i64, i64* %envptr10462, align 8                                      ; load; *envptr10462
-  %envptr10463 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10464 = getelementptr inbounds i64, i64* %envptr10463, i64 2                ; &envptr10463[2]
-  %JzO$_37foldr = load i64, i64* %envptr10464, align 8                               ; load; *envptr10464
-  %envptr10465 = inttoptr i64 %env8191 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10466 = getelementptr inbounds i64, i64* %envptr10465, i64 1                ; &envptr10465[1]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10466, align 8                              ; load; *envptr10466
-  %a6974 = call i64 @prim_cons(i64 %bZ7$acc, i64 %tAm$lsts_43)                       ; call prim_cons
-  %a6975 = call i64 @prim_cons(i64 %iVc$f, i64 %a6974)                               ; call prim_cons
-  %cloptr10467 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10469 = getelementptr inbounds i64, i64* %cloptr10467, i64 1                  ; &eptr10469[1]
-  %eptr10470 = getelementptr inbounds i64, i64* %cloptr10467, i64 2                  ; &eptr10470[2]
-  %eptr10471 = getelementptr inbounds i64, i64* %cloptr10467, i64 3                  ; &eptr10471[3]
-  %eptr10472 = getelementptr inbounds i64, i64* %cloptr10467, i64 4                  ; &eptr10472[4]
-  store i64 %OEl$vs, i64* %eptr10469                                                 ; *eptr10469 = %OEl$vs
-  store i64 %Yrh$_37foldr1, i64* %eptr10470                                          ; *eptr10470 = %Yrh$_37foldr1
-  store i64 %iVc$f, i64* %eptr10471                                                  ; *eptr10471 = %iVc$f
-  store i64 %cont7205, i64* %eptr10472                                               ; *eptr10472 = %cont7205
-  %eptr10468 = getelementptr inbounds i64, i64* %cloptr10467, i64 0                  ; &cloptr10467[0]
-  %f10473 = ptrtoint void(i64,i64,i64)* @lam8188 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10473, i64* %eptr10468                                                 ; store fptr
-  %arg7956 = ptrtoint i64* %cloptr10467 to i64                                       ; closure cast; i64* -> i64
-  %cps_45lst7217 = call i64 @prim_cons(i64 %arg7956, i64 %a6975)                     ; call prim_cons
-  %cloptr10474 = inttoptr i64 %JzO$_37foldr to i64*                                  ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10474)                                        ; assert function application
-  %i0ptr10475 = getelementptr inbounds i64, i64* %cloptr10474, i64 0                 ; &cloptr10474[0]
-  %f10477 = load i64, i64* %i0ptr10475, align 8                                      ; load; *i0ptr10475
-  %fptr10476 = inttoptr i64 %f10477 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10476(i64 %JzO$_37foldr, i64 %cps_45lst7217)        ; tail call
+define void @lam8179(i64 %env8180, i64 %_957210, i64 %a6976) {
+  %envptr10464 = inttoptr i64 %env8180 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10465 = getelementptr inbounds i64, i64* %envptr10464, i64 4                ; &envptr10464[4]
+  %cont7203 = load i64, i64* %envptr10465, align 8                                   ; load; *envptr10465
+  %envptr10466 = inttoptr i64 %env8180 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10467 = getelementptr inbounds i64, i64* %envptr10466, i64 3                ; &envptr10466[3]
+  %Ncm$f = load i64, i64* %envptr10467, align 8                                      ; load; *envptr10467
+  %envptr10468 = inttoptr i64 %env8180 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10469 = getelementptr inbounds i64, i64* %envptr10468, i64 2                ; &envptr10468[2]
+  %AmT$_37foldr1 = load i64, i64* %envptr10469, align 8                              ; load; *envptr10469
+  %envptr10470 = inttoptr i64 %env8180 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10471 = getelementptr inbounds i64, i64* %envptr10470, i64 1                ; &envptr10470[1]
+  %fSk$vs = load i64, i64* %envptr10471, align 8                                     ; load; *envptr10471
+  %arg7948 = add i64 0, 0                                                            ; quoted ()
+  %a6977 = call i64 @prim_cons(i64 %a6976, i64 %arg7948)                             ; call prim_cons
+  %cloptr10472 = call i64* @alloc(i64 24)                                            ; malloc
+  %eptr10474 = getelementptr inbounds i64, i64* %cloptr10472, i64 1                  ; &eptr10474[1]
+  %eptr10475 = getelementptr inbounds i64, i64* %cloptr10472, i64 2                  ; &eptr10475[2]
+  store i64 %Ncm$f, i64* %eptr10474                                                  ; *eptr10474 = %Ncm$f
+  store i64 %cont7203, i64* %eptr10475                                               ; *eptr10475 = %cont7203
+  %eptr10473 = getelementptr inbounds i64, i64* %cloptr10472, i64 0                  ; &cloptr10472[0]
+  %f10476 = ptrtoint void(i64,i64,i64)* @lam8176 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10476, i64* %eptr10473                                                 ; store fptr
+  %arg7953 = ptrtoint i64* %cloptr10472 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10477 = call i64* @alloc(i64 8)                                             ; malloc
+  %eptr10478 = getelementptr inbounds i64, i64* %cloptr10477, i64 0                  ; &cloptr10477[0]
+  %f10479 = ptrtoint void(i64,i64,i64,i64)* @lam8174 to i64                          ; fptr cast; i64(...)* -> i64
+  store i64 %f10479, i64* %eptr10478                                                 ; store fptr
+  %arg7952 = ptrtoint i64* %cloptr10477 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10480 = inttoptr i64 %AmT$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10480)                                        ; assert function application
+  %i0ptr10481 = getelementptr inbounds i64, i64* %cloptr10480, i64 0                 ; &cloptr10480[0]
+  %f10483 = load i64, i64* %i0ptr10481, align 8                                      ; load; *i0ptr10481
+  %fptr10482 = inttoptr i64 %f10483 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10482(i64 %AmT$_37foldr1, i64 %arg7953, i64 %arg7952, i64 %a6977, i64 %fSk$vs); tail call
   ret void
 }
 
 
-define void @lam8188(i64 %env8189, i64 %_957212, i64 %a6976) {
-  %envptr10478 = inttoptr i64 %env8189 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10479 = getelementptr inbounds i64, i64* %envptr10478, i64 4                ; &envptr10478[4]
-  %cont7205 = load i64, i64* %envptr10479, align 8                                   ; load; *envptr10479
-  %envptr10480 = inttoptr i64 %env8189 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10481 = getelementptr inbounds i64, i64* %envptr10480, i64 3                ; &envptr10480[3]
-  %iVc$f = load i64, i64* %envptr10481, align 8                                      ; load; *envptr10481
-  %envptr10482 = inttoptr i64 %env8189 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10483 = getelementptr inbounds i64, i64* %envptr10482, i64 2                ; &envptr10482[2]
-  %Yrh$_37foldr1 = load i64, i64* %envptr10483, align 8                              ; load; *envptr10483
-  %envptr10484 = inttoptr i64 %env8189 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10485 = getelementptr inbounds i64, i64* %envptr10484, i64 1                ; &envptr10484[1]
-  %OEl$vs = load i64, i64* %envptr10485, align 8                                     ; load; *envptr10485
-  %arg7957 = add i64 0, 0                                                            ; quoted ()
-  %a6977 = call i64 @prim_cons(i64 %a6976, i64 %arg7957)                             ; call prim_cons
-  %cloptr10486 = call i64* @alloc(i64 24)                                            ; malloc
-  %eptr10488 = getelementptr inbounds i64, i64* %cloptr10486, i64 1                  ; &eptr10488[1]
-  %eptr10489 = getelementptr inbounds i64, i64* %cloptr10486, i64 2                  ; &eptr10489[2]
-  store i64 %iVc$f, i64* %eptr10488                                                  ; *eptr10488 = %iVc$f
-  store i64 %cont7205, i64* %eptr10489                                               ; *eptr10489 = %cont7205
-  %eptr10487 = getelementptr inbounds i64, i64* %cloptr10486, i64 0                  ; &cloptr10486[0]
-  %f10490 = ptrtoint void(i64,i64,i64)* @lam8185 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10490, i64* %eptr10487                                                 ; store fptr
-  %arg7962 = ptrtoint i64* %cloptr10486 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10491 = call i64* @alloc(i64 8)                                             ; malloc
-  %eptr10492 = getelementptr inbounds i64, i64* %cloptr10491, i64 0                  ; &cloptr10491[0]
-  %f10493 = ptrtoint void(i64,i64,i64,i64)* @lam8183 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10493, i64* %eptr10492                                                 ; store fptr
-  %arg7961 = ptrtoint i64* %cloptr10491 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10494 = inttoptr i64 %Yrh$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10494)                                        ; assert function application
-  %i0ptr10495 = getelementptr inbounds i64, i64* %cloptr10494, i64 0                 ; &cloptr10494[0]
-  %f10497 = load i64, i64* %i0ptr10495, align 8                                      ; load; *i0ptr10495
-  %fptr10496 = inttoptr i64 %f10497 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10496(i64 %Yrh$_37foldr1, i64 %arg7962, i64 %arg7961, i64 %a6977, i64 %OEl$vs); tail call
+define void @lam8176(i64 %env8177, i64 %_957211, i64 %a6978) {
+  %envptr10484 = inttoptr i64 %env8177 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10485 = getelementptr inbounds i64, i64* %envptr10484, i64 2                ; &envptr10484[2]
+  %cont7203 = load i64, i64* %envptr10485, align 8                                   ; load; *envptr10485
+  %envptr10486 = inttoptr i64 %env8177 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10487 = getelementptr inbounds i64, i64* %envptr10486, i64 1                ; &envptr10486[1]
+  %Ncm$f = load i64, i64* %envptr10487, align 8                                      ; load; *envptr10487
+  %cps_45lst7212 = call i64 @prim_cons(i64 %cont7203, i64 %a6978)                    ; call prim_cons
+  %cloptr10488 = inttoptr i64 %Ncm$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10488)                                        ; assert function application
+  %i0ptr10489 = getelementptr inbounds i64, i64* %cloptr10488, i64 0                 ; &cloptr10488[0]
+  %f10491 = load i64, i64* %i0ptr10489, align 8                                      ; load; *i0ptr10489
+  %fptr10490 = inttoptr i64 %f10491 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10490(i64 %Ncm$f, i64 %cps_45lst7212)               ; tail call
   ret void
 }
 
 
-define void @lam8185(i64 %env8186, i64 %_957213, i64 %a6978) {
-  %envptr10498 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10499 = getelementptr inbounds i64, i64* %envptr10498, i64 2                ; &envptr10498[2]
-  %cont7205 = load i64, i64* %envptr10499, align 8                                   ; load; *envptr10499
-  %envptr10500 = inttoptr i64 %env8186 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10501 = getelementptr inbounds i64, i64* %envptr10500, i64 1                ; &envptr10500[1]
-  %iVc$f = load i64, i64* %envptr10501, align 8                                      ; load; *envptr10501
-  %cps_45lst7214 = call i64 @prim_cons(i64 %cont7205, i64 %a6978)                    ; call prim_cons
-  %cloptr10502 = inttoptr i64 %iVc$f to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10502)                                        ; assert function application
-  %i0ptr10503 = getelementptr inbounds i64, i64* %cloptr10502, i64 0                 ; &cloptr10502[0]
-  %f10505 = load i64, i64* %i0ptr10503, align 8                                      ; load; *i0ptr10503
-  %fptr10504 = inttoptr i64 %f10505 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10504(i64 %iVc$f, i64 %cps_45lst7214)               ; tail call
+define void @lam8174(i64 %env8175, i64 %cont7213, i64 %LYW$a, i64 %Ioz$b) {
+  %retprim7214 = call i64 @prim_cons(i64 %LYW$a, i64 %Ioz$b)                         ; call prim_cons
+  %arg7960 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10492 = inttoptr i64 %cont7213 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10492)                                        ; assert function application
+  %i0ptr10493 = getelementptr inbounds i64, i64* %cloptr10492, i64 0                 ; &cloptr10492[0]
+  %f10495 = load i64, i64* %i0ptr10493, align 8                                      ; load; *i0ptr10493
+  %fptr10494 = inttoptr i64 %f10495 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10494(i64 %cont7213, i64 %arg7960, i64 %retprim7214); tail call
   ret void
 }
 
 
-define void @lam8183(i64 %env8184, i64 %cont7215, i64 %GlH$a, i64 %CQv$b) {
-  %retprim7216 = call i64 @prim_cons(i64 %GlH$a, i64 %CQv$b)                         ; call prim_cons
-  %arg7969 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10506 = inttoptr i64 %cont7215 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10506)                                        ; assert function application
-  %i0ptr10507 = getelementptr inbounds i64, i64* %cloptr10506, i64 0                 ; &cloptr10506[0]
-  %f10509 = load i64, i64* %i0ptr10507, align 8                                      ; load; *i0ptr10507
-  %fptr10508 = inttoptr i64 %f10509 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10508(i64 %cont7215, i64 %arg7969, i64 %retprim7216); tail call
+define void @lam8171(i64 %env8172, i64 %cont7216, i64 %pcQ$x) {
+  %retprim7217 = call i64 @prim_car(i64 %pcQ$x)                                      ; call prim_car
+  %arg7964 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10496 = inttoptr i64 %cont7216 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10496)                                        ; assert function application
+  %i0ptr10497 = getelementptr inbounds i64, i64* %cloptr10496, i64 0                 ; &cloptr10496[0]
+  %f10499 = load i64, i64* %i0ptr10497, align 8                                      ; load; *i0ptr10497
+  %fptr10498 = inttoptr i64 %f10499 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10498(i64 %cont7216, i64 %arg7964, i64 %retprim7217); tail call
   ret void
 }
 
 
-define void @lam8180(i64 %env8181, i64 %cont7218, i64 %hRC$x) {
-  %retprim7219 = call i64 @prim_car(i64 %hRC$x)                                      ; call prim_car
-  %arg7973 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10510 = inttoptr i64 %cont7218 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10510)                                        ; assert function application
-  %i0ptr10511 = getelementptr inbounds i64, i64* %cloptr10510, i64 0                 ; &cloptr10510[0]
-  %f10513 = load i64, i64* %i0ptr10511, align 8                                      ; load; *i0ptr10511
-  %fptr10512 = inttoptr i64 %f10513 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10512(i64 %cont7218, i64 %arg7973, i64 %retprim7219); tail call
+define void @lam8168(i64 %env8169, i64 %cont7218, i64 %HzV$x) {
+  %retprim7219 = call i64 @prim_cdr(i64 %HzV$x)                                      ; call prim_cdr
+  %arg7968 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10500 = inttoptr i64 %cont7218 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10500)                                        ; assert function application
+  %i0ptr10501 = getelementptr inbounds i64, i64* %cloptr10500, i64 0                 ; &cloptr10500[0]
+  %f10503 = load i64, i64* %i0ptr10501, align 8                                      ; load; *i0ptr10501
+  %fptr10502 = inttoptr i64 %f10503 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10502(i64 %cont7218, i64 %arg7968, i64 %retprim7219); tail call
   ret void
 }
 
 
-define void @lam8177(i64 %env8178, i64 %cont7220, i64 %WUI$x) {
-  %retprim7221 = call i64 @prim_cdr(i64 %WUI$x)                                      ; call prim_cdr
-  %arg7977 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10514 = inttoptr i64 %cont7220 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10514)                                        ; assert function application
-  %i0ptr10515 = getelementptr inbounds i64, i64* %cloptr10514, i64 0                 ; &cloptr10514[0]
-  %f10517 = load i64, i64* %i0ptr10515, align 8                                      ; load; *i0ptr10515
-  %fptr10516 = inttoptr i64 %f10517 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10516(i64 %cont7220, i64 %arg7977, i64 %retprim7221); tail call
+define void @lam8164(i64 %env8165, i64 %cont7220, i64 %sjd$lst, i64 %tX0$b) {
+  %cmp10504 = icmp eq i64 %tX0$b, 15                                                 ; false?
+  br i1 %cmp10504, label %else10506, label %then10505                                ; if
+
+then10505:
+  %arg7971 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10507 = inttoptr i64 %cont7220 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10507)                                        ; assert function application
+  %i0ptr10508 = getelementptr inbounds i64, i64* %cloptr10507, i64 0                 ; &cloptr10507[0]
+  %f10510 = load i64, i64* %i0ptr10508, align 8                                      ; load; *i0ptr10508
+  %fptr10509 = inttoptr i64 %f10510 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10509(i64 %cont7220, i64 %arg7971, i64 %tX0$b)      ; tail call
+  ret void
+
+else10506:
+  %retprim7221 = call i64 @prim_null_63(i64 %sjd$lst)                                ; call prim_null_63
+  %arg7975 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10511 = inttoptr i64 %cont7220 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10511)                                        ; assert function application
+  %i0ptr10512 = getelementptr inbounds i64, i64* %cloptr10511, i64 0                 ; &cloptr10511[0]
+  %f10514 = load i64, i64* %i0ptr10512, align 8                                      ; load; *i0ptr10512
+  %fptr10513 = inttoptr i64 %f10514 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10513(i64 %cont7220, i64 %arg7975, i64 %retprim7221); tail call
   ret void
 }
 
 
-define void @lam8173(i64 %env8174, i64 %cont7222, i64 %zGc$lst, i64 %WcX$b) {
-  %cmp10518 = icmp eq i64 %WcX$b, 15                                                 ; false?
-  br i1 %cmp10518, label %else10520, label %then10519                                ; if
-
-then10519:
-  %arg7980 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10521 = inttoptr i64 %cont7222 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10521)                                        ; assert function application
-  %i0ptr10522 = getelementptr inbounds i64, i64* %cloptr10521, i64 0                 ; &cloptr10521[0]
-  %f10524 = load i64, i64* %i0ptr10522, align 8                                      ; load; *i0ptr10522
-  %fptr10523 = inttoptr i64 %f10524 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10523(i64 %cont7222, i64 %arg7980, i64 %WcX$b)      ; tail call
-  ret void
-
-else10520:
-  %retprim7223 = call i64 @prim_null_63(i64 %zGc$lst)                                ; call prim_null_63
-  %arg7984 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10525 = inttoptr i64 %cont7222 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10525)                                        ; assert function application
-  %i0ptr10526 = getelementptr inbounds i64, i64* %cloptr10525, i64 0                 ; &cloptr10525[0]
-  %f10528 = load i64, i64* %i0ptr10526, align 8                                      ; load; *i0ptr10526
-  %fptr10527 = inttoptr i64 %f10528 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10527(i64 %cont7222, i64 %arg7984, i64 %retprim7223); tail call
+define void @lam8157(i64 %env8158, i64 %cont7224, i64 %eaD$_37foldl1) {
+  %arg7978 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10515 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10517 = getelementptr inbounds i64, i64* %cloptr10515, i64 1                  ; &eptr10517[1]
+  store i64 %eaD$_37foldl1, i64* %eptr10517                                          ; *eptr10517 = %eaD$_37foldl1
+  %eptr10516 = getelementptr inbounds i64, i64* %cloptr10515, i64 0                  ; &cloptr10515[0]
+  %f10518 = ptrtoint void(i64,i64,i64,i64,i64)* @lam8154 to i64                      ; fptr cast; i64(...)* -> i64
+  store i64 %f10518, i64* %eptr10516                                                 ; store fptr
+  %arg7977 = ptrtoint i64* %cloptr10515 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10519 = inttoptr i64 %cont7224 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10519)                                        ; assert function application
+  %i0ptr10520 = getelementptr inbounds i64, i64* %cloptr10519, i64 0                 ; &cloptr10519[0]
+  %f10522 = load i64, i64* %i0ptr10520, align 8                                      ; load; *i0ptr10520
+  %fptr10521 = inttoptr i64 %f10522 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10521(i64 %cont7224, i64 %arg7978, i64 %arg7977)    ; tail call
   ret void
 }
 
 
-define void @lam8166(i64 %env8167, i64 %cont7226, i64 %sPu$_37foldl1) {
-  %arg7987 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10529 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10531 = getelementptr inbounds i64, i64* %cloptr10529, i64 1                  ; &eptr10531[1]
-  store i64 %sPu$_37foldl1, i64* %eptr10531                                          ; *eptr10531 = %sPu$_37foldl1
-  %eptr10530 = getelementptr inbounds i64, i64* %cloptr10529, i64 0                  ; &cloptr10529[0]
-  %f10532 = ptrtoint void(i64,i64,i64,i64,i64)* @lam8163 to i64                      ; fptr cast; i64(...)* -> i64
-  store i64 %f10532, i64* %eptr10530                                                 ; store fptr
-  %arg7986 = ptrtoint i64* %cloptr10529 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10533 = inttoptr i64 %cont7226 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10533)                                        ; assert function application
-  %i0ptr10534 = getelementptr inbounds i64, i64* %cloptr10533, i64 0                 ; &cloptr10533[0]
-  %f10536 = load i64, i64* %i0ptr10534, align 8                                      ; load; *i0ptr10534
-  %fptr10535 = inttoptr i64 %f10536 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10535(i64 %cont7226, i64 %arg7987, i64 %arg7986)    ; tail call
+define void @lam8154(i64 %env8155, i64 %cont7225, i64 %hGI$f, i64 %z1N$acc, i64 %KzX$lst) {
+  %envptr10523 = inttoptr i64 %env8155 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10524 = getelementptr inbounds i64, i64* %envptr10523, i64 1                ; &envptr10523[1]
+  %eaD$_37foldl1 = load i64, i64* %envptr10524, align 8                              ; load; *envptr10524
+  %a6965 = call i64 @prim_null_63(i64 %KzX$lst)                                      ; call prim_null_63
+  %cmp10525 = icmp eq i64 %a6965, 15                                                 ; false?
+  br i1 %cmp10525, label %else10527, label %then10526                                ; if
+
+then10526:
+  %arg7982 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10528 = inttoptr i64 %cont7225 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10528)                                        ; assert function application
+  %i0ptr10529 = getelementptr inbounds i64, i64* %cloptr10528, i64 0                 ; &cloptr10528[0]
+  %f10531 = load i64, i64* %i0ptr10529, align 8                                      ; load; *i0ptr10529
+  %fptr10530 = inttoptr i64 %f10531 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10530(i64 %cont7225, i64 %arg7982, i64 %z1N$acc)    ; tail call
+  ret void
+
+else10527:
+  %a6966 = call i64 @prim_car(i64 %KzX$lst)                                          ; call prim_car
+  %cloptr10532 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10534 = getelementptr inbounds i64, i64* %cloptr10532, i64 1                  ; &eptr10534[1]
+  %eptr10535 = getelementptr inbounds i64, i64* %cloptr10532, i64 2                  ; &eptr10535[2]
+  %eptr10536 = getelementptr inbounds i64, i64* %cloptr10532, i64 3                  ; &eptr10536[3]
+  %eptr10537 = getelementptr inbounds i64, i64* %cloptr10532, i64 4                  ; &eptr10537[4]
+  store i64 %eaD$_37foldl1, i64* %eptr10534                                          ; *eptr10534 = %eaD$_37foldl1
+  store i64 %hGI$f, i64* %eptr10535                                                  ; *eptr10535 = %hGI$f
+  store i64 %KzX$lst, i64* %eptr10536                                                ; *eptr10536 = %KzX$lst
+  store i64 %cont7225, i64* %eptr10537                                               ; *eptr10537 = %cont7225
+  %eptr10533 = getelementptr inbounds i64, i64* %cloptr10532, i64 0                  ; &cloptr10532[0]
+  %f10538 = ptrtoint void(i64,i64,i64)* @lam8152 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10538, i64* %eptr10533                                                 ; store fptr
+  %arg7987 = ptrtoint i64* %cloptr10532 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10539 = inttoptr i64 %hGI$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10539)                                        ; assert function application
+  %i0ptr10540 = getelementptr inbounds i64, i64* %cloptr10539, i64 0                 ; &cloptr10539[0]
+  %f10542 = load i64, i64* %i0ptr10540, align 8                                      ; load; *i0ptr10540
+  %fptr10541 = inttoptr i64 %f10542 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10541(i64 %hGI$f, i64 %arg7987, i64 %a6966, i64 %z1N$acc); tail call
   ret void
 }
 
 
-define void @lam8163(i64 %env8164, i64 %cont7227, i64 %QG8$f, i64 %yC4$acc, i64 %pt7$lst) {
-  %envptr10537 = inttoptr i64 %env8164 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10538 = getelementptr inbounds i64, i64* %envptr10537, i64 1                ; &envptr10537[1]
-  %sPu$_37foldl1 = load i64, i64* %envptr10538, align 8                              ; load; *envptr10538
-  %a6965 = call i64 @prim_null_63(i64 %pt7$lst)                                      ; call prim_null_63
-  %cmp10539 = icmp eq i64 %a6965, 15                                                 ; false?
-  br i1 %cmp10539, label %else10541, label %then10540                                ; if
-
-then10540:
-  %arg7991 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10542 = inttoptr i64 %cont7227 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10542)                                        ; assert function application
-  %i0ptr10543 = getelementptr inbounds i64, i64* %cloptr10542, i64 0                 ; &cloptr10542[0]
-  %f10545 = load i64, i64* %i0ptr10543, align 8                                      ; load; *i0ptr10543
-  %fptr10544 = inttoptr i64 %f10545 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10544(i64 %cont7227, i64 %arg7991, i64 %yC4$acc)    ; tail call
-  ret void
-
-else10541:
-  %a6966 = call i64 @prim_car(i64 %pt7$lst)                                          ; call prim_car
-  %cloptr10546 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10548 = getelementptr inbounds i64, i64* %cloptr10546, i64 1                  ; &eptr10548[1]
-  %eptr10549 = getelementptr inbounds i64, i64* %cloptr10546, i64 2                  ; &eptr10549[2]
-  %eptr10550 = getelementptr inbounds i64, i64* %cloptr10546, i64 3                  ; &eptr10550[3]
-  %eptr10551 = getelementptr inbounds i64, i64* %cloptr10546, i64 4                  ; &eptr10551[4]
-  store i64 %cont7227, i64* %eptr10548                                               ; *eptr10548 = %cont7227
-  store i64 %sPu$_37foldl1, i64* %eptr10549                                          ; *eptr10549 = %sPu$_37foldl1
-  store i64 %QG8$f, i64* %eptr10550                                                  ; *eptr10550 = %QG8$f
-  store i64 %pt7$lst, i64* %eptr10551                                                ; *eptr10551 = %pt7$lst
-  %eptr10547 = getelementptr inbounds i64, i64* %cloptr10546, i64 0                  ; &cloptr10546[0]
-  %f10552 = ptrtoint void(i64,i64,i64)* @lam8161 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10552, i64* %eptr10547                                                 ; store fptr
-  %arg7996 = ptrtoint i64* %cloptr10546 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10553 = inttoptr i64 %QG8$f to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10553)                                        ; assert function application
-  %i0ptr10554 = getelementptr inbounds i64, i64* %cloptr10553, i64 0                 ; &cloptr10553[0]
-  %f10556 = load i64, i64* %i0ptr10554, align 8                                      ; load; *i0ptr10554
-  %fptr10555 = inttoptr i64 %f10556 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10555(i64 %QG8$f, i64 %arg7996, i64 %a6966, i64 %yC4$acc); tail call
+define void @lam8152(i64 %env8153, i64 %_957226, i64 %a6967) {
+  %envptr10543 = inttoptr i64 %env8153 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10544 = getelementptr inbounds i64, i64* %envptr10543, i64 4                ; &envptr10543[4]
+  %cont7225 = load i64, i64* %envptr10544, align 8                                   ; load; *envptr10544
+  %envptr10545 = inttoptr i64 %env8153 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10546 = getelementptr inbounds i64, i64* %envptr10545, i64 3                ; &envptr10545[3]
+  %KzX$lst = load i64, i64* %envptr10546, align 8                                    ; load; *envptr10546
+  %envptr10547 = inttoptr i64 %env8153 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10548 = getelementptr inbounds i64, i64* %envptr10547, i64 2                ; &envptr10547[2]
+  %hGI$f = load i64, i64* %envptr10548, align 8                                      ; load; *envptr10548
+  %envptr10549 = inttoptr i64 %env8153 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10550 = getelementptr inbounds i64, i64* %envptr10549, i64 1                ; &envptr10549[1]
+  %eaD$_37foldl1 = load i64, i64* %envptr10550, align 8                              ; load; *envptr10550
+  %a6968 = call i64 @prim_cdr(i64 %KzX$lst)                                          ; call prim_cdr
+  %cloptr10551 = inttoptr i64 %eaD$_37foldl1 to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10551)                                        ; assert function application
+  %i0ptr10552 = getelementptr inbounds i64, i64* %cloptr10551, i64 0                 ; &cloptr10551[0]
+  %f10554 = load i64, i64* %i0ptr10552, align 8                                      ; load; *i0ptr10552
+  %fptr10553 = inttoptr i64 %f10554 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10553(i64 %eaD$_37foldl1, i64 %cont7225, i64 %hGI$f, i64 %a6967, i64 %a6968); tail call
   ret void
 }
 
 
-define void @lam8161(i64 %env8162, i64 %_957228, i64 %a6967) {
-  %envptr10557 = inttoptr i64 %env8162 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10558 = getelementptr inbounds i64, i64* %envptr10557, i64 4                ; &envptr10557[4]
-  %pt7$lst = load i64, i64* %envptr10558, align 8                                    ; load; *envptr10558
-  %envptr10559 = inttoptr i64 %env8162 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10560 = getelementptr inbounds i64, i64* %envptr10559, i64 3                ; &envptr10559[3]
-  %QG8$f = load i64, i64* %envptr10560, align 8                                      ; load; *envptr10560
-  %envptr10561 = inttoptr i64 %env8162 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10562 = getelementptr inbounds i64, i64* %envptr10561, i64 2                ; &envptr10561[2]
-  %sPu$_37foldl1 = load i64, i64* %envptr10562, align 8                              ; load; *envptr10562
-  %envptr10563 = inttoptr i64 %env8162 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8149(i64 %env8150, i64 %cont7227, i64 %ZZ5$_37length) {
+  %arg7996 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10555 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10557 = getelementptr inbounds i64, i64* %cloptr10555, i64 1                  ; &eptr10557[1]
+  store i64 %ZZ5$_37length, i64* %eptr10557                                          ; *eptr10557 = %ZZ5$_37length
+  %eptr10556 = getelementptr inbounds i64, i64* %cloptr10555, i64 0                  ; &cloptr10555[0]
+  %f10558 = ptrtoint void(i64,i64,i64)* @lam8146 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10558, i64* %eptr10556                                                 ; store fptr
+  %arg7995 = ptrtoint i64* %cloptr10555 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10559 = inttoptr i64 %cont7227 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10559)                                        ; assert function application
+  %i0ptr10560 = getelementptr inbounds i64, i64* %cloptr10559, i64 0                 ; &cloptr10559[0]
+  %f10562 = load i64, i64* %i0ptr10560, align 8                                      ; load; *i0ptr10560
+  %fptr10561 = inttoptr i64 %f10562 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10561(i64 %cont7227, i64 %arg7996, i64 %arg7995)    ; tail call
+  ret void
+}
+
+
+define void @lam8146(i64 %env8147, i64 %cont7228, i64 %b18$lst) {
+  %envptr10563 = inttoptr i64 %env8147 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10564 = getelementptr inbounds i64, i64* %envptr10563, i64 1                ; &envptr10563[1]
-  %cont7227 = load i64, i64* %envptr10564, align 8                                   ; load; *envptr10564
-  %a6968 = call i64 @prim_cdr(i64 %pt7$lst)                                          ; call prim_cdr
-  %cloptr10565 = inttoptr i64 %sPu$_37foldl1 to i64*                                 ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10565)                                        ; assert function application
-  %i0ptr10566 = getelementptr inbounds i64, i64* %cloptr10565, i64 0                 ; &cloptr10565[0]
-  %f10568 = load i64, i64* %i0ptr10566, align 8                                      ; load; *i0ptr10566
-  %fptr10567 = inttoptr i64 %f10568 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10567(i64 %sPu$_37foldl1, i64 %cont7227, i64 %QG8$f, i64 %a6967, i64 %a6968); tail call
+  %ZZ5$_37length = load i64, i64* %envptr10564, align 8                              ; load; *envptr10564
+  %a6962 = call i64 @prim_null_63(i64 %b18$lst)                                      ; call prim_null_63
+  %cmp10565 = icmp eq i64 %a6962, 15                                                 ; false?
+  br i1 %cmp10565, label %else10567, label %then10566                                ; if
+
+then10566:
+  %arg8000 = add i64 0, 0                                                            ; quoted ()
+  %arg7999 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %cloptr10568 = inttoptr i64 %cont7228 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10568)                                        ; assert function application
+  %i0ptr10569 = getelementptr inbounds i64, i64* %cloptr10568, i64 0                 ; &cloptr10568[0]
+  %f10571 = load i64, i64* %i0ptr10569, align 8                                      ; load; *i0ptr10569
+  %fptr10570 = inttoptr i64 %f10571 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10570(i64 %cont7228, i64 %arg8000, i64 %arg7999)    ; tail call
+  ret void
+
+else10567:
+  %a6963 = call i64 @prim_cdr(i64 %b18$lst)                                          ; call prim_cdr
+  %cloptr10572 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10574 = getelementptr inbounds i64, i64* %cloptr10572, i64 1                  ; &eptr10574[1]
+  store i64 %cont7228, i64* %eptr10574                                               ; *eptr10574 = %cont7228
+  %eptr10573 = getelementptr inbounds i64, i64* %cloptr10572, i64 0                  ; &cloptr10572[0]
+  %f10575 = ptrtoint void(i64,i64,i64)* @lam8144 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10575, i64* %eptr10573                                                 ; store fptr
+  %arg8004 = ptrtoint i64* %cloptr10572 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10576 = inttoptr i64 %ZZ5$_37length to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10576)                                        ; assert function application
+  %i0ptr10577 = getelementptr inbounds i64, i64* %cloptr10576, i64 0                 ; &cloptr10576[0]
+  %f10579 = load i64, i64* %i0ptr10577, align 8                                      ; load; *i0ptr10577
+  %fptr10578 = inttoptr i64 %f10579 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10578(i64 %ZZ5$_37length, i64 %arg8004, i64 %a6963) ; tail call
   ret void
 }
 
 
-define void @lam8158(i64 %env8159, i64 %cont7229, i64 %JZl$_37length) {
-  %arg8005 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10569 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10571 = getelementptr inbounds i64, i64* %cloptr10569, i64 1                  ; &eptr10571[1]
-  store i64 %JZl$_37length, i64* %eptr10571                                          ; *eptr10571 = %JZl$_37length
-  %eptr10570 = getelementptr inbounds i64, i64* %cloptr10569, i64 0                  ; &cloptr10569[0]
-  %f10572 = ptrtoint void(i64,i64,i64)* @lam8155 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10572, i64* %eptr10570                                                 ; store fptr
-  %arg8004 = ptrtoint i64* %cloptr10569 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10573 = inttoptr i64 %cont7229 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10573)                                        ; assert function application
-  %i0ptr10574 = getelementptr inbounds i64, i64* %cloptr10573, i64 0                 ; &cloptr10573[0]
-  %f10576 = load i64, i64* %i0ptr10574, align 8                                      ; load; *i0ptr10574
-  %fptr10575 = inttoptr i64 %f10576 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10575(i64 %cont7229, i64 %arg8005, i64 %arg8004)    ; tail call
-  ret void
-}
-
-
-define void @lam8155(i64 %env8156, i64 %cont7230, i64 %A2S$lst) {
-  %envptr10577 = inttoptr i64 %env8156 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10578 = getelementptr inbounds i64, i64* %envptr10577, i64 1                ; &envptr10577[1]
-  %JZl$_37length = load i64, i64* %envptr10578, align 8                              ; load; *envptr10578
-  %a6962 = call i64 @prim_null_63(i64 %A2S$lst)                                      ; call prim_null_63
-  %cmp10579 = icmp eq i64 %a6962, 15                                                 ; false?
-  br i1 %cmp10579, label %else10581, label %then10580                                ; if
-
-then10580:
+define void @lam8144(i64 %env8145, i64 %_957229, i64 %a6964) {
+  %envptr10580 = inttoptr i64 %env8145 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10581 = getelementptr inbounds i64, i64* %envptr10580, i64 1                ; &envptr10580[1]
+  %cont7228 = load i64, i64* %envptr10581, align 8                                   ; load; *envptr10581
+  %arg8007 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %retprim7230 = call i64 @prim__43(i64 %arg8007, i64 %a6964)                        ; call prim__43
   %arg8009 = add i64 0, 0                                                            ; quoted ()
-  %arg8008 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %cloptr10582 = inttoptr i64 %cont7230 to i64*                                      ; closure/env cast; i64 -> i64*
+  %cloptr10582 = inttoptr i64 %cont7228 to i64*                                      ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr10582)                                        ; assert function application
   %i0ptr10583 = getelementptr inbounds i64, i64* %cloptr10582, i64 0                 ; &cloptr10582[0]
   %f10585 = load i64, i64* %i0ptr10583, align 8                                      ; load; *i0ptr10583
   %fptr10584 = inttoptr i64 %f10585 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10584(i64 %cont7230, i64 %arg8009, i64 %arg8008)    ; tail call
+  musttail call fastcc void %fptr10584(i64 %cont7228, i64 %arg8009, i64 %retprim7230); tail call
   ret void
+}
 
-else10581:
-  %a6963 = call i64 @prim_cdr(i64 %A2S$lst)                                          ; call prim_cdr
+
+define void @lam8138(i64 %env8139, i64 %cont7231, i64 %uJv$_37take) {
+  %arg8012 = add i64 0, 0                                                            ; quoted ()
   %cloptr10586 = call i64* @alloc(i64 16)                                            ; malloc
   %eptr10588 = getelementptr inbounds i64, i64* %cloptr10586, i64 1                  ; &eptr10588[1]
-  store i64 %cont7230, i64* %eptr10588                                               ; *eptr10588 = %cont7230
+  store i64 %uJv$_37take, i64* %eptr10588                                            ; *eptr10588 = %uJv$_37take
   %eptr10587 = getelementptr inbounds i64, i64* %cloptr10586, i64 0                  ; &cloptr10586[0]
-  %f10589 = ptrtoint void(i64,i64,i64)* @lam8153 to i64                              ; fptr cast; i64(...)* -> i64
+  %f10589 = ptrtoint void(i64,i64,i64,i64)* @lam8135 to i64                          ; fptr cast; i64(...)* -> i64
   store i64 %f10589, i64* %eptr10587                                                 ; store fptr
-  %arg8013 = ptrtoint i64* %cloptr10586 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10590 = inttoptr i64 %JZl$_37length to i64*                                 ; closure/env cast; i64 -> i64*
+  %arg8011 = ptrtoint i64* %cloptr10586 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10590 = inttoptr i64 %cont7231 to i64*                                      ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr10590)                                        ; assert function application
   %i0ptr10591 = getelementptr inbounds i64, i64* %cloptr10590, i64 0                 ; &cloptr10590[0]
   %f10593 = load i64, i64* %i0ptr10591, align 8                                      ; load; *i0ptr10591
   %fptr10592 = inttoptr i64 %f10593 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10592(i64 %JZl$_37length, i64 %arg8013, i64 %a6963) ; tail call
+  musttail call fastcc void %fptr10592(i64 %cont7231, i64 %arg8012, i64 %arg8011)    ; tail call
   ret void
 }
 
 
-define void @lam8153(i64 %env8154, i64 %_957231, i64 %a6964) {
-  %envptr10594 = inttoptr i64 %env8154 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8135(i64 %env8136, i64 %cont7232, i64 %SSB$lst, i64 %OLt$n) {
+  %envptr10594 = inttoptr i64 %env8136 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10595 = getelementptr inbounds i64, i64* %envptr10594, i64 1                ; &envptr10594[1]
-  %cont7230 = load i64, i64* %envptr10595, align 8                                   ; load; *envptr10595
-  %arg8016 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %retprim7232 = call i64 @prim__43(i64 %arg8016, i64 %a6964)                        ; call prim__43
-  %arg8018 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10596 = inttoptr i64 %cont7230 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10596)                                        ; assert function application
-  %i0ptr10597 = getelementptr inbounds i64, i64* %cloptr10596, i64 0                 ; &cloptr10596[0]
-  %f10599 = load i64, i64* %i0ptr10597, align 8                                      ; load; *i0ptr10597
-  %fptr10598 = inttoptr i64 %f10599 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10598(i64 %cont7230, i64 %arg8018, i64 %retprim7232); tail call
+  %uJv$_37take = load i64, i64* %envptr10595, align 8                                ; load; *envptr10595
+  %arg8014 = call i64 @const_init_int(i64 0)                                         ; quoted int
+  %a6956 = call i64 @prim__61(i64 %OLt$n, i64 %arg8014)                              ; call prim__61
+  %cmp10596 = icmp eq i64 %a6956, 15                                                 ; false?
+  br i1 %cmp10596, label %else10598, label %then10597                                ; if
+
+then10597:
+  %arg8017 = add i64 0, 0                                                            ; quoted ()
+  %arg8016 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10599 = inttoptr i64 %cont7232 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10599)                                        ; assert function application
+  %i0ptr10600 = getelementptr inbounds i64, i64* %cloptr10599, i64 0                 ; &cloptr10599[0]
+  %f10602 = load i64, i64* %i0ptr10600, align 8                                      ; load; *i0ptr10600
+  %fptr10601 = inttoptr i64 %f10602 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10601(i64 %cont7232, i64 %arg8017, i64 %arg8016)    ; tail call
   ret void
-}
 
+else10598:
+  %a6957 = call i64 @prim_null_63(i64 %SSB$lst)                                      ; call prim_null_63
+  %cmp10603 = icmp eq i64 %a6957, 15                                                 ; false?
+  br i1 %cmp10603, label %else10605, label %then10604                                ; if
 
-define void @lam8147(i64 %env8148, i64 %cont7233, i64 %SKB$_37take) {
+then10604:
   %arg8021 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10600 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10602 = getelementptr inbounds i64, i64* %cloptr10600, i64 1                  ; &eptr10602[1]
-  store i64 %SKB$_37take, i64* %eptr10602                                            ; *eptr10602 = %SKB$_37take
-  %eptr10601 = getelementptr inbounds i64, i64* %cloptr10600, i64 0                  ; &cloptr10600[0]
-  %f10603 = ptrtoint void(i64,i64,i64,i64)* @lam8144 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10603, i64* %eptr10601                                                 ; store fptr
-  %arg8020 = ptrtoint i64* %cloptr10600 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10604 = inttoptr i64 %cont7233 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10604)                                        ; assert function application
-  %i0ptr10605 = getelementptr inbounds i64, i64* %cloptr10604, i64 0                 ; &cloptr10604[0]
-  %f10607 = load i64, i64* %i0ptr10605, align 8                                      ; load; *i0ptr10605
-  %fptr10606 = inttoptr i64 %f10607 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10606(i64 %cont7233, i64 %arg8021, i64 %arg8020)    ; tail call
+  %arg8020 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10606 = inttoptr i64 %cont7232 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10606)                                        ; assert function application
+  %i0ptr10607 = getelementptr inbounds i64, i64* %cloptr10606, i64 0                 ; &cloptr10606[0]
+  %f10609 = load i64, i64* %i0ptr10607, align 8                                      ; load; *i0ptr10607
+  %fptr10608 = inttoptr i64 %f10609 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10608(i64 %cont7232, i64 %arg8021, i64 %arg8020)    ; tail call
+  ret void
+
+else10605:
+  %a6958 = call i64 @prim_car(i64 %SSB$lst)                                          ; call prim_car
+  %a6959 = call i64 @prim_cdr(i64 %SSB$lst)                                          ; call prim_cdr
+  %arg8025 = call i64 @const_init_int(i64 1)                                         ; quoted int
+  %a6960 = call i64 @prim__45(i64 %OLt$n, i64 %arg8025)                              ; call prim__45
+  %cloptr10610 = call i64* @alloc(i64 24)                                            ; malloc
+  %eptr10612 = getelementptr inbounds i64, i64* %cloptr10610, i64 1                  ; &eptr10612[1]
+  %eptr10613 = getelementptr inbounds i64, i64* %cloptr10610, i64 2                  ; &eptr10613[2]
+  store i64 %a6958, i64* %eptr10612                                                  ; *eptr10612 = %a6958
+  store i64 %cont7232, i64* %eptr10613                                               ; *eptr10613 = %cont7232
+  %eptr10611 = getelementptr inbounds i64, i64* %cloptr10610, i64 0                  ; &cloptr10610[0]
+  %f10614 = ptrtoint void(i64,i64,i64)* @lam8131 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10614, i64* %eptr10611                                                 ; store fptr
+  %arg8029 = ptrtoint i64* %cloptr10610 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10615 = inttoptr i64 %uJv$_37take to i64*                                   ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10615)                                        ; assert function application
+  %i0ptr10616 = getelementptr inbounds i64, i64* %cloptr10615, i64 0                 ; &cloptr10615[0]
+  %f10618 = load i64, i64* %i0ptr10616, align 8                                      ; load; *i0ptr10616
+  %fptr10617 = inttoptr i64 %f10618 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10617(i64 %uJv$_37take, i64 %arg8029, i64 %a6959, i64 %a6960); tail call
   ret void
 }
 
 
-define void @lam8144(i64 %env8145, i64 %cont7234, i64 %nlU$lst, i64 %rF5$n) {
-  %envptr10608 = inttoptr i64 %env8145 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10609 = getelementptr inbounds i64, i64* %envptr10608, i64 1                ; &envptr10608[1]
-  %SKB$_37take = load i64, i64* %envptr10609, align 8                                ; load; *envptr10609
-  %arg8023 = call i64 @const_init_int(i64 0)                                         ; quoted int
-  %a6956 = call i64 @prim__61(i64 %rF5$n, i64 %arg8023)                              ; call prim__61
-  %cmp10610 = icmp eq i64 %a6956, 15                                                 ; false?
-  br i1 %cmp10610, label %else10612, label %then10611                                ; if
-
-then10611:
-  %arg8026 = add i64 0, 0                                                            ; quoted ()
-  %arg8025 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10613 = inttoptr i64 %cont7234 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10613)                                        ; assert function application
-  %i0ptr10614 = getelementptr inbounds i64, i64* %cloptr10613, i64 0                 ; &cloptr10613[0]
-  %f10616 = load i64, i64* %i0ptr10614, align 8                                      ; load; *i0ptr10614
-  %fptr10615 = inttoptr i64 %f10616 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10615(i64 %cont7234, i64 %arg8026, i64 %arg8025)    ; tail call
-  ret void
-
-else10612:
-  %a6957 = call i64 @prim_null_63(i64 %nlU$lst)                                      ; call prim_null_63
-  %cmp10617 = icmp eq i64 %a6957, 15                                                 ; false?
-  br i1 %cmp10617, label %else10619, label %then10618                                ; if
-
-then10618:
-  %arg8030 = add i64 0, 0                                                            ; quoted ()
-  %arg8029 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10620 = inttoptr i64 %cont7234 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10620)                                        ; assert function application
-  %i0ptr10621 = getelementptr inbounds i64, i64* %cloptr10620, i64 0                 ; &cloptr10620[0]
-  %f10623 = load i64, i64* %i0ptr10621, align 8                                      ; load; *i0ptr10621
-  %fptr10622 = inttoptr i64 %f10623 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10622(i64 %cont7234, i64 %arg8030, i64 %arg8029)    ; tail call
-  ret void
-
-else10619:
-  %a6958 = call i64 @prim_car(i64 %nlU$lst)                                          ; call prim_car
-  %a6959 = call i64 @prim_cdr(i64 %nlU$lst)                                          ; call prim_cdr
-  %arg8034 = call i64 @const_init_int(i64 1)                                         ; quoted int
-  %a6960 = call i64 @prim__45(i64 %rF5$n, i64 %arg8034)                              ; call prim__45
-  %cloptr10624 = call i64* @alloc(i64 24)                                            ; malloc
-  %eptr10626 = getelementptr inbounds i64, i64* %cloptr10624, i64 1                  ; &eptr10626[1]
-  %eptr10627 = getelementptr inbounds i64, i64* %cloptr10624, i64 2                  ; &eptr10627[2]
-  store i64 %cont7234, i64* %eptr10626                                               ; *eptr10626 = %cont7234
-  store i64 %a6958, i64* %eptr10627                                                  ; *eptr10627 = %a6958
-  %eptr10625 = getelementptr inbounds i64, i64* %cloptr10624, i64 0                  ; &cloptr10624[0]
-  %f10628 = ptrtoint void(i64,i64,i64)* @lam8140 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10628, i64* %eptr10625                                                 ; store fptr
-  %arg8038 = ptrtoint i64* %cloptr10624 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10629 = inttoptr i64 %SKB$_37take to i64*                                   ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10629)                                        ; assert function application
-  %i0ptr10630 = getelementptr inbounds i64, i64* %cloptr10629, i64 0                 ; &cloptr10629[0]
-  %f10632 = load i64, i64* %i0ptr10630, align 8                                      ; load; *i0ptr10630
-  %fptr10631 = inttoptr i64 %f10632 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10631(i64 %SKB$_37take, i64 %arg8038, i64 %a6959, i64 %a6960); tail call
+define void @lam8131(i64 %env8132, i64 %_957233, i64 %a6961) {
+  %envptr10619 = inttoptr i64 %env8132 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10620 = getelementptr inbounds i64, i64* %envptr10619, i64 2                ; &envptr10619[2]
+  %cont7232 = load i64, i64* %envptr10620, align 8                                   ; load; *envptr10620
+  %envptr10621 = inttoptr i64 %env8132 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10622 = getelementptr inbounds i64, i64* %envptr10621, i64 1                ; &envptr10621[1]
+  %a6958 = load i64, i64* %envptr10622, align 8                                      ; load; *envptr10622
+  %retprim7234 = call i64 @prim_cons(i64 %a6958, i64 %a6961)                         ; call prim_cons
+  %arg8034 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10623 = inttoptr i64 %cont7232 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10623)                                        ; assert function application
+  %i0ptr10624 = getelementptr inbounds i64, i64* %cloptr10623, i64 0                 ; &cloptr10623[0]
+  %f10626 = load i64, i64* %i0ptr10624, align 8                                      ; load; *i0ptr10624
+  %fptr10625 = inttoptr i64 %f10626 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10625(i64 %cont7232, i64 %arg8034, i64 %retprim7234); tail call
   ret void
 }
 
 
-define void @lam8140(i64 %env8141, i64 %_957235, i64 %a6961) {
-  %envptr10633 = inttoptr i64 %env8141 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10634 = getelementptr inbounds i64, i64* %envptr10633, i64 2                ; &envptr10633[2]
-  %a6958 = load i64, i64* %envptr10634, align 8                                      ; load; *envptr10634
-  %envptr10635 = inttoptr i64 %env8141 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8124(i64 %env8125, i64 %cont7235, i64 %v8W$_37map) {
+  %arg8037 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10627 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10629 = getelementptr inbounds i64, i64* %cloptr10627, i64 1                  ; &eptr10629[1]
+  store i64 %v8W$_37map, i64* %eptr10629                                             ; *eptr10629 = %v8W$_37map
+  %eptr10628 = getelementptr inbounds i64, i64* %cloptr10627, i64 0                  ; &cloptr10627[0]
+  %f10630 = ptrtoint void(i64,i64,i64,i64)* @lam8121 to i64                          ; fptr cast; i64(...)* -> i64
+  store i64 %f10630, i64* %eptr10628                                                 ; store fptr
+  %arg8036 = ptrtoint i64* %cloptr10627 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10631 = inttoptr i64 %cont7235 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10631)                                        ; assert function application
+  %i0ptr10632 = getelementptr inbounds i64, i64* %cloptr10631, i64 0                 ; &cloptr10631[0]
+  %f10634 = load i64, i64* %i0ptr10632, align 8                                      ; load; *i0ptr10632
+  %fptr10633 = inttoptr i64 %f10634 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10633(i64 %cont7235, i64 %arg8037, i64 %arg8036)    ; tail call
+  ret void
+}
+
+
+define void @lam8121(i64 %env8122, i64 %cont7236, i64 %cBw$f, i64 %z5X$lst) {
+  %envptr10635 = inttoptr i64 %env8122 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10636 = getelementptr inbounds i64, i64* %envptr10635, i64 1                ; &envptr10635[1]
-  %cont7234 = load i64, i64* %envptr10636, align 8                                   ; load; *envptr10636
-  %retprim7236 = call i64 @prim_cons(i64 %a6958, i64 %a6961)                         ; call prim_cons
-  %arg8043 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10637 = inttoptr i64 %cont7234 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10637)                                        ; assert function application
-  %i0ptr10638 = getelementptr inbounds i64, i64* %cloptr10637, i64 0                 ; &cloptr10637[0]
-  %f10640 = load i64, i64* %i0ptr10638, align 8                                      ; load; *i0ptr10638
-  %fptr10639 = inttoptr i64 %f10640 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10639(i64 %cont7234, i64 %arg8043, i64 %retprim7236); tail call
+  %v8W$_37map = load i64, i64* %envptr10636, align 8                                 ; load; *envptr10636
+  %a6951 = call i64 @prim_null_63(i64 %z5X$lst)                                      ; call prim_null_63
+  %cmp10637 = icmp eq i64 %a6951, 15                                                 ; false?
+  br i1 %cmp10637, label %else10639, label %then10638                                ; if
+
+then10638:
+  %arg8041 = add i64 0, 0                                                            ; quoted ()
+  %arg8040 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10640 = inttoptr i64 %cont7236 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10640)                                        ; assert function application
+  %i0ptr10641 = getelementptr inbounds i64, i64* %cloptr10640, i64 0                 ; &cloptr10640[0]
+  %f10643 = load i64, i64* %i0ptr10641, align 8                                      ; load; *i0ptr10641
+  %fptr10642 = inttoptr i64 %f10643 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10642(i64 %cont7236, i64 %arg8041, i64 %arg8040)    ; tail call
+  ret void
+
+else10639:
+  %a6952 = call i64 @prim_car(i64 %z5X$lst)                                          ; call prim_car
+  %cloptr10644 = call i64* @alloc(i64 40)                                            ; malloc
+  %eptr10646 = getelementptr inbounds i64, i64* %cloptr10644, i64 1                  ; &eptr10646[1]
+  %eptr10647 = getelementptr inbounds i64, i64* %cloptr10644, i64 2                  ; &eptr10647[2]
+  %eptr10648 = getelementptr inbounds i64, i64* %cloptr10644, i64 3                  ; &eptr10648[3]
+  %eptr10649 = getelementptr inbounds i64, i64* %cloptr10644, i64 4                  ; &eptr10649[4]
+  store i64 %v8W$_37map, i64* %eptr10646                                             ; *eptr10646 = %v8W$_37map
+  store i64 %cBw$f, i64* %eptr10647                                                  ; *eptr10647 = %cBw$f
+  store i64 %z5X$lst, i64* %eptr10648                                                ; *eptr10648 = %z5X$lst
+  store i64 %cont7236, i64* %eptr10649                                               ; *eptr10649 = %cont7236
+  %eptr10645 = getelementptr inbounds i64, i64* %cloptr10644, i64 0                  ; &cloptr10644[0]
+  %f10650 = ptrtoint void(i64,i64,i64)* @lam8119 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10650, i64* %eptr10645                                                 ; store fptr
+  %arg8045 = ptrtoint i64* %cloptr10644 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10651 = inttoptr i64 %cBw$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10651)                                        ; assert function application
+  %i0ptr10652 = getelementptr inbounds i64, i64* %cloptr10651, i64 0                 ; &cloptr10651[0]
+  %f10654 = load i64, i64* %i0ptr10652, align 8                                      ; load; *i0ptr10652
+  %fptr10653 = inttoptr i64 %f10654 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10653(i64 %cBw$f, i64 %arg8045, i64 %a6952)         ; tail call
   ret void
 }
 
 
-define void @lam8133(i64 %env8134, i64 %cont7237, i64 %Ubc$_37map) {
-  %arg8046 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10641 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10643 = getelementptr inbounds i64, i64* %cloptr10641, i64 1                  ; &eptr10643[1]
-  store i64 %Ubc$_37map, i64* %eptr10643                                             ; *eptr10643 = %Ubc$_37map
-  %eptr10642 = getelementptr inbounds i64, i64* %cloptr10641, i64 0                  ; &cloptr10641[0]
-  %f10644 = ptrtoint void(i64,i64,i64,i64)* @lam8130 to i64                          ; fptr cast; i64(...)* -> i64
-  store i64 %f10644, i64* %eptr10642                                                 ; store fptr
-  %arg8045 = ptrtoint i64* %cloptr10641 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10645 = inttoptr i64 %cont7237 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10645)                                        ; assert function application
-  %i0ptr10646 = getelementptr inbounds i64, i64* %cloptr10645, i64 0                 ; &cloptr10645[0]
-  %f10648 = load i64, i64* %i0ptr10646, align 8                                      ; load; *i0ptr10646
-  %fptr10647 = inttoptr i64 %f10648 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10647(i64 %cont7237, i64 %arg8046, i64 %arg8045)    ; tail call
+define void @lam8119(i64 %env8120, i64 %_957237, i64 %a6953) {
+  %envptr10655 = inttoptr i64 %env8120 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10656 = getelementptr inbounds i64, i64* %envptr10655, i64 4                ; &envptr10655[4]
+  %cont7236 = load i64, i64* %envptr10656, align 8                                   ; load; *envptr10656
+  %envptr10657 = inttoptr i64 %env8120 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10658 = getelementptr inbounds i64, i64* %envptr10657, i64 3                ; &envptr10657[3]
+  %z5X$lst = load i64, i64* %envptr10658, align 8                                    ; load; *envptr10658
+  %envptr10659 = inttoptr i64 %env8120 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10660 = getelementptr inbounds i64, i64* %envptr10659, i64 2                ; &envptr10659[2]
+  %cBw$f = load i64, i64* %envptr10660, align 8                                      ; load; *envptr10660
+  %envptr10661 = inttoptr i64 %env8120 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10662 = getelementptr inbounds i64, i64* %envptr10661, i64 1                ; &envptr10661[1]
+  %v8W$_37map = load i64, i64* %envptr10662, align 8                                 ; load; *envptr10662
+  %a6954 = call i64 @prim_cdr(i64 %z5X$lst)                                          ; call prim_cdr
+  %cloptr10663 = call i64* @alloc(i64 24)                                            ; malloc
+  %eptr10665 = getelementptr inbounds i64, i64* %cloptr10663, i64 1                  ; &eptr10665[1]
+  %eptr10666 = getelementptr inbounds i64, i64* %cloptr10663, i64 2                  ; &eptr10666[2]
+  store i64 %a6953, i64* %eptr10665                                                  ; *eptr10665 = %a6953
+  store i64 %cont7236, i64* %eptr10666                                               ; *eptr10666 = %cont7236
+  %eptr10664 = getelementptr inbounds i64, i64* %cloptr10663, i64 0                  ; &cloptr10663[0]
+  %f10667 = ptrtoint void(i64,i64,i64)* @lam8117 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10667, i64* %eptr10664                                                 ; store fptr
+  %arg8050 = ptrtoint i64* %cloptr10663 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10668 = inttoptr i64 %v8W$_37map to i64*                                    ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10668)                                        ; assert function application
+  %i0ptr10669 = getelementptr inbounds i64, i64* %cloptr10668, i64 0                 ; &cloptr10668[0]
+  %f10671 = load i64, i64* %i0ptr10669, align 8                                      ; load; *i0ptr10669
+  %fptr10670 = inttoptr i64 %f10671 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10670(i64 %v8W$_37map, i64 %arg8050, i64 %cBw$f, i64 %a6954); tail call
   ret void
 }
 
 
-define void @lam8130(i64 %env8131, i64 %cont7238, i64 %uVZ$f, i64 %NQR$lst) {
-  %envptr10649 = inttoptr i64 %env8131 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10650 = getelementptr inbounds i64, i64* %envptr10649, i64 1                ; &envptr10649[1]
-  %Ubc$_37map = load i64, i64* %envptr10650, align 8                                 ; load; *envptr10650
-  %a6951 = call i64 @prim_null_63(i64 %NQR$lst)                                      ; call prim_null_63
-  %cmp10651 = icmp eq i64 %a6951, 15                                                 ; false?
-  br i1 %cmp10651, label %else10653, label %then10652                                ; if
-
-then10652:
-  %arg8050 = add i64 0, 0                                                            ; quoted ()
-  %arg8049 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10654 = inttoptr i64 %cont7238 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10654)                                        ; assert function application
-  %i0ptr10655 = getelementptr inbounds i64, i64* %cloptr10654, i64 0                 ; &cloptr10654[0]
-  %f10657 = load i64, i64* %i0ptr10655, align 8                                      ; load; *i0ptr10655
-  %fptr10656 = inttoptr i64 %f10657 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10656(i64 %cont7238, i64 %arg8050, i64 %arg8049)    ; tail call
-  ret void
-
-else10653:
-  %a6952 = call i64 @prim_car(i64 %NQR$lst)                                          ; call prim_car
-  %cloptr10658 = call i64* @alloc(i64 40)                                            ; malloc
-  %eptr10660 = getelementptr inbounds i64, i64* %cloptr10658, i64 1                  ; &eptr10660[1]
-  %eptr10661 = getelementptr inbounds i64, i64* %cloptr10658, i64 2                  ; &eptr10661[2]
-  %eptr10662 = getelementptr inbounds i64, i64* %cloptr10658, i64 3                  ; &eptr10662[3]
-  %eptr10663 = getelementptr inbounds i64, i64* %cloptr10658, i64 4                  ; &eptr10663[4]
-  store i64 %Ubc$_37map, i64* %eptr10660                                             ; *eptr10660 = %Ubc$_37map
-  store i64 %uVZ$f, i64* %eptr10661                                                  ; *eptr10661 = %uVZ$f
-  store i64 %NQR$lst, i64* %eptr10662                                                ; *eptr10662 = %NQR$lst
-  store i64 %cont7238, i64* %eptr10663                                               ; *eptr10663 = %cont7238
-  %eptr10659 = getelementptr inbounds i64, i64* %cloptr10658, i64 0                  ; &cloptr10658[0]
-  %f10664 = ptrtoint void(i64,i64,i64)* @lam8128 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10664, i64* %eptr10659                                                 ; store fptr
-  %arg8054 = ptrtoint i64* %cloptr10658 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10665 = inttoptr i64 %uVZ$f to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10665)                                        ; assert function application
-  %i0ptr10666 = getelementptr inbounds i64, i64* %cloptr10665, i64 0                 ; &cloptr10665[0]
-  %f10668 = load i64, i64* %i0ptr10666, align 8                                      ; load; *i0ptr10666
-  %fptr10667 = inttoptr i64 %f10668 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10667(i64 %uVZ$f, i64 %arg8054, i64 %a6952)         ; tail call
+define void @lam8117(i64 %env8118, i64 %_957238, i64 %a6955) {
+  %envptr10672 = inttoptr i64 %env8118 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10673 = getelementptr inbounds i64, i64* %envptr10672, i64 2                ; &envptr10672[2]
+  %cont7236 = load i64, i64* %envptr10673, align 8                                   ; load; *envptr10673
+  %envptr10674 = inttoptr i64 %env8118 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10675 = getelementptr inbounds i64, i64* %envptr10674, i64 1                ; &envptr10674[1]
+  %a6953 = load i64, i64* %envptr10675, align 8                                      ; load; *envptr10675
+  %retprim7239 = call i64 @prim_cons(i64 %a6953, i64 %a6955)                         ; call prim_cons
+  %arg8055 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10676 = inttoptr i64 %cont7236 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10676)                                        ; assert function application
+  %i0ptr10677 = getelementptr inbounds i64, i64* %cloptr10676, i64 0                 ; &cloptr10676[0]
+  %f10679 = load i64, i64* %i0ptr10677, align 8                                      ; load; *i0ptr10677
+  %fptr10678 = inttoptr i64 %f10679 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10678(i64 %cont7236, i64 %arg8055, i64 %retprim7239); tail call
   ret void
 }
 
 
-define void @lam8128(i64 %env8129, i64 %_957239, i64 %a6953) {
-  %envptr10669 = inttoptr i64 %env8129 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10670 = getelementptr inbounds i64, i64* %envptr10669, i64 4                ; &envptr10669[4]
-  %cont7238 = load i64, i64* %envptr10670, align 8                                   ; load; *envptr10670
-  %envptr10671 = inttoptr i64 %env8129 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10672 = getelementptr inbounds i64, i64* %envptr10671, i64 3                ; &envptr10671[3]
-  %NQR$lst = load i64, i64* %envptr10672, align 8                                    ; load; *envptr10672
-  %envptr10673 = inttoptr i64 %env8129 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10674 = getelementptr inbounds i64, i64* %envptr10673, i64 2                ; &envptr10673[2]
-  %uVZ$f = load i64, i64* %envptr10674, align 8                                      ; load; *envptr10674
-  %envptr10675 = inttoptr i64 %env8129 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10676 = getelementptr inbounds i64, i64* %envptr10675, i64 1                ; &envptr10675[1]
-  %Ubc$_37map = load i64, i64* %envptr10676, align 8                                 ; load; *envptr10676
-  %a6954 = call i64 @prim_cdr(i64 %NQR$lst)                                          ; call prim_cdr
-  %cloptr10677 = call i64* @alloc(i64 24)                                            ; malloc
-  %eptr10679 = getelementptr inbounds i64, i64* %cloptr10677, i64 1                  ; &eptr10679[1]
-  %eptr10680 = getelementptr inbounds i64, i64* %cloptr10677, i64 2                  ; &eptr10680[2]
-  store i64 %a6953, i64* %eptr10679                                                  ; *eptr10679 = %a6953
-  store i64 %cont7238, i64* %eptr10680                                               ; *eptr10680 = %cont7238
-  %eptr10678 = getelementptr inbounds i64, i64* %cloptr10677, i64 0                  ; &cloptr10677[0]
-  %f10681 = ptrtoint void(i64,i64,i64)* @lam8126 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10681, i64* %eptr10678                                                 ; store fptr
-  %arg8059 = ptrtoint i64* %cloptr10677 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10682 = inttoptr i64 %Ubc$_37map to i64*                                    ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10682)                                        ; assert function application
-  %i0ptr10683 = getelementptr inbounds i64, i64* %cloptr10682, i64 0                 ; &cloptr10682[0]
-  %f10685 = load i64, i64* %i0ptr10683, align 8                                      ; load; *i0ptr10683
-  %fptr10684 = inttoptr i64 %f10685 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10684(i64 %Ubc$_37map, i64 %arg8059, i64 %uVZ$f, i64 %a6954); tail call
+define void @lam8112(i64 %env8113, i64 %cont7240, i64 %Hhk$_37foldr1) {
+  %arg8058 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10680 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10682 = getelementptr inbounds i64, i64* %cloptr10680, i64 1                  ; &eptr10682[1]
+  store i64 %Hhk$_37foldr1, i64* %eptr10682                                          ; *eptr10682 = %Hhk$_37foldr1
+  %eptr10681 = getelementptr inbounds i64, i64* %cloptr10680, i64 0                  ; &cloptr10680[0]
+  %f10683 = ptrtoint void(i64,i64,i64,i64,i64)* @lam8109 to i64                      ; fptr cast; i64(...)* -> i64
+  store i64 %f10683, i64* %eptr10681                                                 ; store fptr
+  %arg8057 = ptrtoint i64* %cloptr10680 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10684 = inttoptr i64 %cont7240 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10684)                                        ; assert function application
+  %i0ptr10685 = getelementptr inbounds i64, i64* %cloptr10684, i64 0                 ; &cloptr10684[0]
+  %f10687 = load i64, i64* %i0ptr10685, align 8                                      ; load; *i0ptr10685
+  %fptr10686 = inttoptr i64 %f10687 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10686(i64 %cont7240, i64 %arg8058, i64 %arg8057)    ; tail call
   ret void
 }
 
 
-define void @lam8126(i64 %env8127, i64 %_957240, i64 %a6955) {
-  %envptr10686 = inttoptr i64 %env8127 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10687 = getelementptr inbounds i64, i64* %envptr10686, i64 2                ; &envptr10686[2]
-  %cont7238 = load i64, i64* %envptr10687, align 8                                   ; load; *envptr10687
-  %envptr10688 = inttoptr i64 %env8127 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8109(i64 %env8110, i64 %cont7241, i64 %gPn$f, i64 %jZV$acc, i64 %HE9$lst) {
+  %envptr10688 = inttoptr i64 %env8110 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10689 = getelementptr inbounds i64, i64* %envptr10688, i64 1                ; &envptr10688[1]
-  %a6953 = load i64, i64* %envptr10689, align 8                                      ; load; *envptr10689
-  %retprim7241 = call i64 @prim_cons(i64 %a6953, i64 %a6955)                         ; call prim_cons
-  %arg8064 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10690 = inttoptr i64 %cont7238 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10690)                                        ; assert function application
-  %i0ptr10691 = getelementptr inbounds i64, i64* %cloptr10690, i64 0                 ; &cloptr10690[0]
-  %f10693 = load i64, i64* %i0ptr10691, align 8                                      ; load; *i0ptr10691
-  %fptr10692 = inttoptr i64 %f10693 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10692(i64 %cont7238, i64 %arg8064, i64 %retprim7241); tail call
+  %Hhk$_37foldr1 = load i64, i64* %envptr10689, align 8                              ; load; *envptr10689
+  %a6947 = call i64 @prim_null_63(i64 %HE9$lst)                                      ; call prim_null_63
+  %cmp10690 = icmp eq i64 %a6947, 15                                                 ; false?
+  br i1 %cmp10690, label %else10692, label %then10691                                ; if
+
+then10691:
+  %arg8062 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10693 = inttoptr i64 %cont7241 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10693)                                        ; assert function application
+  %i0ptr10694 = getelementptr inbounds i64, i64* %cloptr10693, i64 0                 ; &cloptr10693[0]
+  %f10696 = load i64, i64* %i0ptr10694, align 8                                      ; load; *i0ptr10694
+  %fptr10695 = inttoptr i64 %f10696 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10695(i64 %cont7241, i64 %arg8062, i64 %jZV$acc)    ; tail call
+  ret void
+
+else10692:
+  %a6948 = call i64 @prim_car(i64 %HE9$lst)                                          ; call prim_car
+  %a6949 = call i64 @prim_cdr(i64 %HE9$lst)                                          ; call prim_cdr
+  %cloptr10697 = call i64* @alloc(i64 32)                                            ; malloc
+  %eptr10699 = getelementptr inbounds i64, i64* %cloptr10697, i64 1                  ; &eptr10699[1]
+  %eptr10700 = getelementptr inbounds i64, i64* %cloptr10697, i64 2                  ; &eptr10700[2]
+  %eptr10701 = getelementptr inbounds i64, i64* %cloptr10697, i64 3                  ; &eptr10701[3]
+  store i64 %a6948, i64* %eptr10699                                                  ; *eptr10699 = %a6948
+  store i64 %gPn$f, i64* %eptr10700                                                  ; *eptr10700 = %gPn$f
+  store i64 %cont7241, i64* %eptr10701                                               ; *eptr10701 = %cont7241
+  %eptr10698 = getelementptr inbounds i64, i64* %cloptr10697, i64 0                  ; &cloptr10697[0]
+  %f10702 = ptrtoint void(i64,i64,i64)* @lam8107 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10702, i64* %eptr10698                                                 ; store fptr
+  %arg8069 = ptrtoint i64* %cloptr10697 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10703 = inttoptr i64 %Hhk$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10703)                                        ; assert function application
+  %i0ptr10704 = getelementptr inbounds i64, i64* %cloptr10703, i64 0                 ; &cloptr10703[0]
+  %f10706 = load i64, i64* %i0ptr10704, align 8                                      ; load; *i0ptr10704
+  %fptr10705 = inttoptr i64 %f10706 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10705(i64 %Hhk$_37foldr1, i64 %arg8069, i64 %gPn$f, i64 %jZV$acc, i64 %a6949); tail call
   ret void
 }
 
 
-define void @lam8121(i64 %env8122, i64 %cont7242, i64 %Ahw$_37foldr1) {
-  %arg8067 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10694 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10696 = getelementptr inbounds i64, i64* %cloptr10694, i64 1                  ; &eptr10696[1]
-  store i64 %Ahw$_37foldr1, i64* %eptr10696                                          ; *eptr10696 = %Ahw$_37foldr1
-  %eptr10695 = getelementptr inbounds i64, i64* %cloptr10694, i64 0                  ; &cloptr10694[0]
-  %f10697 = ptrtoint void(i64,i64,i64,i64,i64)* @lam8118 to i64                      ; fptr cast; i64(...)* -> i64
-  store i64 %f10697, i64* %eptr10695                                                 ; store fptr
-  %arg8066 = ptrtoint i64* %cloptr10694 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10698 = inttoptr i64 %cont7242 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10698)                                        ; assert function application
-  %i0ptr10699 = getelementptr inbounds i64, i64* %cloptr10698, i64 0                 ; &cloptr10698[0]
-  %f10701 = load i64, i64* %i0ptr10699, align 8                                      ; load; *i0ptr10699
-  %fptr10700 = inttoptr i64 %f10701 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10700(i64 %cont7242, i64 %arg8067, i64 %arg8066)    ; tail call
+define void @lam8107(i64 %env8108, i64 %_957242, i64 %a6950) {
+  %envptr10707 = inttoptr i64 %env8108 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10708 = getelementptr inbounds i64, i64* %envptr10707, i64 3                ; &envptr10707[3]
+  %cont7241 = load i64, i64* %envptr10708, align 8                                   ; load; *envptr10708
+  %envptr10709 = inttoptr i64 %env8108 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10710 = getelementptr inbounds i64, i64* %envptr10709, i64 2                ; &envptr10709[2]
+  %gPn$f = load i64, i64* %envptr10710, align 8                                      ; load; *envptr10710
+  %envptr10711 = inttoptr i64 %env8108 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10712 = getelementptr inbounds i64, i64* %envptr10711, i64 1                ; &envptr10711[1]
+  %a6948 = load i64, i64* %envptr10712, align 8                                      ; load; *envptr10712
+  %cloptr10713 = inttoptr i64 %gPn$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10713)                                        ; assert function application
+  %i0ptr10714 = getelementptr inbounds i64, i64* %cloptr10713, i64 0                 ; &cloptr10713[0]
+  %f10716 = load i64, i64* %i0ptr10714, align 8                                      ; load; *i0ptr10714
+  %fptr10715 = inttoptr i64 %f10716 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10715(i64 %gPn$f, i64 %cont7241, i64 %a6948, i64 %a6950); tail call
   ret void
 }
 
 
-define void @lam8118(i64 %env8119, i64 %cont7243, i64 %jQe$f, i64 %PWS$acc, i64 %b4Z$lst) {
-  %envptr10702 = inttoptr i64 %env8119 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10703 = getelementptr inbounds i64, i64* %envptr10702, i64 1                ; &envptr10702[1]
-  %Ahw$_37foldr1 = load i64, i64* %envptr10703, align 8                              ; load; *envptr10703
-  %a6947 = call i64 @prim_null_63(i64 %b4Z$lst)                                      ; call prim_null_63
-  %cmp10704 = icmp eq i64 %a6947, 15                                                 ; false?
-  br i1 %cmp10704, label %else10706, label %then10705                                ; if
-
-then10705:
-  %arg8071 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10707 = inttoptr i64 %cont7243 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10707)                                        ; assert function application
-  %i0ptr10708 = getelementptr inbounds i64, i64* %cloptr10707, i64 0                 ; &cloptr10707[0]
-  %f10710 = load i64, i64* %i0ptr10708, align 8                                      ; load; *i0ptr10708
-  %fptr10709 = inttoptr i64 %f10710 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10709(i64 %cont7243, i64 %arg8071, i64 %PWS$acc)    ; tail call
-  ret void
-
-else10706:
-  %a6948 = call i64 @prim_car(i64 %b4Z$lst)                                          ; call prim_car
-  %a6949 = call i64 @prim_cdr(i64 %b4Z$lst)                                          ; call prim_cdr
-  %cloptr10711 = call i64* @alloc(i64 32)                                            ; malloc
-  %eptr10713 = getelementptr inbounds i64, i64* %cloptr10711, i64 1                  ; &eptr10713[1]
-  %eptr10714 = getelementptr inbounds i64, i64* %cloptr10711, i64 2                  ; &eptr10714[2]
-  %eptr10715 = getelementptr inbounds i64, i64* %cloptr10711, i64 3                  ; &eptr10715[3]
-  store i64 %a6948, i64* %eptr10713                                                  ; *eptr10713 = %a6948
-  store i64 %jQe$f, i64* %eptr10714                                                  ; *eptr10714 = %jQe$f
-  store i64 %cont7243, i64* %eptr10715                                               ; *eptr10715 = %cont7243
-  %eptr10712 = getelementptr inbounds i64, i64* %cloptr10711, i64 0                  ; &cloptr10711[0]
-  %f10716 = ptrtoint void(i64,i64,i64)* @lam8116 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10716, i64* %eptr10712                                                 ; store fptr
-  %arg8078 = ptrtoint i64* %cloptr10711 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10717 = inttoptr i64 %Ahw$_37foldr1 to i64*                                 ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10717)                                        ; assert function application
-  %i0ptr10718 = getelementptr inbounds i64, i64* %cloptr10717, i64 0                 ; &cloptr10717[0]
-  %f10720 = load i64, i64* %i0ptr10718, align 8                                      ; load; *i0ptr10718
-  %fptr10719 = inttoptr i64 %f10720 to void (i64,i64,i64,i64,i64)*                   ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10719(i64 %Ahw$_37foldr1, i64 %arg8078, i64 %jQe$f, i64 %PWS$acc, i64 %a6949); tail call
+define void @lam8104(i64 %env8105, i64 %cont7244, i64 %i5v$y) {
+  %arg8076 = add i64 0, 0                                                            ; quoted ()
+  %cloptr10717 = call i64* @alloc(i64 16)                                            ; malloc
+  %eptr10719 = getelementptr inbounds i64, i64* %cloptr10717, i64 1                  ; &eptr10719[1]
+  store i64 %i5v$y, i64* %eptr10719                                                  ; *eptr10719 = %i5v$y
+  %eptr10718 = getelementptr inbounds i64, i64* %cloptr10717, i64 0                  ; &cloptr10717[0]
+  %f10720 = ptrtoint void(i64,i64,i64)* @lam8101 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10720, i64* %eptr10718                                                 ; store fptr
+  %arg8075 = ptrtoint i64* %cloptr10717 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10721 = inttoptr i64 %cont7244 to i64*                                      ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10721)                                        ; assert function application
+  %i0ptr10722 = getelementptr inbounds i64, i64* %cloptr10721, i64 0                 ; &cloptr10721[0]
+  %f10724 = load i64, i64* %i0ptr10722, align 8                                      ; load; *i0ptr10722
+  %fptr10723 = inttoptr i64 %f10724 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10723(i64 %cont7244, i64 %arg8076, i64 %arg8075)    ; tail call
   ret void
 }
 
 
-define void @lam8116(i64 %env8117, i64 %_957244, i64 %a6950) {
-  %envptr10721 = inttoptr i64 %env8117 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10722 = getelementptr inbounds i64, i64* %envptr10721, i64 3                ; &envptr10721[3]
-  %cont7243 = load i64, i64* %envptr10722, align 8                                   ; load; *envptr10722
-  %envptr10723 = inttoptr i64 %env8117 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10724 = getelementptr inbounds i64, i64* %envptr10723, i64 2                ; &envptr10723[2]
-  %jQe$f = load i64, i64* %envptr10724, align 8                                      ; load; *envptr10724
-  %envptr10725 = inttoptr i64 %env8117 to i64*                                       ; closure/env cast; i64 -> i64*
+define void @lam8101(i64 %env8102, i64 %cont7245, i64 %Vr9$f) {
+  %envptr10725 = inttoptr i64 %env8102 to i64*                                       ; closure/env cast; i64 -> i64*
   %envptr10726 = getelementptr inbounds i64, i64* %envptr10725, i64 1                ; &envptr10725[1]
-  %a6948 = load i64, i64* %envptr10726, align 8                                      ; load; *envptr10726
-  %cloptr10727 = inttoptr i64 %jQe$f to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10727)                                        ; assert function application
-  %i0ptr10728 = getelementptr inbounds i64, i64* %cloptr10727, i64 0                 ; &cloptr10727[0]
-  %f10730 = load i64, i64* %i0ptr10728, align 8                                      ; load; *i0ptr10728
-  %fptr10729 = inttoptr i64 %f10730 to void (i64,i64,i64,i64)*                       ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10729(i64 %jQe$f, i64 %cont7243, i64 %a6948, i64 %a6950); tail call
+  %i5v$y = load i64, i64* %envptr10726, align 8                                      ; load; *envptr10726
+  %cloptr10727 = call i64* @alloc(i64 24)                                            ; malloc
+  %eptr10729 = getelementptr inbounds i64, i64* %cloptr10727, i64 1                  ; &eptr10729[1]
+  %eptr10730 = getelementptr inbounds i64, i64* %cloptr10727, i64 2                  ; &eptr10730[2]
+  store i64 %Vr9$f, i64* %eptr10729                                                  ; *eptr10729 = %Vr9$f
+  store i64 %i5v$y, i64* %eptr10730                                                  ; *eptr10730 = %i5v$y
+  %eptr10728 = getelementptr inbounds i64, i64* %cloptr10727, i64 0                  ; &cloptr10727[0]
+  %f10731 = ptrtoint void(i64,i64)* @lam8099 to i64                                  ; fptr cast; i64(...)* -> i64
+  store i64 %f10731, i64* %eptr10728                                                 ; store fptr
+  %arg8078 = ptrtoint i64* %cloptr10727 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10732 = inttoptr i64 %Vr9$f to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10732)                                        ; assert function application
+  %i0ptr10733 = getelementptr inbounds i64, i64* %cloptr10732, i64 0                 ; &cloptr10732[0]
+  %f10735 = load i64, i64* %i0ptr10733, align 8                                      ; load; *i0ptr10733
+  %fptr10734 = inttoptr i64 %f10735 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10734(i64 %Vr9$f, i64 %cont7245, i64 %arg8078)      ; tail call
   ret void
 }
 
 
-define void @lam8113(i64 %env8114, i64 %cont7246, i64 %qVs$y) {
-  %arg8085 = add i64 0, 0                                                            ; quoted ()
-  %cloptr10731 = call i64* @alloc(i64 16)                                            ; malloc
-  %eptr10733 = getelementptr inbounds i64, i64* %cloptr10731, i64 1                  ; &eptr10733[1]
-  store i64 %qVs$y, i64* %eptr10733                                                  ; *eptr10733 = %qVs$y
-  %eptr10732 = getelementptr inbounds i64, i64* %cloptr10731, i64 0                  ; &cloptr10731[0]
-  %f10734 = ptrtoint void(i64,i64,i64)* @lam8110 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10734, i64* %eptr10732                                                 ; store fptr
-  %arg8084 = ptrtoint i64* %cloptr10731 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10735 = inttoptr i64 %cont7246 to i64*                                      ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10735)                                        ; assert function application
-  %i0ptr10736 = getelementptr inbounds i64, i64* %cloptr10735, i64 0                 ; &cloptr10735[0]
-  %f10738 = load i64, i64* %i0ptr10736, align 8                                      ; load; *i0ptr10736
-  %fptr10737 = inttoptr i64 %f10738 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10737(i64 %cont7246, i64 %arg8085, i64 %arg8084)    ; tail call
-  ret void
-}
-
-
-define void @lam8110(i64 %env8111, i64 %cont7247, i64 %S3Z$f) {
-  %envptr10739 = inttoptr i64 %env8111 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10740 = getelementptr inbounds i64, i64* %envptr10739, i64 1                ; &envptr10739[1]
-  %qVs$y = load i64, i64* %envptr10740, align 8                                      ; load; *envptr10740
-  %cloptr10741 = call i64* @alloc(i64 24)                                            ; malloc
-  %eptr10743 = getelementptr inbounds i64, i64* %cloptr10741, i64 1                  ; &eptr10743[1]
-  %eptr10744 = getelementptr inbounds i64, i64* %cloptr10741, i64 2                  ; &eptr10744[2]
-  store i64 %S3Z$f, i64* %eptr10743                                                  ; *eptr10743 = %S3Z$f
-  store i64 %qVs$y, i64* %eptr10744                                                  ; *eptr10744 = %qVs$y
-  %eptr10742 = getelementptr inbounds i64, i64* %cloptr10741, i64 0                  ; &cloptr10741[0]
-  %f10745 = ptrtoint void(i64,i64)* @lam8108 to i64                                  ; fptr cast; i64(...)* -> i64
-  store i64 %f10745, i64* %eptr10742                                                 ; store fptr
-  %arg8087 = ptrtoint i64* %cloptr10741 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10746 = inttoptr i64 %S3Z$f to i64*                                         ; closure/env cast; i64 -> i64*
+define void @lam8099(i64 %env8100, i64 %Cez$args7247) {
+  %envptr10736 = inttoptr i64 %env8100 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10737 = getelementptr inbounds i64, i64* %envptr10736, i64 2                ; &envptr10736[2]
+  %i5v$y = load i64, i64* %envptr10737, align 8                                      ; load; *envptr10737
+  %envptr10738 = inttoptr i64 %env8100 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10739 = getelementptr inbounds i64, i64* %envptr10738, i64 1                ; &envptr10738[1]
+  %Vr9$f = load i64, i64* %envptr10739, align 8                                      ; load; *envptr10739
+  %cont7246 = call i64 @prim_car(i64 %Cez$args7247)                                  ; call prim_car
+  %Cez$args = call i64 @prim_cdr(i64 %Cez$args7247)                                  ; call prim_cdr
+  %cloptr10740 = call i64* @alloc(i64 32)                                            ; malloc
+  %eptr10742 = getelementptr inbounds i64, i64* %cloptr10740, i64 1                  ; &eptr10742[1]
+  %eptr10743 = getelementptr inbounds i64, i64* %cloptr10740, i64 2                  ; &eptr10743[2]
+  %eptr10744 = getelementptr inbounds i64, i64* %cloptr10740, i64 3                  ; &eptr10744[3]
+  store i64 %Cez$args, i64* %eptr10742                                               ; *eptr10742 = %Cez$args
+  store i64 %Vr9$f, i64* %eptr10743                                                  ; *eptr10743 = %Vr9$f
+  store i64 %cont7246, i64* %eptr10744                                               ; *eptr10744 = %cont7246
+  %eptr10741 = getelementptr inbounds i64, i64* %cloptr10740, i64 0                  ; &cloptr10740[0]
+  %f10745 = ptrtoint void(i64,i64,i64)* @lam8097 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10745, i64* %eptr10741                                                 ; store fptr
+  %arg8084 = ptrtoint i64* %cloptr10740 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10746 = inttoptr i64 %i5v$y to i64*                                         ; closure/env cast; i64 -> i64*
   call i64 @expect_closure(i64* %cloptr10746)                                        ; assert function application
   %i0ptr10747 = getelementptr inbounds i64, i64* %cloptr10746, i64 0                 ; &cloptr10746[0]
   %f10749 = load i64, i64* %i0ptr10747, align 8                                      ; load; *i0ptr10747
   %fptr10748 = inttoptr i64 %f10749 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10748(i64 %S3Z$f, i64 %cont7247, i64 %arg8087)      ; tail call
+  musttail call fastcc void %fptr10748(i64 %i5v$y, i64 %arg8084, i64 %i5v$y)         ; tail call
   ret void
 }
 
 
-define void @lam8108(i64 %env8109, i64 %kHW$args7249) {
-  %envptr10750 = inttoptr i64 %env8109 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10751 = getelementptr inbounds i64, i64* %envptr10750, i64 2                ; &envptr10750[2]
-  %qVs$y = load i64, i64* %envptr10751, align 8                                      ; load; *envptr10751
-  %envptr10752 = inttoptr i64 %env8109 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10753 = getelementptr inbounds i64, i64* %envptr10752, i64 1                ; &envptr10752[1]
-  %S3Z$f = load i64, i64* %envptr10753, align 8                                      ; load; *envptr10753
-  %cont7248 = call i64 @prim_car(i64 %kHW$args7249)                                  ; call prim_car
-  %kHW$args = call i64 @prim_cdr(i64 %kHW$args7249)                                  ; call prim_cdr
-  %cloptr10754 = call i64* @alloc(i64 32)                                            ; malloc
-  %eptr10756 = getelementptr inbounds i64, i64* %cloptr10754, i64 1                  ; &eptr10756[1]
-  %eptr10757 = getelementptr inbounds i64, i64* %cloptr10754, i64 2                  ; &eptr10757[2]
-  %eptr10758 = getelementptr inbounds i64, i64* %cloptr10754, i64 3                  ; &eptr10758[3]
-  store i64 %cont7248, i64* %eptr10756                                               ; *eptr10756 = %cont7248
-  store i64 %kHW$args, i64* %eptr10757                                               ; *eptr10757 = %kHW$args
-  store i64 %S3Z$f, i64* %eptr10758                                                  ; *eptr10758 = %S3Z$f
-  %eptr10755 = getelementptr inbounds i64, i64* %cloptr10754, i64 0                  ; &cloptr10754[0]
-  %f10759 = ptrtoint void(i64,i64,i64)* @lam8106 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10759, i64* %eptr10755                                                 ; store fptr
-  %arg8093 = ptrtoint i64* %cloptr10754 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10760 = inttoptr i64 %qVs$y to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10760)                                        ; assert function application
-  %i0ptr10761 = getelementptr inbounds i64, i64* %cloptr10760, i64 0                 ; &cloptr10760[0]
-  %f10763 = load i64, i64* %i0ptr10761, align 8                                      ; load; *i0ptr10761
-  %fptr10762 = inttoptr i64 %f10763 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10762(i64 %qVs$y, i64 %arg8093, i64 %qVs$y)         ; tail call
+define void @lam8097(i64 %env8098, i64 %_957248, i64 %a6945) {
+  %envptr10750 = inttoptr i64 %env8098 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10751 = getelementptr inbounds i64, i64* %envptr10750, i64 3                ; &envptr10750[3]
+  %cont7246 = load i64, i64* %envptr10751, align 8                                   ; load; *envptr10751
+  %envptr10752 = inttoptr i64 %env8098 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10753 = getelementptr inbounds i64, i64* %envptr10752, i64 2                ; &envptr10752[2]
+  %Vr9$f = load i64, i64* %envptr10753, align 8                                      ; load; *envptr10753
+  %envptr10754 = inttoptr i64 %env8098 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10755 = getelementptr inbounds i64, i64* %envptr10754, i64 1                ; &envptr10754[1]
+  %Cez$args = load i64, i64* %envptr10755, align 8                                   ; load; *envptr10755
+  %cloptr10756 = call i64* @alloc(i64 24)                                            ; malloc
+  %eptr10758 = getelementptr inbounds i64, i64* %cloptr10756, i64 1                  ; &eptr10758[1]
+  %eptr10759 = getelementptr inbounds i64, i64* %cloptr10756, i64 2                  ; &eptr10759[2]
+  store i64 %Cez$args, i64* %eptr10758                                               ; *eptr10758 = %Cez$args
+  store i64 %cont7246, i64* %eptr10759                                               ; *eptr10759 = %cont7246
+  %eptr10757 = getelementptr inbounds i64, i64* %cloptr10756, i64 0                  ; &cloptr10756[0]
+  %f10760 = ptrtoint void(i64,i64,i64)* @lam8095 to i64                              ; fptr cast; i64(...)* -> i64
+  store i64 %f10760, i64* %eptr10757                                                 ; store fptr
+  %arg8087 = ptrtoint i64* %cloptr10756 to i64                                       ; closure cast; i64* -> i64
+  %cloptr10761 = inttoptr i64 %a6945 to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10761)                                        ; assert function application
+  %i0ptr10762 = getelementptr inbounds i64, i64* %cloptr10761, i64 0                 ; &cloptr10761[0]
+  %f10764 = load i64, i64* %i0ptr10762, align 8                                      ; load; *i0ptr10762
+  %fptr10763 = inttoptr i64 %f10764 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10763(i64 %a6945, i64 %arg8087, i64 %Vr9$f)         ; tail call
   ret void
 }
 
 
-define void @lam8106(i64 %env8107, i64 %_957250, i64 %a6945) {
-  %envptr10764 = inttoptr i64 %env8107 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10765 = getelementptr inbounds i64, i64* %envptr10764, i64 3                ; &envptr10764[3]
-  %S3Z$f = load i64, i64* %envptr10765, align 8                                      ; load; *envptr10765
-  %envptr10766 = inttoptr i64 %env8107 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10767 = getelementptr inbounds i64, i64* %envptr10766, i64 2                ; &envptr10766[2]
-  %kHW$args = load i64, i64* %envptr10767, align 8                                   ; load; *envptr10767
-  %envptr10768 = inttoptr i64 %env8107 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10769 = getelementptr inbounds i64, i64* %envptr10768, i64 1                ; &envptr10768[1]
-  %cont7248 = load i64, i64* %envptr10769, align 8                                   ; load; *envptr10769
-  %cloptr10770 = call i64* @alloc(i64 24)                                            ; malloc
-  %eptr10772 = getelementptr inbounds i64, i64* %cloptr10770, i64 1                  ; &eptr10772[1]
-  %eptr10773 = getelementptr inbounds i64, i64* %cloptr10770, i64 2                  ; &eptr10773[2]
-  store i64 %cont7248, i64* %eptr10772                                               ; *eptr10772 = %cont7248
-  store i64 %kHW$args, i64* %eptr10773                                               ; *eptr10773 = %kHW$args
-  %eptr10771 = getelementptr inbounds i64, i64* %cloptr10770, i64 0                  ; &cloptr10770[0]
-  %f10774 = ptrtoint void(i64,i64,i64)* @lam8104 to i64                              ; fptr cast; i64(...)* -> i64
-  store i64 %f10774, i64* %eptr10771                                                 ; store fptr
-  %arg8096 = ptrtoint i64* %cloptr10770 to i64                                       ; closure cast; i64* -> i64
-  %cloptr10775 = inttoptr i64 %a6945 to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10775)                                        ; assert function application
-  %i0ptr10776 = getelementptr inbounds i64, i64* %cloptr10775, i64 0                 ; &cloptr10775[0]
-  %f10778 = load i64, i64* %i0ptr10776, align 8                                      ; load; *i0ptr10776
-  %fptr10777 = inttoptr i64 %f10778 to void (i64,i64,i64)*                           ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10777(i64 %a6945, i64 %arg8096, i64 %S3Z$f)         ; tail call
-  ret void
-}
-
-
-define void @lam8104(i64 %env8105, i64 %_957251, i64 %a6946) {
-  %envptr10779 = inttoptr i64 %env8105 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10780 = getelementptr inbounds i64, i64* %envptr10779, i64 2                ; &envptr10779[2]
-  %kHW$args = load i64, i64* %envptr10780, align 8                                   ; load; *envptr10780
-  %envptr10781 = inttoptr i64 %env8105 to i64*                                       ; closure/env cast; i64 -> i64*
-  %envptr10782 = getelementptr inbounds i64, i64* %envptr10781, i64 1                ; &envptr10781[1]
-  %cont7248 = load i64, i64* %envptr10782, align 8                                   ; load; *envptr10782
-  %cps_45lst7252 = call i64 @prim_cons(i64 %cont7248, i64 %kHW$args)                 ; call prim_cons
-  %cloptr10783 = inttoptr i64 %a6946 to i64*                                         ; closure/env cast; i64 -> i64*
-  call i64 @expect_closure(i64* %cloptr10783)                                        ; assert function application
-  %i0ptr10784 = getelementptr inbounds i64, i64* %cloptr10783, i64 0                 ; &cloptr10783[0]
-  %f10786 = load i64, i64* %i0ptr10784, align 8                                      ; load; *i0ptr10784
-  %fptr10785 = inttoptr i64 %f10786 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
-  musttail call fastcc void %fptr10785(i64 %a6946, i64 %cps_45lst7252)               ; tail call
+define void @lam8095(i64 %env8096, i64 %_957249, i64 %a6946) {
+  %envptr10765 = inttoptr i64 %env8096 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10766 = getelementptr inbounds i64, i64* %envptr10765, i64 2                ; &envptr10765[2]
+  %cont7246 = load i64, i64* %envptr10766, align 8                                   ; load; *envptr10766
+  %envptr10767 = inttoptr i64 %env8096 to i64*                                       ; closure/env cast; i64 -> i64*
+  %envptr10768 = getelementptr inbounds i64, i64* %envptr10767, i64 1                ; &envptr10767[1]
+  %Cez$args = load i64, i64* %envptr10768, align 8                                   ; load; *envptr10768
+  %cps_45lst7250 = call i64 @prim_cons(i64 %cont7246, i64 %Cez$args)                 ; call prim_cons
+  %cloptr10769 = inttoptr i64 %a6946 to i64*                                         ; closure/env cast; i64 -> i64*
+  call i64 @expect_closure(i64* %cloptr10769)                                        ; assert function application
+  %i0ptr10770 = getelementptr inbounds i64, i64* %cloptr10769, i64 0                 ; &cloptr10769[0]
+  %f10772 = load i64, i64* %i0ptr10770, align 8                                      ; load; *i0ptr10770
+  %fptr10771 = inttoptr i64 %f10772 to void (i64,i64)*                               ; cast fptr; i64 -> void(...)*
+  musttail call fastcc void %fptr10771(i64 %a6946, i64 %cps_45lst7250)               ; tail call
   ret void
 }
 
@@ -7041,4 +7039,4 @@ define void @lam8104(i64 %env8105, i64 %_957251, i64 %a6946) {
 
 
 
-@sym9370 = private unnamed_addr constant [10 x i8] c"%%promise\00", align 8
+@sym9356 = private unnamed_addr constant [10 x i8] c"%%promise\00", align 8
