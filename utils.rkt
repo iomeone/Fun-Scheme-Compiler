@@ -296,7 +296,6 @@
             (T `(prim - (prim - ,e0 ,@(drop-right es 1)) ,(last es)))]
            [`(prim / ,e0 ,e1)
             `(prim / ,(T e0) ,(T e1))]
-
            ; Remove list, vector->apply vector, map foldl, foldr, drop, memv, >, >=, ...
            [`(prim list ,es ...) ; optimize 
             `((lambda lst lst) ,@(map T es))]
@@ -442,7 +441,8 @@
                  [%first (lambda (x) (prim car x))]
                  [%second (lambda (x) (prim car (prim cdr x)))]
                  [%third (lambda (x) (prim car (prim cdr (prim cdr x))))]
-                 [%fourth (lambda (x) (prim car (prim cdr (prim cdr (prim cdr x)))))])
+                 [%fourth (lambda (x) (prim car (prim cdr (prim cdr (prim cdr x)))))]
+                 )
              ,(T ir-e)))))))
 
 

@@ -132,7 +132,6 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` run-time exception and presents an error message. Feel free to adjust `MEM_CAP` to your needs/liking.
 
-    Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
 4. Function is provided too many arguments.
 

@@ -351,7 +351,8 @@
                                   (begin
                                     (f (cdr l))
                                     ((car (car l)))
-                                    (set! %wind-stack l)))))))])
+                                    (set! %wind-stack l)))))))]
+            )
            ,e))
   
   ; The environment starts with procedures for forms we desugar
