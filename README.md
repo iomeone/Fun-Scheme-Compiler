@@ -76,8 +76,9 @@ For example, here is usage of the primitive `+`:
 The following 5 runtime errors have been identified and fixed with properly raised exceptions:
 
 1. Division by zero.
+
     Originally, any primitive division by 0 caused execution of the binary to hang and eventually timeout.
-    This issue was fixed by throwing a run-time error throughs assuring that the parameter `b` of
+    This issue was fixed by throwing a run-time error through assuring that the parameter `b` of
     
     ```c++
     u64 prim__47(u64 a, u64 b)
@@ -95,7 +96,8 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `div-0.scm`, `div-1.scm`, and `div-2.scm`.
 
 2. Non-function application.
-    Originally, any non-function application caused a segmentation fault at run-time due to a call upon an invalid closure pointer (ie. a value, etc).
+
+    Originally, any non-function application caused a segmentation fault at run-time due to a procedure call upon an invalid closure pointer (ie. a value, etc).
     This was fixed by modifying `header.cpp` as follows:
 
     1. Introduce a new procedure to verify that a pointer is indeed a closure via:
@@ -113,7 +115,8 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `non-func-0.scm`, `non-func-1.scm`, and `non-func-2.scm`.
 
 3. A memory-usage cap.
-    The original implementation of the provided compiler did not include an adjustable memory usage cap. This was added by defining a memory cap to 256 mb
+
+    Originally, a memory error could be thrown if allocated memory exceeded a certain threshold. A fix was added to `header.cpp` to allow the user to explicitly specify a `MEM_CAP` constant. This was added by defining a memory cap to 256 mb
 
     ```c++
     #define MEM_CAP 268435456
@@ -132,6 +135,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `mem-cap-0.scm`, `mem-cap-1.scm`, and `mem-cap-2.scm`.
 
 4. Function is provided too many arguments.
+
     This was fixed for all primitive operations. Originally, a primitive operation could accept a number of arguments (more than as specified in the racket-lang documentation). This issue has been fixed by adding a pass to `proc->llvm` in `closure-convert.rkt` named `valid_op?`. 
 
     This passed is called at any primitive operation emission prior to llvm conversion. Here, `valid_op?` matches on the passed primitive operation (`op`) and checks that the number of arguments passed to that operation (`ys`) meet the criteria provided by the racket-lang documentation.
@@ -152,6 +156,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
 
 5. Function is provided too few arguments.
+
     This was fixed for some primitive operations. Using the same technique as fix 4, most primitive operations must have an explicitly counted number of arguments (ie. cons, cdr, car). If the length of the list of arguments is too small, then a run-time exception is thrown. Otherwise, the primitive operation suceeds.
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
@@ -161,7 +166,7 @@ An example of a run-time error that is not being caught is integer overflow. For
 ## Added Features
 FSC supports immutable hashsets using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
 
-With more time, I probably could have finished this to my liking, and then some.
+With more time, I probably could have finished this to my liking.
 
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.

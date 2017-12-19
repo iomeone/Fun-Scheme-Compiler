@@ -206,7 +206,7 @@ Example:
 (memv 10 '(1 2 3 4 5)) ; #f
 ```
 
-Return type: List or Boolean (#f)
+Return type: List or Boolean (#t / #f)
 
 Number of arguments: 2
 
