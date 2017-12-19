@@ -132,6 +132,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` run-time exception and presents an error message. Feel free to adjust `MEM_CAP` to your needs/liking.
 
+    I tested my memory cap by reducing the MEM_CAP to a number extremely small (ie. 10 bytes) and tried continually defining variables in Scheme. I know this feature works because it sucessfully threw a run=time error when the test was run instead of crashing. I have since modified the MEM_CAP to be 256 MB and have removed my test for usability. 
 
 4. Function is provided too many arguments.
 
@@ -163,12 +164,14 @@ The following 5 runtime errors have been identified and fixed with properly rais
 An example of a run-time error that is not being caught is integer overflow. For instance, one can write the factorial function in scheme and it will be interpreted correctly for any relatively large `n` at the top-level, however it will overflow at `eval-llvm`.
 
 ## Added Features
-FSC supports immutable hashsets using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
+FSC supports immutable hashsets using HAMT. The code for HAMT was provided by the professor. It uses the Boehm Garbage Collector, which has also been included in the FSC distribution.
 
 With more time, I probably could have finished this to my liking.
 
 ## Boehm Garbage Collector
-### Some short description here and a link to their project repo.
+The project assignment included integrating the [Boehm-Demers-Weiser Garbage Collector](https://github.com/ivmai/bdwgc). I had limited success fully integrating bdwgc to include an updated tagging scheme, however I was able to replace all calls to malloc with GC_MALLOC and incorporate the professor's HAMT code in the project.
+
+With more time, I would have liked to learn more about this GC so I may use it in my own projects. I will add this to my todo list for future reference as this project sounds like a valuable tool if it works properly.
 
 #### I had to make some changes to how `utils.rkt` calls clang++ at compile time to work with my workstation, but feel free to modify the lines to fit your needs.
 Specifically, I modified lines 611 and 617. 
