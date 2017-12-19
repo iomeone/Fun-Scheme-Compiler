@@ -168,7 +168,15 @@ An example of a run-time error that is not being caught is integer overflow. For
 
     The code for HAMT was provided by the professor. It uses the Boehm Garbage Collector, which has also been included in the FSC distribution.
 
-    With more time, I probably could have finished this to my liking.
+    I tried the following:
+
+    1. I placed the provided `tuple` class inside of `header.cpp` and obviously included: `hamt.h` and `gc.h` at the top.
+    2. I created the following prims:
+        `set`, `set-add`, and `set-remove`
+       and added them as `u64` procedures in `header.cpp`. For each one of the prims, I added their necessary h->insert and h->remove calls, but for some weird reason, they were not compiling properly with the command I used (see `utils.rkt`).
+    3. I tried creating `prims` for the above prims in all of the other racket files, in case they needed to be pattern matched.
+
+    The approach listed was the most decent approach I could think of. I think it would have worked but I wish I knew more C++ before this class, maybe that might have helped me solve the final integration problem. With more time, I probably could have finished this to my liking.
 
 2. Strings and Characters.
 
@@ -178,7 +186,7 @@ An example of a run-time error that is not being caught is integer overflow. For
 
     Since I was unable to change the tagging scheme to an acceptable one (for BGC) I was unable to use more than 8 tags. Since I was already using a tag for hashsets, I do not know how to extend this to more than 8 tags so I just naively convert characters to strings.
 
-    I've supplied a `compiled.rkt` file that shows an example of this. 
+    I've supplied a `compiled.rkt` file that shows an example of this, since this is not a valid test.
 
 ## Boehm Garbage Collector
 The project assignment included integrating the [Boehm-Demers-Weiser Garbage Collector](https://github.com/ivmai/bdwgc). I had limited success fully integrating bdwgc to include an updated tagging scheme, however I was able to replace all calls to `malloc` with `GC_MALLOC` and incorporate the professor's HAMT code in the project.
