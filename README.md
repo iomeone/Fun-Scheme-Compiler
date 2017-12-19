@@ -156,6 +156,8 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
 
+An example of a run-time error that is not being caught is integer overflow. For instance, one can write the factorial function in scheme and it will be interpreted correctly for any relatively large `n` at the top-level, however it will overflow at `eval-llvm`.
+
 ## Added Features
 FSC supports immutable hashsets using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
 

@@ -11,6 +11,7 @@
 #define INT_TAG 2
 #define STR_TAG 3
 #define SYM_TAG 4
+#define SET_TAG 5
 #define OTHER_TAG 6
 #define ENUM_TAG 7
 
@@ -56,6 +57,9 @@
 
 #define DECODE_STR(v) ((char*)((v)&(7ULL^MASK64)))
 #define ENCODE_STR(v) (((u64)(v)) | STR_TAG)
+
+#define DECODE_SET(v) ((u64*)((v)&(7ULL^MASK64)))
+#define ENCODE_SET(v) (((u64)(v)) | SET_TAG)
 
 #define DECODE_SYM(v) ((char*)((v)&(7ULL^MASK64)))
 #define ENCODE_SYM(v) (((u64)(v)) | SYM_TAG)
@@ -747,11 +751,12 @@ public:
     Not really working, but at least it's something...
 */
 
-u64* prim_set()
+u64 prim_set()
 {
     const hamt<tuple, tuple>* h = new ((hamt<tuple, tuple>*)GC_MALLOC(sizeof(hamt<tuple, tuple>))) hamt<tuple, tuple>();
-    // return ENCODE_CLO((u64) h);
-    return 0;
+    u64 p = (u64) h;
+
+    return ENCODE_SET(p);
 }
 
 u64 prim_set_45add(u64 set, u64 val)

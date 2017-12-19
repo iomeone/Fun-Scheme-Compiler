@@ -51,7 +51,7 @@
                      hash hash-ref hash-set hash-count hash-keys hash-has-key? hash?
                      list? void? promise? procedure? number? integer?
                      error void print display write exit halt
-                     eq? eqv? equal? not string string->list string-ref substring string-append))
+                     eq? eqv? equal? not string string->list string-ref substring string-append set/make-set))
 (define ok-set (list->set (string->list "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$")))
 (define (c-name s)
   (foldr string-append
@@ -310,7 +310,7 @@
             `(%foldr1 ,@(map T (list e0 e1 e2)))]
            [`(prim map ,e0 ,e1)
             `(%map1 ,@(map T (list e0 e1)))]
-
+           
            [`(prim ,op ,es ...)
             #:when (member op '(drop memv / > >= list? drop-right length append last
                                      map foldl foldr first second third fourth))

@@ -2144,15 +2144,21 @@ define i64 @applyprim_not(i64 %lst) #0 {
 }
 
 ; Function Attrs: uwtable
-define i64* @prim_set() #0 {
+define i64 @prim_set() #0 {
   %h = alloca %class.hamt*, align 8
+  %p = alloca i64, align 8
   %1 = call noalias i8* @GC_malloc(i64 120)
   %2 = bitcast i8* %1 to %class.hamt*
   %3 = bitcast %class.hamt* %2 to i8*
   %4 = bitcast i8* %3 to %class.hamt*
   call void @_ZN4hamtI5tupleS0_EC2Ev(%class.hamt* %4)
   store %class.hamt* %4, %class.hamt** %h, align 8
-  ret i64* null
+  %5 = load %class.hamt*, %class.hamt** %h, align 8
+  %6 = ptrtoint %class.hamt* %5 to i64
+  store i64 %6, i64* %p, align 8
+  %7 = load i64, i64* %p, align 8
+  %8 = or i64 %7, 5
+  ret i64 %8
 }
 
 ; Function Attrs: uwtable

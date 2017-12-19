@@ -7,6 +7,6 @@
 
 
 
-(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert (simplify-ir (desugar '((set)))))))))))
+(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert (simplify-ir (desugar '((prim set)))))))))))
 
 
