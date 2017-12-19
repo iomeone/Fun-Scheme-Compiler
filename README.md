@@ -37,7 +37,7 @@ The compiled binary is `bin`. If you want to run the binary independently of the
 $ ./bin
 ```
 
-# Example Runs:
+## Example Runs:
 ```sh
 $ racket tests.rkt amb
 Test passed!
@@ -49,6 +49,17 @@ $ racket tests.rkt div-0
 #<void>
 Test passed!
 ```
+
+```sh
+$ racket tests.rkt amb
+'(solution 3 4 5)
+'(solution 3 4 5)
+Test passed!
+
+$ ./bin
+'(solution . (3 . (4 . (5 . ()))))
+```
+
 Test `div-0` is a sample test of what happens when a program divides by 0. This is a run-time exception on both the top-level and the binary, therefore printing the exception and returing `void`.
 
 # (Basic) Supported Primitive Operations:
@@ -163,7 +174,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
 An example of a run-time error that is not being caught is integer overflow. For instance, one can write the factorial function in scheme and it will be interpreted correctly for any relatively large `n` at the top-level, however it will overflow at `eval-llvm`.
 
-## Added Features
+# Added Features
 1. Hashsets using HAMT.
 
     The code for HAMT was provided by the professor. It uses the Boehm Garbage Collector, which has also been included in the FSC distribution.
@@ -173,7 +184,7 @@ An example of a run-time error that is not being caught is integer overflow. For
     1. I placed the provided `tuple` class inside of `header.cpp` and obviously included: `hamt.h` and `gc.h` at the top.
     2. I created the following prims:
         `set`, `set-add`, and `set-remove`
-       and added them as `u64` procedures in `header.cpp`. For each one of the prims, I added their necessary h->insert and h->remove calls, but for some weird reason, they were not compiling properly with the command I used (see `utils.rkt`).
+       and added them as `u64` procedures in `header.cpp`. For each one of the prims, I added their necessary `h->insert` and `h->remove` calls, but for some weird reason, they were not compiling properly with the command I used (see `utils.rkt`).
     3. I tried creating `prims` for the above prims in all of the other racket files, in case they needed to be pattern matched.
 
     The approach listed was the most decent approach I could think of. I think it would have worked but I wish I knew more C++ before this class, maybe that might have helped me solve the final integration problem. With more time, I probably could have finished this to my liking.
@@ -188,7 +199,7 @@ An example of a run-time error that is not being caught is integer overflow. For
 
     I've supplied a `compiled.rkt` file that shows an example of this, since this is not a valid test.
 
-## Boehm Garbage Collector
+# Boehm Garbage Collector
 The project assignment included integrating the [Boehm-Demers-Weiser Garbage Collector](https://github.com/ivmai/bdwgc). I had limited success fully integrating bdwgc to include an updated tagging scheme, however I was able to replace all calls to `malloc` with `GC_MALLOC` and incorporate the professor's HAMT code in the project.
 
 With more time, I would like to learn more about this GC so I may use it in my own projects. I will add this to my todo list for future reference as this project sounds like a valuable tool if it works properly.
@@ -201,10 +212,11 @@ Specifically, I modified lines 611 and 617.
 
 I was able to integrate bgwdc with header.cpp and change the tagging scheme...
 
-## Console Dump
+# Console Dump
 In case the provided tests do not work on the instructor machine, I have submitted a sample of my [console dump](console_dump.txt).
 
-## Disclaimer:
+# Disclaimer:
 #### This compiler should not be used in any serious applications - it is meant to be learning project (and learning, I did). With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
 
+# Honor Pledge
 ##### I, Michael Reininger, pledge on my honor that I have not given or received any unauthorized assistance on this project.
