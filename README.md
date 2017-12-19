@@ -49,8 +49,7 @@ $ racket tests.rkt div-0
 #<void>
 Test passed!
 ```
-Test `div-0` is a sample test of what happens when a program divides by 0. This is a run-time exception. 
-...
+Test `div-0` is a sample test of what happens when a program divides by 0. This is a run-time exception on both the top-level and the binary, therefore printing the exception and returing `void`.
 
 # (Basic) Supported Primitive Operations:
 | Primitive | Description | Return Type | Number of Arguments | Arguments Type |
@@ -153,12 +152,14 @@ The following 5 runtime errors have been identified and fixed with properly rais
     Tests for this fix are: `too-many-0.scm`, `too-many-1.scm`, and `too-many-2.scm`.
 
 5. Function is provided too few arguments.
-    This was fixed for all primitive operations. Using the same technique as fix 4, all primitive operations must have an explicitly counted number of arguments. If the length of the list of arguments is too small, then a run-time exception is thrown. Otherwise, the primitive operation suceeds.
+    This was fixed for some primitive operations. Using the same technique as fix 4, most primitive operations must have an explicitly counted number of arguments (ie. cons, cdr, car). If the length of the list of arguments is too small, then a run-time exception is thrown. Otherwise, the primitive operation suceeds.
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
 
 ## Added Features
-FSC supports immutable hashmaps using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
+FSC supports immutable hashsets using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
+
+With more time, I probably could have finished this to my liking, and then some.
 
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.
@@ -172,7 +173,7 @@ Specifically, I modified lines 611 and 617.
 I was able to integrate bgwdc with header.cpp and change the tagging scheme...
 
 ## Disclaimer:
-#### This compiler should not be used in any serious applications - it is meant to be learning project. With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
+#### This compiler should not be used in any serious applications - it is meant to be learning project (and learning, I did). With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
 
 
 ##### I, Michael Reininger, pledge on my honor that I have not given or received any unauthorized assistance on this project.

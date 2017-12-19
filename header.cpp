@@ -744,20 +744,21 @@ public:
 
 /*
     My attempt at prim operations.
-    Not really working, but at least you can "make" a new (set) and get back an empty (set).
+    Not really working, but at least it's something...
 */
 
-u64 prim_set()
+u64* prim_set()
 {
     const hamt<tuple, tuple>* h = new ((hamt<tuple, tuple>*)GC_MALLOC(sizeof(hamt<tuple, tuple>))) hamt<tuple, tuple>();
-    return ENCODE_CLO((u64) h);
+    // return ENCODE_CLO((u64) h);
+    return 0;
 }
 
 u64 prim_set_45add(u64 set, u64 val)
 {
     const hamt<tuple, tuple>* h = (hamt<tuple,tuple>*) DECODE_CLO(set);
     const tuple* const t = new ((tuple*)GC_MALLOC(sizeof(tuple))) tuple(val);
-    h = h->insert(t,t);
+    // h = h->insert(t,t);
     return ENCODE_CLO((u64) set);
 
 }
@@ -766,7 +767,7 @@ u64 prim_set_45remove(u64 set, u64 val)
 {
     const hamt<tuple, tuple>* h = (hamt<tuple,tuple>*) DECODE_CLO(set);
     const tuple* const t = new ((tuple*)GC_MALLOC(sizeof(tuple))) tuple(val);
-    h = h->remove(t);
+    // h = h->remove(t);
     return ENCODE_CLO((u64) set);
 }
 

@@ -447,9 +447,9 @@
     ['+ (>= (length ys) 0)]
     ['* (>= (length ys) 0)]
     ['/ (> (length ys) 0)]
-    ['= (> (length ys) 1)]
-    ['> (> (length ys) 1)]
-    ['< (> (length ys) 1)]
+    ['= (= (length ys) 2)]
+    ['> (= (length ys) 2)]
+    ['< (= (length ys) 2)]
     ['>= (> (length ys) 1)]
     ['<= (> (length ys) 1)]
     ['not (= (length ys) 1)]
@@ -587,7 +587,7 @@
                        (string-append "load; *" (s-> iptr)))
                      ,(e->llvm e0)))]
            [`(let ([,x (prim ,op ,ys ...)]) ,e0)
-            (if (not (valid_op? op ys))
+                (if (not (valid_op? op ys))
                 (begin
                   (string-append
                    (comment-line
