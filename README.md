@@ -178,6 +178,9 @@ Specifically, I modified lines 611 and 617.
 
 I was able to integrate bgwdc with header.cpp and change the tagging scheme...
 
+## Console Dump
+In case the provided tests do not work on the instructor machine, I have submitted a sample of my [console dump](console_dump.txt).
+
 ## Disclaimer:
 #### This compiler should not be used in any serious applications - it is meant to be learning project (and learning, I did). With more time and help, I would have completed the project to its entirety. Even with the slight extension, however, I was extremely preoccupied with studying for other final exams, travelling home, etc. so I did what I could within the time given and I refuse to stress over this.
 
