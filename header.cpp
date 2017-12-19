@@ -4,15 +4,16 @@
 #include "stdint.h"
 //HAMT
 #include "hamt.h"
+// #include "test_hamt.cpp"
 
 #define CLO_TAG 0
 #define CONS_TAG 1
 #define INT_TAG 2
 #define STR_TAG 3
 #define SYM_TAG 4
-#define CHAR_TAG 5
 #define OTHER_TAG 6
 #define ENUM_TAG 7
+
 
 #define MEM_CAP 268435456
 
@@ -47,15 +48,6 @@
 #define DECODE_CLO(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_CLO(v) (((u64)(v)) | CLO_TAG)
 
-// Allocate 64 bytes. Reserve 8 for tag, 56 for data.
-#define ENCODE_CLO_MEM(v) \
-    u64 *p = (u64*)GC_MALLOC(64); \
-    p[0] = 1; p[1] = 0; p[2] = 0; p[3] = 0; p[4] = 0; p[5] = 0; p[6] = 0; p[7] = 0; \
-    p[8] = v;
-
-// Extract the 8 bits from the CLO
-#define DECODE_CLO_MEM(v) v[8]
-
 #define DECODE_CONS(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_CONS(v) (((u64)(v)) | CONS_TAG)
 
@@ -67,9 +59,6 @@
 
 #define DECODE_SYM(v) ((char*)((v)&(7ULL^MASK64)))
 #define ENCODE_SYM(v) (((u64)(v)) | SYM_TAG)
-
-#define DECODE_CHAR(v) ((char*)((v)&(7ULL^MASK64)))
-#define ENCODE_CHAR(v) (((u64)(v)) | CHAR_TAG)
 
 #define DECODE_OTHER(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_OTHER(v) (((u64)(v)) | OTHER_TAG)
@@ -255,10 +244,6 @@ u64 const_init_symbol(const char* s)
     return ENCODE_SYM(s);
 }
 
-u64 const_init_char(const char* s)
-{
-    return ENCODE_CHAR(s);
-}
 
 
 
@@ -315,9 +300,6 @@ u64 prim_print_aux(u64 v)
         }
         printf(")");
     }
-    else if ((v&7) == CHAR_TAG) {
-        printf("%s", DECODE_CHAR(v));
-    } 
     else if (v == V_VOID)
     {
         printf("");
@@ -377,9 +359,6 @@ u64 prim_print(u64 v)
             prim_print(vec[i]);
         }
         printf(")");
-    } 
-    else if ((v&7) == CHAR_TAG) {
-        printf("%s", DECODE_CHAR(v));
     } 
     else if (v == V_VOID)
     {
@@ -734,8 +713,61 @@ u64 prim_not(u64 a)
 }
 GEN_EXPECT1ARGLIST(applyprim_not, prim_not)
 
+class tuple
+{
+public:
+    const u64 x;
+    
+
+    tuple(u64 x)
+        : x(x)
+    {}
+
+    u64 hash() const
+    {
+        const u8* data = reinterpret_cast<const u8*>(this);
+        u64 h = 0xcbf29ce484222325;
+        for (u32 i = 0; i < sizeof(tuple); ++i && ++data)
+        {
+            h = h ^ *data;
+            h = h * 0x100000001b3;
+        }
+
+        return h;
+    }
+
+    bool operator==(const tuple& t) const
+    {
+        return t.x == this->x;
+    }
+};
+
+/*
+    My attempt at prim operations.
+    Not really working, but at least you can "make" a new (set) and get back an empty (set).
+*/
+
+u64 prim_set()
+{
+    const hamt<tuple, tuple>* h = new ((hamt<tuple, tuple>*)GC_MALLOC(sizeof(hamt<tuple, tuple>))) hamt<tuple, tuple>();
+    return ENCODE_CLO((u64) h);
+}
+
+u64 prim_set_45add(u64 set, u64 val)
+{
+    const hamt<tuple, tuple>* h = (hamt<tuple,tuple>*) DECODE_CLO(set);
+    const tuple* const t = new ((tuple*)GC_MALLOC(sizeof(tuple))) tuple(val);
+    h = h->insert(t,t);
+    return ENCODE_CLO((u64) set);
 
 }
 
+u64 prim_set_45remove(u64 set, u64 val)
+{
+    const hamt<tuple, tuple>* h = (hamt<tuple,tuple>*) DECODE_CLO(set);
+    const tuple* const t = new ((tuple*)GC_MALLOC(sizeof(tuple))) tuple(val);
+    h = h->remove(t);
+    return ENCODE_CLO((u64) set);
+}
 
-
+}

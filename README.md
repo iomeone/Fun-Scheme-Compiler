@@ -31,6 +31,12 @@ $ racket tests.rkt all
 $ racket tests.rkt <test-name>
 ```
 
+The compiled binary is `bin`. If you want to run the binary independently of the tests, run:
+
+```sh
+$ ./bin
+```
+
 # Example Runs:
 ```sh
 $ racket tests.rkt amb
@@ -151,7 +157,8 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Tests for this fix are: `too-few-0.scm`, `too-few-1.scm`, and `too-few-2.scm`.
 
-## 
+## Added Features
+FSC supports immutable hashmaps using HAMT. The code for HAMT was provided the professor. It uses the Boehm Garbage Collector, which has also been integrated into FSC.
 
 ## Boehm Garbage Collector
 ### Some short description here and a link to their project repo.

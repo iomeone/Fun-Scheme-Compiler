@@ -414,7 +414,7 @@
     ['vector-ref (>= (length ys) 2)]
     ['vector-set! (>= (length ys) 3)]
     ['vector-length (>= (length ys) 1)]
-    ['set (= (length ys) 1)] ; not sure about this
+    ['set (>= (length ys) 0)] ; not sure about this
     ['set->list (= (length ys) 1)]
     ['list->set (= (length ys) 1)]
     ['set-add (= (length ys) 2)]
@@ -423,7 +423,7 @@
     ['set-first (= (length ys) 1)]
     ['set-rest (= (length ys) 1)]
     ['set-remove (= (length ys) 2)]
-    ['hash (> (length ys) 1)]
+    ['hash (> (length ys) -1)]
     ['hash-ref (= (length ys) 2)]
     ['hash-set (= (length ys) 3)]
     ['hash-count (= (length ys) 1)]

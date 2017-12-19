@@ -46,7 +46,7 @@ Number of arguments: 2
 Argument types: Any
 _____
 ### `car lst`
-Description: Returns the first element of a list.
+Description: Returns the first element of a list. If `lst` is not a list or is null, a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -61,7 +61,7 @@ Number of arguments: 1
 Argument types: cons
 _____
 ### `cdr lst`
-Description: Returns all elements of a list except for the first.
+Description: Returns all elements of a list except for the first. If `lst` is not a list or is null, a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -76,7 +76,7 @@ Number of arguments: 1
 Argument types: List
 _____
 ### `first lst`
-Description: Returns the first element of a list.
+Description: Returns the first element of a list. If `lst` has fewer than 1 element, then a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -91,7 +91,7 @@ Number of arguments: 1
 Argument types: cons
 _____
 ### `second lst`
-Description: Returns the second element of a list.
+Description: Returns the second element of a list. If `lst` has fewer than 2 elements, then a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -106,7 +106,7 @@ Number of arguments: 1
 Argument types: cons
 _____
 ### `third lst`
-Description: Returns the third element of a list.
+Description: Returns the third element of a list. If `lst` has fewer than 3 elements, then a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -121,7 +121,7 @@ Number of arguments: 1
 Argument types: cons
 _____
 ### `fourth lst`
-Description: Returns the fourth element of a list.
+Description: Returns the fourth element of a list. If `lst` has fewer than 4 elements, then a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -136,7 +136,7 @@ Number of arguments: 1
 Argument types: cons
 _____
 ### `fifth lst`
-Description: Returns the fifth element of a list.
+Description: Returns the fifth element of a list. If `lst` has fewer than 5 elements, then a run-time exception is thrown.
 
 Example:
 ```scheme
@@ -293,7 +293,7 @@ Example:
 ```scheme
 
 (void? (void)) ; #t
-(void? 'v')	   ; #f
+(void? 'v') ; #f
 ```
 
 Return type: Boolean (#t / #f)
@@ -308,7 +308,7 @@ Description: Checks if `v` is a `promise`. Returns `#t` if it is, otherwise `#f`
 Example:
 ```scheme
 (promise? (delay '1)) ; #t
-(promise? '1)		  ; #f
+(promise? '1) ; #f
 ```
 
 Return type: Boolean (#t / #f)
@@ -322,7 +322,7 @@ Description: Checks if `v` is a `number`. Returns `#t` if it is, otherwise `#f`.
 
 Example:
 ```scheme
-(number? 1)	 ; #t
+(number? 1) ; #t
 (number? 'a) ; #f
 ```
 
@@ -337,7 +337,7 @@ Description: Checks if `v` is an `integer`. Returns `#t` if it is, otherwise `#f
 
 Example:
 ```scheme
-(integer? 1)  ; #t
+(integer? 1) ; #t
 (integer? 'a) ; #f
 ```
 
@@ -359,7 +359,7 @@ Description: Prints the value `v` to the console.
 
 Example:
 ```scheme
-(print 1)  				 ; 1
+(print 1) ; 1
 (print '"Hello, world!") ; "Hello, world!"
 ```
 

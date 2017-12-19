@@ -2,6 +2,325 @@
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
+%class.hamt = type { [7 x %class.KV], i64 }
+%class.KV = type { %"union.KV<tuple, tuple, 0>::Key", %"union.KV<tuple, tuple, 0>::Val" }
+%"union.KV<tuple, tuple, 0>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 0>::Val" = type { %class.KV.0* }
+%class.KV.0 = type { %"union.KV<tuple, tuple, 1>::Key", %"union.KV<tuple, tuple, 1>::Val" }
+%"union.KV<tuple, tuple, 1>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 1>::Val" = type { %class.KV.1* }
+%class.KV.1 = type { %"union.KV<tuple, tuple, 2>::Key", %"union.KV<tuple, tuple, 2>::Val" }
+%"union.KV<tuple, tuple, 2>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 2>::Val" = type { %class.KV.2* }
+%class.KV.2 = type { %"union.KV<tuple, tuple, 3>::Key", %"union.KV<tuple, tuple, 3>::Val" }
+%"union.KV<tuple, tuple, 3>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 3>::Val" = type { %class.KV.3* }
+%class.KV.3 = type { %"union.KV<tuple, tuple, 4>::Key", %"union.KV<tuple, tuple, 4>::Val" }
+%"union.KV<tuple, tuple, 4>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 4>::Val" = type { %class.KV.4* }
+%class.KV.4 = type { %"union.KV<tuple, tuple, 5>::Key", %"union.KV<tuple, tuple, 5>::Val" }
+%"union.KV<tuple, tuple, 5>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 5>::Val" = type { %class.KV.5* }
+%class.KV.5 = type { %"union.KV<tuple, tuple, 6>::Key", %"union.KV<tuple, tuple, 6>::Val" }
+%"union.KV<tuple, tuple, 6>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 6>::Val" = type { %class.KV.6* }
+%class.KV.6 = type { %"union.KV<tuple, tuple, 7>::Key", %"union.KV<tuple, tuple, 7>::Val" }
+%"union.KV<tuple, tuple, 7>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 7>::Val" = type { %class.KV.7* }
+%class.KV.7 = type { %"union.KV<tuple, tuple, 8>::Key", %"union.KV<tuple, tuple, 8>::Val" }
+%"union.KV<tuple, tuple, 8>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 8>::Val" = type { %class.KV.8* }
+%class.KV.8 = type { %"union.KV<tuple, tuple, 9>::Key", %"union.KV<tuple, tuple, 9>::Val" }
+%"union.KV<tuple, tuple, 9>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 9>::Val" = type { %class.KV.9* }
+%class.KV.9 = type { %"union.KV<tuple, tuple, 10>::Key", %"union.KV<tuple, tuple, 10>::Val" }
+%"union.KV<tuple, tuple, 10>::Key" = type { i64 }
+%"union.KV<tuple, tuple, 10>::Val" = type { %class.LL* }
+%class.LL = type { %class.tuple*, %class.tuple*, %class.LL* }
+%class.tuple = type { i64 }
+
+$_ZN4hamtI5tupleS0_EC2Ev = comdat any
+
+$_ZN5tupleC2Em = comdat any
+
+$_ZNK4hamtI5tupleS0_E6insertEPKS0_S3_ = comdat any
+
+$_ZNK4hamtI5tupleS0_E6removeEPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EEC2Ev = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_ = comdat any
+
+$_ZNK5tuple4hashEv = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EEC2EPKS0_S3_ = comdat any
+
+$_ZNK5tupleeqERKS_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE14new_inner_nodeEmPKS0_S3_mS3_S3_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_ = comdat any
+
+$_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE3ValC2EPK2LLIS0_S0_E = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS_IS0_S0_Lj10EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS_IS0_S0_Lj9EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS_IS0_S0_Lj8EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS_IS0_S0_Lj7EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS_IS0_S0_Lj6EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS_IS0_S0_Lj5EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS_IS0_S0_Lj4EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS_IS0_S0_Lj3EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE3KeyC2Em = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS_IS0_S0_Lj2EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS_IS0_S0_Lj1EE = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE3KeyC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS0_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE12insert_innerERKS1_mPKS0_S5_Pm = comdat any
+
+$_ZNK2LLI5tupleS0_E6insertEPKS0_S3_Pm = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj0EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj0EEC2ERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj1EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj1EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj2EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj2EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj3EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj3EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj4EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj4EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj5EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj5EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj6EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj6EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj7EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj7EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj8EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj8EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj9EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj9EEeqERKS1_ = comdat any
+
+$_ZN2KVI5tupleS0_Lj10EE12remove_innerERKS1_mPKS0_Pm = comdat any
+
+$_ZNK2KVI5tupleS0_Lj10EEeqERKS1_ = comdat any
+
+$_ZNK2LLI5tupleS0_E6removeEPKS0_Pm = comdat any
+
 @.str = private unnamed_addr constant [25 x i8] c"library run-time error: \00", align 1
 @.str.1 = private unnamed_addr constant [3 x i8] c"%s\00", align 1
 @.str.2 = private unnamed_addr constant [2 x i8] c"\0A\00", align 1
@@ -64,7 +383,7 @@ define void @fatal_err(i8* %msg) #0 {
   %3 = load i8*, i8** %1, align 8
   %4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %3)
   %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.2, i32 0, i32 0))
-  call void @exit(i32 1) #6
+  call void @exit(i32 1) #8
   unreachable
                                                   ; No predecessors!
   ret void
@@ -310,16 +629,6 @@ define i64 @const_init_symbol(i8* %s) #3 {
   ret i64 %4
 }
 
-; Function Attrs: nounwind uwtable
-define i64 @const_init_char(i8* %s) #3 {
-  %1 = alloca i8*, align 8
-  store i8* %s, i8** %1, align 8
-  %2 = load i8*, i8** %1, align 8
-  %3 = ptrtoint i8* %2 to i64
-  %4 = or i64 %3, 5
-  ret i64 %4
-}
-
 ; Function Attrs: uwtable
 define i64 @prim_string(i64 %v) #0 {
   %1 = alloca i64, align 8
@@ -347,7 +656,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
 
 ; <label>:4                                       ; preds = %0
   %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.13, i32 0, i32 0))
-  br label %141
+  br label %131
 
 ; <label>:6                                       ; preds = %0
   %7 = load i64, i64* %1, align 8
@@ -357,7 +666,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
 
 ; <label>:10                                      ; preds = %6
   %11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.14, i32 0, i32 0))
-  br label %140
+  br label %130
 
 ; <label>:12                                      ; preds = %6
   %13 = load i64, i64* %1, align 8
@@ -381,7 +690,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
   %28 = load i64, i64* %27, align 8
   %29 = call i64 @prim_print_aux(i64 %28)
   %30 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.17, i32 0, i32 0))
-  br label %139
+  br label %129
 
 ; <label>:31                                      ; preds = %12
   %32 = load i64, i64* %1, align 8
@@ -394,7 +703,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
   %37 = lshr i64 %36, 32
   %38 = trunc i64 %37 to i32
   %39 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.18, i32 0, i32 0), i32 %38)
-  br label %138
+  br label %128
 
 ; <label>:40                                      ; preds = %31
   %41 = load i64, i64* %1, align 8
@@ -407,7 +716,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
   %46 = and i64 %45, -8
   %47 = inttoptr i64 %46 to i8*
   %48 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.19, i32 0, i32 0), i8* %47)
-  br label %137
+  br label %127
 
 ; <label>:49                                      ; preds = %40
   %50 = load i64, i64* %1, align 8
@@ -420,7 +729,7 @@ define i64 @prim_print_aux(i64 %v) #0 {
   %55 = and i64 %54, -8
   %56 = inttoptr i64 %55 to i8*
   %57 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %56)
-  br label %136
+  br label %126
 
 ; <label>:58                                      ; preds = %49
   %59 = load i64, i64* %1, align 8
@@ -479,89 +788,73 @@ define i64 @prim_print_aux(i64 %v) #0 {
 
 ; <label>:97                                      ; preds = %83
   %98 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.17, i32 0, i32 0))
-  br label %135
+  br label %125
 
 ; <label>:99                                      ; preds = %62, %58
   %100 = load i64, i64* %1, align 8
-  %101 = and i64 %100, 7
-  %102 = icmp eq i64 %101, 5
-  br i1 %102, label %103, label %108
+  %101 = icmp eq i64 %100, 39
+  br i1 %101, label %102, label %104
 
-; <label>:103                                     ; preds = %99
-  %104 = load i64, i64* %1, align 8
-  %105 = and i64 %104, -8
-  %106 = inttoptr i64 %105 to i8*
-  %107 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %106)
-  br label %134
+; <label>:102                                     ; preds = %99
+  %103 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.22, i32 0, i32 0))
+  br label %124
 
-; <label>:108                                     ; preds = %99
-  %109 = load i64, i64* %1, align 8
-  %110 = icmp eq i64 %109, 39
-  br i1 %110, label %111, label %113
+; <label>:104                                     ; preds = %99
+  %105 = load i64, i64* %1, align 8
+  %106 = icmp eq i64 %105, 15
+  br i1 %106, label %107, label %109
 
-; <label>:111                                     ; preds = %108
-  %112 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.22, i32 0, i32 0))
-  br label %133
+; <label>:107                                     ; preds = %104
+  %108 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.23, i32 0, i32 0))
+  br label %123
 
-; <label>:113                                     ; preds = %108
-  %114 = load i64, i64* %1, align 8
-  %115 = icmp eq i64 %114, 15
-  br i1 %115, label %116, label %118
+; <label>:109                                     ; preds = %104
+  %110 = load i64, i64* %1, align 8
+  %111 = icmp eq i64 %110, 31
+  br i1 %111, label %112, label %114
 
-; <label>:116                                     ; preds = %113
-  %117 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.23, i32 0, i32 0))
-  br label %132
+; <label>:112                                     ; preds = %109
+  %113 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.24, i32 0, i32 0))
+  br label %122
 
-; <label>:118                                     ; preds = %113
-  %119 = load i64, i64* %1, align 8
-  %120 = icmp eq i64 %119, 31
-  br i1 %120, label %121, label %123
+; <label>:114                                     ; preds = %109
+  %115 = load i64, i64* %1, align 8
+  %116 = load i64, i64* %1, align 8
+  %117 = trunc i64 %116 to i32
+  %118 = zext i32 %117 to i64
+  %119 = shl i64 %118, 32
+  %120 = or i64 %119, 2
+  %121 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([44 x i8], [44 x i8]* @.str.25, i32 0, i32 0), i64 %115, i64 %120)
+  br label %122
 
-; <label>:121                                     ; preds = %118
-  %122 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.24, i32 0, i32 0))
+; <label>:122                                     ; preds = %114, %112
+  br label %123
+
+; <label>:123                                     ; preds = %122, %107
+  br label %124
+
+; <label>:124                                     ; preds = %123, %102
+  br label %125
+
+; <label>:125                                     ; preds = %124, %97
+  br label %126
+
+; <label>:126                                     ; preds = %125, %53
+  br label %127
+
+; <label>:127                                     ; preds = %126, %44
+  br label %128
+
+; <label>:128                                     ; preds = %127, %35
+  br label %129
+
+; <label>:129                                     ; preds = %128, %16
+  br label %130
+
+; <label>:130                                     ; preds = %129, %10
   br label %131
 
-; <label>:123                                     ; preds = %118
-  %124 = load i64, i64* %1, align 8
-  %125 = load i64, i64* %1, align 8
-  %126 = trunc i64 %125 to i32
-  %127 = zext i32 %126 to i64
-  %128 = shl i64 %127, 32
-  %129 = or i64 %128, 2
-  %130 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([44 x i8], [44 x i8]* @.str.25, i32 0, i32 0), i64 %124, i64 %129)
-  br label %131
-
-; <label>:131                                     ; preds = %123, %121
-  br label %132
-
-; <label>:132                                     ; preds = %131, %116
-  br label %133
-
-; <label>:133                                     ; preds = %132, %111
-  br label %134
-
-; <label>:134                                     ; preds = %133, %103
-  br label %135
-
-; <label>:135                                     ; preds = %134, %97
-  br label %136
-
-; <label>:136                                     ; preds = %135, %53
-  br label %137
-
-; <label>:137                                     ; preds = %136, %44
-  br label %138
-
-; <label>:138                                     ; preds = %137, %35
-  br label %139
-
-; <label>:139                                     ; preds = %138, %16
-  br label %140
-
-; <label>:140                                     ; preds = %139, %10
-  br label %141
-
-; <label>:141                                     ; preds = %140, %4
+; <label>:131                                     ; preds = %130, %4
   ret i64 39
 }
 
@@ -579,7 +872,7 @@ define i64 @prim_print(i64 %v) #0 {
 
 ; <label>:4                                       ; preds = %0
   %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.26, i32 0, i32 0))
-  br label %138
+  br label %128
 
 ; <label>:6                                       ; preds = %0
   %7 = load i64, i64* %1, align 8
@@ -589,7 +882,7 @@ define i64 @prim_print(i64 %v) #0 {
 
 ; <label>:10                                      ; preds = %6
   %11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.14, i32 0, i32 0))
-  br label %137
+  br label %127
 
 ; <label>:12                                      ; preds = %6
   %13 = load i64, i64* %1, align 8
@@ -613,7 +906,7 @@ define i64 @prim_print(i64 %v) #0 {
   %28 = load i64, i64* %27, align 8
   %29 = call i64 @prim_print_aux(i64 %28)
   %30 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.17, i32 0, i32 0))
-  br label %136
+  br label %126
 
 ; <label>:31                                      ; preds = %12
   %32 = load i64, i64* %1, align 8
@@ -626,7 +919,7 @@ define i64 @prim_print(i64 %v) #0 {
   %37 = lshr i64 %36, 32
   %38 = trunc i64 %37 to i32
   %39 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.18, i32 0, i32 0), i32 %38)
-  br label %135
+  br label %125
 
 ; <label>:40                                      ; preds = %31
   %41 = load i64, i64* %1, align 8
@@ -639,7 +932,7 @@ define i64 @prim_print(i64 %v) #0 {
   %46 = and i64 %45, -8
   %47 = inttoptr i64 %46 to i8*
   %48 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.19, i32 0, i32 0), i8* %47)
-  br label %134
+  br label %124
 
 ; <label>:49                                      ; preds = %40
   %50 = load i64, i64* %1, align 8
@@ -652,7 +945,7 @@ define i64 @prim_print(i64 %v) #0 {
   %55 = and i64 %54, -8
   %56 = inttoptr i64 %55 to i8*
   %57 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.28, i32 0, i32 0), i8* %56)
-  br label %133
+  br label %123
 
 ; <label>:58                                      ; preds = %49
   %59 = load i64, i64* %1, align 8
@@ -711,86 +1004,70 @@ define i64 @prim_print(i64 %v) #0 {
 
 ; <label>:97                                      ; preds = %83
   %98 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.17, i32 0, i32 0))
-  br label %132
+  br label %122
 
 ; <label>:99                                      ; preds = %62, %58
   %100 = load i64, i64* %1, align 8
-  %101 = and i64 %100, 7
-  %102 = icmp eq i64 %101, 5
-  br i1 %102, label %103, label %108
+  %101 = icmp eq i64 %100, 39
+  br i1 %101, label %102, label %104
 
-; <label>:103                                     ; preds = %99
-  %104 = load i64, i64* %1, align 8
-  %105 = and i64 %104, -8
-  %106 = inttoptr i64 %105 to i8*
-  %107 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %106)
-  br label %131
+; <label>:102                                     ; preds = %99
+  %103 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.22, i32 0, i32 0))
+  br label %121
 
-; <label>:108                                     ; preds = %99
-  %109 = load i64, i64* %1, align 8
-  %110 = icmp eq i64 %109, 39
-  br i1 %110, label %111, label %113
+; <label>:104                                     ; preds = %99
+  %105 = load i64, i64* %1, align 8
+  %106 = icmp eq i64 %105, 15
+  br i1 %106, label %107, label %109
 
-; <label>:111                                     ; preds = %108
-  %112 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.22, i32 0, i32 0))
-  br label %130
+; <label>:107                                     ; preds = %104
+  %108 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.23, i32 0, i32 0))
+  br label %120
 
-; <label>:113                                     ; preds = %108
-  %114 = load i64, i64* %1, align 8
-  %115 = icmp eq i64 %114, 15
-  br i1 %115, label %116, label %118
+; <label>:109                                     ; preds = %104
+  %110 = load i64, i64* %1, align 8
+  %111 = icmp eq i64 %110, 31
+  br i1 %111, label %112, label %114
 
-; <label>:116                                     ; preds = %113
-  %117 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.23, i32 0, i32 0))
-  br label %129
+; <label>:112                                     ; preds = %109
+  %113 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.24, i32 0, i32 0))
+  br label %119
 
-; <label>:118                                     ; preds = %113
-  %119 = load i64, i64* %1, align 8
-  %120 = icmp eq i64 %119, 31
-  br i1 %120, label %121, label %123
+; <label>:114                                     ; preds = %109
+  %115 = load i64, i64* %1, align 8
+  %116 = load i64, i64* %1, align 8
+  %117 = and i64 %116, 7
+  %118 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.29, i32 0, i32 0), i64 %115, i64 %117)
+  br label %119
 
-; <label>:121                                     ; preds = %118
-  %122 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.24, i32 0, i32 0))
+; <label>:119                                     ; preds = %114, %112
+  br label %120
+
+; <label>:120                                     ; preds = %119, %107
+  br label %121
+
+; <label>:121                                     ; preds = %120, %102
+  br label %122
+
+; <label>:122                                     ; preds = %121, %97
+  br label %123
+
+; <label>:123                                     ; preds = %122, %53
+  br label %124
+
+; <label>:124                                     ; preds = %123, %44
+  br label %125
+
+; <label>:125                                     ; preds = %124, %35
+  br label %126
+
+; <label>:126                                     ; preds = %125, %16
+  br label %127
+
+; <label>:127                                     ; preds = %126, %10
   br label %128
 
-; <label>:123                                     ; preds = %118
-  %124 = load i64, i64* %1, align 8
-  %125 = load i64, i64* %1, align 8
-  %126 = and i64 %125, 7
-  %127 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.29, i32 0, i32 0), i64 %124, i64 %126)
-  br label %128
-
-; <label>:128                                     ; preds = %123, %121
-  br label %129
-
-; <label>:129                                     ; preds = %128, %116
-  br label %130
-
-; <label>:130                                     ; preds = %129, %111
-  br label %131
-
-; <label>:131                                     ; preds = %130, %103
-  br label %132
-
-; <label>:132                                     ; preds = %131, %97
-  br label %133
-
-; <label>:133                                     ; preds = %132, %53
-  br label %134
-
-; <label>:134                                     ; preds = %133, %44
-  br label %135
-
-; <label>:135                                     ; preds = %134, %35
-  br label %136
-
-; <label>:136                                     ; preds = %135, %16
-  br label %137
-
-; <label>:137                                     ; preds = %136, %10
-  br label %138
-
-; <label>:138                                     ; preds = %137, %4
+; <label>:128                                     ; preds = %127, %4
   ret i64 39
 }
 
@@ -815,7 +1092,7 @@ define i64 @prim_halt(i64 %v) #0 {
   %3 = load i64, i64* %2, align 8
   %4 = call i64 @prim_print(i64 %3)
   %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.2, i32 0, i32 0))
-  call void @exit(i32 0) #6
+  call void @exit(i32 0) #8
   unreachable
                                                   ; No predecessors!
   %7 = load i64, i64* %1, align 8
@@ -830,7 +1107,7 @@ define i64 @applyprim_vector(i64 %lst) #0 {
   %mem = alloca i64*, align 8
   %i = alloca i64, align 8
   store i64 %lst, i64* %1, align 8
-  %2 = call noalias i8* @malloc(i64 4096) #7
+  %2 = call noalias i8* @malloc(i64 4096) #9
   %3 = bitcast i8* %2 to i64*
   store i64* %3, i64** %buffer, align 8
   store i64 0, i64* %l, align 8
@@ -908,7 +1185,7 @@ define i64 @applyprim_vector(i64 %lst) #0 {
 
 ; <label>:49                                      ; preds = %46
   %50 = bitcast i64* %47 to i8*
-  call void @_ZdaPv(i8* %50) #8
+  call void @_ZdaPv(i8* %50) #10
   br label %51
 
 ; <label>:51                                      ; preds = %49, %46
@@ -2168,15 +2445,8307 @@ define i64 @applyprim_not(i64 %lst) #0 {
   ret i64 %5
 }
 
+; Function Attrs: uwtable
+define i64 @prim_set() #0 {
+  %h = alloca %class.hamt*, align 8
+  %1 = call noalias i8* @GC_malloc(i64 120)
+  %2 = bitcast i8* %1 to %class.hamt*
+  %3 = bitcast %class.hamt* %2 to i8*
+  %4 = bitcast i8* %3 to %class.hamt*
+  call void @_ZN4hamtI5tupleS0_EC2Ev(%class.hamt* %4)
+  store %class.hamt* %4, %class.hamt** %h, align 8
+  %5 = load %class.hamt*, %class.hamt** %h, align 8
+  %6 = ptrtoint %class.hamt* %5 to i64
+  ret i64 %6
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN4hamtI5tupleS0_EC2Ev(%class.hamt* %this) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.hamt*, align 8
+  store %class.hamt* %this, %class.hamt** %1, align 8
+  %2 = load %class.hamt*, %class.hamt** %1, align 8
+  %3 = getelementptr inbounds %class.hamt, %class.hamt* %2, i32 0, i32 0
+  %4 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %3, i64 0, i64 0
+  %5 = getelementptr inbounds %class.KV, %class.KV* %4, i64 7
+  br label %6
+
+; <label>:6                                       ; preds = %6, %0
+  %7 = phi %class.KV* [ %4, %0 ], [ %8, %6 ]
+  call void @_ZN2KVI5tupleS0_Lj0EEC2Ev(%class.KV* %7)
+  %8 = getelementptr inbounds %class.KV, %class.KV* %7, i64 1
+  %9 = icmp eq %class.KV* %8, %5
+  br i1 %9, label %10, label %6
+
+; <label>:10                                      ; preds = %6
+  %11 = getelementptr inbounds %class.hamt, %class.hamt* %2, i32 0, i32 1
+  store i64 0, i64* %11, align 8
+  ret void
+}
+
+; Function Attrs: uwtable
+define i64 @prim_set_45add(i64 %set, i64 %val) #0 {
+  %1 = alloca i64, align 8
+  %2 = alloca i64, align 8
+  %h = alloca %class.hamt*, align 8
+  %t = alloca %class.tuple*, align 8
+  store i64 %set, i64* %1, align 8
+  store i64 %val, i64* %2, align 8
+  %3 = load i64, i64* %1, align 8
+  %4 = and i64 %3, -8
+  %5 = inttoptr i64 %4 to i64*
+  %6 = bitcast i64* %5 to %class.hamt*
+  store %class.hamt* %6, %class.hamt** %h, align 8
+  %7 = call noalias i8* @GC_malloc(i64 8)
+  %8 = bitcast i8* %7 to %class.tuple*
+  %9 = bitcast %class.tuple* %8 to i8*
+  %10 = bitcast i8* %9 to %class.tuple*
+  %11 = load i64, i64* %2, align 8
+  call void @_ZN5tupleC2Em(%class.tuple* %10, i64 %11)
+  store %class.tuple* %10, %class.tuple** %t, align 8
+  %12 = load %class.hamt*, %class.hamt** %h, align 8
+  %13 = load %class.tuple*, %class.tuple** %t, align 8
+  %14 = load %class.tuple*, %class.tuple** %t, align 8
+  %15 = call %class.hamt* @_ZNK4hamtI5tupleS0_E6insertEPKS0_S3_(%class.hamt* %12, %class.tuple* %13, %class.tuple* %14)
+  store %class.hamt* %15, %class.hamt** %h, align 8
+  %16 = load i64, i64* %1, align 8
+  ret i64 %16
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN5tupleC2Em(%class.tuple* %this, i64 %x) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.tuple*, align 8
+  %2 = alloca i64, align 8
+  store %class.tuple* %this, %class.tuple** %1, align 8
+  store i64 %x, i64* %2, align 8
+  %3 = load %class.tuple*, %class.tuple** %1, align 8
+  %4 = getelementptr inbounds %class.tuple, %class.tuple* %3, i32 0, i32 0
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.hamt* @_ZNK4hamtI5tupleS0_E6insertEPKS0_S3_(%class.hamt* %this, %class.tuple* %key, %class.tuple* %val) #0 comdat align 2 {
+  %1 = alloca %class.hamt*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %h = alloca i64, align 8
+  %hpiece = alloca i64, align 8
+  %new_root = alloca %class.hamt*, align 8
+  store %class.hamt* %this, %class.hamt** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.hamt*, %class.hamt** %1, align 8
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  %6 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %5)
+  store i64 %6, i64* %h, align 8
+  %7 = load i64, i64* %h, align 8
+  %8 = and i64 %7, 15
+  %9 = urem i64 %8, 7
+  store i64 %9, i64* %hpiece, align 8
+  %10 = call noalias i8* @GC_malloc(i64 120)
+  %11 = bitcast i8* %10 to %class.hamt*
+  store %class.hamt* %11, %class.hamt** %new_root, align 8
+  %12 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %13 = bitcast %class.hamt* %12 to i8*
+  %14 = bitcast %class.hamt* %4 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %13, i8* %14, i64 120, i32 8, i1 false)
+  %15 = load i64, i64* %hpiece, align 8
+  %16 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %17 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %16, i64 0, i64 %15
+  %18 = getelementptr inbounds %class.KV, %class.KV* %17, i32 0, i32 0
+  %19 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %18 to i64*
+  %20 = load i64, i64* %19, align 8
+  %21 = icmp eq i64 %20, 0
+  br i1 %21, label %22, label %35
+
+; <label>:22                                      ; preds = %0
+  %23 = load i64, i64* %hpiece, align 8
+  %24 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %25 = getelementptr inbounds %class.hamt, %class.hamt* %24, i32 0, i32 0
+  %26 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %25, i64 0, i64 %23
+  %27 = bitcast %class.KV* %26 to i8*
+  %28 = bitcast i8* %27 to %class.KV*
+  %29 = load %class.tuple*, %class.tuple** %2, align 8
+  %30 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EPKS0_S3_(%class.KV* %28, %class.tuple* %29, %class.tuple* %30)
+  %31 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %32 = getelementptr inbounds %class.hamt, %class.hamt* %31, i32 0, i32 1
+  %33 = load i64, i64* %32, align 8
+  %34 = add i64 %33, 1
+  store i64 %34, i64* %32, align 8
+  br label %115
+
+; <label>:35                                      ; preds = %0
+  %36 = load i64, i64* %hpiece, align 8
+  %37 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %38 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %37, i64 0, i64 %36
+  %39 = getelementptr inbounds %class.KV, %class.KV* %38, i32 0, i32 0
+  %40 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %39 to i64*
+  %41 = load i64, i64* %40, align 8
+  %42 = and i64 %41, 1
+  %43 = icmp eq i64 %42, 0
+  br i1 %43, label %44, label %98
+
+; <label>:44                                      ; preds = %35
+  %45 = load i64, i64* %hpiece, align 8
+  %46 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %47 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %46, i64 0, i64 %45
+  %48 = getelementptr inbounds %class.KV, %class.KV* %47, i32 0, i32 0
+  %49 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %48 to %class.tuple**
+  %50 = load %class.tuple*, %class.tuple** %49, align 8
+  %51 = load %class.tuple*, %class.tuple** %2, align 8
+  %52 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %50, %class.tuple* dereferenceable(8) %51)
+  br i1 %52, label %53, label %62
+
+; <label>:53                                      ; preds = %44
+  %54 = load i64, i64* %hpiece, align 8
+  %55 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %56 = getelementptr inbounds %class.hamt, %class.hamt* %55, i32 0, i32 0
+  %57 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %56, i64 0, i64 %54
+  %58 = bitcast %class.KV* %57 to i8*
+  %59 = bitcast i8* %58 to %class.KV*
+  %60 = load %class.tuple*, %class.tuple** %2, align 8
+  %61 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EPKS0_S3_(%class.KV* %59, %class.tuple* %60, %class.tuple* %61)
+  br label %97
+
+; <label>:62                                      ; preds = %44
+  %63 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %64 = getelementptr inbounds %class.hamt, %class.hamt* %63, i32 0, i32 1
+  %65 = load i64, i64* %64, align 8
+  %66 = add i64 %65, 1
+  store i64 %66, i64* %64, align 8
+  %67 = load i64, i64* %hpiece, align 8
+  %68 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %69 = getelementptr inbounds %class.hamt, %class.hamt* %68, i32 0, i32 0
+  %70 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %69, i64 0, i64 %67
+  %71 = bitcast %class.KV* %70 to i8*
+  %72 = bitcast i8* %71 to %class.KV*
+  %73 = load i64, i64* %hpiece, align 8
+  %74 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %75 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %74, i64 0, i64 %73
+  %76 = getelementptr inbounds %class.KV, %class.KV* %75, i32 0, i32 0
+  %77 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %76 to %class.tuple**
+  %78 = load %class.tuple*, %class.tuple** %77, align 8
+  %79 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %78)
+  %80 = lshr i64 %79, 4
+  %81 = load i64, i64* %hpiece, align 8
+  %82 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %83 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %82, i64 0, i64 %81
+  %84 = getelementptr inbounds %class.KV, %class.KV* %83, i32 0, i32 0
+  %85 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %84 to %class.tuple**
+  %86 = load %class.tuple*, %class.tuple** %85, align 8
+  %87 = load i64, i64* %hpiece, align 8
+  %88 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %89 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %88, i64 0, i64 %87
+  %90 = getelementptr inbounds %class.KV, %class.KV* %89, i32 0, i32 1
+  %91 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %90 to %class.tuple**
+  %92 = load %class.tuple*, %class.tuple** %91, align 8
+  %93 = load i64, i64* %h, align 8
+  %94 = lshr i64 %93, 4
+  %95 = load %class.tuple*, %class.tuple** %2, align 8
+  %96 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV* sret %72, i64 %80, %class.tuple* %86, %class.tuple* %92, i64 %94, %class.tuple* %95, %class.tuple* %96)
+  br label %97
+
+; <label>:97                                      ; preds = %62, %53
+  br label %114
+
+; <label>:98                                      ; preds = %35
+  %99 = load i64, i64* %hpiece, align 8
+  %100 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %101 = getelementptr inbounds %class.hamt, %class.hamt* %100, i32 0, i32 0
+  %102 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %101, i64 0, i64 %99
+  %103 = bitcast %class.KV* %102 to i8*
+  %104 = bitcast i8* %103 to %class.KV*
+  %105 = load i64, i64* %hpiece, align 8
+  %106 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %107 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %106, i64 0, i64 %105
+  %108 = load i64, i64* %h, align 8
+  %109 = lshr i64 %108, 4
+  %110 = load %class.tuple*, %class.tuple** %2, align 8
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %113 = getelementptr inbounds %class.hamt, %class.hamt* %112, i32 0, i32 1
+  call void @_ZN2KVI5tupleS0_Lj0EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV* sret %104, %class.KV* dereferenceable(16) %107, i64 %109, %class.tuple* %110, %class.tuple* %111, i64* %113)
+  br label %114
+
+; <label>:114                                     ; preds = %98, %97
+  br label %115
+
+; <label>:115                                     ; preds = %114, %22
+  %116 = load %class.hamt*, %class.hamt** %new_root, align 8
+  ret %class.hamt* %116
+}
+
+; Function Attrs: uwtable
+define i64 @prim_set_45remove(i64 %set, i64 %val) #0 {
+  %1 = alloca i64, align 8
+  %2 = alloca i64, align 8
+  %h = alloca %class.hamt*, align 8
+  %t = alloca %class.tuple*, align 8
+  store i64 %set, i64* %1, align 8
+  store i64 %val, i64* %2, align 8
+  %3 = load i64, i64* %1, align 8
+  %4 = and i64 %3, -8
+  %5 = inttoptr i64 %4 to i64*
+  %6 = bitcast i64* %5 to %class.hamt*
+  store %class.hamt* %6, %class.hamt** %h, align 8
+  %7 = call noalias i8* @GC_malloc(i64 8)
+  %8 = bitcast i8* %7 to %class.tuple*
+  %9 = bitcast %class.tuple* %8 to i8*
+  %10 = bitcast i8* %9 to %class.tuple*
+  %11 = load i64, i64* %2, align 8
+  call void @_ZN5tupleC2Em(%class.tuple* %10, i64 %11)
+  store %class.tuple* %10, %class.tuple** %t, align 8
+  %12 = load %class.hamt*, %class.hamt** %h, align 8
+  %13 = load %class.tuple*, %class.tuple** %t, align 8
+  %14 = call %class.hamt* @_ZNK4hamtI5tupleS0_E6removeEPKS0_(%class.hamt* %12, %class.tuple* %13)
+  store %class.hamt* %14, %class.hamt** %h, align 8
+  %15 = load i64, i64* %1, align 8
+  ret i64 %15
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.hamt* @_ZNK4hamtI5tupleS0_E6removeEPKS0_(%class.hamt* %this, %class.tuple* %key) #0 comdat align 2 {
+  %1 = alloca %class.hamt*, align 8
+  %2 = alloca %class.hamt*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %h = alloca i64, align 8
+  %hpiece = alloca i64, align 8
+  %new_root = alloca %class.hamt*, align 8
+  %temp_count = alloca i64, align 8
+  %kv = alloca %class.KV, align 8
+  %new_root1 = alloca %class.hamt*, align 8
+  store %class.hamt* %this, %class.hamt** %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  %4 = load %class.hamt*, %class.hamt** %2, align 8
+  %5 = load %class.tuple*, %class.tuple** %3, align 8
+  %6 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %5)
+  store i64 %6, i64* %h, align 8
+  %7 = load i64, i64* %h, align 8
+  %8 = and i64 %7, 15
+  %9 = urem i64 %8, 7
+  store i64 %9, i64* %hpiece, align 8
+  %10 = load i64, i64* %hpiece, align 8
+  %11 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %12 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %11, i64 0, i64 %10
+  %13 = getelementptr inbounds %class.KV, %class.KV* %12, i32 0, i32 0
+  %14 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %13 to i64*
+  %15 = load i64, i64* %14, align 8
+  %16 = icmp eq i64 %15, 0
+  br i1 %16, label %17, label %18
+
+; <label>:17                                      ; preds = %0
+  store %class.hamt* %4, %class.hamt** %1, align 8
+  br label %83
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %hpiece, align 8
+  %20 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %21 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %20, i64 0, i64 %19
+  %22 = getelementptr inbounds %class.KV, %class.KV* %21, i32 0, i32 0
+  %23 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %22 to i64*
+  %24 = load i64, i64* %23, align 8
+  %25 = and i64 %24, 1
+  %26 = icmp eq i64 %25, 0
+  br i1 %26, label %27, label %53
+
+; <label>:27                                      ; preds = %18
+  %28 = load i64, i64* %hpiece, align 8
+  %29 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %30 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %29, i64 0, i64 %28
+  %31 = getelementptr inbounds %class.KV, %class.KV* %30, i32 0, i32 0
+  %32 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %31 to %class.tuple**
+  %33 = load %class.tuple*, %class.tuple** %32, align 8
+  %34 = load %class.tuple*, %class.tuple** %3, align 8
+  %35 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %33, %class.tuple* dereferenceable(8) %34)
+  br i1 %35, label %36, label %52
+
+; <label>:36                                      ; preds = %27
+  %37 = call noalias i8* @GC_malloc(i64 120)
+  %38 = bitcast i8* %37 to %class.hamt*
+  store %class.hamt* %38, %class.hamt** %new_root, align 8
+  %39 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %40 = bitcast %class.hamt* %39 to i8*
+  %41 = bitcast %class.hamt* %4 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %40, i8* %41, i64 120, i32 8, i1 false)
+  %42 = load i64, i64* %hpiece, align 8
+  %43 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %44 = getelementptr inbounds %class.hamt, %class.hamt* %43, i64 %42
+  %45 = bitcast %class.hamt* %44 to i8*
+  %46 = bitcast i8* %45 to %class.KV*
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EPKS0_S3_(%class.KV* %46, %class.tuple* null, %class.tuple* null)
+  %47 = load %class.hamt*, %class.hamt** %new_root, align 8
+  %48 = getelementptr inbounds %class.hamt, %class.hamt* %47, i32 0, i32 1
+  %49 = load i64, i64* %48, align 8
+  %50 = add i64 %49, -1
+  store i64 %50, i64* %48, align 8
+  %51 = load %class.hamt*, %class.hamt** %new_root, align 8
+  store %class.hamt* %51, %class.hamt** %1, align 8
+  br label %83
+
+; <label>:52                                      ; preds = %27
+  store %class.hamt* %4, %class.hamt** %1, align 8
+  br label %83
+
+; <label>:53                                      ; preds = %18
+  %54 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 1
+  %55 = load i64, i64* %54, align 8
+  store i64 %55, i64* %temp_count, align 8
+  %56 = load i64, i64* %hpiece, align 8
+  %57 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %58 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %57, i64 0, i64 %56
+  %59 = load i64, i64* %h, align 8
+  %60 = lshr i64 %59, 4
+  %61 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE12remove_innerERKS1_mPKS0_Pm(%class.KV* sret %kv, %class.KV* dereferenceable(16) %58, i64 %60, %class.tuple* %61, i64* %temp_count)
+  %62 = load i64, i64* %hpiece, align 8
+  %63 = getelementptr inbounds %class.hamt, %class.hamt* %4, i32 0, i32 0
+  %64 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %63, i64 0, i64 %62
+  %65 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj0EEeqERKS1_(%class.KV* %kv, %class.KV* dereferenceable(16) %64)
+  br i1 %65, label %66, label %67
+
+; <label>:66                                      ; preds = %53
+  store %class.hamt* %4, %class.hamt** %1, align 8
+  br label %83
+
+; <label>:67                                      ; preds = %53
+  %68 = call noalias i8* @GC_malloc(i64 120)
+  %69 = bitcast i8* %68 to %class.hamt*
+  store %class.hamt* %69, %class.hamt** %new_root1, align 8
+  %70 = load %class.hamt*, %class.hamt** %new_root1, align 8
+  %71 = bitcast %class.hamt* %70 to i8*
+  %72 = bitcast %class.hamt* %4 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %71, i8* %72, i64 120, i32 8, i1 false)
+  %73 = load i64, i64* %hpiece, align 8
+  %74 = load %class.hamt*, %class.hamt** %new_root1, align 8
+  %75 = getelementptr inbounds %class.hamt, %class.hamt* %74, i32 0, i32 0
+  %76 = getelementptr inbounds [7 x %class.KV], [7 x %class.KV]* %75, i64 0, i64 %73
+  %77 = bitcast %class.KV* %76 to i8*
+  %78 = bitcast i8* %77 to %class.KV*
+  call void @_ZN2KVI5tupleS0_Lj0EEC2ERKS1_(%class.KV* %78, %class.KV* dereferenceable(16) %kv)
+  %79 = load i64, i64* %temp_count, align 8
+  %80 = load %class.hamt*, %class.hamt** %new_root1, align 8
+  %81 = getelementptr inbounds %class.hamt, %class.hamt* %80, i32 0, i32 1
+  store i64 %79, i64* %81, align 8
+  %82 = load %class.hamt*, %class.hamt** %new_root1, align 8
+  store %class.hamt* %82, %class.hamt** %1, align 8
+  br label %83
+
+; <label>:83                                      ; preds = %67, %66, %52, %36, %17
+  %84 = load %class.hamt*, %class.hamt** %1, align 8
+  ret %class.hamt* %84
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EEC2Ev(%class.KV* %this) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  store %class.KV* %this, %class.KV** %1, align 8
+  %2 = load %class.KV*, %class.KV** %1, align 8
+  %3 = getelementptr inbounds %class.KV, %class.KV* %2, i32 0, i32 0
+  call void @_ZN2KVI5tupleS0_Lj0EE3KeyC2Em(%"union.KV<tuple, tuple, 0>::Key"* %3, i64 0)
+  %4 = getelementptr inbounds %class.KV, %class.KV* %2, i32 0, i32 1
+  call void @_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 0>::Val"* %4, %class.tuple* null)
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE3KeyC2Em(%"union.KV<tuple, tuple, 0>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 0>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 0>::Key"* %this, %"union.KV<tuple, tuple, 0>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 0>::Key"*, %"union.KV<tuple, tuple, 0>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 0>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 0>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 0>::Val"* %this, %"union.KV<tuple, tuple, 0>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 0>::Val"*, %"union.KV<tuple, tuple, 0>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr i64 @_ZNK5tuple4hashEv(%class.tuple* %this) #3 comdat align 2 {
+  %1 = alloca %class.tuple*, align 8
+  %data = alloca i8*, align 8
+  %h = alloca i64, align 8
+  %i = alloca i32, align 4
+  store %class.tuple* %this, %class.tuple** %1, align 8
+  %2 = load %class.tuple*, %class.tuple** %1, align 8
+  %3 = bitcast %class.tuple* %2 to i8*
+  store i8* %3, i8** %data, align 8
+  store i64 -3750763034362895579, i64* %h, align 8
+  store i32 0, i32* %i, align 4
+  br label %4
+
+; <label>:4                                       ; preds = %24, %0
+  %5 = load i32, i32* %i, align 4
+  %6 = zext i32 %5 to i64
+  %7 = icmp ult i64 %6, 8
+  br i1 %7, label %8, label %26
+
+; <label>:8                                       ; preds = %4
+  %9 = load i64, i64* %h, align 8
+  %10 = load i8*, i8** %data, align 8
+  %11 = load i8, i8* %10, align 1
+  %12 = zext i8 %11 to i64
+  %13 = xor i64 %9, %12
+  store i64 %13, i64* %h, align 8
+  %14 = load i64, i64* %h, align 8
+  %15 = mul i64 %14, 1099511628211
+  store i64 %15, i64* %h, align 8
+  br label %16
+
+; <label>:16                                      ; preds = %8
+  %17 = load i32, i32* %i, align 4
+  %18 = add i32 %17, 1
+  store i32 %18, i32* %i, align 4
+  %19 = icmp ne i32 %18, 0
+  br i1 %19, label %20, label %24
+
+; <label>:20                                      ; preds = %16
+  %21 = load i8*, i8** %data, align 8
+  %22 = getelementptr inbounds i8, i8* %21, i32 1
+  store i8* %22, i8** %data, align 8
+  %23 = icmp ne i8* %22, null
+  br label %24
+
+; <label>:24                                      ; preds = %20, %16
+  %25 = phi i1 [ false, %16 ], [ %23, %20 ]
+  br label %4
+
+; <label>:26                                      ; preds = %4
+  %27 = load i64, i64* %h, align 8
+  ret i64 %27
+}
+
+; Function Attrs: argmemonly nounwind
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture, i8* nocapture readonly, i64, i32, i1) #6
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EEC2EPKS0_S3_(%class.KV* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV* %this, %class.KV** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV*, %class.KV** %1, align 8
+  %5 = getelementptr inbounds %class.KV, %class.KV* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 0>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV, %class.KV* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 0>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %this, %class.tuple* dereferenceable(8) %t) #3 comdat align 2 {
+  %1 = alloca %class.tuple*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %class.tuple* %this, %class.tuple** %1, align 8
+  store %class.tuple* %t, %class.tuple** %2, align 8
+  %3 = load %class.tuple*, %class.tuple** %1, align 8
+  %4 = load %class.tuple*, %class.tuple** %2, align 8
+  %5 = getelementptr inbounds %class.tuple, %class.tuple* %4, i32 0, i32 0
+  %6 = load i64, i64* %5, align 8
+  %7 = getelementptr inbounds %class.tuple, %class.tuple* %3, i32 0, i32 0
+  %8 = load i64, i64* %7, align 8
+  %9 = icmp eq i64 %6, %8
+  ret i1 %9
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.0, align 8
+  %node = alloca %class.KV.0*, align 8
+  %node1 = alloca %class.KV.0*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.0* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.0*
+  store %class.KV.0* %28, %class.KV.0** %node, align 8
+  %29 = load %class.KV.0*, %class.KV.0** %node, align 8
+  %30 = getelementptr inbounds %class.KV.0, %class.KV.0* %29, i64 0
+  %31 = bitcast %class.KV.0* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.0*
+  call void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %32, %class.KV.0* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.0*, %class.KV.0** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %37, %class.KV.0* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.0*
+  store %class.KV.0* %41, %class.KV.0** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.0, %class.KV.0* %46, i64 0
+  %48 = bitcast %class.KV.0* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.0*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.0, %class.KV.0* %52, i64 1
+  %54 = bitcast %class.KV.0* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.0*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.0, %class.KV.0* %59, i64 0
+  %61 = bitcast %class.KV.0* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.0*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.0, %class.KV.0* %65, i64 1
+  %67 = bitcast %class.KV.0* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.0*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %80, %class.KV.0* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV* noalias sret %agg.result, %class.KV* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.0*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.0*, align 8
+  %6 = alloca %class.KV.0, align 8
+  %childkv = alloca %class.KV.0, align 8
+  %node1 = alloca %class.KV.0*, align 8
+  %childkv2 = alloca %class.KV.0, align 8
+  %node3 = alloca %class.KV.0*, align 8
+  %node4 = alloca %class.KV.0*, align 8
+  store %class.KV* %kv, %class.KV** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV*, %class.KV** %1, align 8
+  %8 = getelementptr inbounds %class.KV, %class.KV* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %8 to %class.KV.0**
+  %10 = load %class.KV.0*, %class.KV.0** %9, align 8
+  store %class.KV.0* %10, %class.KV.0** %data, align 8
+  %11 = load %class.KV*, %class.KV** %1, align 8
+  %12 = getelementptr inbounds %class.KV, %class.KV* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %44 = getelementptr inbounds %class.KV.0, %class.KV.0* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.0, %class.KV.0* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %54 = getelementptr inbounds %class.KV.0, %class.KV.0* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.0, %class.KV.0* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.0* @_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_(%class.KV.0* %61, i32 %62, i32 %63, %class.KV.0* dereferenceable(16) %6)
+  store %class.KV.0* %66, %class.KV.0** %node, align 8
+  %67 = load %class.KV*, %class.KV** %1, align 8
+  %68 = getelementptr inbounds %class.KV, %class.KV* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.0*, %class.KV.0** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %70, %class.KV.0* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %79 = getelementptr inbounds %class.KV.0, %class.KV.0* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.0, %class.KV.0* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 10
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %88 = getelementptr inbounds %class.KV.0, %class.KV.0* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.0, %class.KV.0* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %95 = getelementptr inbounds %class.KV.0, %class.KV.0* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.0, %class.KV.0* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.0* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.0* @_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_(%class.KV.0* %103, i32 %104, i32 %105, %class.KV.0* dereferenceable(16) %childkv)
+  store %class.KV.0* %106, %class.KV.0** %node1, align 8
+  %107 = load %class.KV*, %class.KV** %1, align 8
+  %108 = getelementptr inbounds %class.KV, %class.KV* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %110, %class.KV.0* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %116 = getelementptr inbounds %class.KV.0, %class.KV.0* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.0* sret %childkv2, %class.KV.0* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.0* @_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_(%class.KV.0* %122, i32 %123, i32 %124, %class.KV.0* dereferenceable(16) %childkv2)
+  store %class.KV.0* %125, %class.KV.0** %node3, align 8
+  %126 = load %class.KV*, %class.KV** %1, align 8
+  %127 = getelementptr inbounds %class.KV, %class.KV* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.0*, %class.KV.0** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %129, %class.KV.0* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.0*
+  store %class.KV.0* %140, %class.KV.0** %node4, align 8
+  %141 = load %class.KV.0*, %class.KV.0** %node4, align 8
+  %142 = bitcast %class.KV.0* %141 to i8*
+  %143 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %144 = bitcast %class.KV.0* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.0*, %class.KV.0** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.0, %class.KV.0* %151, i64 %150
+  %153 = bitcast %class.KV.0* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %157 = getelementptr inbounds %class.KV.0, %class.KV.0* %156, i64 %155
+  %158 = bitcast %class.KV.0* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.0*, %class.KV.0** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.0, %class.KV.0* %164, i64 %166
+  %168 = bitcast %class.KV.0* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.0*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.0*, %class.KV.0** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %178, %class.KV.0* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 0>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 0>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 0>::Key"* %this, %"union.KV<tuple, tuple, 0>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 0>::Key"*, %"union.KV<tuple, tuple, 0>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.0* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.1, align 8
+  %node = alloca %class.KV.1*, align 8
+  %node1 = alloca %class.KV.1*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.1* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.1*
+  store %class.KV.1* %28, %class.KV.1** %node, align 8
+  %29 = load %class.KV.1*, %class.KV.1** %node, align 8
+  %30 = getelementptr inbounds %class.KV.1, %class.KV.1* %29, i64 0
+  %31 = bitcast %class.KV.1* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.1*
+  call void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %32, %class.KV.1* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.1*, %class.KV.1** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %37, %class.KV.1* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.1*
+  store %class.KV.1* %41, %class.KV.1** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.1, %class.KV.1* %46, i64 0
+  %48 = bitcast %class.KV.1* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.1*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.1, %class.KV.1* %52, i64 1
+  %54 = bitcast %class.KV.1* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.1*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.1, %class.KV.1* %59, i64 0
+  %61 = bitcast %class.KV.1* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.1*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.1, %class.KV.1* %65, i64 1
+  %67 = bitcast %class.KV.1* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.1*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %80, %class.KV.1* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %this, %class.KV.0* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca %class.KV.0*, align 8
+  store %class.KV.0* %this, %class.KV.0** %1, align 8
+  store %class.KV.0* %o, %class.KV.0** %2, align 8
+  %3 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %4 = getelementptr inbounds %class.KV.0, %class.KV.0* %3, i32 0, i32 0
+  %5 = load %class.KV.0*, %class.KV.0** %2, align 8
+  %6 = getelementptr inbounds %class.KV.0, %class.KV.0* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.0, %class.KV.0* %3, i32 0, i32 1
+  %10 = load %class.KV.0*, %class.KV.0** %2, align 8
+  %11 = getelementptr inbounds %class.KV.0, %class.KV.0* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %this, i64 %bm, %class.KV.0* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.0*, align 8
+  store %class.KV* %this, %class.KV** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.0* %kv, %class.KV.0** %3, align 8
+  %4 = load %class.KV*, %class.KV** %1, align 8
+  %5 = getelementptr inbounds %class.KV, %class.KV* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE3KeyC2Em(%"union.KV<tuple, tuple, 0>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV, %class.KV* %4, i32 0, i32 1
+  %8 = load %class.KV.0*, %class.KV.0** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS_IS0_S0_Lj1EE(%"union.KV<tuple, tuple, 0>::Val"* %7, %class.KV.0* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EEC2EPKS0_S3_(%class.KV.0* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.0* %this, %class.KV.0** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %5 = getelementptr inbounds %class.KV.0, %class.KV.0* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 1>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.0, %class.KV.0* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 1>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.1* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.2, align 8
+  %node = alloca %class.KV.2*, align 8
+  %node1 = alloca %class.KV.2*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.2* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.2*
+  store %class.KV.2* %28, %class.KV.2** %node, align 8
+  %29 = load %class.KV.2*, %class.KV.2** %node, align 8
+  %30 = getelementptr inbounds %class.KV.2, %class.KV.2* %29, i64 0
+  %31 = bitcast %class.KV.2* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.2*
+  call void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %32, %class.KV.2* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.2*, %class.KV.2** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %37, %class.KV.2* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.2*
+  store %class.KV.2* %41, %class.KV.2** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.2, %class.KV.2* %46, i64 0
+  %48 = bitcast %class.KV.2* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.2*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.2, %class.KV.2* %52, i64 1
+  %54 = bitcast %class.KV.2* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.2*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.2, %class.KV.2* %59, i64 0
+  %61 = bitcast %class.KV.2* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.2*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.2, %class.KV.2* %65, i64 1
+  %67 = bitcast %class.KV.2* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.2*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %80, %class.KV.2* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %this, %class.KV.1* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca %class.KV.1*, align 8
+  store %class.KV.1* %this, %class.KV.1** %1, align 8
+  store %class.KV.1* %o, %class.KV.1** %2, align 8
+  %3 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %4 = getelementptr inbounds %class.KV.1, %class.KV.1* %3, i32 0, i32 0
+  %5 = load %class.KV.1*, %class.KV.1** %2, align 8
+  %6 = getelementptr inbounds %class.KV.1, %class.KV.1* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.1, %class.KV.1* %3, i32 0, i32 1
+  %10 = load %class.KV.1*, %class.KV.1** %2, align 8
+  %11 = getelementptr inbounds %class.KV.1, %class.KV.1* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %this, i64 %bm, %class.KV.1* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.1*, align 8
+  store %class.KV.0* %this, %class.KV.0** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.1* %kv, %class.KV.1** %3, align 8
+  %4 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %5 = getelementptr inbounds %class.KV.0, %class.KV.0* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE3KeyC2Em(%"union.KV<tuple, tuple, 1>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.0, %class.KV.0* %4, i32 0, i32 1
+  %8 = load %class.KV.1*, %class.KV.1** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS_IS0_S0_Lj2EE(%"union.KV<tuple, tuple, 1>::Val"* %7, %class.KV.1* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.1* %this, %class.KV.1** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %5 = getelementptr inbounds %class.KV.1, %class.KV.1* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 2>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.1, %class.KV.1* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 2>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.2* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.3, align 8
+  %node = alloca %class.KV.3*, align 8
+  %node1 = alloca %class.KV.3*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.3* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.3*
+  store %class.KV.3* %28, %class.KV.3** %node, align 8
+  %29 = load %class.KV.3*, %class.KV.3** %node, align 8
+  %30 = getelementptr inbounds %class.KV.3, %class.KV.3* %29, i64 0
+  %31 = bitcast %class.KV.3* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.3*
+  call void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %32, %class.KV.3* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.3*, %class.KV.3** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %37, %class.KV.3* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.3*
+  store %class.KV.3* %41, %class.KV.3** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.3, %class.KV.3* %46, i64 0
+  %48 = bitcast %class.KV.3* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.3*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.3, %class.KV.3* %52, i64 1
+  %54 = bitcast %class.KV.3* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.3*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.3, %class.KV.3* %59, i64 0
+  %61 = bitcast %class.KV.3* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.3*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.3, %class.KV.3* %65, i64 1
+  %67 = bitcast %class.KV.3* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.3*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %80, %class.KV.3* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %this, %class.KV.2* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca %class.KV.2*, align 8
+  store %class.KV.2* %this, %class.KV.2** %1, align 8
+  store %class.KV.2* %o, %class.KV.2** %2, align 8
+  %3 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %4 = getelementptr inbounds %class.KV.2, %class.KV.2* %3, i32 0, i32 0
+  %5 = load %class.KV.2*, %class.KV.2** %2, align 8
+  %6 = getelementptr inbounds %class.KV.2, %class.KV.2* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.2, %class.KV.2* %3, i32 0, i32 1
+  %10 = load %class.KV.2*, %class.KV.2** %2, align 8
+  %11 = getelementptr inbounds %class.KV.2, %class.KV.2* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %this, i64 %bm, %class.KV.2* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.2*, align 8
+  store %class.KV.1* %this, %class.KV.1** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.2* %kv, %class.KV.2** %3, align 8
+  %4 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %5 = getelementptr inbounds %class.KV.1, %class.KV.1* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE3KeyC2Em(%"union.KV<tuple, tuple, 2>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.1, %class.KV.1* %4, i32 0, i32 1
+  %8 = load %class.KV.2*, %class.KV.2** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS_IS0_S0_Lj3EE(%"union.KV<tuple, tuple, 2>::Val"* %7, %class.KV.2* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.2* %this, %class.KV.2** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %5 = getelementptr inbounds %class.KV.2, %class.KV.2* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 3>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.2, %class.KV.2* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 3>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.3* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.4, align 8
+  %node = alloca %class.KV.4*, align 8
+  %node1 = alloca %class.KV.4*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.4* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.4*
+  store %class.KV.4* %28, %class.KV.4** %node, align 8
+  %29 = load %class.KV.4*, %class.KV.4** %node, align 8
+  %30 = getelementptr inbounds %class.KV.4, %class.KV.4* %29, i64 0
+  %31 = bitcast %class.KV.4* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.4*
+  call void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %32, %class.KV.4* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.4*, %class.KV.4** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %37, %class.KV.4* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.4*
+  store %class.KV.4* %41, %class.KV.4** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.4, %class.KV.4* %46, i64 0
+  %48 = bitcast %class.KV.4* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.4*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.4, %class.KV.4* %52, i64 1
+  %54 = bitcast %class.KV.4* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.4*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.4, %class.KV.4* %59, i64 0
+  %61 = bitcast %class.KV.4* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.4*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.4, %class.KV.4* %65, i64 1
+  %67 = bitcast %class.KV.4* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.4*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %80, %class.KV.4* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %this, %class.KV.3* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca %class.KV.3*, align 8
+  store %class.KV.3* %this, %class.KV.3** %1, align 8
+  store %class.KV.3* %o, %class.KV.3** %2, align 8
+  %3 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %4 = getelementptr inbounds %class.KV.3, %class.KV.3* %3, i32 0, i32 0
+  %5 = load %class.KV.3*, %class.KV.3** %2, align 8
+  %6 = getelementptr inbounds %class.KV.3, %class.KV.3* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.3, %class.KV.3* %3, i32 0, i32 1
+  %10 = load %class.KV.3*, %class.KV.3** %2, align 8
+  %11 = getelementptr inbounds %class.KV.3, %class.KV.3* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %this, i64 %bm, %class.KV.3* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.3*, align 8
+  store %class.KV.2* %this, %class.KV.2** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.3* %kv, %class.KV.3** %3, align 8
+  %4 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %5 = getelementptr inbounds %class.KV.2, %class.KV.2* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE3KeyC2Em(%"union.KV<tuple, tuple, 3>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.2, %class.KV.2* %4, i32 0, i32 1
+  %8 = load %class.KV.3*, %class.KV.3** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS_IS0_S0_Lj4EE(%"union.KV<tuple, tuple, 3>::Val"* %7, %class.KV.3* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.3* %this, %class.KV.3** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %5 = getelementptr inbounds %class.KV.3, %class.KV.3* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 4>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.3, %class.KV.3* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 4>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.4* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.5, align 8
+  %node = alloca %class.KV.5*, align 8
+  %node1 = alloca %class.KV.5*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.5* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.5*
+  store %class.KV.5* %28, %class.KV.5** %node, align 8
+  %29 = load %class.KV.5*, %class.KV.5** %node, align 8
+  %30 = getelementptr inbounds %class.KV.5, %class.KV.5* %29, i64 0
+  %31 = bitcast %class.KV.5* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.5*
+  call void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %32, %class.KV.5* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.5*, %class.KV.5** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %37, %class.KV.5* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.5*
+  store %class.KV.5* %41, %class.KV.5** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.5, %class.KV.5* %46, i64 0
+  %48 = bitcast %class.KV.5* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.5*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.5, %class.KV.5* %52, i64 1
+  %54 = bitcast %class.KV.5* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.5*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.5, %class.KV.5* %59, i64 0
+  %61 = bitcast %class.KV.5* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.5*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.5, %class.KV.5* %65, i64 1
+  %67 = bitcast %class.KV.5* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.5*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %80, %class.KV.5* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %this, %class.KV.4* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca %class.KV.4*, align 8
+  store %class.KV.4* %this, %class.KV.4** %1, align 8
+  store %class.KV.4* %o, %class.KV.4** %2, align 8
+  %3 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %4 = getelementptr inbounds %class.KV.4, %class.KV.4* %3, i32 0, i32 0
+  %5 = load %class.KV.4*, %class.KV.4** %2, align 8
+  %6 = getelementptr inbounds %class.KV.4, %class.KV.4* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.4, %class.KV.4* %3, i32 0, i32 1
+  %10 = load %class.KV.4*, %class.KV.4** %2, align 8
+  %11 = getelementptr inbounds %class.KV.4, %class.KV.4* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %this, i64 %bm, %class.KV.4* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.4*, align 8
+  store %class.KV.3* %this, %class.KV.3** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.4* %kv, %class.KV.4** %3, align 8
+  %4 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %5 = getelementptr inbounds %class.KV.3, %class.KV.3* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE3KeyC2Em(%"union.KV<tuple, tuple, 4>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.3, %class.KV.3* %4, i32 0, i32 1
+  %8 = load %class.KV.4*, %class.KV.4** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS_IS0_S0_Lj5EE(%"union.KV<tuple, tuple, 4>::Val"* %7, %class.KV.4* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.4* %this, %class.KV.4** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %5 = getelementptr inbounds %class.KV.4, %class.KV.4* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 5>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.4, %class.KV.4* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 5>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.5* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.6, align 8
+  %node = alloca %class.KV.6*, align 8
+  %node1 = alloca %class.KV.6*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.6* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.6*
+  store %class.KV.6* %28, %class.KV.6** %node, align 8
+  %29 = load %class.KV.6*, %class.KV.6** %node, align 8
+  %30 = getelementptr inbounds %class.KV.6, %class.KV.6* %29, i64 0
+  %31 = bitcast %class.KV.6* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.6*
+  call void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %32, %class.KV.6* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.6*, %class.KV.6** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %37, %class.KV.6* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.6*
+  store %class.KV.6* %41, %class.KV.6** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.6, %class.KV.6* %46, i64 0
+  %48 = bitcast %class.KV.6* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.6*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.6, %class.KV.6* %52, i64 1
+  %54 = bitcast %class.KV.6* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.6*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.6, %class.KV.6* %59, i64 0
+  %61 = bitcast %class.KV.6* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.6*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.6, %class.KV.6* %65, i64 1
+  %67 = bitcast %class.KV.6* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.6*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %80, %class.KV.6* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %this, %class.KV.5* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca %class.KV.5*, align 8
+  store %class.KV.5* %this, %class.KV.5** %1, align 8
+  store %class.KV.5* %o, %class.KV.5** %2, align 8
+  %3 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %4 = getelementptr inbounds %class.KV.5, %class.KV.5* %3, i32 0, i32 0
+  %5 = load %class.KV.5*, %class.KV.5** %2, align 8
+  %6 = getelementptr inbounds %class.KV.5, %class.KV.5* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.5, %class.KV.5* %3, i32 0, i32 1
+  %10 = load %class.KV.5*, %class.KV.5** %2, align 8
+  %11 = getelementptr inbounds %class.KV.5, %class.KV.5* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %this, i64 %bm, %class.KV.5* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.5*, align 8
+  store %class.KV.4* %this, %class.KV.4** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.5* %kv, %class.KV.5** %3, align 8
+  %4 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %5 = getelementptr inbounds %class.KV.4, %class.KV.4* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE3KeyC2Em(%"union.KV<tuple, tuple, 5>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.4, %class.KV.4* %4, i32 0, i32 1
+  %8 = load %class.KV.5*, %class.KV.5** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS_IS0_S0_Lj6EE(%"union.KV<tuple, tuple, 5>::Val"* %7, %class.KV.5* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.5* %this, %class.KV.5** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %5 = getelementptr inbounds %class.KV.5, %class.KV.5* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 6>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.5, %class.KV.5* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 6>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.6* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.7, align 8
+  %node = alloca %class.KV.7*, align 8
+  %node1 = alloca %class.KV.7*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.7* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.7*
+  store %class.KV.7* %28, %class.KV.7** %node, align 8
+  %29 = load %class.KV.7*, %class.KV.7** %node, align 8
+  %30 = getelementptr inbounds %class.KV.7, %class.KV.7* %29, i64 0
+  %31 = bitcast %class.KV.7* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.7*
+  call void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %32, %class.KV.7* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.7*, %class.KV.7** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %37, %class.KV.7* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.7*
+  store %class.KV.7* %41, %class.KV.7** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.7, %class.KV.7* %46, i64 0
+  %48 = bitcast %class.KV.7* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.7*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.7, %class.KV.7* %52, i64 1
+  %54 = bitcast %class.KV.7* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.7*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.7, %class.KV.7* %59, i64 0
+  %61 = bitcast %class.KV.7* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.7*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.7, %class.KV.7* %65, i64 1
+  %67 = bitcast %class.KV.7* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.7*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %80, %class.KV.7* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %this, %class.KV.6* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca %class.KV.6*, align 8
+  store %class.KV.6* %this, %class.KV.6** %1, align 8
+  store %class.KV.6* %o, %class.KV.6** %2, align 8
+  %3 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %4 = getelementptr inbounds %class.KV.6, %class.KV.6* %3, i32 0, i32 0
+  %5 = load %class.KV.6*, %class.KV.6** %2, align 8
+  %6 = getelementptr inbounds %class.KV.6, %class.KV.6* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.6, %class.KV.6* %3, i32 0, i32 1
+  %10 = load %class.KV.6*, %class.KV.6** %2, align 8
+  %11 = getelementptr inbounds %class.KV.6, %class.KV.6* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %this, i64 %bm, %class.KV.6* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.6*, align 8
+  store %class.KV.5* %this, %class.KV.5** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.6* %kv, %class.KV.6** %3, align 8
+  %4 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %5 = getelementptr inbounds %class.KV.5, %class.KV.5* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE3KeyC2Em(%"union.KV<tuple, tuple, 6>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.5, %class.KV.5* %4, i32 0, i32 1
+  %8 = load %class.KV.6*, %class.KV.6** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS_IS0_S0_Lj7EE(%"union.KV<tuple, tuple, 6>::Val"* %7, %class.KV.6* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.6* %this, %class.KV.6** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %5 = getelementptr inbounds %class.KV.6, %class.KV.6* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 7>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.6, %class.KV.6* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 7>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.7* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.8, align 8
+  %node = alloca %class.KV.8*, align 8
+  %node1 = alloca %class.KV.8*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.8* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.8*
+  store %class.KV.8* %28, %class.KV.8** %node, align 8
+  %29 = load %class.KV.8*, %class.KV.8** %node, align 8
+  %30 = getelementptr inbounds %class.KV.8, %class.KV.8* %29, i64 0
+  %31 = bitcast %class.KV.8* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.8*
+  call void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %32, %class.KV.8* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.8*, %class.KV.8** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %37, %class.KV.8* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.8*
+  store %class.KV.8* %41, %class.KV.8** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.8, %class.KV.8* %46, i64 0
+  %48 = bitcast %class.KV.8* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.8*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.8, %class.KV.8* %52, i64 1
+  %54 = bitcast %class.KV.8* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.8*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.8, %class.KV.8* %59, i64 0
+  %61 = bitcast %class.KV.8* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.8*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.8, %class.KV.8* %65, i64 1
+  %67 = bitcast %class.KV.8* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.8*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %80, %class.KV.8* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %this, %class.KV.7* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca %class.KV.7*, align 8
+  store %class.KV.7* %this, %class.KV.7** %1, align 8
+  store %class.KV.7* %o, %class.KV.7** %2, align 8
+  %3 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %4 = getelementptr inbounds %class.KV.7, %class.KV.7* %3, i32 0, i32 0
+  %5 = load %class.KV.7*, %class.KV.7** %2, align 8
+  %6 = getelementptr inbounds %class.KV.7, %class.KV.7* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.7, %class.KV.7* %3, i32 0, i32 1
+  %10 = load %class.KV.7*, %class.KV.7** %2, align 8
+  %11 = getelementptr inbounds %class.KV.7, %class.KV.7* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %this, i64 %bm, %class.KV.7* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.7*, align 8
+  store %class.KV.6* %this, %class.KV.6** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.7* %kv, %class.KV.7** %3, align 8
+  %4 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %5 = getelementptr inbounds %class.KV.6, %class.KV.6* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE3KeyC2Em(%"union.KV<tuple, tuple, 7>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.6, %class.KV.6* %4, i32 0, i32 1
+  %8 = load %class.KV.7*, %class.KV.7** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS_IS0_S0_Lj8EE(%"union.KV<tuple, tuple, 7>::Val"* %7, %class.KV.7* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.7* %this, %class.KV.7** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %5 = getelementptr inbounds %class.KV.7, %class.KV.7* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 8>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.7, %class.KV.7* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 8>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.8* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %h0piece = alloca i32, align 4
+  %h1piece = alloca i32, align 4
+  %childkv = alloca %class.KV.9, align 8
+  %node = alloca %class.KV.9*, align 8
+  %node1 = alloca %class.KV.9*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = load i64, i64* %1, align 8
+  %8 = and i64 %7, 63
+  %9 = urem i64 %8, 63
+  %10 = trunc i64 %9 to i32
+  store i32 %10, i32* %h0piece, align 4
+  %11 = load i64, i64* %4, align 8
+  %12 = and i64 %11, 63
+  %13 = urem i64 %12, 63
+  %14 = trunc i64 %13 to i32
+  store i32 %14, i32* %h1piece, align 4
+  %15 = load i32, i32* %h0piece, align 4
+  %16 = load i32, i32* %h1piece, align 4
+  %17 = icmp eq i32 %15, %16
+  br i1 %17, label %18, label %39
+
+; <label>:18                                      ; preds = %0
+  %19 = load i64, i64* %1, align 8
+  %20 = lshr i64 %19, 6
+  %21 = load %class.tuple*, %class.tuple** %2, align 8
+  %22 = load %class.tuple*, %class.tuple** %3, align 8
+  %23 = load i64, i64* %4, align 8
+  %24 = lshr i64 %23, 6
+  %25 = load %class.tuple*, %class.tuple** %5, align 8
+  %26 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.9* sret %childkv, i64 %20, %class.tuple* %21, %class.tuple* %22, i64 %24, %class.tuple* %25, %class.tuple* %26)
+  %27 = call noalias i8* @GC_malloc(i64 16)
+  %28 = bitcast i8* %27 to %class.KV.9*
+  store %class.KV.9* %28, %class.KV.9** %node, align 8
+  %29 = load %class.KV.9*, %class.KV.9** %node, align 8
+  %30 = getelementptr inbounds %class.KV.9, %class.KV.9* %29, i64 0
+  %31 = bitcast %class.KV.9* %30 to i8*
+  %32 = bitcast i8* %31 to %class.KV.9*
+  call void @_ZN2KVI5tupleS0_Lj10EEC2ERKS1_(%class.KV.9* %32, %class.KV.9* dereferenceable(16) %childkv)
+  %33 = load i32, i32* %h0piece, align 4
+  %34 = zext i32 %33 to i64
+  %35 = shl i64 1, %34
+  %36 = shl i64 %35, 1
+  %37 = or i64 %36, 1
+  %38 = load %class.KV.9*, %class.KV.9** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %37, %class.KV.9* %38)
+  br label %82
+
+; <label>:39                                      ; preds = %0
+  %40 = call noalias i8* @GC_malloc(i64 32)
+  %41 = bitcast i8* %40 to %class.KV.9*
+  store %class.KV.9* %41, %class.KV.9** %node1, align 8
+  %42 = load i32, i32* %h1piece, align 4
+  %43 = load i32, i32* %h0piece, align 4
+  %44 = icmp ult i32 %42, %43
+  br i1 %44, label %45, label %58
+
+; <label>:45                                      ; preds = %39
+  %46 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  %47 = getelementptr inbounds %class.KV.9, %class.KV.9* %46, i64 0
+  %48 = bitcast %class.KV.9* %47 to i8*
+  %49 = bitcast i8* %48 to %class.KV.9*
+  %50 = load %class.tuple*, %class.tuple** %5, align 8
+  %51 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %49, %class.tuple* %50, %class.tuple* %51)
+  %52 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  %53 = getelementptr inbounds %class.KV.9, %class.KV.9* %52, i64 1
+  %54 = bitcast %class.KV.9* %53 to i8*
+  %55 = bitcast i8* %54 to %class.KV.9*
+  %56 = load %class.tuple*, %class.tuple** %2, align 8
+  %57 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %55, %class.tuple* %56, %class.tuple* %57)
+  br label %71
+
+; <label>:58                                      ; preds = %39
+  %59 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  %60 = getelementptr inbounds %class.KV.9, %class.KV.9* %59, i64 0
+  %61 = bitcast %class.KV.9* %60 to i8*
+  %62 = bitcast i8* %61 to %class.KV.9*
+  %63 = load %class.tuple*, %class.tuple** %2, align 8
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %62, %class.tuple* %63, %class.tuple* %64)
+  %65 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  %66 = getelementptr inbounds %class.KV.9, %class.KV.9* %65, i64 1
+  %67 = bitcast %class.KV.9* %66 to i8*
+  %68 = bitcast i8* %67 to %class.KV.9*
+  %69 = load %class.tuple*, %class.tuple** %5, align 8
+  %70 = load %class.tuple*, %class.tuple** %6, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %68, %class.tuple* %69, %class.tuple* %70)
+  br label %71
+
+; <label>:71                                      ; preds = %58, %45
+  %72 = load i32, i32* %h0piece, align 4
+  %73 = zext i32 %72 to i64
+  %74 = shl i64 1, %73
+  %75 = load i32, i32* %h1piece, align 4
+  %76 = zext i32 %75 to i64
+  %77 = shl i64 1, %76
+  %78 = or i64 %74, %77
+  %79 = shl i64 %78, 1
+  %80 = or i64 %79, 1
+  %81 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %80, %class.KV.9* %81)
+  br label %82
+
+; <label>:82                                      ; preds = %71, %18
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %this, %class.KV.8* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca %class.KV.8*, align 8
+  store %class.KV.8* %this, %class.KV.8** %1, align 8
+  store %class.KV.8* %o, %class.KV.8** %2, align 8
+  %3 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %4 = getelementptr inbounds %class.KV.8, %class.KV.8* %3, i32 0, i32 0
+  %5 = load %class.KV.8*, %class.KV.8** %2, align 8
+  %6 = getelementptr inbounds %class.KV.8, %class.KV.8* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.8, %class.KV.8* %3, i32 0, i32 1
+  %10 = load %class.KV.8*, %class.KV.8** %2, align 8
+  %11 = getelementptr inbounds %class.KV.8, %class.KV.8* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %this, i64 %bm, %class.KV.8* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.8*, align 8
+  store %class.KV.7* %this, %class.KV.7** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.8* %kv, %class.KV.8** %3, align 8
+  %4 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %5 = getelementptr inbounds %class.KV.7, %class.KV.7* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE3KeyC2Em(%"union.KV<tuple, tuple, 8>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.7, %class.KV.7* %4, i32 0, i32 1
+  %8 = load %class.KV.8*, %class.KV.8** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS_IS0_S0_Lj9EE(%"union.KV<tuple, tuple, 8>::Val"* %7, %class.KV.8* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.8* %this, %class.KV.8** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %5 = getelementptr inbounds %class.KV.8, %class.KV.8* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 9>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.8, %class.KV.8* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 9>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.9* noalias sret %agg.result, i64 %h0, %class.tuple* %k0, %class.tuple* %v0, i64 %h1, %class.tuple* %k1, %class.tuple* %v1) #0 comdat align 2 {
+  %1 = alloca i64, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca %class.tuple*, align 8
+  %6 = alloca %class.tuple*, align 8
+  %ll1 = alloca %class.LL*, align 8
+  %ll0 = alloca %class.LL*, align 8
+  store i64 %h0, i64* %1, align 8
+  store %class.tuple* %k0, %class.tuple** %2, align 8
+  store %class.tuple* %v0, %class.tuple** %3, align 8
+  store i64 %h1, i64* %4, align 8
+  store %class.tuple* %k1, %class.tuple** %5, align 8
+  store %class.tuple* %v1, %class.tuple** %6, align 8
+  %7 = call noalias i8* @GC_malloc(i64 24)
+  %8 = bitcast i8* %7 to %class.LL*
+  %9 = bitcast %class.LL* %8 to i8*
+  %10 = bitcast i8* %9 to %class.LL*
+  %11 = load %class.tuple*, %class.tuple** %2, align 8
+  %12 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %10, %class.tuple* %11, %class.tuple* %12, %class.LL* null)
+  store %class.LL* %10, %class.LL** %ll1, align 8
+  %13 = call noalias i8* @GC_malloc(i64 24)
+  %14 = bitcast i8* %13 to %class.LL*
+  %15 = bitcast %class.LL* %14 to i8*
+  %16 = bitcast i8* %15 to %class.LL*
+  %17 = load %class.tuple*, %class.tuple** %5, align 8
+  %18 = load %class.tuple*, %class.tuple** %6, align 8
+  %19 = load %class.LL*, %class.LL** %ll1, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %16, %class.tuple* %17, %class.tuple* %18, %class.LL* %19)
+  store %class.LL* %16, %class.LL** %ll0, align 8
+  %20 = load %class.LL*, %class.LL** %ll0, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %agg.result, i64 1, %class.LL* %20)
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EEC2ERKS1_(%class.KV.9* %this, %class.KV.9* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca %class.KV.9*, align 8
+  store %class.KV.9* %this, %class.KV.9** %1, align 8
+  store %class.KV.9* %o, %class.KV.9** %2, align 8
+  %3 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %4 = getelementptr inbounds %class.KV.9, %class.KV.9* %3, i32 0, i32 0
+  %5 = load %class.KV.9*, %class.KV.9** %2, align 8
+  %6 = getelementptr inbounds %class.KV.9, %class.KV.9* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV.9, %class.KV.9* %3, i32 0, i32 1
+  %10 = load %class.KV.9*, %class.KV.9** %2, align 8
+  %11 = getelementptr inbounds %class.KV.9, %class.KV.9* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %this, i64 %bm, %class.KV.9* %kv) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.KV.9*, align 8
+  store %class.KV.8* %this, %class.KV.8** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.KV.9* %kv, %class.KV.9** %3, align 8
+  %4 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %5 = getelementptr inbounds %class.KV.8, %class.KV.8* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE3KeyC2Em(%"union.KV<tuple, tuple, 9>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.8, %class.KV.8* %4, i32 0, i32 1
+  %8 = load %class.KV.9*, %class.KV.9** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS_IS0_S0_Lj10EE(%"union.KV<tuple, tuple, 9>::Val"* %7, %class.KV.9* %8)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %this, %class.tuple* %key, %class.tuple* %val) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  store %class.KV.9* %this, %class.KV.9** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  store %class.tuple* %val, %class.tuple** %3, align 8
+  %4 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %5 = getelementptr inbounds %class.KV.9, %class.KV.9* %4, i32 0, i32 0
+  %6 = load %class.tuple*, %class.tuple** %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 10>::Key"* %5, %class.tuple* %6)
+  %7 = getelementptr inbounds %class.KV.9, %class.KV.9* %4, i32 0, i32 1
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 10>::Val"* %7, %class.tuple* %8)
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %this, %class.tuple* %k, %class.tuple* %v, %class.LL* %next) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.LL*, align 8
+  %2 = alloca %class.tuple*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.LL*, align 8
+  store %class.LL* %this, %class.LL** %1, align 8
+  store %class.tuple* %k, %class.tuple** %2, align 8
+  store %class.tuple* %v, %class.tuple** %3, align 8
+  store %class.LL* %next, %class.LL** %4, align 8
+  %5 = load %class.LL*, %class.LL** %1, align 8
+  %6 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 0
+  %7 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %7, %class.tuple** %6, align 8
+  %8 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 1
+  %9 = load %class.tuple*, %class.tuple** %3, align 8
+  store %class.tuple* %9, %class.tuple** %8, align 8
+  %10 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 2
+  %11 = load %class.LL*, %class.LL** %4, align 8
+  store %class.LL* %11, %class.LL** %10, align 8
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %this, i64 %bm, %class.LL* %ll) unnamed_addr #0 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.LL*, align 8
+  store %class.KV.9* %this, %class.KV.9** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  store %class.LL* %ll, %class.LL** %3, align 8
+  %4 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %5 = getelementptr inbounds %class.KV.9, %class.KV.9* %4, i32 0, i32 0
+  %6 = load i64, i64* %2, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE3KeyC2Em(%"union.KV<tuple, tuple, 10>::Key"* %5, i64 %6)
+  %7 = getelementptr inbounds %class.KV.9, %class.KV.9* %4, i32 0, i32 1
+  %8 = load %class.LL*, %class.LL** %3, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE3ValC2EPK2LLIS0_S0_E(%"union.KV<tuple, tuple, 10>::Val"* %7, %class.LL* %8)
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE3KeyC2Em(%"union.KV<tuple, tuple, 10>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 10>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 10>::Key"* %this, %"union.KV<tuple, tuple, 10>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 10>::Key"*, %"union.KV<tuple, tuple, 10>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE3ValC2EPK2LLIS0_S0_E(%"union.KV<tuple, tuple, 10>::Val"* %this, %class.LL* %ll) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 10>::Val"*, align 8
+  %2 = alloca %class.LL*, align 8
+  store %"union.KV<tuple, tuple, 10>::Val"* %this, %"union.KV<tuple, tuple, 10>::Val"** %1, align 8
+  store %class.LL* %ll, %class.LL** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 10>::Val"*, %"union.KV<tuple, tuple, 10>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %3 to %class.LL**
+  %5 = load %class.LL*, %class.LL** %2, align 8
+  store %class.LL* %5, %class.LL** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE3KeyC2Em(%"union.KV<tuple, tuple, 9>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 9>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 9>::Key"* %this, %"union.KV<tuple, tuple, 9>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 9>::Key"*, %"union.KV<tuple, tuple, 9>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS_IS0_S0_Lj10EE(%"union.KV<tuple, tuple, 9>::Val"* %this, %class.KV.9* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 9>::Val"*, align 8
+  %2 = alloca %class.KV.9*, align 8
+  store %"union.KV<tuple, tuple, 9>::Val"* %this, %"union.KV<tuple, tuple, 9>::Val"** %1, align 8
+  store %class.KV.9* %node, %class.KV.9** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 9>::Val"*, %"union.KV<tuple, tuple, 9>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %3 to %class.KV.9**
+  %5 = load %class.KV.9*, %class.KV.9** %2, align 8
+  store %class.KV.9* %5, %class.KV.9** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 10>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 10>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 10>::Key"* %this, %"union.KV<tuple, tuple, 10>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 10>::Key"*, %"union.KV<tuple, tuple, 10>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 10>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 10>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 10>::Val"* %this, %"union.KV<tuple, tuple, 10>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 10>::Val"*, %"union.KV<tuple, tuple, 10>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE3KeyC2Em(%"union.KV<tuple, tuple, 8>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 8>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 8>::Key"* %this, %"union.KV<tuple, tuple, 8>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 8>::Key"*, %"union.KV<tuple, tuple, 8>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS_IS0_S0_Lj9EE(%"union.KV<tuple, tuple, 8>::Val"* %this, %class.KV.8* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 8>::Val"*, align 8
+  %2 = alloca %class.KV.8*, align 8
+  store %"union.KV<tuple, tuple, 8>::Val"* %this, %"union.KV<tuple, tuple, 8>::Val"** %1, align 8
+  store %class.KV.8* %node, %class.KV.8** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 8>::Val"*, %"union.KV<tuple, tuple, 8>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %3 to %class.KV.8**
+  %5 = load %class.KV.8*, %class.KV.8** %2, align 8
+  store %class.KV.8* %5, %class.KV.8** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 9>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 9>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 9>::Key"* %this, %"union.KV<tuple, tuple, 9>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 9>::Key"*, %"union.KV<tuple, tuple, 9>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 9>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 9>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 9>::Val"* %this, %"union.KV<tuple, tuple, 9>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 9>::Val"*, %"union.KV<tuple, tuple, 9>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE3KeyC2Em(%"union.KV<tuple, tuple, 7>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 7>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 7>::Key"* %this, %"union.KV<tuple, tuple, 7>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 7>::Key"*, %"union.KV<tuple, tuple, 7>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS_IS0_S0_Lj8EE(%"union.KV<tuple, tuple, 7>::Val"* %this, %class.KV.7* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 7>::Val"*, align 8
+  %2 = alloca %class.KV.7*, align 8
+  store %"union.KV<tuple, tuple, 7>::Val"* %this, %"union.KV<tuple, tuple, 7>::Val"** %1, align 8
+  store %class.KV.7* %node, %class.KV.7** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 7>::Val"*, %"union.KV<tuple, tuple, 7>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %3 to %class.KV.7**
+  %5 = load %class.KV.7*, %class.KV.7** %2, align 8
+  store %class.KV.7* %5, %class.KV.7** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 8>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 8>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 8>::Key"* %this, %"union.KV<tuple, tuple, 8>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 8>::Key"*, %"union.KV<tuple, tuple, 8>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 8>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 8>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 8>::Val"* %this, %"union.KV<tuple, tuple, 8>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 8>::Val"*, %"union.KV<tuple, tuple, 8>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE3KeyC2Em(%"union.KV<tuple, tuple, 6>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 6>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 6>::Key"* %this, %"union.KV<tuple, tuple, 6>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 6>::Key"*, %"union.KV<tuple, tuple, 6>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS_IS0_S0_Lj7EE(%"union.KV<tuple, tuple, 6>::Val"* %this, %class.KV.6* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 6>::Val"*, align 8
+  %2 = alloca %class.KV.6*, align 8
+  store %"union.KV<tuple, tuple, 6>::Val"* %this, %"union.KV<tuple, tuple, 6>::Val"** %1, align 8
+  store %class.KV.6* %node, %class.KV.6** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 6>::Val"*, %"union.KV<tuple, tuple, 6>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %3 to %class.KV.6**
+  %5 = load %class.KV.6*, %class.KV.6** %2, align 8
+  store %class.KV.6* %5, %class.KV.6** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 7>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 7>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 7>::Key"* %this, %"union.KV<tuple, tuple, 7>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 7>::Key"*, %"union.KV<tuple, tuple, 7>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 7>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 7>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 7>::Val"* %this, %"union.KV<tuple, tuple, 7>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 7>::Val"*, %"union.KV<tuple, tuple, 7>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE3KeyC2Em(%"union.KV<tuple, tuple, 5>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 5>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 5>::Key"* %this, %"union.KV<tuple, tuple, 5>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 5>::Key"*, %"union.KV<tuple, tuple, 5>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS_IS0_S0_Lj6EE(%"union.KV<tuple, tuple, 5>::Val"* %this, %class.KV.5* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 5>::Val"*, align 8
+  %2 = alloca %class.KV.5*, align 8
+  store %"union.KV<tuple, tuple, 5>::Val"* %this, %"union.KV<tuple, tuple, 5>::Val"** %1, align 8
+  store %class.KV.5* %node, %class.KV.5** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 5>::Val"*, %"union.KV<tuple, tuple, 5>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %3 to %class.KV.5**
+  %5 = load %class.KV.5*, %class.KV.5** %2, align 8
+  store %class.KV.5* %5, %class.KV.5** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 6>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 6>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 6>::Key"* %this, %"union.KV<tuple, tuple, 6>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 6>::Key"*, %"union.KV<tuple, tuple, 6>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 6>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 6>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 6>::Val"* %this, %"union.KV<tuple, tuple, 6>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 6>::Val"*, %"union.KV<tuple, tuple, 6>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE3KeyC2Em(%"union.KV<tuple, tuple, 4>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 4>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 4>::Key"* %this, %"union.KV<tuple, tuple, 4>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 4>::Key"*, %"union.KV<tuple, tuple, 4>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS_IS0_S0_Lj5EE(%"union.KV<tuple, tuple, 4>::Val"* %this, %class.KV.4* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 4>::Val"*, align 8
+  %2 = alloca %class.KV.4*, align 8
+  store %"union.KV<tuple, tuple, 4>::Val"* %this, %"union.KV<tuple, tuple, 4>::Val"** %1, align 8
+  store %class.KV.4* %node, %class.KV.4** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 4>::Val"*, %"union.KV<tuple, tuple, 4>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %3 to %class.KV.4**
+  %5 = load %class.KV.4*, %class.KV.4** %2, align 8
+  store %class.KV.4* %5, %class.KV.4** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 5>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 5>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 5>::Key"* %this, %"union.KV<tuple, tuple, 5>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 5>::Key"*, %"union.KV<tuple, tuple, 5>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 5>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 5>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 5>::Val"* %this, %"union.KV<tuple, tuple, 5>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 5>::Val"*, %"union.KV<tuple, tuple, 5>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE3KeyC2Em(%"union.KV<tuple, tuple, 3>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 3>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 3>::Key"* %this, %"union.KV<tuple, tuple, 3>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 3>::Key"*, %"union.KV<tuple, tuple, 3>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS_IS0_S0_Lj4EE(%"union.KV<tuple, tuple, 3>::Val"* %this, %class.KV.3* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 3>::Val"*, align 8
+  %2 = alloca %class.KV.3*, align 8
+  store %"union.KV<tuple, tuple, 3>::Val"* %this, %"union.KV<tuple, tuple, 3>::Val"** %1, align 8
+  store %class.KV.3* %node, %class.KV.3** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 3>::Val"*, %"union.KV<tuple, tuple, 3>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %3 to %class.KV.3**
+  %5 = load %class.KV.3*, %class.KV.3** %2, align 8
+  store %class.KV.3* %5, %class.KV.3** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 4>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 4>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 4>::Key"* %this, %"union.KV<tuple, tuple, 4>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 4>::Key"*, %"union.KV<tuple, tuple, 4>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 4>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 4>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 4>::Val"* %this, %"union.KV<tuple, tuple, 4>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 4>::Val"*, %"union.KV<tuple, tuple, 4>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE3KeyC2Em(%"union.KV<tuple, tuple, 2>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 2>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 2>::Key"* %this, %"union.KV<tuple, tuple, 2>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 2>::Key"*, %"union.KV<tuple, tuple, 2>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS_IS0_S0_Lj3EE(%"union.KV<tuple, tuple, 2>::Val"* %this, %class.KV.2* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 2>::Val"*, align 8
+  %2 = alloca %class.KV.2*, align 8
+  store %"union.KV<tuple, tuple, 2>::Val"* %this, %"union.KV<tuple, tuple, 2>::Val"** %1, align 8
+  store %class.KV.2* %node, %class.KV.2** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 2>::Val"*, %"union.KV<tuple, tuple, 2>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %3 to %class.KV.2**
+  %5 = load %class.KV.2*, %class.KV.2** %2, align 8
+  store %class.KV.2* %5, %class.KV.2** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 3>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 3>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 3>::Key"* %this, %"union.KV<tuple, tuple, 3>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 3>::Key"*, %"union.KV<tuple, tuple, 3>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 3>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 3>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 3>::Val"* %this, %"union.KV<tuple, tuple, 3>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 3>::Val"*, %"union.KV<tuple, tuple, 3>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE3KeyC2Em(%"union.KV<tuple, tuple, 1>::Key"* %this, i64 %bm) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 1>::Key"*, align 8
+  %2 = alloca i64, align 8
+  store %"union.KV<tuple, tuple, 1>::Key"* %this, %"union.KV<tuple, tuple, 1>::Key"** %1, align 8
+  store i64 %bm, i64* %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 1>::Key"*, %"union.KV<tuple, tuple, 1>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %3 to i64*
+  %5 = load i64, i64* %2, align 8
+  store i64 %5, i64* %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS_IS0_S0_Lj2EE(%"union.KV<tuple, tuple, 1>::Val"* %this, %class.KV.1* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 1>::Val"*, align 8
+  %2 = alloca %class.KV.1*, align 8
+  store %"union.KV<tuple, tuple, 1>::Val"* %this, %"union.KV<tuple, tuple, 1>::Val"** %1, align 8
+  store %class.KV.1* %node, %class.KV.1** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 1>::Val"*, %"union.KV<tuple, tuple, 1>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %3 to %class.KV.1**
+  %5 = load %class.KV.1*, %class.KV.1** %2, align 8
+  store %class.KV.1* %5, %class.KV.1** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 2>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 2>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 2>::Key"* %this, %"union.KV<tuple, tuple, 2>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 2>::Key"*, %"union.KV<tuple, tuple, 2>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 2>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 2>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 2>::Val"* %this, %"union.KV<tuple, tuple, 2>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 2>::Val"*, %"union.KV<tuple, tuple, 2>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE3ValC2EPKS_IS0_S0_Lj1EE(%"union.KV<tuple, tuple, 0>::Val"* %this, %class.KV.0* %node) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 0>::Val"*, align 8
+  %2 = alloca %class.KV.0*, align 8
+  store %"union.KV<tuple, tuple, 0>::Val"* %this, %"union.KV<tuple, tuple, 0>::Val"** %1, align 8
+  store %class.KV.0* %node, %class.KV.0** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 0>::Val"*, %"union.KV<tuple, tuple, 0>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %3 to %class.KV.0**
+  %5 = load %class.KV.0*, %class.KV.0** %2, align 8
+  store %class.KV.0* %5, %class.KV.0** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE3KeyC2EPKS0_(%"union.KV<tuple, tuple, 1>::Key"* %this, %class.tuple* %key) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 1>::Key"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 1>::Key"* %this, %"union.KV<tuple, tuple, 1>::Key"** %1, align 8
+  store %class.tuple* %key, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 1>::Key"*, %"union.KV<tuple, tuple, 1>::Key"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE3ValC2EPKS0_(%"union.KV<tuple, tuple, 1>::Val"* %this, %class.tuple* %val) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %"union.KV<tuple, tuple, 1>::Val"*, align 8
+  %2 = alloca %class.tuple*, align 8
+  store %"union.KV<tuple, tuple, 1>::Val"* %this, %"union.KV<tuple, tuple, 1>::Val"** %1, align 8
+  store %class.tuple* %val, %class.tuple** %2, align 8
+  %3 = load %"union.KV<tuple, tuple, 1>::Val"*, %"union.KV<tuple, tuple, 1>::Val"** %1, align 8
+  %4 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %3 to %class.tuple**
+  %5 = load %class.tuple*, %class.tuple** %2, align 8
+  store %class.tuple* %5, %class.tuple** %4, align 8
+  ret void
+}
+
+; Function Attrs: nounwind readnone
+declare i64 @llvm.ctpop.i64(i64) #7
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.0* @_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_(%class.KV.0* %old, i32 %count, i32 %i, %class.KV.0* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.0*, align 8
+  %copy = alloca %class.KV.0*, align 8
+  store %class.KV.0* %old, %class.KV.0** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.0* %kv, %class.KV.0** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.0*
+  store %class.KV.0* %9, %class.KV.0** %copy, align 8
+  %10 = load %class.KV.0*, %class.KV.0** %copy, align 8
+  %11 = bitcast %class.KV.0* %10 to i8*
+  %12 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %13 = bitcast %class.KV.0* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.0*, %class.KV.0** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.0, %class.KV.0* %17, i64 %19
+  %21 = bitcast %class.KV.0* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.0*
+  %23 = load %class.KV.0*, %class.KV.0** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %22, %class.KV.0* dereferenceable(16) %23)
+  %24 = load %class.KV.0*, %class.KV.0** %copy, align 8
+  ret %class.KV.0* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.0* noalias sret %agg.result, %class.KV.0* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.1*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.1*, align 8
+  %6 = alloca %class.KV.1, align 8
+  %childkv = alloca %class.KV.1, align 8
+  %node1 = alloca %class.KV.1*, align 8
+  %childkv2 = alloca %class.KV.1, align 8
+  %node3 = alloca %class.KV.1*, align 8
+  %node4 = alloca %class.KV.1*, align 8
+  store %class.KV.0* %kv, %class.KV.0** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %8 = getelementptr inbounds %class.KV.0, %class.KV.0* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %8 to %class.KV.1**
+  %10 = load %class.KV.1*, %class.KV.1** %9, align 8
+  store %class.KV.1* %10, %class.KV.1** %data, align 8
+  %11 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %12 = getelementptr inbounds %class.KV.0, %class.KV.0* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %44 = getelementptr inbounds %class.KV.1, %class.KV.1* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.1, %class.KV.1* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %54 = getelementptr inbounds %class.KV.1, %class.KV.1* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.1, %class.KV.1* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.1* @_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_(%class.KV.1* %61, i32 %62, i32 %63, %class.KV.1* dereferenceable(16) %6)
+  store %class.KV.1* %66, %class.KV.1** %node, align 8
+  %67 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %68 = getelementptr inbounds %class.KV.0, %class.KV.0* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.1*, %class.KV.1** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %70, %class.KV.1* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %79 = getelementptr inbounds %class.KV.1, %class.KV.1* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.1, %class.KV.1* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 16
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %88 = getelementptr inbounds %class.KV.1, %class.KV.1* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.1, %class.KV.1* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %95 = getelementptr inbounds %class.KV.1, %class.KV.1* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.1, %class.KV.1* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.1* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.1* @_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_(%class.KV.1* %103, i32 %104, i32 %105, %class.KV.1* dereferenceable(16) %childkv)
+  store %class.KV.1* %106, %class.KV.1** %node1, align 8
+  %107 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %108 = getelementptr inbounds %class.KV.0, %class.KV.0* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %110, %class.KV.1* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %116 = getelementptr inbounds %class.KV.1, %class.KV.1* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.1* sret %childkv2, %class.KV.1* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.1* @_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_(%class.KV.1* %122, i32 %123, i32 %124, %class.KV.1* dereferenceable(16) %childkv2)
+  store %class.KV.1* %125, %class.KV.1** %node3, align 8
+  %126 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %127 = getelementptr inbounds %class.KV.0, %class.KV.0* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.1*, %class.KV.1** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %129, %class.KV.1* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.1*
+  store %class.KV.1* %140, %class.KV.1** %node4, align 8
+  %141 = load %class.KV.1*, %class.KV.1** %node4, align 8
+  %142 = bitcast %class.KV.1* %141 to i8*
+  %143 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %144 = bitcast %class.KV.1* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.1*, %class.KV.1** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.1, %class.KV.1* %151, i64 %150
+  %153 = bitcast %class.KV.1* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %157 = getelementptr inbounds %class.KV.1, %class.KV.1* %156, i64 %155
+  %158 = bitcast %class.KV.1* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.1*, %class.KV.1** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.1, %class.KV.1* %164, i64 %166
+  %168 = bitcast %class.KV.1* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.1*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EPKS0_S3_(%class.KV.1* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.1*, %class.KV.1** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %178, %class.KV.1* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.1* @_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_(%class.KV.1* %old, i32 %count, i32 %i, %class.KV.1* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.1*, align 8
+  %copy = alloca %class.KV.1*, align 8
+  store %class.KV.1* %old, %class.KV.1** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.1* %kv, %class.KV.1** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.1*
+  store %class.KV.1* %9, %class.KV.1** %copy, align 8
+  %10 = load %class.KV.1*, %class.KV.1** %copy, align 8
+  %11 = bitcast %class.KV.1* %10 to i8*
+  %12 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %13 = bitcast %class.KV.1* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.1*, %class.KV.1** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.1, %class.KV.1* %17, i64 %19
+  %21 = bitcast %class.KV.1* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.1*
+  %23 = load %class.KV.1*, %class.KV.1** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %22, %class.KV.1* dereferenceable(16) %23)
+  %24 = load %class.KV.1*, %class.KV.1** %copy, align 8
+  ret %class.KV.1* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.1* noalias sret %agg.result, %class.KV.1* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.2*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.2*, align 8
+  %6 = alloca %class.KV.2, align 8
+  %childkv = alloca %class.KV.2, align 8
+  %node1 = alloca %class.KV.2*, align 8
+  %childkv2 = alloca %class.KV.2, align 8
+  %node3 = alloca %class.KV.2*, align 8
+  %node4 = alloca %class.KV.2*, align 8
+  store %class.KV.1* %kv, %class.KV.1** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %8 = getelementptr inbounds %class.KV.1, %class.KV.1* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %8 to %class.KV.2**
+  %10 = load %class.KV.2*, %class.KV.2** %9, align 8
+  store %class.KV.2* %10, %class.KV.2** %data, align 8
+  %11 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %12 = getelementptr inbounds %class.KV.1, %class.KV.1* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %44 = getelementptr inbounds %class.KV.2, %class.KV.2* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.2, %class.KV.2* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %54 = getelementptr inbounds %class.KV.2, %class.KV.2* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.2, %class.KV.2* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.2* @_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_(%class.KV.2* %61, i32 %62, i32 %63, %class.KV.2* dereferenceable(16) %6)
+  store %class.KV.2* %66, %class.KV.2** %node, align 8
+  %67 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %68 = getelementptr inbounds %class.KV.1, %class.KV.1* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.2*, %class.KV.2** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %70, %class.KV.2* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %79 = getelementptr inbounds %class.KV.2, %class.KV.2* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.2, %class.KV.2* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 22
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %88 = getelementptr inbounds %class.KV.2, %class.KV.2* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.2, %class.KV.2* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %95 = getelementptr inbounds %class.KV.2, %class.KV.2* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.2, %class.KV.2* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.2* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.2* @_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_(%class.KV.2* %103, i32 %104, i32 %105, %class.KV.2* dereferenceable(16) %childkv)
+  store %class.KV.2* %106, %class.KV.2** %node1, align 8
+  %107 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %108 = getelementptr inbounds %class.KV.1, %class.KV.1* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %110, %class.KV.2* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %116 = getelementptr inbounds %class.KV.2, %class.KV.2* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.2* sret %childkv2, %class.KV.2* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.2* @_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_(%class.KV.2* %122, i32 %123, i32 %124, %class.KV.2* dereferenceable(16) %childkv2)
+  store %class.KV.2* %125, %class.KV.2** %node3, align 8
+  %126 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %127 = getelementptr inbounds %class.KV.1, %class.KV.1* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.2*, %class.KV.2** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %129, %class.KV.2* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.2*
+  store %class.KV.2* %140, %class.KV.2** %node4, align 8
+  %141 = load %class.KV.2*, %class.KV.2** %node4, align 8
+  %142 = bitcast %class.KV.2* %141 to i8*
+  %143 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %144 = bitcast %class.KV.2* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.2*, %class.KV.2** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.2, %class.KV.2* %151, i64 %150
+  %153 = bitcast %class.KV.2* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %157 = getelementptr inbounds %class.KV.2, %class.KV.2* %156, i64 %155
+  %158 = bitcast %class.KV.2* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.2*, %class.KV.2** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.2, %class.KV.2* %164, i64 %166
+  %168 = bitcast %class.KV.2* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.2*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EPKS0_S3_(%class.KV.2* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.2*, %class.KV.2** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %178, %class.KV.2* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.2* @_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_(%class.KV.2* %old, i32 %count, i32 %i, %class.KV.2* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.2*, align 8
+  %copy = alloca %class.KV.2*, align 8
+  store %class.KV.2* %old, %class.KV.2** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.2* %kv, %class.KV.2** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.2*
+  store %class.KV.2* %9, %class.KV.2** %copy, align 8
+  %10 = load %class.KV.2*, %class.KV.2** %copy, align 8
+  %11 = bitcast %class.KV.2* %10 to i8*
+  %12 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %13 = bitcast %class.KV.2* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.2*, %class.KV.2** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.2, %class.KV.2* %17, i64 %19
+  %21 = bitcast %class.KV.2* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.2*
+  %23 = load %class.KV.2*, %class.KV.2** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %22, %class.KV.2* dereferenceable(16) %23)
+  %24 = load %class.KV.2*, %class.KV.2** %copy, align 8
+  ret %class.KV.2* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.2* noalias sret %agg.result, %class.KV.2* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.3*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.3*, align 8
+  %6 = alloca %class.KV.3, align 8
+  %childkv = alloca %class.KV.3, align 8
+  %node1 = alloca %class.KV.3*, align 8
+  %childkv2 = alloca %class.KV.3, align 8
+  %node3 = alloca %class.KV.3*, align 8
+  %node4 = alloca %class.KV.3*, align 8
+  store %class.KV.2* %kv, %class.KV.2** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %8 = getelementptr inbounds %class.KV.2, %class.KV.2* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %8 to %class.KV.3**
+  %10 = load %class.KV.3*, %class.KV.3** %9, align 8
+  store %class.KV.3* %10, %class.KV.3** %data, align 8
+  %11 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %12 = getelementptr inbounds %class.KV.2, %class.KV.2* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %44 = getelementptr inbounds %class.KV.3, %class.KV.3* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.3, %class.KV.3* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %54 = getelementptr inbounds %class.KV.3, %class.KV.3* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.3, %class.KV.3* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.3* @_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_(%class.KV.3* %61, i32 %62, i32 %63, %class.KV.3* dereferenceable(16) %6)
+  store %class.KV.3* %66, %class.KV.3** %node, align 8
+  %67 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %68 = getelementptr inbounds %class.KV.2, %class.KV.2* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.3*, %class.KV.3** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %70, %class.KV.3* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %79 = getelementptr inbounds %class.KV.3, %class.KV.3* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.3, %class.KV.3* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 28
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %88 = getelementptr inbounds %class.KV.3, %class.KV.3* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.3, %class.KV.3* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %95 = getelementptr inbounds %class.KV.3, %class.KV.3* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.3, %class.KV.3* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.3* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.3* @_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_(%class.KV.3* %103, i32 %104, i32 %105, %class.KV.3* dereferenceable(16) %childkv)
+  store %class.KV.3* %106, %class.KV.3** %node1, align 8
+  %107 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %108 = getelementptr inbounds %class.KV.2, %class.KV.2* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %110, %class.KV.3* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %116 = getelementptr inbounds %class.KV.3, %class.KV.3* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.3* sret %childkv2, %class.KV.3* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.3* @_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_(%class.KV.3* %122, i32 %123, i32 %124, %class.KV.3* dereferenceable(16) %childkv2)
+  store %class.KV.3* %125, %class.KV.3** %node3, align 8
+  %126 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %127 = getelementptr inbounds %class.KV.2, %class.KV.2* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.3*, %class.KV.3** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %129, %class.KV.3* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.3*
+  store %class.KV.3* %140, %class.KV.3** %node4, align 8
+  %141 = load %class.KV.3*, %class.KV.3** %node4, align 8
+  %142 = bitcast %class.KV.3* %141 to i8*
+  %143 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %144 = bitcast %class.KV.3* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.3*, %class.KV.3** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.3, %class.KV.3* %151, i64 %150
+  %153 = bitcast %class.KV.3* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %157 = getelementptr inbounds %class.KV.3, %class.KV.3* %156, i64 %155
+  %158 = bitcast %class.KV.3* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.3*, %class.KV.3** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.3, %class.KV.3* %164, i64 %166
+  %168 = bitcast %class.KV.3* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.3*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EPKS0_S3_(%class.KV.3* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.3*, %class.KV.3** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %178, %class.KV.3* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.3* @_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_(%class.KV.3* %old, i32 %count, i32 %i, %class.KV.3* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.3*, align 8
+  %copy = alloca %class.KV.3*, align 8
+  store %class.KV.3* %old, %class.KV.3** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.3* %kv, %class.KV.3** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.3*
+  store %class.KV.3* %9, %class.KV.3** %copy, align 8
+  %10 = load %class.KV.3*, %class.KV.3** %copy, align 8
+  %11 = bitcast %class.KV.3* %10 to i8*
+  %12 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %13 = bitcast %class.KV.3* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.3*, %class.KV.3** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.3, %class.KV.3* %17, i64 %19
+  %21 = bitcast %class.KV.3* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.3*
+  %23 = load %class.KV.3*, %class.KV.3** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %22, %class.KV.3* dereferenceable(16) %23)
+  %24 = load %class.KV.3*, %class.KV.3** %copy, align 8
+  ret %class.KV.3* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.3* noalias sret %agg.result, %class.KV.3* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.4*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.4*, align 8
+  %6 = alloca %class.KV.4, align 8
+  %childkv = alloca %class.KV.4, align 8
+  %node1 = alloca %class.KV.4*, align 8
+  %childkv2 = alloca %class.KV.4, align 8
+  %node3 = alloca %class.KV.4*, align 8
+  %node4 = alloca %class.KV.4*, align 8
+  store %class.KV.3* %kv, %class.KV.3** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %8 = getelementptr inbounds %class.KV.3, %class.KV.3* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %8 to %class.KV.4**
+  %10 = load %class.KV.4*, %class.KV.4** %9, align 8
+  store %class.KV.4* %10, %class.KV.4** %data, align 8
+  %11 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %12 = getelementptr inbounds %class.KV.3, %class.KV.3* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %44 = getelementptr inbounds %class.KV.4, %class.KV.4* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.4, %class.KV.4* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %54 = getelementptr inbounds %class.KV.4, %class.KV.4* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.4, %class.KV.4* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.4* @_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_(%class.KV.4* %61, i32 %62, i32 %63, %class.KV.4* dereferenceable(16) %6)
+  store %class.KV.4* %66, %class.KV.4** %node, align 8
+  %67 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %68 = getelementptr inbounds %class.KV.3, %class.KV.3* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.4*, %class.KV.4** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %70, %class.KV.4* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %79 = getelementptr inbounds %class.KV.4, %class.KV.4* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.4, %class.KV.4* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 34
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %88 = getelementptr inbounds %class.KV.4, %class.KV.4* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.4, %class.KV.4* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %95 = getelementptr inbounds %class.KV.4, %class.KV.4* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.4, %class.KV.4* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.4* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.4* @_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_(%class.KV.4* %103, i32 %104, i32 %105, %class.KV.4* dereferenceable(16) %childkv)
+  store %class.KV.4* %106, %class.KV.4** %node1, align 8
+  %107 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %108 = getelementptr inbounds %class.KV.3, %class.KV.3* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %110, %class.KV.4* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %116 = getelementptr inbounds %class.KV.4, %class.KV.4* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.4* sret %childkv2, %class.KV.4* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.4* @_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_(%class.KV.4* %122, i32 %123, i32 %124, %class.KV.4* dereferenceable(16) %childkv2)
+  store %class.KV.4* %125, %class.KV.4** %node3, align 8
+  %126 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %127 = getelementptr inbounds %class.KV.3, %class.KV.3* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.4*, %class.KV.4** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %129, %class.KV.4* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.4*
+  store %class.KV.4* %140, %class.KV.4** %node4, align 8
+  %141 = load %class.KV.4*, %class.KV.4** %node4, align 8
+  %142 = bitcast %class.KV.4* %141 to i8*
+  %143 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %144 = bitcast %class.KV.4* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.4*, %class.KV.4** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.4, %class.KV.4* %151, i64 %150
+  %153 = bitcast %class.KV.4* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %157 = getelementptr inbounds %class.KV.4, %class.KV.4* %156, i64 %155
+  %158 = bitcast %class.KV.4* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.4*, %class.KV.4** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.4, %class.KV.4* %164, i64 %166
+  %168 = bitcast %class.KV.4* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.4*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EPKS0_S3_(%class.KV.4* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.4*, %class.KV.4** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %178, %class.KV.4* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.4* @_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_(%class.KV.4* %old, i32 %count, i32 %i, %class.KV.4* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.4*, align 8
+  %copy = alloca %class.KV.4*, align 8
+  store %class.KV.4* %old, %class.KV.4** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.4* %kv, %class.KV.4** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.4*
+  store %class.KV.4* %9, %class.KV.4** %copy, align 8
+  %10 = load %class.KV.4*, %class.KV.4** %copy, align 8
+  %11 = bitcast %class.KV.4* %10 to i8*
+  %12 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %13 = bitcast %class.KV.4* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.4*, %class.KV.4** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.4, %class.KV.4* %17, i64 %19
+  %21 = bitcast %class.KV.4* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.4*
+  %23 = load %class.KV.4*, %class.KV.4** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %22, %class.KV.4* dereferenceable(16) %23)
+  %24 = load %class.KV.4*, %class.KV.4** %copy, align 8
+  ret %class.KV.4* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.4* noalias sret %agg.result, %class.KV.4* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.5*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.5*, align 8
+  %6 = alloca %class.KV.5, align 8
+  %childkv = alloca %class.KV.5, align 8
+  %node1 = alloca %class.KV.5*, align 8
+  %childkv2 = alloca %class.KV.5, align 8
+  %node3 = alloca %class.KV.5*, align 8
+  %node4 = alloca %class.KV.5*, align 8
+  store %class.KV.4* %kv, %class.KV.4** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %8 = getelementptr inbounds %class.KV.4, %class.KV.4* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %8 to %class.KV.5**
+  %10 = load %class.KV.5*, %class.KV.5** %9, align 8
+  store %class.KV.5* %10, %class.KV.5** %data, align 8
+  %11 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %12 = getelementptr inbounds %class.KV.4, %class.KV.4* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %44 = getelementptr inbounds %class.KV.5, %class.KV.5* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.5, %class.KV.5* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %54 = getelementptr inbounds %class.KV.5, %class.KV.5* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.5, %class.KV.5* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.5* @_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_(%class.KV.5* %61, i32 %62, i32 %63, %class.KV.5* dereferenceable(16) %6)
+  store %class.KV.5* %66, %class.KV.5** %node, align 8
+  %67 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %68 = getelementptr inbounds %class.KV.4, %class.KV.4* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.5*, %class.KV.5** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %70, %class.KV.5* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %79 = getelementptr inbounds %class.KV.5, %class.KV.5* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.5, %class.KV.5* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 40
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %88 = getelementptr inbounds %class.KV.5, %class.KV.5* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.5, %class.KV.5* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %95 = getelementptr inbounds %class.KV.5, %class.KV.5* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.5, %class.KV.5* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.5* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.5* @_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_(%class.KV.5* %103, i32 %104, i32 %105, %class.KV.5* dereferenceable(16) %childkv)
+  store %class.KV.5* %106, %class.KV.5** %node1, align 8
+  %107 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %108 = getelementptr inbounds %class.KV.4, %class.KV.4* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %110, %class.KV.5* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %116 = getelementptr inbounds %class.KV.5, %class.KV.5* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.5* sret %childkv2, %class.KV.5* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.5* @_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_(%class.KV.5* %122, i32 %123, i32 %124, %class.KV.5* dereferenceable(16) %childkv2)
+  store %class.KV.5* %125, %class.KV.5** %node3, align 8
+  %126 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %127 = getelementptr inbounds %class.KV.4, %class.KV.4* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.5*, %class.KV.5** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %129, %class.KV.5* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.5*
+  store %class.KV.5* %140, %class.KV.5** %node4, align 8
+  %141 = load %class.KV.5*, %class.KV.5** %node4, align 8
+  %142 = bitcast %class.KV.5* %141 to i8*
+  %143 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %144 = bitcast %class.KV.5* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.5*, %class.KV.5** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.5, %class.KV.5* %151, i64 %150
+  %153 = bitcast %class.KV.5* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %157 = getelementptr inbounds %class.KV.5, %class.KV.5* %156, i64 %155
+  %158 = bitcast %class.KV.5* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.5*, %class.KV.5** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.5, %class.KV.5* %164, i64 %166
+  %168 = bitcast %class.KV.5* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.5*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EPKS0_S3_(%class.KV.5* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.5*, %class.KV.5** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %178, %class.KV.5* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.5* @_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_(%class.KV.5* %old, i32 %count, i32 %i, %class.KV.5* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.5*, align 8
+  %copy = alloca %class.KV.5*, align 8
+  store %class.KV.5* %old, %class.KV.5** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.5* %kv, %class.KV.5** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.5*
+  store %class.KV.5* %9, %class.KV.5** %copy, align 8
+  %10 = load %class.KV.5*, %class.KV.5** %copy, align 8
+  %11 = bitcast %class.KV.5* %10 to i8*
+  %12 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %13 = bitcast %class.KV.5* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.5*, %class.KV.5** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.5, %class.KV.5* %17, i64 %19
+  %21 = bitcast %class.KV.5* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.5*
+  %23 = load %class.KV.5*, %class.KV.5** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %22, %class.KV.5* dereferenceable(16) %23)
+  %24 = load %class.KV.5*, %class.KV.5** %copy, align 8
+  ret %class.KV.5* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.5* noalias sret %agg.result, %class.KV.5* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.6*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.6*, align 8
+  %6 = alloca %class.KV.6, align 8
+  %childkv = alloca %class.KV.6, align 8
+  %node1 = alloca %class.KV.6*, align 8
+  %childkv2 = alloca %class.KV.6, align 8
+  %node3 = alloca %class.KV.6*, align 8
+  %node4 = alloca %class.KV.6*, align 8
+  store %class.KV.5* %kv, %class.KV.5** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %8 = getelementptr inbounds %class.KV.5, %class.KV.5* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %8 to %class.KV.6**
+  %10 = load %class.KV.6*, %class.KV.6** %9, align 8
+  store %class.KV.6* %10, %class.KV.6** %data, align 8
+  %11 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %12 = getelementptr inbounds %class.KV.5, %class.KV.5* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %44 = getelementptr inbounds %class.KV.6, %class.KV.6* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.6, %class.KV.6* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %54 = getelementptr inbounds %class.KV.6, %class.KV.6* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.6, %class.KV.6* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.6* @_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_(%class.KV.6* %61, i32 %62, i32 %63, %class.KV.6* dereferenceable(16) %6)
+  store %class.KV.6* %66, %class.KV.6** %node, align 8
+  %67 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %68 = getelementptr inbounds %class.KV.5, %class.KV.5* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.6*, %class.KV.6** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %70, %class.KV.6* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %79 = getelementptr inbounds %class.KV.6, %class.KV.6* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.6, %class.KV.6* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 46
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %88 = getelementptr inbounds %class.KV.6, %class.KV.6* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.6, %class.KV.6* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %95 = getelementptr inbounds %class.KV.6, %class.KV.6* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.6, %class.KV.6* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.6* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.6* @_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_(%class.KV.6* %103, i32 %104, i32 %105, %class.KV.6* dereferenceable(16) %childkv)
+  store %class.KV.6* %106, %class.KV.6** %node1, align 8
+  %107 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %108 = getelementptr inbounds %class.KV.5, %class.KV.5* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %110, %class.KV.6* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %116 = getelementptr inbounds %class.KV.6, %class.KV.6* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.6* sret %childkv2, %class.KV.6* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.6* @_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_(%class.KV.6* %122, i32 %123, i32 %124, %class.KV.6* dereferenceable(16) %childkv2)
+  store %class.KV.6* %125, %class.KV.6** %node3, align 8
+  %126 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %127 = getelementptr inbounds %class.KV.5, %class.KV.5* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.6*, %class.KV.6** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %129, %class.KV.6* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.6*
+  store %class.KV.6* %140, %class.KV.6** %node4, align 8
+  %141 = load %class.KV.6*, %class.KV.6** %node4, align 8
+  %142 = bitcast %class.KV.6* %141 to i8*
+  %143 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %144 = bitcast %class.KV.6* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.6*, %class.KV.6** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.6, %class.KV.6* %151, i64 %150
+  %153 = bitcast %class.KV.6* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %157 = getelementptr inbounds %class.KV.6, %class.KV.6* %156, i64 %155
+  %158 = bitcast %class.KV.6* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.6*, %class.KV.6** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.6, %class.KV.6* %164, i64 %166
+  %168 = bitcast %class.KV.6* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.6*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EPKS0_S3_(%class.KV.6* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.6*, %class.KV.6** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %178, %class.KV.6* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.6* @_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_(%class.KV.6* %old, i32 %count, i32 %i, %class.KV.6* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.6*, align 8
+  %copy = alloca %class.KV.6*, align 8
+  store %class.KV.6* %old, %class.KV.6** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.6* %kv, %class.KV.6** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.6*
+  store %class.KV.6* %9, %class.KV.6** %copy, align 8
+  %10 = load %class.KV.6*, %class.KV.6** %copy, align 8
+  %11 = bitcast %class.KV.6* %10 to i8*
+  %12 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %13 = bitcast %class.KV.6* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.6*, %class.KV.6** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.6, %class.KV.6* %17, i64 %19
+  %21 = bitcast %class.KV.6* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.6*
+  %23 = load %class.KV.6*, %class.KV.6** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %22, %class.KV.6* dereferenceable(16) %23)
+  %24 = load %class.KV.6*, %class.KV.6** %copy, align 8
+  ret %class.KV.6* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.6* noalias sret %agg.result, %class.KV.6* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.7*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.7*, align 8
+  %6 = alloca %class.KV.7, align 8
+  %childkv = alloca %class.KV.7, align 8
+  %node1 = alloca %class.KV.7*, align 8
+  %childkv2 = alloca %class.KV.7, align 8
+  %node3 = alloca %class.KV.7*, align 8
+  %node4 = alloca %class.KV.7*, align 8
+  store %class.KV.6* %kv, %class.KV.6** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %8 = getelementptr inbounds %class.KV.6, %class.KV.6* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %8 to %class.KV.7**
+  %10 = load %class.KV.7*, %class.KV.7** %9, align 8
+  store %class.KV.7* %10, %class.KV.7** %data, align 8
+  %11 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %12 = getelementptr inbounds %class.KV.6, %class.KV.6* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %44 = getelementptr inbounds %class.KV.7, %class.KV.7* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.7, %class.KV.7* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %54 = getelementptr inbounds %class.KV.7, %class.KV.7* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.7, %class.KV.7* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.7* @_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_(%class.KV.7* %61, i32 %62, i32 %63, %class.KV.7* dereferenceable(16) %6)
+  store %class.KV.7* %66, %class.KV.7** %node, align 8
+  %67 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %68 = getelementptr inbounds %class.KV.6, %class.KV.6* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.7*, %class.KV.7** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %70, %class.KV.7* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %79 = getelementptr inbounds %class.KV.7, %class.KV.7* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.7, %class.KV.7* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 52
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %88 = getelementptr inbounds %class.KV.7, %class.KV.7* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.7, %class.KV.7* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %95 = getelementptr inbounds %class.KV.7, %class.KV.7* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.7, %class.KV.7* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.7* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.7* @_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_(%class.KV.7* %103, i32 %104, i32 %105, %class.KV.7* dereferenceable(16) %childkv)
+  store %class.KV.7* %106, %class.KV.7** %node1, align 8
+  %107 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %108 = getelementptr inbounds %class.KV.6, %class.KV.6* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %110, %class.KV.7* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %116 = getelementptr inbounds %class.KV.7, %class.KV.7* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.7* sret %childkv2, %class.KV.7* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.7* @_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_(%class.KV.7* %122, i32 %123, i32 %124, %class.KV.7* dereferenceable(16) %childkv2)
+  store %class.KV.7* %125, %class.KV.7** %node3, align 8
+  %126 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %127 = getelementptr inbounds %class.KV.6, %class.KV.6* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.7*, %class.KV.7** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %129, %class.KV.7* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.7*
+  store %class.KV.7* %140, %class.KV.7** %node4, align 8
+  %141 = load %class.KV.7*, %class.KV.7** %node4, align 8
+  %142 = bitcast %class.KV.7* %141 to i8*
+  %143 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %144 = bitcast %class.KV.7* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.7*, %class.KV.7** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.7, %class.KV.7* %151, i64 %150
+  %153 = bitcast %class.KV.7* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %157 = getelementptr inbounds %class.KV.7, %class.KV.7* %156, i64 %155
+  %158 = bitcast %class.KV.7* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.7*, %class.KV.7** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.7, %class.KV.7* %164, i64 %166
+  %168 = bitcast %class.KV.7* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.7*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EPKS0_S3_(%class.KV.7* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.7*, %class.KV.7** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %178, %class.KV.7* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.7* @_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_(%class.KV.7* %old, i32 %count, i32 %i, %class.KV.7* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.7*, align 8
+  %copy = alloca %class.KV.7*, align 8
+  store %class.KV.7* %old, %class.KV.7** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.7* %kv, %class.KV.7** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.7*
+  store %class.KV.7* %9, %class.KV.7** %copy, align 8
+  %10 = load %class.KV.7*, %class.KV.7** %copy, align 8
+  %11 = bitcast %class.KV.7* %10 to i8*
+  %12 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %13 = bitcast %class.KV.7* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.7*, %class.KV.7** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.7, %class.KV.7* %17, i64 %19
+  %21 = bitcast %class.KV.7* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.7*
+  %23 = load %class.KV.7*, %class.KV.7** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %22, %class.KV.7* dereferenceable(16) %23)
+  %24 = load %class.KV.7*, %class.KV.7** %copy, align 8
+  ret %class.KV.7* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.7* noalias sret %agg.result, %class.KV.7* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.8*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.8*, align 8
+  %6 = alloca %class.KV.8, align 8
+  %childkv = alloca %class.KV.8, align 8
+  %node1 = alloca %class.KV.8*, align 8
+  %childkv2 = alloca %class.KV.8, align 8
+  %node3 = alloca %class.KV.8*, align 8
+  %node4 = alloca %class.KV.8*, align 8
+  store %class.KV.7* %kv, %class.KV.7** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %8 = getelementptr inbounds %class.KV.7, %class.KV.7* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %8 to %class.KV.8**
+  %10 = load %class.KV.8*, %class.KV.8** %9, align 8
+  store %class.KV.8* %10, %class.KV.8** %data, align 8
+  %11 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %12 = getelementptr inbounds %class.KV.7, %class.KV.7* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %44 = getelementptr inbounds %class.KV.8, %class.KV.8* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.8, %class.KV.8* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %54 = getelementptr inbounds %class.KV.8, %class.KV.8* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.8, %class.KV.8* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.8* @_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_(%class.KV.8* %61, i32 %62, i32 %63, %class.KV.8* dereferenceable(16) %6)
+  store %class.KV.8* %66, %class.KV.8** %node, align 8
+  %67 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %68 = getelementptr inbounds %class.KV.7, %class.KV.7* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.8*, %class.KV.8** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %70, %class.KV.8* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %79 = getelementptr inbounds %class.KV.8, %class.KV.8* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.8, %class.KV.8* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 58
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %88 = getelementptr inbounds %class.KV.8, %class.KV.8* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.8, %class.KV.8* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %95 = getelementptr inbounds %class.KV.8, %class.KV.8* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.8, %class.KV.8* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.8* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.8* @_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_(%class.KV.8* %103, i32 %104, i32 %105, %class.KV.8* dereferenceable(16) %childkv)
+  store %class.KV.8* %106, %class.KV.8** %node1, align 8
+  %107 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %108 = getelementptr inbounds %class.KV.7, %class.KV.7* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %110, %class.KV.8* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %116 = getelementptr inbounds %class.KV.8, %class.KV.8* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.8* sret %childkv2, %class.KV.8* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.8* @_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_(%class.KV.8* %122, i32 %123, i32 %124, %class.KV.8* dereferenceable(16) %childkv2)
+  store %class.KV.8* %125, %class.KV.8** %node3, align 8
+  %126 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %127 = getelementptr inbounds %class.KV.7, %class.KV.7* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.8*, %class.KV.8** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %129, %class.KV.8* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.8*
+  store %class.KV.8* %140, %class.KV.8** %node4, align 8
+  %141 = load %class.KV.8*, %class.KV.8** %node4, align 8
+  %142 = bitcast %class.KV.8* %141 to i8*
+  %143 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %144 = bitcast %class.KV.8* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.8*, %class.KV.8** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.8, %class.KV.8* %151, i64 %150
+  %153 = bitcast %class.KV.8* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %157 = getelementptr inbounds %class.KV.8, %class.KV.8* %156, i64 %155
+  %158 = bitcast %class.KV.8* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.8*, %class.KV.8** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.8, %class.KV.8* %164, i64 %166
+  %168 = bitcast %class.KV.8* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.8*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EPKS0_S3_(%class.KV.8* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.8*, %class.KV.8** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %178, %class.KV.8* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.8* @_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_(%class.KV.8* %old, i32 %count, i32 %i, %class.KV.8* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.8*, align 8
+  %copy = alloca %class.KV.8*, align 8
+  store %class.KV.8* %old, %class.KV.8** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.8* %kv, %class.KV.8** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.8*
+  store %class.KV.8* %9, %class.KV.8** %copy, align 8
+  %10 = load %class.KV.8*, %class.KV.8** %copy, align 8
+  %11 = bitcast %class.KV.8* %10 to i8*
+  %12 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %13 = bitcast %class.KV.8* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.8*, %class.KV.8** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.8, %class.KV.8* %17, i64 %19
+  %21 = bitcast %class.KV.8* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.8*
+  %23 = load %class.KV.8*, %class.KV.8** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %22, %class.KV.8* dereferenceable(16) %23)
+  %24 = load %class.KV.8*, %class.KV.8** %copy, align 8
+  ret %class.KV.8* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.8* noalias sret %agg.result, %class.KV.8* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %data = alloca %class.KV.9*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %i = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %node = alloca %class.KV.9*, align 8
+  %6 = alloca %class.KV.9, align 8
+  %childkv = alloca %class.KV.9, align 8
+  %node1 = alloca %class.KV.9*, align 8
+  %childkv2 = alloca %class.KV.9, align 8
+  %node3 = alloca %class.KV.9*, align 8
+  %node4 = alloca %class.KV.9*, align 8
+  store %class.KV.8* %kv, %class.KV.8** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %7 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %8 = getelementptr inbounds %class.KV.8, %class.KV.8* %7, i32 0, i32 1
+  %9 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %8 to %class.KV.9**
+  %10 = load %class.KV.9*, %class.KV.9** %9, align 8
+  store %class.KV.9* %10, %class.KV.9** %data, align 8
+  %11 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %12 = getelementptr inbounds %class.KV.8, %class.KV.8* %11, i32 0, i32 0
+  %13 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %12 to i64*
+  %14 = load i64, i64* %13, align 8
+  %15 = lshr i64 %14, 1
+  store i64 %15, i64* %bm, align 8
+  %16 = load i64, i64* %2, align 8
+  %17 = and i64 %16, 63
+  %18 = urem i64 %17, 63
+  %19 = trunc i64 %18 to i32
+  store i32 %19, i32* %hpiece, align 4
+  %20 = load i64, i64* %bm, align 8
+  %21 = call i64 @llvm.ctpop.i64(i64 %20)
+  %22 = trunc i64 %21 to i32
+  store i32 %22, i32* %count, align 4
+  %23 = load i64, i64* %bm, align 8
+  %24 = shl i64 %23, 1
+  %25 = load i32, i32* %hpiece, align 4
+  %26 = sub i32 63, %25
+  %27 = zext i32 %26 to i64
+  %28 = shl i64 %24, %27
+  %29 = call i64 @llvm.ctpop.i64(i64 %28)
+  %30 = trunc i64 %29 to i32
+  store i32 %30, i32* %i, align 4
+  %31 = load i64, i64* %bm, align 8
+  %32 = load i32, i32* %hpiece, align 4
+  %33 = zext i32 %32 to i64
+  %34 = shl i64 1, %33
+  %35 = and i64 %31, %34
+  %36 = icmp ne i64 %35, 0
+  %37 = zext i1 %36 to i8
+  store i8 %37, i8* %exists, align 1
+  %38 = load i8, i8* %exists, align 1
+  %39 = trunc i8 %38 to i1
+  br i1 %39, label %40, label %131
+
+; <label>:40                                      ; preds = %0
+  %41 = load i32, i32* %i, align 4
+  %42 = zext i32 %41 to i64
+  %43 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %44 = getelementptr inbounds %class.KV.9, %class.KV.9* %43, i64 %42
+  %45 = getelementptr inbounds %class.KV.9, %class.KV.9* %44, i32 0, i32 0
+  %46 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %45 to i64*
+  %47 = load i64, i64* %46, align 8
+  %48 = and i64 %47, 1
+  %49 = icmp eq i64 %48, 0
+  br i1 %49, label %50, label %112
+
+; <label>:50                                      ; preds = %40
+  %51 = load i32, i32* %i, align 4
+  %52 = zext i32 %51 to i64
+  %53 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %54 = getelementptr inbounds %class.KV.9, %class.KV.9* %53, i64 %52
+  %55 = getelementptr inbounds %class.KV.9, %class.KV.9* %54, i32 0, i32 0
+  %56 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %55 to %class.tuple**
+  %57 = load %class.tuple*, %class.tuple** %56, align 8
+  %58 = load %class.tuple*, %class.tuple** %3, align 8
+  %59 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %57, %class.tuple* dereferenceable(8) %58)
+  br i1 %59, label %60, label %72
+
+; <label>:60                                      ; preds = %50
+  %61 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = load i32, i32* %i, align 4
+  %64 = load %class.tuple*, %class.tuple** %3, align 8
+  %65 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %6, %class.tuple* %64, %class.tuple* %65)
+  %66 = call %class.KV.9* @_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_(%class.KV.9* %61, i32 %62, i32 %63, %class.KV.9* dereferenceable(16) %6)
+  store %class.KV.9* %66, %class.KV.9** %node, align 8
+  %67 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %68 = getelementptr inbounds %class.KV.8, %class.KV.8* %67, i32 0, i32 0
+  %69 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %68 to i64*
+  %70 = load i64, i64* %69, align 8
+  %71 = load %class.KV.9*, %class.KV.9** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %70, %class.KV.9* %71)
+  br label %180
+
+; <label>:72                                      ; preds = %50
+  %73 = load i64*, i64** %5, align 8
+  %74 = load i64, i64* %73, align 8
+  %75 = add i64 %74, 1
+  store i64 %75, i64* %73, align 8
+  %76 = load i32, i32* %i, align 4
+  %77 = zext i32 %76 to i64
+  %78 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %79 = getelementptr inbounds %class.KV.9, %class.KV.9* %78, i64 %77
+  %80 = getelementptr inbounds %class.KV.9, %class.KV.9* %79, i32 0, i32 0
+  %81 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %80 to %class.tuple**
+  %82 = load %class.tuple*, %class.tuple** %81, align 8
+  %83 = call i64 @_ZNK5tuple4hashEv(%class.tuple* %82)
+  %84 = lshr i64 %83, 0
+  %85 = load i32, i32* %i, align 4
+  %86 = zext i32 %85 to i64
+  %87 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %88 = getelementptr inbounds %class.KV.9, %class.KV.9* %87, i64 %86
+  %89 = getelementptr inbounds %class.KV.9, %class.KV.9* %88, i32 0, i32 0
+  %90 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %89 to %class.tuple**
+  %91 = load %class.tuple*, %class.tuple** %90, align 8
+  %92 = load i32, i32* %i, align 4
+  %93 = zext i32 %92 to i64
+  %94 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %95 = getelementptr inbounds %class.KV.9, %class.KV.9* %94, i64 %93
+  %96 = getelementptr inbounds %class.KV.9, %class.KV.9* %95, i32 0, i32 1
+  %97 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %96 to %class.tuple**
+  %98 = load %class.tuple*, %class.tuple** %97, align 8
+  %99 = load i64, i64* %2, align 8
+  %100 = lshr i64 %99, 6
+  %101 = load %class.tuple*, %class.tuple** %3, align 8
+  %102 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE14new_inner_nodeEmPKS0_S3_mS3_S3_(%class.KV.9* sret %childkv, i64 %84, %class.tuple* %91, %class.tuple* %98, i64 %100, %class.tuple* %101, %class.tuple* %102)
+  %103 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %104 = load i32, i32* %count, align 4
+  %105 = load i32, i32* %i, align 4
+  %106 = call %class.KV.9* @_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_(%class.KV.9* %103, i32 %104, i32 %105, %class.KV.9* dereferenceable(16) %childkv)
+  store %class.KV.9* %106, %class.KV.9** %node1, align 8
+  %107 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %108 = getelementptr inbounds %class.KV.8, %class.KV.8* %107, i32 0, i32 0
+  %109 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %108 to i64*
+  %110 = load i64, i64* %109, align 8
+  %111 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %110, %class.KV.9* %111)
+  br label %180
+
+; <label>:112                                     ; preds = %40
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %116 = getelementptr inbounds %class.KV.9, %class.KV.9* %115, i64 %114
+  %117 = load i64, i64* %2, align 8
+  %118 = lshr i64 %117, 6
+  %119 = load %class.tuple*, %class.tuple** %3, align 8
+  %120 = load %class.tuple*, %class.tuple** %4, align 8
+  %121 = load i64*, i64** %5, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.9* sret %childkv2, %class.KV.9* dereferenceable(16) %116, i64 %118, %class.tuple* %119, %class.tuple* %120, i64* %121)
+  %122 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %123 = load i32, i32* %count, align 4
+  %124 = load i32, i32* %i, align 4
+  %125 = call %class.KV.9* @_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_(%class.KV.9* %122, i32 %123, i32 %124, %class.KV.9* dereferenceable(16) %childkv2)
+  store %class.KV.9* %125, %class.KV.9** %node3, align 8
+  %126 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %127 = getelementptr inbounds %class.KV.8, %class.KV.8* %126, i32 0, i32 0
+  %128 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %127 to i64*
+  %129 = load i64, i64* %128, align 8
+  %130 = load %class.KV.9*, %class.KV.9** %node3, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %129, %class.KV.9* %130)
+  br label %180
+
+; <label>:131                                     ; preds = %0
+  %132 = load i64*, i64** %5, align 8
+  %133 = load i64, i64* %132, align 8
+  %134 = add i64 %133, 1
+  store i64 %134, i64* %132, align 8
+  %135 = load i32, i32* %count, align 4
+  %136 = add i32 %135, 1
+  %137 = zext i32 %136 to i64
+  %138 = mul i64 %137, 16
+  %139 = call noalias i8* @GC_malloc(i64 %138)
+  %140 = bitcast i8* %139 to %class.KV.9*
+  store %class.KV.9* %140, %class.KV.9** %node4, align 8
+  %141 = load %class.KV.9*, %class.KV.9** %node4, align 8
+  %142 = bitcast %class.KV.9* %141 to i8*
+  %143 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %144 = bitcast %class.KV.9* %143 to i8*
+  %145 = load i32, i32* %i, align 4
+  %146 = zext i32 %145 to i64
+  %147 = mul i64 %146, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %142, i8* %144, i64 %147, i32 8, i1 false)
+  %148 = load i32, i32* %i, align 4
+  %149 = add i32 %148, 1
+  %150 = zext i32 %149 to i64
+  %151 = load %class.KV.9*, %class.KV.9** %node4, align 8
+  %152 = getelementptr inbounds %class.KV.9, %class.KV.9* %151, i64 %150
+  %153 = bitcast %class.KV.9* %152 to i8*
+  %154 = load i32, i32* %i, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %157 = getelementptr inbounds %class.KV.9, %class.KV.9* %156, i64 %155
+  %158 = bitcast %class.KV.9* %157 to i8*
+  %159 = load i32, i32* %count, align 4
+  %160 = load i32, i32* %i, align 4
+  %161 = sub i32 %159, %160
+  %162 = zext i32 %161 to i64
+  %163 = mul i64 %162, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %153, i8* %158, i64 %163, i32 8, i1 false)
+  %164 = load %class.KV.9*, %class.KV.9** %node4, align 8
+  %165 = load i32, i32* %i, align 4
+  %166 = zext i32 %165 to i64
+  %167 = getelementptr inbounds %class.KV.9, %class.KV.9* %164, i64 %166
+  %168 = bitcast %class.KV.9* %167 to i8*
+  %169 = bitcast i8* %168 to %class.KV.9*
+  %170 = load %class.tuple*, %class.tuple** %3, align 8
+  %171 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %169, %class.tuple* %170, %class.tuple* %171)
+  %172 = load i64, i64* %bm, align 8
+  %173 = load i32, i32* %hpiece, align 4
+  %174 = zext i32 %173 to i64
+  %175 = shl i64 1, %174
+  %176 = or i64 %172, %175
+  %177 = shl i64 %176, 1
+  %178 = or i64 %177, 1
+  %179 = load %class.KV.9*, %class.KV.9** %node4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %178, %class.KV.9* %179)
+  br label %180
+
+; <label>:180                                     ; preds = %131, %112, %72, %60
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.KV.9* @_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_(%class.KV.9* %old, i32 %count, i32 %i, %class.KV.9* dereferenceable(16) %kv) #0 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %class.KV.9*, align 8
+  %copy = alloca %class.KV.9*, align 8
+  store %class.KV.9* %old, %class.KV.9** %1, align 8
+  store i32 %count, i32* %2, align 4
+  store i32 %i, i32* %3, align 4
+  store %class.KV.9* %kv, %class.KV.9** %4, align 8
+  %5 = load i32, i32* %2, align 4
+  %6 = zext i32 %5 to i64
+  %7 = mul i64 %6, 16
+  %8 = call noalias i8* @GC_malloc(i64 %7)
+  %9 = bitcast i8* %8 to %class.KV.9*
+  store %class.KV.9* %9, %class.KV.9** %copy, align 8
+  %10 = load %class.KV.9*, %class.KV.9** %copy, align 8
+  %11 = bitcast %class.KV.9* %10 to i8*
+  %12 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %13 = bitcast %class.KV.9* %12 to i8*
+  %14 = load i32, i32* %2, align 4
+  %15 = zext i32 %14 to i64
+  %16 = mul i64 %15, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %11, i8* %13, i64 %16, i32 8, i1 false)
+  %17 = load %class.KV.9*, %class.KV.9** %copy, align 8
+  %18 = load i32, i32* %3, align 4
+  %19 = zext i32 %18 to i64
+  %20 = getelementptr inbounds %class.KV.9, %class.KV.9* %17, i64 %19
+  %21 = bitcast %class.KV.9* %20 to i8*
+  %22 = bitcast i8* %21 to %class.KV.9*
+  %23 = load %class.KV.9*, %class.KV.9** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2ERKS1_(%class.KV.9* %22, %class.KV.9* dereferenceable(16) %23)
+  %24 = load %class.KV.9*, %class.KV.9** %copy, align 8
+  ret %class.KV.9* %24
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE12insert_innerERKS1_mPKS0_S5_Pm(%class.KV.9* noalias sret %agg.result, %class.KV.9* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, %class.tuple* %val, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %ll1 = alloca %class.LL*, align 8
+  %ll0 = alloca %class.LL*, align 8
+  %ll01 = alloca %class.LL*, align 8
+  store %class.KV.9* %kv, %class.KV.9** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store %class.tuple* %val, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %6 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %7 = getelementptr inbounds %class.KV.9, %class.KV.9* %6, i32 0, i32 0
+  %8 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %7 to i64*
+  %9 = load i64, i64* %8, align 8
+  %10 = and i64 %9, 1
+  %11 = icmp eq i64 %10, 0
+  br i1 %11, label %12, label %49
+
+; <label>:12                                      ; preds = %0
+  %13 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %14 = getelementptr inbounds %class.KV.9, %class.KV.9* %13, i32 0, i32 0
+  %15 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %14 to %class.tuple**
+  %16 = load %class.tuple*, %class.tuple** %15, align 8
+  %17 = load %class.tuple*, %class.tuple** %3, align 8
+  %18 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %16, %class.tuple* dereferenceable(8) %17)
+  br i1 %18, label %19, label %25
+
+; <label>:19                                      ; preds = %12
+  %20 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %21 = getelementptr inbounds %class.KV.9, %class.KV.9* %20, i32 0, i32 0
+  %22 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %21 to %class.tuple**
+  %23 = load %class.tuple*, %class.tuple** %22, align 8
+  %24 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EPKS0_S3_(%class.KV.9* %agg.result, %class.tuple* %23, %class.tuple* %24)
+  br label %75
+
+; <label>:25                                      ; preds = %12
+  %26 = load i64*, i64** %5, align 8
+  %27 = load i64, i64* %26, align 8
+  %28 = add i64 %27, 1
+  store i64 %28, i64* %26, align 8
+  %29 = call noalias i8* @GC_malloc(i64 24)
+  %30 = bitcast i8* %29 to %class.LL*
+  %31 = bitcast %class.LL* %30 to i8*
+  %32 = bitcast i8* %31 to %class.LL*
+  %33 = load %class.tuple*, %class.tuple** %3, align 8
+  %34 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %32, %class.tuple* %33, %class.tuple* %34, %class.LL* null)
+  store %class.LL* %32, %class.LL** %ll1, align 8
+  %35 = call noalias i8* @GC_malloc(i64 24)
+  %36 = bitcast i8* %35 to %class.LL*
+  %37 = bitcast %class.LL* %36 to i8*
+  %38 = bitcast i8* %37 to %class.LL*
+  %39 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %40 = getelementptr inbounds %class.KV.9, %class.KV.9* %39, i32 0, i32 0
+  %41 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %40 to %class.tuple**
+  %42 = load %class.tuple*, %class.tuple** %41, align 8
+  %43 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %44 = getelementptr inbounds %class.KV.9, %class.KV.9* %43, i32 0, i32 1
+  %45 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %44 to %class.tuple**
+  %46 = load %class.tuple*, %class.tuple** %45, align 8
+  %47 = load %class.LL*, %class.LL** %ll1, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %38, %class.tuple* %42, %class.tuple* %46, %class.LL* %47)
+  store %class.LL* %38, %class.LL** %ll0, align 8
+  %48 = load %class.LL*, %class.LL** %ll0, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %agg.result, i64 1, %class.LL* %48)
+  br label %75
+
+; <label>:49                                      ; preds = %0
+  %50 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %51 = getelementptr inbounds %class.KV.9, %class.KV.9* %50, i32 0, i32 1
+  %52 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %51 to %class.LL**
+  %53 = load %class.LL*, %class.LL** %52, align 8
+  %54 = icmp ne %class.LL* %53, null
+  br i1 %54, label %55, label %64
+
+; <label>:55                                      ; preds = %49
+  %56 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %57 = getelementptr inbounds %class.KV.9, %class.KV.9* %56, i32 0, i32 1
+  %58 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %57 to %class.LL**
+  %59 = load %class.LL*, %class.LL** %58, align 8
+  %60 = load %class.tuple*, %class.tuple** %3, align 8
+  %61 = load %class.tuple*, %class.tuple** %4, align 8
+  %62 = load i64*, i64** %5, align 8
+  %63 = call %class.LL* @_ZNK2LLI5tupleS0_E6insertEPKS0_S3_Pm(%class.LL* %59, %class.tuple* %60, %class.tuple* %61, i64* %62)
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %agg.result, i64 1, %class.LL* %63)
+  br label %75
+
+; <label>:64                                      ; preds = %49
+  %65 = load i64*, i64** %5, align 8
+  %66 = load i64, i64* %65, align 8
+  %67 = add i64 %66, 1
+  store i64 %67, i64* %65, align 8
+  %68 = call noalias i8* @GC_malloc(i64 24)
+  %69 = bitcast i8* %68 to %class.LL*
+  %70 = bitcast %class.LL* %69 to i8*
+  %71 = bitcast i8* %70 to %class.LL*
+  %72 = load %class.tuple*, %class.tuple** %3, align 8
+  %73 = load %class.tuple*, %class.tuple** %4, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %71, %class.tuple* %72, %class.tuple* %73, %class.LL* null)
+  store %class.LL* %71, %class.LL** %ll01, align 8
+  %74 = load %class.LL*, %class.LL** %ll01, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %agg.result, i64 1, %class.LL* %74)
+  br label %75
+
+; <label>:75                                      ; preds = %64, %55, %25, %19
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.LL* @_ZNK2LLI5tupleS0_E6insertEPKS0_S3_Pm(%class.LL* %this, %class.tuple* %k, %class.tuple* %v, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.LL*, align 8
+  %2 = alloca %class.LL*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca %class.tuple*, align 8
+  %5 = alloca i64*, align 8
+  %link1 = alloca %class.LL*, align 8
+  %link0 = alloca %class.LL*, align 8
+  store %class.LL* %this, %class.LL** %2, align 8
+  store %class.tuple* %k, %class.tuple** %3, align 8
+  store %class.tuple* %v, %class.tuple** %4, align 8
+  store i64* %cptr, i64** %5, align 8
+  %6 = load %class.LL*, %class.LL** %2, align 8
+  %7 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 0
+  %8 = load %class.tuple*, %class.tuple** %7, align 8
+  %9 = load %class.tuple*, %class.tuple** %3, align 8
+  %10 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %8, %class.tuple* dereferenceable(8) %9)
+  br i1 %10, label %11, label %21
+
+; <label>:11                                      ; preds = %0
+  %12 = call noalias i8* @GC_malloc(i64 24)
+  %13 = bitcast i8* %12 to %class.LL*
+  %14 = bitcast %class.LL* %13 to i8*
+  %15 = bitcast i8* %14 to %class.LL*
+  %16 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 0
+  %17 = load %class.tuple*, %class.tuple** %16, align 8
+  %18 = load %class.tuple*, %class.tuple** %4, align 8
+  %19 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 2
+  %20 = load %class.LL*, %class.LL** %19, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %15, %class.tuple* %17, %class.tuple* %18, %class.LL* %20)
+  store %class.LL* %15, %class.LL** %1, align 8
+  br label %60
+
+; <label>:21                                      ; preds = %0
+  %22 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 2
+  %23 = load %class.LL*, %class.LL** %22, align 8
+  %24 = icmp ne %class.LL* %23, null
+  br i1 %24, label %25, label %40
+
+; <label>:25                                      ; preds = %21
+  %26 = call noalias i8* @GC_malloc(i64 24)
+  %27 = bitcast i8* %26 to %class.LL*
+  %28 = bitcast %class.LL* %27 to i8*
+  %29 = bitcast i8* %28 to %class.LL*
+  %30 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 0
+  %31 = load %class.tuple*, %class.tuple** %30, align 8
+  %32 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 1
+  %33 = load %class.tuple*, %class.tuple** %32, align 8
+  %34 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 2
+  %35 = load %class.LL*, %class.LL** %34, align 8
+  %36 = load %class.tuple*, %class.tuple** %3, align 8
+  %37 = load %class.tuple*, %class.tuple** %4, align 8
+  %38 = load i64*, i64** %5, align 8
+  %39 = call %class.LL* @_ZNK2LLI5tupleS0_E6insertEPKS0_S3_Pm(%class.LL* %35, %class.tuple* %36, %class.tuple* %37, i64* %38)
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %29, %class.tuple* %31, %class.tuple* %33, %class.LL* %39)
+  store %class.LL* %29, %class.LL** %1, align 8
+  br label %60
+
+; <label>:40                                      ; preds = %21
+  %41 = load i64*, i64** %5, align 8
+  %42 = load i64, i64* %41, align 8
+  %43 = add i64 %42, 1
+  store i64 %43, i64* %41, align 8
+  %44 = call noalias i8* @GC_malloc(i64 24)
+  %45 = bitcast i8* %44 to %class.LL*
+  %46 = bitcast %class.LL* %45 to i8*
+  %47 = bitcast i8* %46 to %class.LL*
+  %48 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 0
+  %49 = load %class.tuple*, %class.tuple** %48, align 8
+  %50 = getelementptr inbounds %class.LL, %class.LL* %6, i32 0, i32 1
+  %51 = load %class.tuple*, %class.tuple** %50, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %47, %class.tuple* %49, %class.tuple* %51, %class.LL* null)
+  store %class.LL* %47, %class.LL** %link1, align 8
+  %52 = call noalias i8* @GC_malloc(i64 24)
+  %53 = bitcast i8* %52 to %class.LL*
+  %54 = bitcast %class.LL* %53 to i8*
+  %55 = bitcast i8* %54 to %class.LL*
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = load %class.tuple*, %class.tuple** %4, align 8
+  %58 = load %class.LL*, %class.LL** %link1, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %55, %class.tuple* %56, %class.tuple* %57, %class.LL* %58)
+  store %class.LL* %55, %class.LL** %link0, align 8
+  %59 = load %class.LL*, %class.LL** %link0, align 8
+  store %class.LL* %59, %class.LL** %1, align 8
+  br label %60
+
+; <label>:60                                      ; preds = %40, %25, %11
+  %61 = load %class.LL*, %class.LL** %1, align 8
+  ret %class.LL* %61
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EE12remove_innerERKS1_mPKS0_Pm(%class.KV* noalias sret %agg.result, %class.KV* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.0*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.0*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.0, align 8
+  %node1 = alloca %class.KV.0*, align 8
+  store %class.KV* %kv, %class.KV** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV*, %class.KV** %1, align 8
+  %6 = getelementptr inbounds %class.KV, %class.KV* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %6 to %class.KV.0**
+  %8 = load %class.KV.0*, %class.KV.0** %7, align 8
+  store %class.KV.0* %8, %class.KV.0** %data, align 8
+  %9 = load %class.KV*, %class.KV** %1, align 8
+  %10 = getelementptr inbounds %class.KV, %class.KV* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %42 = getelementptr inbounds %class.KV.0, %class.KV.0* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.0, %class.KV.0* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %52 = getelementptr inbounds %class.KV.0, %class.KV.0* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.0, %class.KV.0* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.0*
+  store %class.KV.0* %67, %class.KV.0** %node, align 8
+  %68 = load %class.KV.0*, %class.KV.0** %node, align 8
+  %69 = bitcast %class.KV.0* %68 to i8*
+  %70 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %71 = bitcast %class.KV.0* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.0*, %class.KV.0** %node, align 8
+  %78 = getelementptr inbounds %class.KV.0, %class.KV.0* %77, i64 %76
+  %79 = bitcast %class.KV.0* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %84 = getelementptr inbounds %class.KV.0, %class.KV.0* %83, i64 %82
+  %85 = bitcast %class.KV.0* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.0*, %class.KV.0** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %100, %class.KV.0* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV*, %class.KV** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2ERKS1_(%class.KV* %agg.result, %class.KV* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %108 = getelementptr inbounds %class.KV.0, %class.KV.0* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EE12remove_innerERKS1_mPKS0_Pm(%class.KV.0* sret %childkv, %class.KV.0* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %116 = getelementptr inbounds %class.KV.0, %class.KV.0* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj1EEeqERKS1_(%class.KV.0* %childkv, %class.KV.0* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV*, %class.KV** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2ERKS1_(%class.KV* %agg.result, %class.KV* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.0*, %class.KV.0** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.0* @_ZN2KVI5tupleS0_Lj1EE11update_nodeEPKS1_jjRS2_(%class.KV.0* %121, i32 %122, i32 %123, %class.KV.0* dereferenceable(16) %childkv)
+  store %class.KV.0* %124, %class.KV.0** %node1, align 8
+  %125 = load %class.KV*, %class.KV** %1, align 8
+  %126 = getelementptr inbounds %class.KV, %class.KV* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.0*, %class.KV.0** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2EmPKS_IS0_S0_Lj1EE(%class.KV* %agg.result, i64 %128, %class.KV.0* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV*, %class.KV** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj0EEC2ERKS1_(%class.KV* %agg.result, %class.KV* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj0EEeqERKS1_(%class.KV* %this, %class.KV* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca %class.KV*, align 8
+  store %class.KV* %this, %class.KV** %1, align 8
+  store %class.KV* %kv, %class.KV** %2, align 8
+  %3 = load %class.KV*, %class.KV** %1, align 8
+  %4 = getelementptr inbounds %class.KV, %class.KV* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV*, %class.KV** %2, align 8
+  %8 = getelementptr inbounds %class.KV, %class.KV* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV, %class.KV* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %13 to %class.KV.0**
+  %15 = load %class.KV.0*, %class.KV.0** %14, align 8
+  %16 = load %class.KV*, %class.KV** %2, align 8
+  %17 = getelementptr inbounds %class.KV, %class.KV* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %17 to %class.KV.0**
+  %19 = load %class.KV.0*, %class.KV.0** %18, align 8
+  %20 = icmp eq %class.KV.0* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj0EEC2ERKS1_(%class.KV* %this, %class.KV* dereferenceable(16) %o) unnamed_addr #3 comdat align 2 {
+  %1 = alloca %class.KV*, align 8
+  %2 = alloca %class.KV*, align 8
+  store %class.KV* %this, %class.KV** %1, align 8
+  store %class.KV* %o, %class.KV** %2, align 8
+  %3 = load %class.KV*, %class.KV** %1, align 8
+  %4 = getelementptr inbounds %class.KV, %class.KV* %3, i32 0, i32 0
+  %5 = load %class.KV*, %class.KV** %2, align 8
+  %6 = getelementptr inbounds %class.KV, %class.KV* %5, i32 0, i32 0
+  %7 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %4 to i8*
+  %8 = bitcast %"union.KV<tuple, tuple, 0>::Key"* %6 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %7, i8* %8, i64 8, i32 8, i1 false)
+  %9 = getelementptr inbounds %class.KV, %class.KV* %3, i32 0, i32 1
+  %10 = load %class.KV*, %class.KV** %2, align 8
+  %11 = getelementptr inbounds %class.KV, %class.KV* %10, i32 0, i32 1
+  %12 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %9 to i8*
+  %13 = bitcast %"union.KV<tuple, tuple, 0>::Val"* %11 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %12, i8* %13, i64 8, i32 8, i1 false)
+  ret void
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj1EE12remove_innerERKS1_mPKS0_Pm(%class.KV.0* noalias sret %agg.result, %class.KV.0* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.1*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.1*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.1, align 8
+  %node1 = alloca %class.KV.1*, align 8
+  store %class.KV.0* %kv, %class.KV.0** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %6 = getelementptr inbounds %class.KV.0, %class.KV.0* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %6 to %class.KV.1**
+  %8 = load %class.KV.1*, %class.KV.1** %7, align 8
+  store %class.KV.1* %8, %class.KV.1** %data, align 8
+  %9 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %10 = getelementptr inbounds %class.KV.0, %class.KV.0* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %42 = getelementptr inbounds %class.KV.1, %class.KV.1* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.1, %class.KV.1* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %52 = getelementptr inbounds %class.KV.1, %class.KV.1* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.1, %class.KV.1* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.1*
+  store %class.KV.1* %67, %class.KV.1** %node, align 8
+  %68 = load %class.KV.1*, %class.KV.1** %node, align 8
+  %69 = bitcast %class.KV.1* %68 to i8*
+  %70 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %71 = bitcast %class.KV.1* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.1*, %class.KV.1** %node, align 8
+  %78 = getelementptr inbounds %class.KV.1, %class.KV.1* %77, i64 %76
+  %79 = bitcast %class.KV.1* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %84 = getelementptr inbounds %class.KV.1, %class.KV.1* %83, i64 %82
+  %85 = bitcast %class.KV.1* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.1*, %class.KV.1** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %100, %class.KV.1* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.0*, %class.KV.0** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %agg.result, %class.KV.0* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %108 = getelementptr inbounds %class.KV.1, %class.KV.1* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EE12remove_innerERKS1_mPKS0_Pm(%class.KV.1* sret %childkv, %class.KV.1* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %116 = getelementptr inbounds %class.KV.1, %class.KV.1* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj2EEeqERKS1_(%class.KV.1* %childkv, %class.KV.1* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.0*, %class.KV.0** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %agg.result, %class.KV.0* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.1*, %class.KV.1** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.1* @_ZN2KVI5tupleS0_Lj2EE11update_nodeEPKS1_jjRS2_(%class.KV.1* %121, i32 %122, i32 %123, %class.KV.1* dereferenceable(16) %childkv)
+  store %class.KV.1* %124, %class.KV.1** %node1, align 8
+  %125 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %126 = getelementptr inbounds %class.KV.0, %class.KV.0* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.1*, %class.KV.1** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2EmPKS_IS0_S0_Lj2EE(%class.KV.0* %agg.result, i64 %128, %class.KV.1* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.0*, %class.KV.0** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj1EEC2ERKS1_(%class.KV.0* %agg.result, %class.KV.0* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj1EEeqERKS1_(%class.KV.0* %this, %class.KV.0* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.0*, align 8
+  %2 = alloca %class.KV.0*, align 8
+  store %class.KV.0* %this, %class.KV.0** %1, align 8
+  store %class.KV.0* %kv, %class.KV.0** %2, align 8
+  %3 = load %class.KV.0*, %class.KV.0** %1, align 8
+  %4 = getelementptr inbounds %class.KV.0, %class.KV.0* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.0*, %class.KV.0** %2, align 8
+  %8 = getelementptr inbounds %class.KV.0, %class.KV.0* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 1>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.0, %class.KV.0* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %13 to %class.KV.1**
+  %15 = load %class.KV.1*, %class.KV.1** %14, align 8
+  %16 = load %class.KV.0*, %class.KV.0** %2, align 8
+  %17 = getelementptr inbounds %class.KV.0, %class.KV.0* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 1>::Val"* %17 to %class.KV.1**
+  %19 = load %class.KV.1*, %class.KV.1** %18, align 8
+  %20 = icmp eq %class.KV.1* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj2EE12remove_innerERKS1_mPKS0_Pm(%class.KV.1* noalias sret %agg.result, %class.KV.1* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.2*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.2*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.2, align 8
+  %node1 = alloca %class.KV.2*, align 8
+  store %class.KV.1* %kv, %class.KV.1** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %6 = getelementptr inbounds %class.KV.1, %class.KV.1* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %6 to %class.KV.2**
+  %8 = load %class.KV.2*, %class.KV.2** %7, align 8
+  store %class.KV.2* %8, %class.KV.2** %data, align 8
+  %9 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %10 = getelementptr inbounds %class.KV.1, %class.KV.1* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %42 = getelementptr inbounds %class.KV.2, %class.KV.2* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.2, %class.KV.2* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %52 = getelementptr inbounds %class.KV.2, %class.KV.2* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.2, %class.KV.2* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.2*
+  store %class.KV.2* %67, %class.KV.2** %node, align 8
+  %68 = load %class.KV.2*, %class.KV.2** %node, align 8
+  %69 = bitcast %class.KV.2* %68 to i8*
+  %70 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %71 = bitcast %class.KV.2* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.2*, %class.KV.2** %node, align 8
+  %78 = getelementptr inbounds %class.KV.2, %class.KV.2* %77, i64 %76
+  %79 = bitcast %class.KV.2* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %84 = getelementptr inbounds %class.KV.2, %class.KV.2* %83, i64 %82
+  %85 = bitcast %class.KV.2* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.2*, %class.KV.2** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %100, %class.KV.2* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.1*, %class.KV.1** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %agg.result, %class.KV.1* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %108 = getelementptr inbounds %class.KV.2, %class.KV.2* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EE12remove_innerERKS1_mPKS0_Pm(%class.KV.2* sret %childkv, %class.KV.2* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %116 = getelementptr inbounds %class.KV.2, %class.KV.2* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj3EEeqERKS1_(%class.KV.2* %childkv, %class.KV.2* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.1*, %class.KV.1** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %agg.result, %class.KV.1* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.2*, %class.KV.2** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.2* @_ZN2KVI5tupleS0_Lj3EE11update_nodeEPKS1_jjRS2_(%class.KV.2* %121, i32 %122, i32 %123, %class.KV.2* dereferenceable(16) %childkv)
+  store %class.KV.2* %124, %class.KV.2** %node1, align 8
+  %125 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %126 = getelementptr inbounds %class.KV.1, %class.KV.1* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.2*, %class.KV.2** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2EmPKS_IS0_S0_Lj3EE(%class.KV.1* %agg.result, i64 %128, %class.KV.2* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.1*, %class.KV.1** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj2EEC2ERKS1_(%class.KV.1* %agg.result, %class.KV.1* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj2EEeqERKS1_(%class.KV.1* %this, %class.KV.1* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.1*, align 8
+  %2 = alloca %class.KV.1*, align 8
+  store %class.KV.1* %this, %class.KV.1** %1, align 8
+  store %class.KV.1* %kv, %class.KV.1** %2, align 8
+  %3 = load %class.KV.1*, %class.KV.1** %1, align 8
+  %4 = getelementptr inbounds %class.KV.1, %class.KV.1* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.1*, %class.KV.1** %2, align 8
+  %8 = getelementptr inbounds %class.KV.1, %class.KV.1* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 2>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.1, %class.KV.1* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %13 to %class.KV.2**
+  %15 = load %class.KV.2*, %class.KV.2** %14, align 8
+  %16 = load %class.KV.1*, %class.KV.1** %2, align 8
+  %17 = getelementptr inbounds %class.KV.1, %class.KV.1* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 2>::Val"* %17 to %class.KV.2**
+  %19 = load %class.KV.2*, %class.KV.2** %18, align 8
+  %20 = icmp eq %class.KV.2* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj3EE12remove_innerERKS1_mPKS0_Pm(%class.KV.2* noalias sret %agg.result, %class.KV.2* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.3*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.3*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.3, align 8
+  %node1 = alloca %class.KV.3*, align 8
+  store %class.KV.2* %kv, %class.KV.2** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %6 = getelementptr inbounds %class.KV.2, %class.KV.2* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %6 to %class.KV.3**
+  %8 = load %class.KV.3*, %class.KV.3** %7, align 8
+  store %class.KV.3* %8, %class.KV.3** %data, align 8
+  %9 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %10 = getelementptr inbounds %class.KV.2, %class.KV.2* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %42 = getelementptr inbounds %class.KV.3, %class.KV.3* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.3, %class.KV.3* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %52 = getelementptr inbounds %class.KV.3, %class.KV.3* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.3, %class.KV.3* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.3*
+  store %class.KV.3* %67, %class.KV.3** %node, align 8
+  %68 = load %class.KV.3*, %class.KV.3** %node, align 8
+  %69 = bitcast %class.KV.3* %68 to i8*
+  %70 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %71 = bitcast %class.KV.3* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.3*, %class.KV.3** %node, align 8
+  %78 = getelementptr inbounds %class.KV.3, %class.KV.3* %77, i64 %76
+  %79 = bitcast %class.KV.3* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %84 = getelementptr inbounds %class.KV.3, %class.KV.3* %83, i64 %82
+  %85 = bitcast %class.KV.3* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.3*, %class.KV.3** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %100, %class.KV.3* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.2*, %class.KV.2** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %agg.result, %class.KV.2* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %108 = getelementptr inbounds %class.KV.3, %class.KV.3* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EE12remove_innerERKS1_mPKS0_Pm(%class.KV.3* sret %childkv, %class.KV.3* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %116 = getelementptr inbounds %class.KV.3, %class.KV.3* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj4EEeqERKS1_(%class.KV.3* %childkv, %class.KV.3* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.2*, %class.KV.2** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %agg.result, %class.KV.2* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.3*, %class.KV.3** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.3* @_ZN2KVI5tupleS0_Lj4EE11update_nodeEPKS1_jjRS2_(%class.KV.3* %121, i32 %122, i32 %123, %class.KV.3* dereferenceable(16) %childkv)
+  store %class.KV.3* %124, %class.KV.3** %node1, align 8
+  %125 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %126 = getelementptr inbounds %class.KV.2, %class.KV.2* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.3*, %class.KV.3** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2EmPKS_IS0_S0_Lj4EE(%class.KV.2* %agg.result, i64 %128, %class.KV.3* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.2*, %class.KV.2** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj3EEC2ERKS1_(%class.KV.2* %agg.result, %class.KV.2* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj3EEeqERKS1_(%class.KV.2* %this, %class.KV.2* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.2*, align 8
+  %2 = alloca %class.KV.2*, align 8
+  store %class.KV.2* %this, %class.KV.2** %1, align 8
+  store %class.KV.2* %kv, %class.KV.2** %2, align 8
+  %3 = load %class.KV.2*, %class.KV.2** %1, align 8
+  %4 = getelementptr inbounds %class.KV.2, %class.KV.2* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.2*, %class.KV.2** %2, align 8
+  %8 = getelementptr inbounds %class.KV.2, %class.KV.2* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 3>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.2, %class.KV.2* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %13 to %class.KV.3**
+  %15 = load %class.KV.3*, %class.KV.3** %14, align 8
+  %16 = load %class.KV.2*, %class.KV.2** %2, align 8
+  %17 = getelementptr inbounds %class.KV.2, %class.KV.2* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 3>::Val"* %17 to %class.KV.3**
+  %19 = load %class.KV.3*, %class.KV.3** %18, align 8
+  %20 = icmp eq %class.KV.3* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj4EE12remove_innerERKS1_mPKS0_Pm(%class.KV.3* noalias sret %agg.result, %class.KV.3* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.4*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.4*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.4, align 8
+  %node1 = alloca %class.KV.4*, align 8
+  store %class.KV.3* %kv, %class.KV.3** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %6 = getelementptr inbounds %class.KV.3, %class.KV.3* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %6 to %class.KV.4**
+  %8 = load %class.KV.4*, %class.KV.4** %7, align 8
+  store %class.KV.4* %8, %class.KV.4** %data, align 8
+  %9 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %10 = getelementptr inbounds %class.KV.3, %class.KV.3* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %42 = getelementptr inbounds %class.KV.4, %class.KV.4* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.4, %class.KV.4* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %52 = getelementptr inbounds %class.KV.4, %class.KV.4* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.4, %class.KV.4* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.4*
+  store %class.KV.4* %67, %class.KV.4** %node, align 8
+  %68 = load %class.KV.4*, %class.KV.4** %node, align 8
+  %69 = bitcast %class.KV.4* %68 to i8*
+  %70 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %71 = bitcast %class.KV.4* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.4*, %class.KV.4** %node, align 8
+  %78 = getelementptr inbounds %class.KV.4, %class.KV.4* %77, i64 %76
+  %79 = bitcast %class.KV.4* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %84 = getelementptr inbounds %class.KV.4, %class.KV.4* %83, i64 %82
+  %85 = bitcast %class.KV.4* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.4*, %class.KV.4** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %100, %class.KV.4* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.3*, %class.KV.3** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %agg.result, %class.KV.3* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %108 = getelementptr inbounds %class.KV.4, %class.KV.4* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EE12remove_innerERKS1_mPKS0_Pm(%class.KV.4* sret %childkv, %class.KV.4* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %116 = getelementptr inbounds %class.KV.4, %class.KV.4* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj5EEeqERKS1_(%class.KV.4* %childkv, %class.KV.4* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.3*, %class.KV.3** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %agg.result, %class.KV.3* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.4*, %class.KV.4** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.4* @_ZN2KVI5tupleS0_Lj5EE11update_nodeEPKS1_jjRS2_(%class.KV.4* %121, i32 %122, i32 %123, %class.KV.4* dereferenceable(16) %childkv)
+  store %class.KV.4* %124, %class.KV.4** %node1, align 8
+  %125 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %126 = getelementptr inbounds %class.KV.3, %class.KV.3* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.4*, %class.KV.4** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2EmPKS_IS0_S0_Lj5EE(%class.KV.3* %agg.result, i64 %128, %class.KV.4* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.3*, %class.KV.3** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj4EEC2ERKS1_(%class.KV.3* %agg.result, %class.KV.3* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj4EEeqERKS1_(%class.KV.3* %this, %class.KV.3* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.3*, align 8
+  %2 = alloca %class.KV.3*, align 8
+  store %class.KV.3* %this, %class.KV.3** %1, align 8
+  store %class.KV.3* %kv, %class.KV.3** %2, align 8
+  %3 = load %class.KV.3*, %class.KV.3** %1, align 8
+  %4 = getelementptr inbounds %class.KV.3, %class.KV.3* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.3*, %class.KV.3** %2, align 8
+  %8 = getelementptr inbounds %class.KV.3, %class.KV.3* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 4>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.3, %class.KV.3* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %13 to %class.KV.4**
+  %15 = load %class.KV.4*, %class.KV.4** %14, align 8
+  %16 = load %class.KV.3*, %class.KV.3** %2, align 8
+  %17 = getelementptr inbounds %class.KV.3, %class.KV.3* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 4>::Val"* %17 to %class.KV.4**
+  %19 = load %class.KV.4*, %class.KV.4** %18, align 8
+  %20 = icmp eq %class.KV.4* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj5EE12remove_innerERKS1_mPKS0_Pm(%class.KV.4* noalias sret %agg.result, %class.KV.4* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.5*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.5*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.5, align 8
+  %node1 = alloca %class.KV.5*, align 8
+  store %class.KV.4* %kv, %class.KV.4** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %6 = getelementptr inbounds %class.KV.4, %class.KV.4* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %6 to %class.KV.5**
+  %8 = load %class.KV.5*, %class.KV.5** %7, align 8
+  store %class.KV.5* %8, %class.KV.5** %data, align 8
+  %9 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %10 = getelementptr inbounds %class.KV.4, %class.KV.4* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %42 = getelementptr inbounds %class.KV.5, %class.KV.5* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.5, %class.KV.5* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %52 = getelementptr inbounds %class.KV.5, %class.KV.5* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.5, %class.KV.5* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.5*
+  store %class.KV.5* %67, %class.KV.5** %node, align 8
+  %68 = load %class.KV.5*, %class.KV.5** %node, align 8
+  %69 = bitcast %class.KV.5* %68 to i8*
+  %70 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %71 = bitcast %class.KV.5* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.5*, %class.KV.5** %node, align 8
+  %78 = getelementptr inbounds %class.KV.5, %class.KV.5* %77, i64 %76
+  %79 = bitcast %class.KV.5* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %84 = getelementptr inbounds %class.KV.5, %class.KV.5* %83, i64 %82
+  %85 = bitcast %class.KV.5* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.5*, %class.KV.5** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %100, %class.KV.5* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.4*, %class.KV.4** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %agg.result, %class.KV.4* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %108 = getelementptr inbounds %class.KV.5, %class.KV.5* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EE12remove_innerERKS1_mPKS0_Pm(%class.KV.5* sret %childkv, %class.KV.5* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %116 = getelementptr inbounds %class.KV.5, %class.KV.5* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj6EEeqERKS1_(%class.KV.5* %childkv, %class.KV.5* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.4*, %class.KV.4** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %agg.result, %class.KV.4* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.5*, %class.KV.5** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.5* @_ZN2KVI5tupleS0_Lj6EE11update_nodeEPKS1_jjRS2_(%class.KV.5* %121, i32 %122, i32 %123, %class.KV.5* dereferenceable(16) %childkv)
+  store %class.KV.5* %124, %class.KV.5** %node1, align 8
+  %125 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %126 = getelementptr inbounds %class.KV.4, %class.KV.4* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.5*, %class.KV.5** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2EmPKS_IS0_S0_Lj6EE(%class.KV.4* %agg.result, i64 %128, %class.KV.5* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.4*, %class.KV.4** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj5EEC2ERKS1_(%class.KV.4* %agg.result, %class.KV.4* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj5EEeqERKS1_(%class.KV.4* %this, %class.KV.4* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.4*, align 8
+  %2 = alloca %class.KV.4*, align 8
+  store %class.KV.4* %this, %class.KV.4** %1, align 8
+  store %class.KV.4* %kv, %class.KV.4** %2, align 8
+  %3 = load %class.KV.4*, %class.KV.4** %1, align 8
+  %4 = getelementptr inbounds %class.KV.4, %class.KV.4* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.4*, %class.KV.4** %2, align 8
+  %8 = getelementptr inbounds %class.KV.4, %class.KV.4* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 5>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.4, %class.KV.4* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %13 to %class.KV.5**
+  %15 = load %class.KV.5*, %class.KV.5** %14, align 8
+  %16 = load %class.KV.4*, %class.KV.4** %2, align 8
+  %17 = getelementptr inbounds %class.KV.4, %class.KV.4* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 5>::Val"* %17 to %class.KV.5**
+  %19 = load %class.KV.5*, %class.KV.5** %18, align 8
+  %20 = icmp eq %class.KV.5* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj6EE12remove_innerERKS1_mPKS0_Pm(%class.KV.5* noalias sret %agg.result, %class.KV.5* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.6*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.6*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.6, align 8
+  %node1 = alloca %class.KV.6*, align 8
+  store %class.KV.5* %kv, %class.KV.5** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %6 = getelementptr inbounds %class.KV.5, %class.KV.5* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %6 to %class.KV.6**
+  %8 = load %class.KV.6*, %class.KV.6** %7, align 8
+  store %class.KV.6* %8, %class.KV.6** %data, align 8
+  %9 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %10 = getelementptr inbounds %class.KV.5, %class.KV.5* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %42 = getelementptr inbounds %class.KV.6, %class.KV.6* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.6, %class.KV.6* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %52 = getelementptr inbounds %class.KV.6, %class.KV.6* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.6, %class.KV.6* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.6*
+  store %class.KV.6* %67, %class.KV.6** %node, align 8
+  %68 = load %class.KV.6*, %class.KV.6** %node, align 8
+  %69 = bitcast %class.KV.6* %68 to i8*
+  %70 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %71 = bitcast %class.KV.6* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.6*, %class.KV.6** %node, align 8
+  %78 = getelementptr inbounds %class.KV.6, %class.KV.6* %77, i64 %76
+  %79 = bitcast %class.KV.6* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %84 = getelementptr inbounds %class.KV.6, %class.KV.6* %83, i64 %82
+  %85 = bitcast %class.KV.6* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.6*, %class.KV.6** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %100, %class.KV.6* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.5*, %class.KV.5** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %agg.result, %class.KV.5* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %108 = getelementptr inbounds %class.KV.6, %class.KV.6* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EE12remove_innerERKS1_mPKS0_Pm(%class.KV.6* sret %childkv, %class.KV.6* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %116 = getelementptr inbounds %class.KV.6, %class.KV.6* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj7EEeqERKS1_(%class.KV.6* %childkv, %class.KV.6* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.5*, %class.KV.5** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %agg.result, %class.KV.5* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.6*, %class.KV.6** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.6* @_ZN2KVI5tupleS0_Lj7EE11update_nodeEPKS1_jjRS2_(%class.KV.6* %121, i32 %122, i32 %123, %class.KV.6* dereferenceable(16) %childkv)
+  store %class.KV.6* %124, %class.KV.6** %node1, align 8
+  %125 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %126 = getelementptr inbounds %class.KV.5, %class.KV.5* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.6*, %class.KV.6** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2EmPKS_IS0_S0_Lj7EE(%class.KV.5* %agg.result, i64 %128, %class.KV.6* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.5*, %class.KV.5** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj6EEC2ERKS1_(%class.KV.5* %agg.result, %class.KV.5* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj6EEeqERKS1_(%class.KV.5* %this, %class.KV.5* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.5*, align 8
+  %2 = alloca %class.KV.5*, align 8
+  store %class.KV.5* %this, %class.KV.5** %1, align 8
+  store %class.KV.5* %kv, %class.KV.5** %2, align 8
+  %3 = load %class.KV.5*, %class.KV.5** %1, align 8
+  %4 = getelementptr inbounds %class.KV.5, %class.KV.5* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.5*, %class.KV.5** %2, align 8
+  %8 = getelementptr inbounds %class.KV.5, %class.KV.5* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 6>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.5, %class.KV.5* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %13 to %class.KV.6**
+  %15 = load %class.KV.6*, %class.KV.6** %14, align 8
+  %16 = load %class.KV.5*, %class.KV.5** %2, align 8
+  %17 = getelementptr inbounds %class.KV.5, %class.KV.5* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 6>::Val"* %17 to %class.KV.6**
+  %19 = load %class.KV.6*, %class.KV.6** %18, align 8
+  %20 = icmp eq %class.KV.6* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj7EE12remove_innerERKS1_mPKS0_Pm(%class.KV.6* noalias sret %agg.result, %class.KV.6* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.7*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.7*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.7, align 8
+  %node1 = alloca %class.KV.7*, align 8
+  store %class.KV.6* %kv, %class.KV.6** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %6 = getelementptr inbounds %class.KV.6, %class.KV.6* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %6 to %class.KV.7**
+  %8 = load %class.KV.7*, %class.KV.7** %7, align 8
+  store %class.KV.7* %8, %class.KV.7** %data, align 8
+  %9 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %10 = getelementptr inbounds %class.KV.6, %class.KV.6* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %42 = getelementptr inbounds %class.KV.7, %class.KV.7* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.7, %class.KV.7* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %52 = getelementptr inbounds %class.KV.7, %class.KV.7* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.7, %class.KV.7* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.7*
+  store %class.KV.7* %67, %class.KV.7** %node, align 8
+  %68 = load %class.KV.7*, %class.KV.7** %node, align 8
+  %69 = bitcast %class.KV.7* %68 to i8*
+  %70 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %71 = bitcast %class.KV.7* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.7*, %class.KV.7** %node, align 8
+  %78 = getelementptr inbounds %class.KV.7, %class.KV.7* %77, i64 %76
+  %79 = bitcast %class.KV.7* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %84 = getelementptr inbounds %class.KV.7, %class.KV.7* %83, i64 %82
+  %85 = bitcast %class.KV.7* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.7*, %class.KV.7** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %100, %class.KV.7* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.6*, %class.KV.6** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %agg.result, %class.KV.6* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %108 = getelementptr inbounds %class.KV.7, %class.KV.7* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EE12remove_innerERKS1_mPKS0_Pm(%class.KV.7* sret %childkv, %class.KV.7* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %116 = getelementptr inbounds %class.KV.7, %class.KV.7* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj8EEeqERKS1_(%class.KV.7* %childkv, %class.KV.7* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.6*, %class.KV.6** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %agg.result, %class.KV.6* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.7*, %class.KV.7** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.7* @_ZN2KVI5tupleS0_Lj8EE11update_nodeEPKS1_jjRS2_(%class.KV.7* %121, i32 %122, i32 %123, %class.KV.7* dereferenceable(16) %childkv)
+  store %class.KV.7* %124, %class.KV.7** %node1, align 8
+  %125 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %126 = getelementptr inbounds %class.KV.6, %class.KV.6* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.7*, %class.KV.7** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2EmPKS_IS0_S0_Lj8EE(%class.KV.6* %agg.result, i64 %128, %class.KV.7* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.6*, %class.KV.6** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj7EEC2ERKS1_(%class.KV.6* %agg.result, %class.KV.6* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj7EEeqERKS1_(%class.KV.6* %this, %class.KV.6* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.6*, align 8
+  %2 = alloca %class.KV.6*, align 8
+  store %class.KV.6* %this, %class.KV.6** %1, align 8
+  store %class.KV.6* %kv, %class.KV.6** %2, align 8
+  %3 = load %class.KV.6*, %class.KV.6** %1, align 8
+  %4 = getelementptr inbounds %class.KV.6, %class.KV.6* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.6*, %class.KV.6** %2, align 8
+  %8 = getelementptr inbounds %class.KV.6, %class.KV.6* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 7>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.6, %class.KV.6* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %13 to %class.KV.7**
+  %15 = load %class.KV.7*, %class.KV.7** %14, align 8
+  %16 = load %class.KV.6*, %class.KV.6** %2, align 8
+  %17 = getelementptr inbounds %class.KV.6, %class.KV.6* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 7>::Val"* %17 to %class.KV.7**
+  %19 = load %class.KV.7*, %class.KV.7** %18, align 8
+  %20 = icmp eq %class.KV.7* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj8EE12remove_innerERKS1_mPKS0_Pm(%class.KV.7* noalias sret %agg.result, %class.KV.7* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.8*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.8*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.8, align 8
+  %node1 = alloca %class.KV.8*, align 8
+  store %class.KV.7* %kv, %class.KV.7** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %6 = getelementptr inbounds %class.KV.7, %class.KV.7* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %6 to %class.KV.8**
+  %8 = load %class.KV.8*, %class.KV.8** %7, align 8
+  store %class.KV.8* %8, %class.KV.8** %data, align 8
+  %9 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %10 = getelementptr inbounds %class.KV.7, %class.KV.7* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %42 = getelementptr inbounds %class.KV.8, %class.KV.8* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.8, %class.KV.8* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %52 = getelementptr inbounds %class.KV.8, %class.KV.8* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.8, %class.KV.8* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.8*
+  store %class.KV.8* %67, %class.KV.8** %node, align 8
+  %68 = load %class.KV.8*, %class.KV.8** %node, align 8
+  %69 = bitcast %class.KV.8* %68 to i8*
+  %70 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %71 = bitcast %class.KV.8* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.8*, %class.KV.8** %node, align 8
+  %78 = getelementptr inbounds %class.KV.8, %class.KV.8* %77, i64 %76
+  %79 = bitcast %class.KV.8* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %84 = getelementptr inbounds %class.KV.8, %class.KV.8* %83, i64 %82
+  %85 = bitcast %class.KV.8* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.8*, %class.KV.8** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %100, %class.KV.8* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.7*, %class.KV.7** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %agg.result, %class.KV.7* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %108 = getelementptr inbounds %class.KV.8, %class.KV.8* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EE12remove_innerERKS1_mPKS0_Pm(%class.KV.8* sret %childkv, %class.KV.8* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %116 = getelementptr inbounds %class.KV.8, %class.KV.8* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj9EEeqERKS1_(%class.KV.8* %childkv, %class.KV.8* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.7*, %class.KV.7** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %agg.result, %class.KV.7* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.8*, %class.KV.8** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.8* @_ZN2KVI5tupleS0_Lj9EE11update_nodeEPKS1_jjRS2_(%class.KV.8* %121, i32 %122, i32 %123, %class.KV.8* dereferenceable(16) %childkv)
+  store %class.KV.8* %124, %class.KV.8** %node1, align 8
+  %125 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %126 = getelementptr inbounds %class.KV.7, %class.KV.7* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.8*, %class.KV.8** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2EmPKS_IS0_S0_Lj9EE(%class.KV.7* %agg.result, i64 %128, %class.KV.8* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.7*, %class.KV.7** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj8EEC2ERKS1_(%class.KV.7* %agg.result, %class.KV.7* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj8EEeqERKS1_(%class.KV.7* %this, %class.KV.7* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.7*, align 8
+  %2 = alloca %class.KV.7*, align 8
+  store %class.KV.7* %this, %class.KV.7** %1, align 8
+  store %class.KV.7* %kv, %class.KV.7** %2, align 8
+  %3 = load %class.KV.7*, %class.KV.7** %1, align 8
+  %4 = getelementptr inbounds %class.KV.7, %class.KV.7* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.7*, %class.KV.7** %2, align 8
+  %8 = getelementptr inbounds %class.KV.7, %class.KV.7* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 8>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.7, %class.KV.7* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %13 to %class.KV.8**
+  %15 = load %class.KV.8*, %class.KV.8** %14, align 8
+  %16 = load %class.KV.7*, %class.KV.7** %2, align 8
+  %17 = getelementptr inbounds %class.KV.7, %class.KV.7* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 8>::Val"* %17 to %class.KV.8**
+  %19 = load %class.KV.8*, %class.KV.8** %18, align 8
+  %20 = icmp eq %class.KV.8* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj9EE12remove_innerERKS1_mPKS0_Pm(%class.KV.8* noalias sret %agg.result, %class.KV.8* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %data = alloca %class.KV.9*, align 8
+  %bm = alloca i64, align 8
+  %hpiece = alloca i32, align 4
+  %count = alloca i32, align 4
+  %exists = alloca i8, align 1
+  %i = alloca i32, align 4
+  %node = alloca %class.KV.9*, align 8
+  %newbm = alloca i64, align 8
+  %childkv = alloca %class.KV.9, align 8
+  %node1 = alloca %class.KV.9*, align 8
+  store %class.KV.8* %kv, %class.KV.8** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %6 = getelementptr inbounds %class.KV.8, %class.KV.8* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %6 to %class.KV.9**
+  %8 = load %class.KV.9*, %class.KV.9** %7, align 8
+  store %class.KV.9* %8, %class.KV.9** %data, align 8
+  %9 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %10 = getelementptr inbounds %class.KV.8, %class.KV.8* %9, i32 0, i32 0
+  %11 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %10 to i64*
+  %12 = load i64, i64* %11, align 8
+  %13 = lshr i64 %12, 1
+  store i64 %13, i64* %bm, align 8
+  %14 = load i64, i64* %2, align 8
+  %15 = and i64 %14, 63
+  %16 = urem i64 %15, 63
+  %17 = trunc i64 %16 to i32
+  store i32 %17, i32* %hpiece, align 4
+  %18 = load i64, i64* %bm, align 8
+  %19 = call i64 @llvm.ctpop.i64(i64 %18)
+  %20 = trunc i64 %19 to i32
+  store i32 %20, i32* %count, align 4
+  %21 = load i64, i64* %bm, align 8
+  %22 = load i32, i32* %hpiece, align 4
+  %23 = zext i32 %22 to i64
+  %24 = shl i64 1, %23
+  %25 = and i64 %21, %24
+  %26 = icmp ne i64 %25, 0
+  %27 = zext i1 %26 to i8
+  store i8 %27, i8* %exists, align 1
+  %28 = load i8, i8* %exists, align 1
+  %29 = trunc i8 %28 to i1
+  br i1 %29, label %30, label %130
+
+; <label>:30                                      ; preds = %0
+  %31 = load i64, i64* %bm, align 8
+  %32 = shl i64 %31, 1
+  %33 = load i32, i32* %hpiece, align 4
+  %34 = sub i32 63, %33
+  %35 = zext i32 %34 to i64
+  %36 = shl i64 %32, %35
+  %37 = call i64 @llvm.ctpop.i64(i64 %36)
+  %38 = trunc i64 %37 to i32
+  store i32 %38, i32* %i, align 4
+  %39 = load i32, i32* %i, align 4
+  %40 = zext i32 %39 to i64
+  %41 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %42 = getelementptr inbounds %class.KV.9, %class.KV.9* %41, i64 %40
+  %43 = getelementptr inbounds %class.KV.9, %class.KV.9* %42, i32 0, i32 0
+  %44 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %43 to i64*
+  %45 = load i64, i64* %44, align 8
+  %46 = and i64 %45, 1
+  %47 = icmp eq i64 %46, 0
+  br i1 %47, label %48, label %104
+
+; <label>:48                                      ; preds = %30
+  %49 = load i32, i32* %i, align 4
+  %50 = zext i32 %49 to i64
+  %51 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %52 = getelementptr inbounds %class.KV.9, %class.KV.9* %51, i64 %50
+  %53 = getelementptr inbounds %class.KV.9, %class.KV.9* %52, i32 0, i32 0
+  %54 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %53 to %class.tuple**
+  %55 = load %class.tuple*, %class.tuple** %54, align 8
+  %56 = load %class.tuple*, %class.tuple** %3, align 8
+  %57 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %55, %class.tuple* dereferenceable(8) %56)
+  br i1 %57, label %58, label %102
+
+; <label>:58                                      ; preds = %48
+  %59 = load i64*, i64** %4, align 8
+  %60 = load i64, i64* %59, align 8
+  %61 = add i64 %60, -1
+  store i64 %61, i64* %59, align 8
+  %62 = load i32, i32* %count, align 4
+  %63 = sub i32 %62, 1
+  %64 = zext i32 %63 to i64
+  %65 = mul i64 %64, 16
+  %66 = call noalias i8* @GC_malloc(i64 %65)
+  %67 = bitcast i8* %66 to %class.KV.9*
+  store %class.KV.9* %67, %class.KV.9** %node, align 8
+  %68 = load %class.KV.9*, %class.KV.9** %node, align 8
+  %69 = bitcast %class.KV.9* %68 to i8*
+  %70 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %71 = bitcast %class.KV.9* %70 to i8*
+  %72 = load i32, i32* %i, align 4
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %69, i8* %71, i64 %74, i32 8, i1 false)
+  %75 = load i32, i32* %i, align 4
+  %76 = zext i32 %75 to i64
+  %77 = load %class.KV.9*, %class.KV.9** %node, align 8
+  %78 = getelementptr inbounds %class.KV.9, %class.KV.9* %77, i64 %76
+  %79 = bitcast %class.KV.9* %78 to i8*
+  %80 = load i32, i32* %i, align 4
+  %81 = add i32 %80, 1
+  %82 = zext i32 %81 to i64
+  %83 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %84 = getelementptr inbounds %class.KV.9, %class.KV.9* %83, i64 %82
+  %85 = bitcast %class.KV.9* %84 to i8*
+  %86 = load i32, i32* %count, align 4
+  %87 = sub i32 %86, 1
+  %88 = load i32, i32* %i, align 4
+  %89 = sub i32 %87, %88
+  %90 = zext i32 %89 to i64
+  %91 = mul i64 %90, 16
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %79, i8* %85, i64 %91, i32 8, i1 false)
+  %92 = load i64, i64* %bm, align 8
+  %93 = load i32, i32* %hpiece, align 4
+  %94 = zext i32 %93 to i64
+  %95 = shl i64 1, %94
+  %96 = xor i64 -1, %95
+  %97 = and i64 %92, %96
+  %98 = shl i64 %97, 1
+  %99 = or i64 %98, 1
+  store i64 %99, i64* %newbm, align 8
+  %100 = load i64, i64* %newbm, align 8
+  %101 = load %class.KV.9*, %class.KV.9** %node, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %100, %class.KV.9* %101)
+  br label %132
+
+; <label>:102                                     ; preds = %48
+  %103 = load %class.KV.8*, %class.KV.8** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %agg.result, %class.KV.8* dereferenceable(16) %103)
+  br label %132
+
+; <label>:104                                     ; preds = %30
+  %105 = load i32, i32* %i, align 4
+  %106 = zext i32 %105 to i64
+  %107 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %108 = getelementptr inbounds %class.KV.9, %class.KV.9* %107, i64 %106
+  %109 = load i64, i64* %2, align 8
+  %110 = lshr i64 %109, 6
+  %111 = load %class.tuple*, %class.tuple** %3, align 8
+  %112 = load i64*, i64** %4, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EE12remove_innerERKS1_mPKS0_Pm(%class.KV.9* sret %childkv, %class.KV.9* dereferenceable(16) %108, i64 %110, %class.tuple* %111, i64* %112)
+  %113 = load i32, i32* %i, align 4
+  %114 = zext i32 %113 to i64
+  %115 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %116 = getelementptr inbounds %class.KV.9, %class.KV.9* %115, i64 %114
+  %117 = call zeroext i1 @_ZNK2KVI5tupleS0_Lj10EEeqERKS1_(%class.KV.9* %childkv, %class.KV.9* dereferenceable(16) %116)
+  br i1 %117, label %118, label %120
+
+; <label>:118                                     ; preds = %104
+  %119 = load %class.KV.8*, %class.KV.8** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %agg.result, %class.KV.8* dereferenceable(16) %119)
+  br label %132
+
+; <label>:120                                     ; preds = %104
+  %121 = load %class.KV.9*, %class.KV.9** %data, align 8
+  %122 = load i32, i32* %count, align 4
+  %123 = load i32, i32* %i, align 4
+  %124 = call %class.KV.9* @_ZN2KVI5tupleS0_Lj10EE11update_nodeEPKS1_jjRS2_(%class.KV.9* %121, i32 %122, i32 %123, %class.KV.9* dereferenceable(16) %childkv)
+  store %class.KV.9* %124, %class.KV.9** %node1, align 8
+  %125 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %126 = getelementptr inbounds %class.KV.8, %class.KV.8* %125, i32 0, i32 0
+  %127 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %126 to i64*
+  %128 = load i64, i64* %127, align 8
+  %129 = load %class.KV.9*, %class.KV.9** %node1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2EmPKS_IS0_S0_Lj10EE(%class.KV.8* %agg.result, i64 %128, %class.KV.9* %129)
+  br label %132
+
+; <label>:130                                     ; preds = %0
+  %131 = load %class.KV.8*, %class.KV.8** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj9EEC2ERKS1_(%class.KV.8* %agg.result, %class.KV.8* dereferenceable(16) %131)
+  br label %132
+
+; <label>:132                                     ; preds = %130, %120, %118, %102, %58
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj9EEeqERKS1_(%class.KV.8* %this, %class.KV.8* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.8*, align 8
+  %2 = alloca %class.KV.8*, align 8
+  store %class.KV.8* %this, %class.KV.8** %1, align 8
+  store %class.KV.8* %kv, %class.KV.8** %2, align 8
+  %3 = load %class.KV.8*, %class.KV.8** %1, align 8
+  %4 = getelementptr inbounds %class.KV.8, %class.KV.8* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.8*, %class.KV.8** %2, align 8
+  %8 = getelementptr inbounds %class.KV.8, %class.KV.8* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 9>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.8, %class.KV.8* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %13 to %class.KV.9**
+  %15 = load %class.KV.9*, %class.KV.9** %14, align 8
+  %16 = load %class.KV.8*, %class.KV.8** %2, align 8
+  %17 = getelementptr inbounds %class.KV.8, %class.KV.8* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 9>::Val"* %17 to %class.KV.9**
+  %19 = load %class.KV.9*, %class.KV.9** %18, align 8
+  %20 = icmp eq %class.KV.9* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr void @_ZN2KVI5tupleS0_Lj10EE12remove_innerERKS1_mPKS0_Pm(%class.KV.9* noalias sret %agg.result, %class.KV.9* dereferenceable(16) %kv, i64 %h, %class.tuple* %key, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca i64, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %ll = alloca %class.LL*, align 8
+  store %class.KV.9* %kv, %class.KV.9** %1, align 8
+  store i64 %h, i64* %2, align 8
+  store %class.tuple* %key, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %6 = getelementptr inbounds %class.KV.9, %class.KV.9* %5, i32 0, i32 1
+  %7 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %6 to %class.LL**
+  %8 = load %class.LL*, %class.LL** %7, align 8
+  %9 = icmp ne %class.LL* %8, null
+  br i1 %9, label %10, label %28
+
+; <label>:10                                      ; preds = %0
+  %11 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %12 = getelementptr inbounds %class.KV.9, %class.KV.9* %11, i32 0, i32 1
+  %13 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %12 to %class.LL**
+  %14 = load %class.LL*, %class.LL** %13, align 8
+  %15 = load %class.tuple*, %class.tuple** %3, align 8
+  %16 = load i64*, i64** %4, align 8
+  %17 = call %class.LL* @_ZNK2LLI5tupleS0_E6removeEPKS0_Pm(%class.LL* %14, %class.tuple* %15, i64* %16)
+  store %class.LL* %17, %class.LL** %ll, align 8
+  %18 = load %class.LL*, %class.LL** %ll, align 8
+  %19 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %20 = getelementptr inbounds %class.KV.9, %class.KV.9* %19, i32 0, i32 1
+  %21 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %20 to %class.LL**
+  %22 = load %class.LL*, %class.LL** %21, align 8
+  %23 = icmp eq %class.LL* %18, %22
+  br i1 %23, label %24, label %26
+
+; <label>:24                                      ; preds = %10
+  %25 = load %class.KV.9*, %class.KV.9** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2ERKS1_(%class.KV.9* %agg.result, %class.KV.9* dereferenceable(16) %25)
+  br label %30
+
+; <label>:26                                      ; preds = %10
+  %27 = load %class.LL*, %class.LL** %ll, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2EmPK2LLIS0_S0_E(%class.KV.9* %agg.result, i64 1, %class.LL* %27)
+  br label %30
+
+; <label>:28                                      ; preds = %0
+  %29 = load %class.KV.9*, %class.KV.9** %1, align 8
+  call void @_ZN2KVI5tupleS0_Lj10EEC2ERKS1_(%class.KV.9* %agg.result, %class.KV.9* dereferenceable(16) %29)
+  br label %30
+
+; <label>:30                                      ; preds = %28, %26, %24
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define linkonce_odr zeroext i1 @_ZNK2KVI5tupleS0_Lj10EEeqERKS1_(%class.KV.9* %this, %class.KV.9* dereferenceable(16) %kv) #3 comdat align 2 {
+  %1 = alloca %class.KV.9*, align 8
+  %2 = alloca %class.KV.9*, align 8
+  store %class.KV.9* %this, %class.KV.9** %1, align 8
+  store %class.KV.9* %kv, %class.KV.9** %2, align 8
+  %3 = load %class.KV.9*, %class.KV.9** %1, align 8
+  %4 = getelementptr inbounds %class.KV.9, %class.KV.9* %3, i32 0, i32 0
+  %5 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %4 to i64*
+  %6 = load i64, i64* %5, align 8
+  %7 = load %class.KV.9*, %class.KV.9** %2, align 8
+  %8 = getelementptr inbounds %class.KV.9, %class.KV.9* %7, i32 0, i32 0
+  %9 = bitcast %"union.KV<tuple, tuple, 10>::Key"* %8 to i64*
+  %10 = load i64, i64* %9, align 8
+  %11 = icmp eq i64 %6, %10
+  br i1 %11, label %12, label %21
+
+; <label>:12                                      ; preds = %0
+  %13 = getelementptr inbounds %class.KV.9, %class.KV.9* %3, i32 0, i32 1
+  %14 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %13 to %class.tuple**
+  %15 = load %class.tuple*, %class.tuple** %14, align 8
+  %16 = load %class.KV.9*, %class.KV.9** %2, align 8
+  %17 = getelementptr inbounds %class.KV.9, %class.KV.9* %16, i32 0, i32 1
+  %18 = bitcast %"union.KV<tuple, tuple, 10>::Val"* %17 to %class.tuple**
+  %19 = load %class.tuple*, %class.tuple** %18, align 8
+  %20 = icmp eq %class.tuple* %15, %19
+  br label %21
+
+; <label>:21                                      ; preds = %12, %0
+  %22 = phi i1 [ false, %0 ], [ %20, %12 ]
+  ret i1 %22
+}
+
+; Function Attrs: uwtable
+define linkonce_odr %class.LL* @_ZNK2LLI5tupleS0_E6removeEPKS0_Pm(%class.LL* %this, %class.tuple* %k, i64* %cptr) #0 comdat align 2 {
+  %1 = alloca %class.LL*, align 8
+  %2 = alloca %class.LL*, align 8
+  %3 = alloca %class.tuple*, align 8
+  %4 = alloca i64*, align 8
+  %next = alloca %class.LL*, align 8
+  store %class.LL* %this, %class.LL** %2, align 8
+  store %class.tuple* %k, %class.tuple** %3, align 8
+  store i64* %cptr, i64** %4, align 8
+  %5 = load %class.LL*, %class.LL** %2, align 8
+  %6 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 0
+  %7 = load %class.tuple*, %class.tuple** %6, align 8
+  %8 = load %class.tuple*, %class.tuple** %3, align 8
+  %9 = call zeroext i1 @_ZNK5tupleeqERKS_(%class.tuple* %7, %class.tuple* dereferenceable(8) %8)
+  br i1 %9, label %10, label %16
+
+; <label>:10                                      ; preds = %0
+  %11 = load i64*, i64** %4, align 8
+  %12 = load i64, i64* %11, align 8
+  %13 = add i64 %12, -1
+  store i64 %13, i64* %11, align 8
+  %14 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 2
+  %15 = load %class.LL*, %class.LL** %14, align 8
+  store %class.LL* %15, %class.LL** %1, align 8
+  br label %42
+
+; <label>:16                                      ; preds = %0
+  %17 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 2
+  %18 = load %class.LL*, %class.LL** %17, align 8
+  %19 = icmp ne %class.LL* %18, null
+  br i1 %19, label %20, label %41
+
+; <label>:20                                      ; preds = %16
+  %21 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 2
+  %22 = load %class.LL*, %class.LL** %21, align 8
+  %23 = load %class.tuple*, %class.tuple** %3, align 8
+  %24 = load i64*, i64** %4, align 8
+  %25 = call %class.LL* @_ZNK2LLI5tupleS0_E6removeEPKS0_Pm(%class.LL* %22, %class.tuple* %23, i64* %24)
+  store %class.LL* %25, %class.LL** %next, align 8
+  %26 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 2
+  %27 = load %class.LL*, %class.LL** %26, align 8
+  %28 = load %class.LL*, %class.LL** %next, align 8
+  %29 = icmp eq %class.LL* %27, %28
+  br i1 %29, label %30, label %31
+
+; <label>:30                                      ; preds = %20
+  store %class.LL* %5, %class.LL** %1, align 8
+  br label %42
+
+; <label>:31                                      ; preds = %20
+  %32 = call noalias i8* @GC_malloc(i64 24)
+  %33 = bitcast i8* %32 to %class.LL*
+  %34 = bitcast %class.LL* %33 to i8*
+  %35 = bitcast i8* %34 to %class.LL*
+  %36 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 0
+  %37 = load %class.tuple*, %class.tuple** %36, align 8
+  %38 = getelementptr inbounds %class.LL, %class.LL* %5, i32 0, i32 1
+  %39 = load %class.tuple*, %class.tuple** %38, align 8
+  %40 = load %class.LL*, %class.LL** %next, align 8
+  call void @_ZN2LLI5tupleS0_EC2EPKS0_S3_PKS1_(%class.LL* %35, %class.tuple* %37, %class.tuple* %39, %class.LL* %40)
+  store %class.LL* %35, %class.LL** %1, align 8
+  br label %42
+
+; <label>:41                                      ; preds = %16
+  store %class.LL* %5, %class.LL** %1, align 8
+  br label %42
+
+; <label>:42                                      ; preds = %41, %31, %30, %10
+  %43 = load %class.LL*, %class.LL** %1, align 8
+  ret %class.LL* %43
+}
+
 attributes #0 = { uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #2 = { noreturn nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #3 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #4 = { nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #5 = { nobuiltin nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #6 = { noreturn nounwind }
-attributes #7 = { nounwind }
-attributes #8 = { builtin nounwind }
+attributes #6 = { argmemonly nounwind }
+attributes #7 = { nounwind readnone }
+attributes #8 = { noreturn nounwind }
+attributes #9 = { nounwind }
+attributes #10 = { builtin nounwind }
 
 !llvm.ident = !{!0}
 

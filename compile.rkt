@@ -5,17 +5,8 @@
 (require "closure-convert.rkt")
 (require "utils.rkt")
 
-(define few-args '((lambda (a b c) c) '1 '2))
-
-(define many-args '(prim null? '() '1))
 
 
-(define not-used '(letrec ([a x][x 1]) (+ a a)))
-
-(define str '(print (string #\A)))
-
-
-
-(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert (simplify-ir (desugar (top-level '(/)))))))))))
+(eval-llvm (proc->llvm (closure-convert (cps-convert (anf-convert (alphatize (assignment-convert '(prim set-add (prim set) '1))))))))
 
 
