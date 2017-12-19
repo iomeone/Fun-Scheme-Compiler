@@ -247,6 +247,7 @@
          [`(call/cc ,(? (rec/with env))) #t]
          [(? var? x) (if (set-member? env x) #t #f)]
          [`(quote ,(? datum?)) #t]
+         [(? char? x) #t]
          [`(prim ,(? prim?) ,(? (rec/with env)) ...) #t]
          [`(apply-prim ,(? prim?) ,(? (rec/with env))) #t]
          [`(,(? (rec/with env)) ,(? (rec/with env)) ...) #t]
@@ -269,6 +270,8 @@
            [`(call/cc ,e0)
             `(call/cc ,(T e0))]
            [(? symbol? x)
+            x]
+           [(? char? x)
             x]
            [`(quote ,(? symbol? x))
             `(quote ,x)]
@@ -296,6 +299,7 @@
             (T `(prim - (prim - ,e0 ,@(drop-right es 1)) ,(last es)))]
            [`(prim / ,e0 ,e1)
             `(prim / ,(T e0) ,(T e1))]
+
            ; Remove list, vector->apply vector, map foldl, foldr, drop, memv, >, >=, ...
            [`(prim list ,es ...) ; optimize 
             `((lambda lst lst) ,@(map T es))]
@@ -594,6 +598,7 @@
            [`(let ([,(? symbol? x) (prim ,op ,(? symbol? xs) ...)]) ,(? c-exp? e0)) #t]
            [`(let ([,(? symbol? x) (apply-prim ,op ,(? symbol? y))]) ,(? c-exp? e0)) #t]
            [`(let ([,(? symbol? x) ',dat]) ,(? c-exp? e0)) #t]
+           [`(let ([,(? symbol? x) ,(? char? x)]) ,(? c-exp? e0)) #t]
            [`(if ,(? symbol? x) ,(? c-exp? e0) ,(? c-exp? e1)) #t]
            [`(clo-app ,(? symbol? f) ,(? symbol? xs) ...) #t]
            [else (pretty-print `(bad-proc-e ,e)) #f]))

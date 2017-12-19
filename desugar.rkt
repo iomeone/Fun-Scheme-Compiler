@@ -315,6 +315,10 @@
                  [(? procedure?)
                   (error (format "variable ~a bound to transformer in environment" x))])]         
 
+         [(? char? x)
+          `#\,x
+          ]
+    
          ; untagged application
          [`(,es ...)
           (map (lambda (e) (t-desugar e env)) es)]

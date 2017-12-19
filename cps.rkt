@@ -100,6 +100,8 @@
                      (mutated-variables e1))]
          [(? symbol? x)
           (set)]
+         [(? char? x)
+          (set)]
          [`',dat
           (set)]
          [`(,es ...)
@@ -151,6 +153,7 @@
             (if (set-member? vars x)
                 `(prim vector-ref ,x '0)
                 x)]
+           [(? char? x) x]
            [`',dat
             `',dat]
            [`(,es ...)
@@ -206,6 +209,7 @@
                     ,((alpha-rename env) e1))]
            [(? symbol? x)
             (hash-ref env x)]
+           [(? char? x) x]
            [`',dat
             `',dat]
            [`(,es ...)
@@ -238,6 +242,7 @@
                                                  (lambda (xs) (k `(,x . ,xs))))))))
   (match e
          [`',dat (k `',dat)]
+         [(? char? x) (k x)]
          [(? symbol? x) (k x)]
          [`(lambda ,xs ,e0)
           (k `(lambda ,xs ,(anf-convert e0)))]
@@ -277,6 +282,7 @@
   (define ((prop env) e)
     (match e
            [`',dat `',dat]
+           [(? char? x) x]
            [(? symbol? x)
             (hash-ref env x (lambda () x))]
            [`(let ([,x ,(? symbol? y)]) ,e0)
@@ -323,6 +329,8 @@
     (match e
            ; return (call continuation)
            [(? symbol? x)
+            `(,cae '() ,x)]
+           [(? char? x)
             `(,cae '() ,x)]
            [`',dat
             `(,cae '() ',dat)]

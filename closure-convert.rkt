@@ -33,6 +33,9 @@
                                               [`(lambda ,xs ,body) 
                                                `(let ([,gx (lambda ,xs ,(simplify-ae body))])
                                                   ,((cdr xs+wrap) e))]
+                                              [(? char? x)
+                                               `(let ([,gx ,x])
+                                                  ,((cdr xs+wrap) e))]
                                               [`',dat
                                                `(let ([,gx ',dat])
                                                   ,((cdr xs+wrap) e))])))))
@@ -45,7 +48,7 @@
 
          [`(let ([,x ',dat]) ,e0)
           `(let ([,x ',dat]) ,(simplify-ae e0))]
-
+         [`(let ([,x ,(? char? y)]) ,e0) `(let ([,x ,y]) ,(simplify-ae e0))]
          [`(let ([,x (prim ,op ,aes ...)]) ,e0)
           (wrap-aes aes (lambda (xs) `(let ([,x (prim ,op ,@xs)]) ,(simplify-ae e0))))]
          [`(let ([,x (apply-prim ,op ,aes ...)]) ,e0)
@@ -497,6 +500,17 @@
               "  %" (s-> x) " = call i64 @const_init_int(i64 " (number->string dat) ")"
               "quoted int")
              (e->llvm e0))]
+           [`(let ([,x ',(? char? dat)]) ,e0)
+            (define dx (gensym 'char))
+            (define lenstr (string-append "[" (number->string (+ 1 1)) " x i8]"))
+            (set! globals
+                  (string-append globals
+                      "@" (s-> dx) " = private unnamed_addr constant "
+                      lenstr " c\"" (string dat) "\\00\", align 8\n"))
+            (string-append
+             (comment-line
+              "  %" (s-> x) " = call i64 @const_init_string(i8* getelementptr inbounds (" lenstr ", " lenstr "* @" (s-> dx) ", i32 0, i32 0))"
+              "quoted string") (e->llvm e0))]
            [`(let ([,x ',(? string? dat)]) ,e0)
             (define dx (gensym 'str))
             (define lenstr (string-append "[" (number->string (+ 1 (string-length dat))) " x i8]"))

@@ -67,8 +67,6 @@
 #define DECODE_OTHER(v) ((u64*)((v)&(7ULL^MASK64)))
 #define ENCODE_OTHER(v) (((u64)(v)) | OTHER_TAG)
 
-
-
 // some apply-prim macros for expecting 1 argument or 2 arguments
 #define GEN_EXPECT1ARGLIST(f,g) \
     u64 f(u64 lst) \
@@ -247,8 +245,6 @@ u64 const_init_symbol(const char* s)
 {
     return ENCODE_SYM(s);
 }
-
-
 
 
 
