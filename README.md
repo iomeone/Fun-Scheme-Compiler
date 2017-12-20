@@ -43,6 +43,8 @@ $ racket tests.rkt div-0
 Test passed!
 ```
 
+Note: for testing failing code, I modified `utils.rkt` to include a `tests-compiler` where the output of `eval-top-level` is compared with `eval-llvm` for equality, however any errors found at the top-level will return `'()` while any errors occuring at `eval-llvm` will return `void`. Thus, these are compared for equality, in effect passing failing scheme input code.
+
 ```sh
 $ racket tests.rkt amb
 Test passed!
