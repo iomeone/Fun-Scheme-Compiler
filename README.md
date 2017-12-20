@@ -138,7 +138,7 @@ The following 5 runtime errors have been identified and fixed with properly rais
 
     Upon each subsequent call of `alloc`, `current_mem_used` is incremented by the byte size allocated and compared to the defined `MEM_CAP` if it is numerically less. Otherwise, it fails with a raised `fatal_err` run-time exception and presents an error message. Feel free to adjust `MEM_CAP` to your needs/liking.
 
-    I tested my memory cap by reducing the MEM_CAP to a number extremely small (ie. 10 bytes) and tried continually defining variables in Scheme. I know this feature works because it sucessfully threw a run-time exception when the test was run instead of crashing. I have since modified the MEM_CAP to be 256 MB and have removed my test for usability. 
+    I tested my memory cap by reducing the `MEM_CAP` to a number extremely small (ie. 10 bytes) and tried continually defining variables in Scheme. I know this feature works because it sucessfully threw a run-time exception when the test was run instead of crashing. I have since modified the `MEM_CAP` to be 256 MB and have removed my test for usability. 
 
 4. Function is provided too many arguments.
 
@@ -188,7 +188,7 @@ An example of a run-time error that is not being caught is integer overflow. For
 
     I attempted to add strings and characters to the FSC implementation. I was successfully able to allow characters to be passed until closure conversion, but ran out of time when I wanted pass them to LLVM IR. 
 
-    First, I managed allow characters to pass as valid input for the passes leading to `closure-convert` and was able to `eval-ir` something like \#x (which is scheme for the character `x`).
+    First, I managed allow characters to pass as valid input for the passes leading to `closure-convert` and was able to `eval-ir` something like `\#x` (which is scheme for the character `x`).
 
     Since I was unable to change the tagging scheme to an acceptable one (for BGC) I was unable to use more than 8 tags. Since I was already using a tag for hashsets, I do not know how to extend this to more than 8 tags so I just naively convert characters to strings.
 
