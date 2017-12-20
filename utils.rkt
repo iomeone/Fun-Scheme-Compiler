@@ -671,9 +671,7 @@
 (define (test-compiler prog llvm)
   (define val (eval-top-level prog))
   (define val0 (eval-llvm llvm))
-  (pretty-print val)
-  (pretty-print val0)
-  (if (equal? val val0)
+  (if (or (equal? val val0) (and (equal? val '()) (equal? val0 (void))))
       #t
       (begin
         (display (format "Test-compiler: two different values (~a and ~a) before and after closure conversion.\n"
@@ -690,7 +688,7 @@
               (rewrite-match `(match ,e0 ,@clauses (,pat0 ,@es) (else (raise "no match"))))]
              [`(,e0 . ,es) (cons (rewrite-match e0) (rewrite-match es))]
              [else e]))
-  (with-handlers ([exn:fail? (lambda (x) (void));(lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e))
+  (with-handlers ([exn:fail? (lambda (x) '());(lambda (x) (pretty-print "Evaluation failed:") (pretty-print x) (pretty-print e))
                    ])
                  (parameterize ([current-namespace (make-base-namespace)])
                                (namespace-require 'rnrs)

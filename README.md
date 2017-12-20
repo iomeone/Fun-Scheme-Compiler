@@ -39,26 +39,19 @@ $ ./bin
 
 ## Example Runs:
 ```sh
-$ racket tests.rkt amb
-Test passed!
-```
-
-```sh
 $ racket tests.rkt div-0
-#<void>
-#<void>
 Test passed!
 ```
 
 ```sh
 $ racket tests.rkt amb
-'(solution 3 4 5)
-'(solution 3 4 5)
 Test passed!
 
 $ ./bin
 '(solution . (3 . (4 . (5 . ()))))
 ```
+
+
 
 Test `div-0` is a sample test of what happens when a program divides by 0. This is a run-time exception on both the top-level and the binary, therefore printing the exception and returing `void`.
 
